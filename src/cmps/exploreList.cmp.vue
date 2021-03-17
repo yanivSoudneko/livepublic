@@ -1,14 +1,17 @@
 <template>
-  <div class="stay-list">
-    <div class="stay-preview" v-for="stay in stays" :key="stay._id">
-      <img class="img-explore-cityes" :src="stay.imgUrls[0]" :alt="stay.name" />
-      <h5>{{ stay.loc.address }}</h5>
+  <div class="location-list">
+    <div class="location-preview flex j-between" v-for="location in exploreList" :key="location._id">
+      <img class="img-explore-cities" :src="location.url" :alt="location.name" />
+      <div>
+        <h5>{{ location.name }}</h5>
+        <h5>{{ hourOrMinutes(location.distanceTime) }} drive</h5>
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.stay-list {
+.location-list {
   height: auto;
   width: 100%;
   display: grid;
@@ -26,7 +29,7 @@
   --exp-pdw-lg-bot: 24px;
   --exp-pdw-lg-top: 56px;
   // font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-  .stay-preview {
+  .location-preview {
     border: 1px solid #fefefe;
     display: flex;
     justify-content: center;
@@ -44,14 +47,18 @@
 
 <script>
 export default {
-  name: 'stay-list',
-  computed: {
-    stays() {
-      return this.$store.getters['stay/getStays'];
+  name: 'location-list',
+  methods: {
+    hourOrMinutes(time) {
+      if (time < 60) return 'minute';
+      return 'hour';
     },
   },
-  created() {
-    this.$store.dispatch({ type: 'stay/load' });
+  computed: {
+    exploreList() {
+      console.log(this.$store.getters['stay/getLocations']);
+      return this.$store.getters['stay/getLocations'];
+    },
   },
 };
 </script>

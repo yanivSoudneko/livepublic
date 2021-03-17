@@ -1,19 +1,20 @@
 <template>
 	<div class="explore">
 		<h1>Explore</h1>
-		<stay-list />
+		<explore-list />
 	</div>
 </template>
 
 
 <script>
-// @ is an alias to /src
-
-import stayList from "../cmps/stayList.cmp";
+import exploreList from "../cmps/exploreList.cmp";
 export default {
 	name: "Explore",
+	created() {
+		this.$store.dispatch({ type: "stay/load" });
+	},
 	components: {
-		stayList,
+		exploreList,
 	},
 };
 </script>
