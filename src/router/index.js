@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '@/pages/homePage.vue';
 import explorePage from '@/pages/explorePage.vue';
-import stayApp from '@/pages/stayApp.vue';
+// import stayApp from '@/pages/stayApp.vue';
 import stayDetails from '@/pages/stayDetails.vue';
 import stayEdit from '@/pages/stayEdit.vue';
 import stayPage from '@/pages/stayPage.vue';
@@ -16,11 +16,11 @@ const routes = [
         name: 'Explore',
         component: explorePage,
     },
-    {
-        path: '/stay',
-        name: 'stay',
-        component: stayApp,
-    },
+    // {
+    //     path: '/stay',
+    //     name: 'stay',
+    //     component: stayApp,
+    // },
     {
         path: '/details/:stayId',
         name: 'details',

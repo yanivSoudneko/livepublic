@@ -8,6 +8,7 @@
 			<p>Turn your extra space into your next opportunity.</p>
 			<button>Become a host</button>
 		</div>
+		<stay-list/>
 	</div>
 </template>
 
@@ -26,6 +27,7 @@
 <script>
 import exploreList from "../cmps/exploreList.cmp";
 import categoryList from "../cmps/categoryList.cmp";
+import stayList from "../cmps/stayList.cmp";
 export default {
 	name: "Explore",
 	created() {
@@ -34,6 +36,7 @@ export default {
 	components: {
 		exploreList,
 		categoryList,
+		stayList
 	},
 };
 </script>
