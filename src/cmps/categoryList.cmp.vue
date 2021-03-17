@@ -36,7 +36,7 @@
 
 <style scoped>
 .category-list {
-	height: 100vh;
+	height: 75vh;
 }
 </style>
 
