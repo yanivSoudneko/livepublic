@@ -2,12 +2,14 @@
 	<div class="explore">
 		<h1>Explore</h1>
 		<explore-list />
+		<category-list />
 	</div>
 </template>
 
 
 <script>
 import exploreList from "../cmps/exploreList.cmp";
+import categoryList from "../cmps/categoryList.cmp";
 export default {
 	name: "Explore",
 	created() {
@@ -15,6 +17,7 @@ export default {
 	},
 	components: {
 		exploreList,
+		categoryList,
 	},
 };
 </script>
