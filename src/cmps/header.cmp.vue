@@ -45,6 +45,7 @@
 
 <style lang="scss" scoped>
 .header-main {
+  margin-bottom: 150px;
   background-color: white;
   .nav-bar {
     display: flex;
