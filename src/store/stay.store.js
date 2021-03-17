@@ -14,7 +14,7 @@ export default {
     },
     actions: {
         load({ commit }) {
-            commit({ type: 'loadStays', stays: stayJson });
+            commit({ type: 'load', stays: stayJson });
         },
     },
 };
