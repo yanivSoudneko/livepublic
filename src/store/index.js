@@ -1,15 +1,21 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+import userStore from './user.store';
+import orderStore from './order.store';
+import stayStore from './stay.store';
+import tripStore from './trip.store';
+
+Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+    state: {},
+    mutations: {},
+    actions: {},
+    modules: {
+        userStore,
+        orderStore,
+        stayStore,
+        tripStore,
+    },
+});
