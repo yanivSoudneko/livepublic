@@ -1,7 +1,7 @@
 <template>
 	<div class="stay-list">
 		<div class="stay-preview" v-for="stay in stays" :key="stay._id">
-			{{ stay }}
+			{{ stay.loc.address }}
 		</div>
 	</div>
 </template>
