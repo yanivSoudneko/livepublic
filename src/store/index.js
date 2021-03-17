@@ -9,13 +9,13 @@ import tripStore from './trip.store';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    state: {},
-    mutations: {},
-    actions: {},
+    // state: {},
+    // mutations: {},
+    // actions: {},
     modules: {
         userStore,
         orderStore,
-        stayStore,
+        stay: stayStore,
         tripStore,
     },
 });

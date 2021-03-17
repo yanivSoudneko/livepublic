@@ -1,19 +1,26 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <nav-bar />
-    </div>
-  </div>
+	<div id="app">
+		<nav-bar />
+		<div class="view">
+			<router-view />
+		</div>
+	</div>
 </template>
 
-
+<style lang="scss" scoped>
+#app {
+	.view {
+		height: 100vh;
+	}
+}
+</style>
 
 <script>
 import navBar from "./cmps/header.cmp";
 export default {
-  components: {
-    navBar,
-  },
+	components: {
+		navBar,
+	},
 };
 // import jsonData from '../data/airbnb.json'
 // export default {
