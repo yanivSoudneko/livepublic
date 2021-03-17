@@ -2,6 +2,7 @@
 	<div class="stay-list">
 		<div class="stay-preview" v-for="stay in stays" :key="stay._id">
 			{{ stay.loc.address }}
+			<img :src="stay.imgUrls[0]" :alt="stay.name" />
 		</div>
 	</div>
 </template>
