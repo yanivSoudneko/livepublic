@@ -1,16 +1,24 @@
 <template>
 	<div class="stay-list">
-		{{ stayList }}
+		<div class="stay-preview" v-for="stay in stays" :key="stay._id">
+			{{ stay }}
+		</div>
 	</div>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.stay-list {
+	.stay-preview {
+		border: 1px solid #fefefe;
+	}
+}
+</style>
 
 <script>
 export default {
 	name: "stay-list",
 	computed: {
-		stayList() {
+		stays() {
 			console.log(
 				"🚀 ~ file: stayList.cmp.vue ~ line 16 ~ stayList ~  this.$store.getStays",
 				this.$store.getters["stay/getStays"]

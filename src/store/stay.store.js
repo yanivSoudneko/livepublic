@@ -1,4 +1,4 @@
-import stayJson from '../../data/airbnb.json';
+import stayJson from '../../data/stayMockData.json';
 export default {
     namespaced: true,
     state: { stays: [] },
