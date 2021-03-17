@@ -8,12 +8,12 @@ export default {
         },
     },
     mutations: {
-        loadStays(state, { stays }) {
+        load(state, { stays }) {
             state.stays = stays;
         },
     },
     actions: {
-        loadStays({ commit }) {
+        load({ commit }) {
             commit({ type: 'loadStays', stays: stayJson });
         },
     },
