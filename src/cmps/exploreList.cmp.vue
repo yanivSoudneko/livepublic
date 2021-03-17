@@ -63,7 +63,6 @@ export default {
   },
   computed: {
     exploreList() {
-      console.log(this.$store.getters['stay/getLocations']);
       return this.$store.getters['stay/getLocations'];
     },
   },
