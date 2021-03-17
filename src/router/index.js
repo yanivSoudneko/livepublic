@@ -11,41 +11,41 @@ import userDetails from '@/pages/userDetails.vue';
 Vue.use(VueRouter);
 
 const routes = [
-    {
-        path: '/',
-        name: 'Explore',
-        component: explorePage,
-    },
-    // {
-    //     path: '/stay',
-    //     name: 'stay',
-    //     component: stayApp,
-    // },
-    {
-        path: '/details/:stayId',
-        name: 'details',
-        component: stayDetails,
-    },
-    {
-        path: '/edit/:stayId',
-        name: 'edit',
-        component: stayEdit,
-    },
-    {
-        path: '/stay/?stayId',
-        name: 'stay-page',
-        component: stayPage,
-    },
-    {
-        path: '/details/userId',
-        name: 'user-details',
-        component: userDetails,
-    },
+  {
+    path: '/',
+    name: 'Explore',
+    component: explorePage,
+  },
+  // {
+  //     path: '/stay',
+  //     name: 'stay',
+  //     component: stayApp,
+  // },
+  {
+    path: '/details/:stayId',
+    name: 'details',
+    component: stayDetails,
+  },
+  {
+    path: '/edit/:stayId',
+    name: 'edit',
+    component: stayEdit,
+  },
+  {
+    path: '/stay/:stayId',
+    name: 'stay-page',
+    component: stayPage,
+  },
+  {
+    path: '/details/userId',
+    name: 'user-details',
+    component: userDetails,
+  },
 ];
 
 const router = new VueRouter({
-    mode: 'history',
-    routes,
+  mode: 'history',
+  routes,
 });
 
 export default router;
