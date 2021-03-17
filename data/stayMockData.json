@@ -215,215 +215,126 @@
         ]
     },
     {
-        "_id": "10028541",
-        "name": "Ribeira Charming Duplex",
+        "_id": "10006541",
+        "name": "Lovely B&nB 't Zaanse House at the water",
         "imgUrls": [
             "https://a0.muscache.com/im/pictures/be4d3ba5-08d7-4afe-95a7-f2da6453886a.jpg?im_q=medq&im_w=240",
             "otherImg.jpg"
         ],
-        "price": 80.0,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "accommodates": 8,
+        "price": 312.00,
+        "summary": "B&nB 't Zaanse Huis gelegen in Uitgeest op een Marina park in Noord-Holland beschikt over een terras aan het water....",
+        "accommodates": 6,
         "amenities": [
-            "TV",
-            "Wifi",
+            "Free parking on premises",
             "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
+            "Wifi",
+            "Dryer",
+            "Cable TV"
         ],
         "host": {
-            "_id": "51399391",
-            "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+            "_id": "51315991",
+            "fullname": "Walter",
+            "imgUrl": "https://a0.muscache.com/im/pictures/user/a9397055-3c14-4cb8-8434-0c0257f21af4.jpg?im_w=240"
         },
         "loc": {
-            "country": "Spain",
-            "countryCode": "SP",
-            "address": "Barcelona,Spain",
-            "lat": -8.61308,
-            "lng": 41.1413
+            "country": "Netherlands",
+            "countryCode": "",
+            "address": "Noord-Holland,Netherlands",
+            "lat": 52.52917,
+            "lng": 4.718509
         },
         "reviews": [
             {
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
+                "txt": "Loved our stay it was nice,everything was great no complaints but one issue i.e. not so good public transport",
+                "rate": 4.2,
                 "by": {
-                    "_id": "u102",
-                    "fullname": "user2",
+                    "_id": "u107",
+                    "fullname": "user6",
                     "imgUrl": "/img/img2.jpg"
                 }
             }
         ]
     },
     {
-        "_id": "10076244",
-        "name": "Ribeira Charming Duplex",
+        "_id": "10160541",
+        "name": "Amazing home in Breukelen with WiFi and 2 Bedrooms",
         "imgUrls": [
-            "https://a0.muscache.com/im/pictures/7253e011-7c22-48fd-b75d-d0da35372397.jpg?im_q=medq&im_w=240",
+            "https://a0.muscache.com/im/pictures/be4d3ba5-08d7-4afe-95a7-f2da6453886a.jpg?im_q=medq&im_w=240",
             "otherImg.jpg"
         ],
-        "price": 80.0,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "accommodates": 8,
+        "price": 312.0,
+        "summary": "Entire house hosted by Novasol....",
+        "accommodates": 4,
         "amenities": [
-            "TV",
-            "Wifi",
             "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
+            "Wifi",
+            "Dedicated workspace",
+            "Cable TV",
+            "Hangers"
         ],
         "host": {
-            "_id": "51399391",
-            "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+            "_id": "91385291",
+            "fullname": "Novasol",
+            "imgUrl": "https://a0.muscache.com/im/pictures/user/a1d97999-607c-4727-973e-53de8817aac9.jpg?im_w=240"
         },
         "loc": {
-            "country": "Bulgaria",
-            "countryCode": "BG",
-            "address": "Bansko, Bulgaria",
-            "lat": -8.61308,
-            "lng": 41.1413
+            "country": "Netherlands",
+            "countryCode": "Ne",
+            "address": "Breukelen, Netherlands",
+            "lat": 52.175812,
+            "lng": 4.995493
         },
         "reviews": [
             {
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
+                "txt": "Excelent place to stay. Awesome chalet, I really enjoyed it. The town is unbelievable, so beautiful. The owners of the place were very helpfuland friendly. I arrive late to my stay, and they wait for me.",
+                "rate": 4.8,
                 "by": {
-                    "_id": "u102",
-                    "fullname": "user2",
+                    "_id": "u108",
+                    "fullname": "user7",
                     "imgUrl": "/img/img2.jpg"
                 }
             }
         ]
     },
     {
-        "_id": "10197542",
-        "name": "Ribeira Charming Duplex",
+        "_id": "10160541",
+        "name": "Entire house hosted by Tidhar",
         "imgUrls": [
-            "https://a0.muscache.com/im/pictures/52e8083e-2de2-446d-a860-534eab250541.jpg?im_q=medq&im_w=240",
+            "https://a0.muscache.com/im/pictures/ce1ef88f-cc61-482c-951a-ff21ff06105f.jpg?im_w=960",
             "otherImg.jpg"
         ],
-        "price": 80.0,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "accommodates": 8,
+        "price": 109.4,
+        "summary": "within a walking distance from the beautiful beach, over looking the unique Flae Market, in a brand new building, hides this amazing Penthouse Apt. This amazing apartment is located in a quiet street, yet, at the center of all things.",
+        "accommodates": 10,
         "amenities": [
-            "TV",
+            "Free parking on premises",
+            "Lift",
             "Wifi",
             "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
+            "Dryer"
         ],
         "host": {
-            "_id": "51399391",
-            "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+            "_id": "99245291",
+            "fullname": "Tidhar",
+            "imgUrl": "https://a0.muscache.com/im/pictures/user/a1d97999-607c-4727-973e-53de8817aac9.jpg?im_w=240"
         },
         "loc": {
-            "country": "France",
-            "countryCode": "FR",
-            "address": "Paris, France",
-            "lat": -8.61308,
-            "lng": 41.1413
+            "country": "Israel",
+            "countryCode": "Ne",
+            "address": "Tel Aviv-Yafo, Israel",
+            "lat": 32.08021230939065,
+            "lng": 34.771173980276075
         },
         "reviews": [
             {
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
+                "txt": "Our experience with the overall cleanliness of the apartment was consistent with other reviews I read about. Prior to booking I asked the host if they've done anything to improve the cleanliness but I didn't really get a reassuring response. I booked anyhow and I can see why others have complained about the cleanliness. Aside from this issue though, the apartment is really a fantastic location and the two balconies are awesome. It is also well furnished and trendy. If you require any special requests like a late check-out, be sure to confirm with the host after booking. I had explained that I could only book if we could check-out after the Sabbath and he said yes, for an additional 600 nis. I was perfectly fine with this so I went ahead and booked. Then, the morning of our check-in I found out that since I didn't confirm after-the-fact, the host let someone else book on Saturday. Fortunately, he made other accommodations for us and helped us move to a different apartment in the same building so that we could still stay until the Sabbath ended. It was annoying but we did appreciate that he made other plans for us and didn't charge us the 600 nis for a lake check-out. Overall, we had a very positive experience and I'd recommend the place to others.",
+                "rate": 3.8,
                 "by": {
-                    "_id": "u102",
-                    "fullname": "user2",
-                    "imgUrl": "/img/img2.jpg"
-                }
-            }
-        ]
-    },
-    {
-        "_id": "10007343",
-        "name": "Ribeira Charming Duplex",
-        "imgUrls": [
-            "https://a0.muscache.com/im/pictures/20e74de0-0eb8-4fca-afb8-b111875acdf5.jpg?im_q=medq&im_w=240",
-            "otherImg.jpg"
-        ],
-        "price": 80.0,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "accommodates": 8,
-        "amenities": [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
-        ],
-        "host": {
-            "_id": "51399391",
-            "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
-        },
-        "loc": {
-            "country": "France",
-            "countryCode": "FR",
-            "address": "Toulouse, France",
-            "lat": -8.61308,
-            "lng": 41.1413
-        },
-        "reviews": [
-            {
-                "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "user2",
-                    "imgUrl": "/img/img2.jpg"
-                }
-            }
-        ]
-    },
-    {
-        "_id": "10011145",
-        "name": "Ribeira Charming Duplex",
-        "imgUrls": [
-            "https://a0.muscache.com/im/pictures/e639b7ab-aee3-48ee-9743-216684a51319.jpg?im_q=medq&im_w=240",
-            "otherImg.jpg"
-        ],
-        "price": 80.0,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "accommodates": 8,
-        "amenities": [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
-        ],
-        "host": {
-            "_id": "51399391",
-            "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
-        },
-        "loc": {
-            "country": "Portugal",
-            "countryCode": "PT",
-            "address": "Porto, Portugal",
-            "lat": -8.61308,
-            "lng": 41.1413
-        },
-        "reviews": [
-            {
-                "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "user2",
+                    "_id": "u109",
+                    "fullname": "user8",
                     "imgUrl": "/img/img2.jpg"
                 }
             }

@@ -9,6 +9,7 @@
       <button>Become a host</button>
 	  </div>
     </div>
+	<stay-list />
   </div>
 </template>
 
@@ -27,14 +28,16 @@
 <script>
 import exploreList from "../cmps/exploreList.cmp";
 import categoryList from "../cmps/categoryList.cmp";
+import stayList from "../cmps/stayList.cmp";
 export default {
-  name: "Explore",
-  created() {
-    this.$store.dispatch({ type: "stay/load" });
-  },
-  components: {
-    exploreList,
-    categoryList,
-  },
+	name: "Explore",
+	created() {
+		this.$store.dispatch({ type: "stay/load" });
+	},
+	components: {
+		exploreList,
+		categoryList,
+		stayList
+	},
 };
 </script>
