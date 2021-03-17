@@ -13,7 +13,7 @@ export default {
         },
     },
     actions: {
-        loadStays({ commit }, payload) {
+        loadStays({ commit }) {
             commit({ type: 'loadStays', stays: stayJson });
         },
     },

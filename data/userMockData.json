@@ -1,0 +1,8 @@
+{
+    "_id": "u101",
+    "fullname": "Jhon Smith",
+    "imgUrl": "/img/img1.jpg",
+    "isAdmin": false,
+    "username": "user1",
+    "password": "secret"
+}
