@@ -62,6 +62,7 @@
 .header-main {
 	// margin-bottom: 150px;
 	background-color: white;
+	margin-bottom: 100px;
 	.nav-bar {
 		display: flex;
 		justify-content: space-between;
