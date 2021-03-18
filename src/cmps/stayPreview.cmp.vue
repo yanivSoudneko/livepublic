@@ -10,11 +10,10 @@
 				v-for="(img, idx) in stay.imgUrls"
 				:key="idx"
 				autoplay="false"
+				trigger="click"
+				@click.native="$router.push('stay/' + stay._id)"
 			>
-				<img
-					:src="img"
-					class="slider-image"
-				/>
+				<img :src="img" class="slider-image" />
 			</el-carousel-item>
 		</el-carousel>
 		<div class="stay-details">
