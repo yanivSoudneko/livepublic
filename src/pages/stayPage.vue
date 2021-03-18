@@ -40,6 +40,11 @@
           </div>
           <div class="" v-if="accommodatesLength">Accommodates to: {{ accommodatesLength }}</div>
         </div>
+        <div class="stye-page-amenities-container">
+          <div class="stye-page-amenities" v-for="(amenitie, index) in stay.amenities" :key="index">
+            <div class="amenitie">{{ amenitie }}</div>
+          </div>
+        </div>
       </div>
       <!-- {{ stay }} -->
     </div>
