@@ -2,16 +2,25 @@
   <div class="stay" v-if="stay">
     <h1>{{ stay.name }}</h1>
     <div class="underTitle">
-      <span class="underTitle-review"></span>
+      <span class="underTitle-review">{{ ratingLength }}</span>
+      <span class="underTitle-addres">{{ stay.loc.address }}</span>
+      <div class="stay-page-container">
+        <div class="stay-page-img-container" v-for="url in stay.imgUrls" :key="url">
+          <img :src="url" alt="imgUrl" />
+        </div>
+      </div>
     </div>
-    <!-- {{ stay }} -->
-    {{ ratingLength }}
+
+    {{ stay }}
   </div>
 </template>
-
+<style scoped>
+.underTitle > * {
+  padding: 10px;
+}
+</style>
 <script>
 // @ is an alias to /src
-
 export default {
   name: 'Stay',
   data() {
@@ -32,11 +41,8 @@ export default {
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;
-      console.log('reviewsLength:', reviewsLength);
-
       const addS = reviewsLength > 1 ? 's' : '';
       const string = reviewsLength + ' Review' + addS;
-      // return reviewsLength + ' Review' + addS;
       return string;
     },
   },
