@@ -40,7 +40,7 @@
 			</div>
 			<!-- filters -->
 			<nav-filter
-				v-if="!hideBtn"
+				v-if="hideBtn"
 				v-click-outside="handleShowFilter"
 			></nav-filter>
 			<div class="links">
