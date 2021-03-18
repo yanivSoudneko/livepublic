@@ -63,10 +63,16 @@
       </div>
       <!-- {{ stay }} -->
     </div>
+    <div class="check-out">
+      <div class="price"></div>
+      <div class="rate"></div>
+      </div>
   </div>
 </template>
 <style lang="scss">
 .stay {
+  max-width: 1210px;
+  margin:0 auto;
   .underTitle > * {
     padding: 10px;
   }
@@ -125,7 +131,7 @@
     }
   }
   .right-side-container {
-    float: right;
+    float: left;
     .right-side > * {
       margin: 80px;
     }
