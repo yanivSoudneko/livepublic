@@ -3,10 +3,13 @@
         "_id": "10006541",
         "name": "Ribeira Charming Duplex",
         "imgUrls": [
-            "https://a0.muscache.com/im/pictures/be4d3ba5-08d7-4afe-95a7-f2da6453886a.jpg?im_q=medq&im_w=240",
-            "otherImg.jpg"
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004524/v1.9/house_1/16.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004418/v1.9/house_1/15.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004413/v1.9/house_1/14.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004387/v1.9/house_1/12.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004384/v1.9/house_1/19.png"
         ],
-        "price": 80.0,
+        "price": 240.0,
         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
         "accommodates": 8,
         "amenities": [
@@ -19,8 +22,8 @@
         ],
         "host": {
             "_id": "51399391",
-            "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+            "fullname": "Samantha James",
+            "imgUrl": "https://randomuser.me/api/portraits/women/18.jpg"
         },
         "loc": {
             "country": "Spain",
@@ -32,22 +35,25 @@
         "reviews": [
             {
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "txt": "Cozy, clean villa near to the beach with friendly and welcoming house keeper. Great and private chill spot in the yard and very well air conditioned rooms. Everything is like in the description and pictures. 100% recommend.",
                 "rate": 4,
                 "by": {
                     "_id": "u102",
-                    "fullname": "user2",
-                    "imgUrl": "/img/img2.jpg"
+                    "fullname": "Holly Lawrence",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/61.jpg"
                 }
             }
         ]
     },
     {
-        "_id": "10006544",
+        "_id": "10006542",
         "name": "Ribeira Charming Duplex",
         "imgUrls": [
-            "https://a0.muscache.com/im/pictures/7253e011-7c22-48fd-b75d-d0da35372397.jpg?im_q=medq&im_w=240",
-            "otherImg.jpg"
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004464/v1.9/house_2/1.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004464/v1.9/house_2/2.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004464/v1.9/house_2/3.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004464/v1.9/house_2/4.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004464/v1.9/house_2/5.png"
         ],
         "price": 80.0,
         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
@@ -62,8 +68,8 @@
         ],
         "host": {
             "_id": "51399391",
-            "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+            "fullname": "Jevich Cherco",
+            "imgUrl": "https://randomuser.me/api/portraits/women/38.jpg"
         },
         "loc": {
             "country": "Bulgaria",
@@ -75,22 +81,25 @@
         "reviews": [
             {
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "txt": "A good place for a family in a great location. The boulevard or walkway along the coast is lovely for walks and the small beach close by is nice and has a tidal pool, despite the fact that it is rocky (just bring swimming booties along). Dmitry is a great host and responded quickly to all our questions. We would visit again.",
                 "rate": 4,
                 "by": {
                     "_id": "u102",
-                    "fullname": "user2",
-                    "imgUrl": "/img/img2.jpg"
+                    "fullname": "Julio Graham",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/1.jpg"
                 }
             }
         ]
     },
     {
-        "_id": "10006542",
+        "_id": "10006543",
         "name": "Ribeira Charming Duplex",
         "imgUrls": [
-            "https://a0.muscache.com/im/pictures/52e8083e-2de2-446d-a860-534eab250541.jpg?im_q=medq&im_w=240",
-            "otherImg.jpg"
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004421/v1.9/house_3/1.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004421/v1.9/house_3/2.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004421/v1.9/house_3/3.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004421/v1.9/house_3/4.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004421/v1.9/house_3/5.png"
         ],
         "price": 80.0,
         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
@@ -105,8 +114,8 @@
         ],
         "host": {
             "_id": "51399391",
-            "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+            "fullname": "Clinton Matthews",
+            "imgUrl": "https://randomuser.me/api/portraits/men/85.jpg"
         },
         "loc": {
             "country": "France",
@@ -118,25 +127,28 @@
         "reviews": [
             {
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "txt": "Really cute house in a very quiet street and neighborhood minutes from the sea. Good and quiet AC in the bedroom and living room, lovely outside space with pretty bougainvilla to have breakfast. House is fully equipped with everything you might need. Dmitry was lovely to communicate with, thank you!",
                 "rate": 4,
                 "by": {
                     "_id": "u102",
-                    "fullname": "user2",
-                    "imgUrl": "/img/img2.jpg"
+                    "fullname": "Beth Hunter",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/78.jpg"
                 }
             }
         ]
     },
     {
-        "_id": "10006543",
+        "_id": "10006544",
         "name": "Ribeira Charming Duplex",
         "imgUrls": [
-            "https://a0.muscache.com/im/pictures/20e74de0-0eb8-4fca-afb8-b111875acdf5.jpg?im_q=medq&im_w=240",
-            "otherImg.jpg"
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004400/v1.9/house_4/1.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004400/v1.9/house_4/2.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004400/v1.9/house_4/3.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004400/v1.9/house_4/4.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004400/v1.9/house_4/5.png"
         ],
         "price": 80.0,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
+        "summary": "Newly decorated 2 b\room (2 floor) maisonette with private parking & driveway, patio, very close to the best Paphos municipal \"blue flag\" beach approx. 200 m, a mini market, a pharmacy & restaurants. The nearest bus stop is 300 m away. Only a 15-minute walk to the picturesque Paphos Harbour with shops, cafes, bars& tavernas. Fantastic and very convenient location. Ideal for beautiful walks near the beach. There is a new 2km long walkway",
         "accommodates": 8,
         "amenities": [
             "TV",
@@ -148,8 +160,8 @@
         ],
         "host": {
             "_id": "51399391",
-            "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+            "fullname": "Carl Young",
+            "imgUrl": "https://randomuser.me/api/portraits/men/63.jpg"
         },
         "loc": {
             "country": "France",
@@ -161,12 +173,12 @@
         "reviews": [
             {
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
+                "txt": "Everything was as we expected. Nice little house with 3 bedrooms.",
+                "rate": 3,
                 "by": {
                     "_id": "u102",
-                    "fullname": "user2",
-                    "imgUrl": "/img/img2.jpg"
+                    "fullname": "Perry Black",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/10.jpg"
                 }
             }
         ]
@@ -175,12 +187,15 @@
         "_id": "10006545",
         "name": "Ribeira Charming Duplex",
         "imgUrls": [
-            "https://a0.muscache.com/im/pictures/e639b7ab-aee3-48ee-9743-216684a51319.jpg?im_q=medq&im_w=240",
-            "otherImg.jpg"
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004548/v1.9/house_5/1.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004548/v1.9/house_5/2.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004548/v1.9/house_5/3.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004548/v1.9/house_5/5.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004548/v1.9/house_5/6.png"
         ],
-        "price": 80.0,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "accommodates": 8,
+        "price": 310.0,
+        "summary": "Our cozy house will be a perfect choice for if you are coming to Prague with friends or with your family or you coming by the car and don't want to pay extra money for parking.",
+        "accommodates": 3,
         "amenities": [
             "TV",
             "Wifi",
@@ -191,8 +206,8 @@
         ],
         "host": {
             "_id": "51399391",
-            "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+            "fullname": "Willard Horton",
+            "imgUrl": "https://randomuser.me/api/portraits/men/26.jpg"
         },
         "loc": {
             "country": "Portugal",
@@ -204,24 +219,27 @@
         "reviews": [
             {
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
+                "txt": "Very cosy place,easy accecable from Prague, both by public transport or by Uber. Petr is a very nice host. I highly recommend this house,it is even better than on photos.",
+                "rate": 5,
                 "by": {
                     "_id": "u102",
-                    "fullname": "user2",
-                    "imgUrl": "/img/img2.jpg"
+                    "fullname": "Deann Lee",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/17.jpg"
                 }
             }
         ]
     },
     {
-        "_id": "10092541",
+        "_id": "10006546",
         "name": "Lovely B&nB 't Zaanse House at the water",
         "imgUrls": [
-            "https://a0.muscache.com/im/pictures/be4d3ba5-08d7-4afe-95a7-f2da6453886a.jpg?im_q=medq&im_w=240",
-            "otherImg.jpg"
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004558/v1.9/house_6/1.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004558/v1.9/house_6/2.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004558/v1.9/house_6/3.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004558/v1.9/house_6/6.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004558/v1.9/house_6/8.png"
         ],
-        "price": 312.00,
+        "price": 312.0,
         "summary": "B&nB 't Zaanse Huis gelegen in Uitgeest op een Marina park in Noord-Holland beschikt over een terras aan het water....",
         "accommodates": 6,
         "amenities": [
@@ -233,12 +251,12 @@
         ],
         "host": {
             "_id": "51315991",
-            "fullname": "Walter",
-            "imgUrl": "https://a0.muscache.com/im/pictures/user/a9397055-3c14-4cb8-8434-0c0257f21af4.jpg?im_w=240"
+            "fullname": "Emily Thompson",
+            "imgUrl": "https://randomuser.me/api/portraits/women/58.jpg"
         },
         "loc": {
             "country": "Netherlands",
-            "countryCode": "",
+            "countryCode": "NL",
             "address": "Noord-Holland,Netherlands",
             "lat": 52.52917,
             "lng": 4.718509
@@ -247,24 +265,27 @@
             {
                 "id": "madeId",
                 "txt": "Loved our stay it was nice,everything was great no complaints but one issue i.e. not so good public transport",
-                "rate": 4.2,
+                "rate": 4,
                 "by": {
                     "_id": "u107",
-                    "fullname": "user6",
-                    "imgUrl": "/img/img2.jpg"
+                    "fullname": "Mario Hale",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/3.jpg"
                 }
             }
         ]
     },
     {
-        "_id": "10160541",
+        "_id": "10006547",
         "name": "Amazing home in Breukelen with WiFi and 2 Bedrooms",
         "imgUrls": [
-            "https://a0.muscache.com/im/pictures/be4d3ba5-08d7-4afe-95a7-f2da6453886a.jpg?im_q=medq&im_w=240",
-            "otherImg.jpg"
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004475/v1.9/house_7/1.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004475/v1.9/house_7/2.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004475/v1.9/house_7/4.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004475/v1.9/house_7/6.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004475/v1.9/house_7/7.png"
         ],
         "price": 312.0,
-        "summary": "Entire house hosted by Novasol....",
+        "summary": "Our lovely house is in a nature reservation near Prague (35 min.to the centre) and the famous Karlstejn castle (10 min).It has 5 rooms, 2 bathrooms, terrace and a garden.Quiet place, perfect for families and nature lovers.A car is reccomended.",
         "accommodates": 4,
         "amenities": [
             "Kitchen",
@@ -275,8 +296,8 @@
         ],
         "host": {
             "_id": "91385291",
-            "fullname": "Novasol",
-            "imgUrl": "https://a0.muscache.com/im/pictures/user/a1d97999-607c-4727-973e-53de8817aac9.jpg?im_w=240"
+            "fullname": "Veronica Holt",
+            "imgUrl": "https://randomuser.me/api/portraits/women/82.jpg"
         },
         "loc": {
             "country": "Netherlands",
@@ -288,22 +309,25 @@
         "reviews": [
             {
                 "id": "madeId",
-                "txt": "Excelent place to stay. Awesome chalet, I really enjoyed it. The town is unbelievable, so beautiful. The owners of the place were very helpfuland friendly. I arrive late to my stay, and they wait for me.",
+                "txt": "We stayed at Hana's cottage with our dog for a lovely weekend. Hana was kind and helpful, the property in itself is fantastic, and the location peaceful and beautiful. In particular we loved having a wood burning stove and a really well equipped kitchen! We hiked in the surrounding forests, and stopped by in Karlstejn to visit the castle. We stayed just as a couple, but the house would easily accommodate more people. It was the best trip we've taken in ages and we hope to go back. Dog owners might want to be aware that the property is not fenced, although it is very quiet and the road is far away with very little traffic, for us (and our rather silly large dog) it wasn't a problem.",
                 "rate": 4.8,
                 "by": {
                     "_id": "u108",
-                    "fullname": "user7",
-                    "imgUrl": "/img/img2.jpg"
+                    "fullname": "Lillie Lopez",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/54.jpg"
                 }
             }
         ]
     },
     {
-        "_id": "10108541",
+        "_id": "10108548",
         "name": "Entire house hosted by Tidhar",
         "imgUrls": [
-            "https://a0.muscache.com/im/pictures/ce1ef88f-cc61-482c-951a-ff21ff06105f.jpg?im_w=960",
-            "otherImg.jpg"
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004533/v1.9/house_8/3.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004533/v1.9/house_8/9.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004533/v1.9/house_8/7.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004533/v1.9/house_8/11.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004533/v1.9/house_8/8.png"
         ],
         "price": 109.4,
         "summary": "within a walking distance from the beautiful beach, over looking the unique Flae Market, in a brand new building, hides this amazing Penthouse Apt. This amazing apartment is located in a quiet street, yet, at the center of all things.",
@@ -317,25 +341,25 @@
         ],
         "host": {
             "_id": "99245291",
-            "fullname": "Tidhar",
-            "imgUrl": "https://a0.muscache.com/im/pictures/user/a1d97999-607c-4727-973e-53de8817aac9.jpg?im_w=240"
+            "fullname": "Dan Barnes",
+            "imgUrl": "https://randomuser.me/api/portraits/men/89.jpg"
         },
         "loc": {
             "country": "Israel",
-            "countryCode": "Ne",
+            "countryCode": "IL",
             "address": "Tel Aviv-Yafo, Israel",
             "lat": 32.08021230939065,
             "lng": 34.771173980276075
         },
         "reviews": [
             {
-                "id": "madeId",
+                "id": "hg5h4h5",
                 "txt": "Our experience with the overall cleanliness of the apartment was consistent with other reviews I read about. Prior to booking I asked the host if they've done anything to improve the cleanliness but I didn't really get a reassuring response. I booked anyhow and I can see why others have complained about the cleanliness. Aside from this issue though, the apartment is really a fantastic location and the two balconies are awesome. It is also well furnished and trendy. If you require any special requests like a late check-out, be sure to confirm with the host after booking. I had explained that I could only book if we could check-out after the Sabbath and he said yes, for an additional 600 nis. I was perfectly fine with this so I went ahead and booked. Then, the morning of our check-in I found out that since I didn't confirm after-the-fact, the host let someone else book on Saturday. Fortunately, he made other accommodations for us and helped us move to a different apartment in the same building so that we could still stay until the Sabbath ended. It was annoying but we did appreciate that he made other plans for us and didn't charge us the 600 nis for a lake check-out. Overall, we had a very positive experience and I'd recommend the place to others.",
                 "rate": 3.8,
                 "by": {
                     "_id": "u109",
-                    "fullname": "user8",
-                    "imgUrl": "/img/img2.jpg"
+                    "fullname": "Ted Gray",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/9.jpg"
                 }
             }
         ]
