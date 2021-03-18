@@ -1,35 +1,38 @@
-import { httpService } from './http.service'
-import { storageService } from './async-storage.service'
-import {userService} from './user.service'
+// import { httpService } from './http.service';
+import { storageService } from './async-storage.service';
+import stayJson from '../../data/stayMockData.json';
+import locationsJson from '../../data/locationsMockData.json';
 
-export const reviewService = {
-  add,
-  query,
-  remove
+export const stayService = {
+    queryStays,
+    queryLocations,
+    getStayById,
+};
+
+const STAY_KEY = 'stays';
+const LOCATION_KEY = 'locations';
+
+(async () => {
+    console.log('hello??');
+    const stays = await storageService.query(STAY_KEY);
+    if (!stays.length) {
+        localStorage.setItem(STAY_KEY, JSON.stringify(stayJson));
+    }
+
+    const locations = await storageService.query(LOCATION_KEY);
+    if (!locations.length) {
+        localStorage.setItem(LOCATION_KEY, JSON.stringify(locationsJson));
+    }
+})().catch((err) => {
+    console.error('error initialising data!', err);
+});
+
+function queryStays(filterBy) {
+    return storageService.query(STAY_KEY);
 }
-
-
-// More ways to send query params:
-// return axios.get('api/toy/?id=1223&balance=13')
-// return axios.get('api/toy/?', {params: {id: 1223, balanse:13}})
-
-function query(filterBy) {
-  // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
-  // return httpService.get(`review${queryStr}`)
-  return storageService.query('review')
+function queryLocations() {
+    return storageService.query(LOCATION_KEY);
 }
-
-function remove(reviewId) {
-  // return httpService.delete(`review/${reviewId}`)
-  return storageService.delete('review', reviewId)
-
-}
-async function add(review) {
-  // const addedReview = await httpService.post(`review`, review)
-
-  review.byUser = userService.getLoggedinUser()
-  review.aboutUser = await userService.getById(review.aboutUserId)
-  const addedReview = storageService.post('review', review)
-
-  return addedReview
+function getStayById(stayId) {
+    return storageService.get(STAY_KEY, stayId);
 }

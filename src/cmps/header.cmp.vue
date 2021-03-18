@@ -136,7 +136,7 @@ export default {
 	name: "NavBar",
 	data() {
 		return {
-			hideBtn: true,
+			hideBtn: false,
 			firstClick: true,
 			// scrollPosition: null,
 		};
