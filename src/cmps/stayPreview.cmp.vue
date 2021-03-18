@@ -15,7 +15,11 @@
         height="100%"
         @click.native="$router.push('stay/' + stay._id)"
       >
-        <img :src="img" style="width: 100%; height: 100%" class="slider-image" />
+        <img
+          :src="img"
+          style="width: 100%; height: 100%"
+          class="slider-image"
+        />
       </el-carousel-item>
     </el-carousel>
     <div class="stay-details">
@@ -31,19 +35,21 @@
 </template>
 <style lang="scss">
 .stay-preview {
+  box-shadow: -7px 9px 22px -2px rgba(196, 192, 192, 0.4);
   border-radius: 10px;
   border: 2px solid rgb(221, 216, 216);
-    padding: 10px;
-  .el-carousel{
-	  img{
-		  border-radius: 10px;
-	  }
+  padding: 10px;
+  .el-carousel {
+    img {
+      border-radius: 10px;
+    }
   }
   .summary {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    width: 85px;
+    width: 220px;
+	line-height: 1.8em;
   }
 }
 .el-carousel__indicator {
@@ -61,7 +67,9 @@
     }
   }
 }
-.fa-star{color: rgb(235, 100, 100);}
+.fa-star {
+  color: rgb(235, 100, 100);
+}
 </style>
 
 <script>

@@ -6,8 +6,10 @@
 	<div class="host-header-content">
       <h1>Your world is worth sharing</h1>
       <p>Turn your extra space into your next opportunity.</p>
-      <button>Become a host</button>
+      <div >
+      <button class="become-host-btn">Become a host</button>
 	  </div>
+      </div>
     </div>
 	<stay-list />
   </div>
@@ -16,12 +18,23 @@
 <style lang="scss" scoped>
 .explore {
   .become-host-header {
+    display: flex;
     color: white;
     height: 60vh;
     background-image: url("https://a0.muscache.com/im/pictures/eff28e1d-51c4-49ff-8266-68d6929ea1ec.jpg?im_w=1680");
     max-width: 1210px;
     margin: 0 auto;
-    border-radius: 85px;
+    border-radius: 20px;
+    margin-bottom: 100px;
+  }
+  .become-host-btn{
+    cursor: pointer;
+  }
+  .host-header-content{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
 }
 </style>
