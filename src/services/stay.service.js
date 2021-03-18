@@ -1,32 +1,40 @@
-import { httpService } from './http.service';
+// import { httpService } from './http.service';
 import { storageService } from './async-storage.service';
-import { userService } from './user.service';
+import stayJson from '../../data/stayMockData.json';
+import locationsJson from '../../data/locationsMockData.json';
 
 export const reviewService = {
-    query,
-    getById,
+    queryStays,
+    queryLocations,
+    getStayById,
 };
 
-// More ways to send query params:
-// return axios.get('api/toy/?id=1223&balance=13')
-// return axios.get('api/toy/?', {params: {id: 1223, balanse:13}})
+const STAY_KEY = 'stays';
+const LOCATION_KEY = 'locations';
 
-function query(filterBy) {
-    // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
-    // return httpService.get(`review${queryStr}`)
-    return storageService.query('review');
+(async () => {
+    if (!gStays) {
+        const stays = await storageService.query(STAY_KEY);
+        if (!stays) {
+            localStorage.setItem(STAY_KEY, stayJson);
+        }
+    }
+    if (!gLocations) {
+        const locations = await storageService.query(LOCATION_KEY);
+        if (!locations) {
+            localStorage.setItem(LOCATION_KEY, locationsJson);
+        }
+    }
+})().catch((err) => {
+    console.error('error initialising data!', err);
+});
+
+function queryStays(filterBy) {
+    return storageService.query(STAY_KEY);
 }
-
-function remove(reviewId) {
-    // return httpService.delete(`review/${reviewId}`)
-    return storageService.delete('review', reviewId);
+function queryLocations() {
+    return storageService.query(LOCATION_KEY);
 }
-async function add(review) {
-    // const addedReview = await httpService.post(`review`, review)
-
-    review.byUser = userService.getLoggedinUser();
-    review.aboutUser = await userService.getById(review.aboutUserId);
-    const addedReview = storageService.post('review', review);
-
-    return addedReview;
+function getStayById(stayId) {
+    return storageService.get(STAY_KEY, stayId);
 }
