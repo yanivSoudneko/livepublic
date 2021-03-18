@@ -136,10 +136,9 @@ export default {
 	name: "NavBar",
 	data() {
 		return {
-			hideBtn: false,
+			hideBtn: true,
 			firstClick: true,
-			//scroll variables
-			scrollPosition: null,
+			// scrollPosition: null,
 		};
 	},
 	computed: {
@@ -148,30 +147,26 @@ export default {
 		},
 	},
 	methods: {
-		logout() {
-			this.$store.dispatch({ type: "user/logout" });
-		},
 		handleShowFilter() {
-			console.log("hello");
 			if (this.firstClick) {
 				this.firstClick = false;
 				return;
 			}
 			this.hideBtn = false;
 		},
-		updateScroll() {
-			this.scrollPosition = window.scrollY;
-		},
+		// updateScroll() {
+		// 	this.scrollPosition = window.scrollY;
+		// },
 	},
 	directives: {
 		ClickOutside,
 	},
 	components: { navFilter },
-	mounted() {
-		window.addEventListener("scroll", this.updateScroll);
-	},
-	destroyed() {
-		window.removeEventListener("scroll", this.updateScroll);
-	},
+	// mounted() {
+	// 	window.addEventListener("scroll", this.updateScroll);
+	// },
+	// destroyed() {
+	// 	window.removeEventListener("scroll", this.updateScroll);
+	// },
 };
 </script>
