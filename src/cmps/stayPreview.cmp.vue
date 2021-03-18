@@ -15,17 +15,11 @@
         height="100%"
         @click.native="$router.push('stay/' + stay._id)"
       >
-        <img
-          :src="img"
-          style="width: 100%; height: 100%"
-          class="slider-image"
-        />
+        <img :src="img" style="width: 100%; height: 100%" class="slider-image" />
       </el-carousel-item>
     </el-carousel>
-    <div class="stay-details">
-      <div class="ratings-data">
-        <i class="fas fa-star"></i>{{ rating }} ({{ ratingLength }})
-      </div>
+    <div class="stay-details" @click="$router.push('stay/' + stay._id)">
+      <div class="ratings-data"><i class="fas fa-star"></i>{{ rating }} ({{ ratingLength }})</div>
       <p class="address">{{ stay.loc.address }}</p>
       <p class="name">{{ stay.name }}</p>
       <p class="summary">{{ stay.summary }}</p>
@@ -49,7 +43,7 @@
     white-space: nowrap;
     overflow: hidden;
     width: 220px;
-	line-height: 1.8em;
+    line-height: 1.8em;
   }
 }
 .el-carousel__indicator {
@@ -74,7 +68,7 @@
 
 <script>
 export default {
-  name: "stay-preview",
+  name: 'stay-preview',
   props: {
     stay: {
       type: Object,
@@ -91,13 +85,12 @@ export default {
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;
-      const addS = reviewsLength > 1 ? "s" : "";
-      const string = reviewsLength + " Review" + addS;
+      const addS = reviewsLength > 1 ? 's' : '';
+      const string = reviewsLength + ' Review' + addS;
       return string;
     },
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>
