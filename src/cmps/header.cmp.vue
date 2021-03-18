@@ -48,9 +48,12 @@
 				<router-link to="/login"> Login </router-link>
 			</div>
 		</div>
+		<!-- <div
+			class="land-div"
+			:class="{ 'shrink-on-scroll': scrollPosition > 50 }"
+		> -->
 		<div class="land-div">
 			<img class="land-img" src="../../public/img/land-img.webp" />
-			<!-- <span> Made possible by Hosts</span> -->
 		</div>
 	</header>
 </template>
@@ -116,6 +119,11 @@
 			display: flex;
 			margin: 0 auto;
 		}
+
+		&.shrink-on-scroll {
+			height: 0;
+		}
+		transition: height 3s ease-in-out;
 	}
 }
 </style>
@@ -130,6 +138,8 @@ export default {
 		return {
 			hideBtn: false,
 			firstClick: true,
+			//scroll variables
+			scrollPosition: null,
 		};
 	},
 	computed: {
@@ -149,11 +159,19 @@ export default {
 			}
 			this.hideBtn = false;
 		},
+		updateScroll() {
+			this.scrollPosition = window.scrollY;
+		},
 	},
-
 	directives: {
 		ClickOutside,
 	},
 	components: { navFilter },
+	mounted() {
+		window.addEventListener("scroll", this.updateScroll);
+	},
+	destroyed() {
+		window.removeEventListener("scroll", this.updateScroll);
+	},
 };
 </script>
