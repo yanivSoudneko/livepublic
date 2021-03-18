@@ -1,7 +1,7 @@
 <template>
   <div class="main-list">
-    <section><h1>Explore nearby</h1></section>
     <div class="location-list">
+      <h1 class="explore-header">Explore nearby</h1>
       <div
         class="location-preview"
         v-for="location in exploreList"
@@ -25,16 +25,26 @@
 .main-list {
   margin: 0 auto;
   max-width: 1210px;
+  margin-bottom: 100px;
+  .explore-header {
+    grid-area: header;
+  }
   .location-list {
     height: auto;
     width: 100%;
-    padding-right: 80px;
-    padding-left: 80px;
     display: grid;
-    grid-template-columns: repeat(5, 1fr) !important;
-    grid-auto-flow: row !important;
-    padding-left: 0px !important;
-    scroll-padding: 0px !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.4fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "header header header header header"
+      ". . . . ."
+      ". . . . .";
+    // display: grid;
+    // grid-template-columns: repeat(5, 1fr) !important;
+    // grid-auto-flow: row !important;
+    // padding-left: 0px !important;
+    // scroll-padding: 0px !important;
     gap: 16px !important;
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;

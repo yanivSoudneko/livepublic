@@ -1,7 +1,7 @@
 <template>
   <div class="stay-list">
-    <h1>Popular Stays</h1>
-    <div class="flex stay-carousel">
+    <div class="stay-carousel">
+      <h1 class="stays-header">Popular Stays</h1>
       <stay-preview
         @click="$router.push('/stay/' + stay._id)"
         v-for="stay in stayList"
@@ -15,14 +15,26 @@
 <style lang="scss" scoped>
 .stay-list {
   height: 60vh;
+  max-width: 1210px;
+  margin: 0 auto;
+
   .stay-carousel {
+    .stays-header {
+      grid-area: title;
+      margin-bottom: 10px;
+    }
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-auto-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr) );
+    // grid-template-columns: repeat( auto-fill, minmax(250px, 1fr) );
+    grid-template-rows: auto 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "title title title title"
+      ". . . ."
+      ". . . .";
     grid-auto-flow: dense;
     grid-gap: 1rem;
-    max-width: 1210px;
-    margin: 0 auto;
   }
 }
 </style>

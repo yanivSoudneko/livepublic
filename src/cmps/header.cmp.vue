@@ -65,7 +65,7 @@
 	.nav-bar {
 		display: flex;
 		justify-content: space-between;
-		max-width: 1060px;
+		max-width: 1210px;
 		margin: 0 auto;
 		padding: 10px;
 		align-items: center;
