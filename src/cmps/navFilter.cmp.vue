@@ -90,7 +90,7 @@
     border-radius: 35px;
   }
   .border:hover {
-    background-color: rgb(204, 199, 199);
+    background-color: rgb(236, 232, 232);
   }
 }
 </style>
