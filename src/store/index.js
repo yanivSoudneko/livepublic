@@ -9,9 +9,17 @@ import tripStore from './trip.store';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    // state: {},
-    // mutations: {},
-    // actions: {},
+    state: { showHeroImage: false },
+    mutations: {
+        toggleHeroImage(state, { toggleShow }) {
+            state.showHeroImage = toggleShow;
+        },
+    },
+    getters: {
+        showHeroImage({ showHeroImage }) {
+            return showHeroImage;
+        },
+    },
     modules: {
         userStore,
         orderStore,

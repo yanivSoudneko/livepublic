@@ -40,6 +40,17 @@ export default {
                 );
             }
         },
+        async loadLocations({ commit }) {
+            try {
+                const locations = await stayService.queryLocations();
+                commit({ type: 'loadLocations', locations });
+            } catch (error) {
+                console.log(
+                    '🚀 ~ STORE ERROR STAY stay.store.js ~ line 30 ~ load ~ error',
+                    error
+                );
+            }
+        },
         async getById({ commit, state }, { stayId }) {
             try {
                 const stay = await stayService.getStayById(stayId);

@@ -32,7 +32,11 @@ import stayList from "../cmps/stayList.cmp";
 export default {
 	name: "Home",
 	created() {
-		this.$store.dispatch({ type: "stay/load" });
+		this.$store.dispatch({ type: "stay/loadLocations" });
+		this.$store.commit({
+			type: "toggleHeroImage",
+			toggleShow: true,
+		});
 	},
 	components: {
 		locationList,

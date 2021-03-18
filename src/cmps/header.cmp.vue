@@ -43,7 +43,7 @@
 				v-click-outside="handleShowFilter"
 			></nav-filter>
 			<div class="links">
-				<router-link to="/"> Explore </router-link>
+				<router-link to="/explore"> Explore </router-link>
 				<router-link to="/host"> Become Host </router-link>
 				<router-link to="/login"> Login </router-link>
 			</div>
@@ -52,7 +52,7 @@
 			class="land-div"
 			:class="{ 'shrink-on-scroll': scrollPosition > 50 }"
 		> -->
-		<div class="land-div">
+		<div class="land-div" v-if="showHeroImage">
 			<img class="land-img" src="../../public/img/land-img.webp" />
 		</div>
 	</header>
@@ -60,7 +60,7 @@
 
 <style lang="scss" scoped>
 .header-main {
-	margin-bottom: 150px;
+	// margin-bottom: 150px;
 	background-color: white;
 	.nav-bar {
 		display: flex;
@@ -154,19 +154,15 @@ export default {
 			}
 			this.hideBtn = false;
 		},
-		// updateScroll() {
-		// 	this.scrollPosition = window.scrollY;
-		// },
+	},
+	computed: {
+		showHeroImage() {
+			return this.$store.getters.showHeroImage;
+		},
 	},
 	directives: {
 		ClickOutside,
 	},
 	components: { navFilter },
-	// mounted() {
-	// 	window.addEventListener("scroll", this.updateScroll);
-	// },
-	// destroyed() {
-	// 	window.removeEventListener("scroll", this.updateScroll);
-	// },
 };
 </script>
