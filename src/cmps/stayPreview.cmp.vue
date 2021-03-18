@@ -29,6 +29,7 @@
 </template>
 <style lang="scss">
 .stay-preview {
+  cursor: pointer;
   box-shadow: -7px 9px 22px -2px rgba(196, 192, 192, 0.4);
   border-radius: 10px;
   border: 2px solid rgb(221, 216, 216);

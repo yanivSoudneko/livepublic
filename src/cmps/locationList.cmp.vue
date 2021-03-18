@@ -56,6 +56,7 @@
 		--exp-pdw-lg-top: 56px;
 		// font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 		.location-preview {
+			cursor: pointer;
 			display: flex;
 			justify-content: center;
 			align-items: center;

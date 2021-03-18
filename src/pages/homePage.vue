@@ -23,12 +23,12 @@
     padding: 50px;
     justify-content: space-between;
     color: white;
-    height: 45vh;
+    height: 50vh;
     background-image: url("https://a0.muscache.com/im/pictures/eff28e1d-51c4-49ff-8266-68d6929ea1ec.jpg?im_w=1680");
 	background-size: cover;
     max-width: 1210px;
     margin: 0 auto;
-    border-radius: 85px;
+    border-radius: 15px;
      margin-bottom: 100px;
 	.host-header-content{
 		width: 25vw;

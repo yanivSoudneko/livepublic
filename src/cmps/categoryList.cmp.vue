@@ -53,6 +53,8 @@
   }
   .category {
     margin: 0 auto;
+    cursor: pointer;
+
     img {
       width: 270px;
       height: 300px;
