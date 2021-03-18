@@ -2,11 +2,16 @@
   <div class="stay" v-if="stay">
     <h1>{{ stay.name }}</h1>
     <div class="underTitle">
-      <span class="underTitle-review">{{ ratingLength }}</span>
+      <div class="rateing">
+        <span class="underTitle-review"
+          ><i class="fas fa-star">{{ rating }}</i></span
+        >
+      </div>
+      <span>{{ ratingLength }}</span>
       <span class="underTitle-addres">{{ stay.loc.address }}</span>
       <div class="stay-page-container">
-        <div class="stay-page-img-container" v-for="url in stay.imgUrls" :key="url">
-          <img :src="url" alt="imgUrl" />
+        <div class="stay-page-img-container" v-for="(url, index) in stay.imgUrls" :key="index">
+          <img :src="url" alt="imgUrl" :class="'img' + index" />
         </div>
       </div>
     </div>
@@ -14,9 +19,52 @@
     {{ stay }}
   </div>
 </template>
-<style scoped>
-.underTitle > * {
-  padding: 10px;
+<style lang="scss">
+.stay {
+  .underTitle > * {
+    padding: 10px;
+  }
+  .underTitle > *:first-child {
+    padding: 0px;
+  }
+  .rateing {
+    display: inline;
+  }
+
+  .stay-page-container {
+    max-width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 0.5fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px 10px;
+    grid-template-areas:
+      'img0 img1 img2'
+      'img0 img3 img4';
+    .stay-page-img-container {
+      width: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .img0 {
+        grid-area: img0;
+      }
+      .img1 {
+        grid-area: img1;
+      }
+      .img2 {
+        grid-area: img2;
+      }
+      .img3 {
+        grid-area: img3;
+      }
+      .img4 {
+        grid-area: img4;
+      }
+    }
+  }
 }
 </style>
 <script>
