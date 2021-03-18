@@ -94,8 +94,5 @@ export default {
 			return this.$store.getters["stay/getLocations"];
 		},
 	},
-  created() {
-    this.$store.dispatch["stay/load"];
-  }
 };
 </script>

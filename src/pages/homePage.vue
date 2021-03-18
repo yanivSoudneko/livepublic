@@ -33,6 +33,7 @@ export default {
 	name: "Home",
 	created() {
 		this.$store.dispatch({ type: "stay/loadLocations" });
+		this.$store.dispatch({ type: "stay/load" });
 		this.$store.commit({
 			type: "toggleHeroImage",
 			toggleShow: true,
