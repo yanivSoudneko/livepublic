@@ -267,6 +267,10 @@ export default {
 					this.stay = stay;
 				});
 		});
+		this.$store.commit({
+			type: "toggleHeroImage",
+			toggleShow: false,
+		});
 	},
 };
 </script>
