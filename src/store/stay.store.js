@@ -30,7 +30,7 @@ export default {
     getById({ commit, state }, { stayId }) {
       const location = state.stays.filter(stay => stay._id === stayId);
       console.log({ location, stayId, stays: state.stays });
-      return location;
+      return location ? location[0] : null;
     },
   },
 };
