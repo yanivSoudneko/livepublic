@@ -1,6 +1,6 @@
 <template>
 	<div class="block">
-		<span v-if="label!==''" class="demonstration">{{label}}</span>
+		<span v-if="label !== ''" class="demonstration">{{ label }}</span>
 		<el-date-picker
 			v-model="selectedDate"
 			type="date"
@@ -33,7 +33,7 @@ export default {
 	},
 	methods: {
 		emitDate() {
-			console.log(this.selectedDate);
+			this.$emit("emitDate", this.selectedDate);
 		},
 	},
 };
