@@ -1,10 +1,10 @@
 <template>
 	<header class="header-main">
 		<div class="nav-bar">
-			<div class="logo flex a-center" @click="$router.push('/')">
+			<router-link tag="div" class="logo flex a-center" to="/">
 				<img src="img/app-logo.png" />
 				<span>LivePublic.</span>
-			</div>
+			</router-link>
 			<!-- search btn -->
 			<div
 				class="filter-btn flex j-between a-center"

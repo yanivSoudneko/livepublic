@@ -1,6 +1,3 @@
-import stayJson from '../../data/stayMockData.json';
-import locationsJson from '../../data/locationsMockData.json';
-
 import { stayService } from '../services/stay.service';
 export default {
     namespaced: true,

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '@/pages/homePage.vue';
+import homePage from '@/pages/homePage.vue';
 import explorePage from '@/pages/explorePage.vue';
 // import stayApp from '@/pages/stayApp.vue';
 import stayDetails from '@/pages/stayDetails.vue';
@@ -13,8 +13,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'Explore',
-    component: explorePage,
+    name: 'Home',
+    component: homePage,
   },
   // {
   //     path: '/stay',

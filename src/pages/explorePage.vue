@@ -26,7 +26,7 @@
 }
 </style>
 <script>
-import exploreList from "../cmps/exploreList.cmp";
+import locationList from "../cmps/locationList.cmp";
 import categoryList from "../cmps/categoryList.cmp";
 import stayList from "../cmps/stayList.cmp";
 export default {
@@ -35,7 +35,7 @@ export default {
 		this.$store.dispatch({ type: "stay/load" });
 	},
 	components: {
-		exploreList,
+		locationList,
 		categoryList,
 		stayList
 	},
