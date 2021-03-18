@@ -63,10 +63,34 @@
       </div>
       <!-- {{ stay }} -->
     </div>
+    <div class="check-out">
+      <div class="check-header">
+        <div class="price">${{ stay.price }}/night</div>
+        <div class="rate">
+          <span
+            ><i class="fas fa-star">{{ rating }}</i></span
+          >
+          <span>{{ ratingLength }}</span>
+        </div>
+      </div>
+      <div class="checkout-input">
+        <input type="date" />
+        <input type="date" />
+        <div class="guest-count">
+          <input type="number" placeholder="Guests" />
+        </div>
+        <button class="check" @mousemove="recordPos" :style="calculatedPos">
+          Check Availability
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 <style lang="scss">
 .stay {
+  position: relative;
+  max-width: 1210px;
+  margin: 0 auto;
   .underTitle > * {
     padding: 10px;
   }
@@ -76,7 +100,42 @@
   .rateing {
     display: inline;
   }
-
+  .check-out {
+    position: fixed;
+    right: 250px;
+    margin-top: 55px;
+    // float: right;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 6px 16px;
+    .check-header {
+      display: flex;
+      justify-content: space-between;
+    }
+    .check {
+      cursor: pointer;
+      font-size: 16px !important;
+      line-height: 20px !important;
+      font-weight: 600 !important;
+      border-radius: 8px !important;
+      outline: none !important;
+      padding: 14px 24px !important;
+      // background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
+      // --mouse-x: 85.3438;
+      // --mouse-y: 52.9412;
+      transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s,
+        -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
+      border: none !important;
+      background: linear-gradient(
+        to right,
+        rgb(230, 30, 77) 0%,
+        rgb(227, 28, 95) 50%,
+        rgb(215, 4, 102) 100%
+      ) !important;
+      color: white;
+    }
+  }
   .stay-page-container {
     max-width: 70%;
     margin: 0 auto;
@@ -95,10 +154,10 @@
         border-radius: 15px 0 0 15px;
       }
     }
-     .img:hover{
-       filter: brightness(90%);
-       cursor: pointer;
-     }
+    .img:hover {
+      filter: brightness(90%);
+      cursor: pointer;
+    }
     .stay-page-img-container {
       width: 100%;
       img {
@@ -125,7 +184,7 @@
     }
   }
   .right-side-container {
-    float: right;
+    float: left;
     .right-side > * {
       margin: 80px;
     }
@@ -154,8 +213,21 @@ export default {
       stay: null,
     };
   },
-  methods: {},
+  methods: {
+    recordPos(ev) {
+      // console.log("mousey?", ev);
+      const { layerX, layerY } = ev;
+      this.mouseX = layerX;
+      this.mouseY = layerY;
+    },
+  },
   computed: {
+    calculatedPos() {
+      return ({
+        backgroundPosition: `calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%); --mouse-x:${this.mouseX}; --mouse-y:${this.mouseY}`
+      })
+      // return `calc((100 - var(${this.mouseX}, 0)) * 1%) calc((100 - var(${this.mouseY}, 0)) * 1%)`;
+    },
     rating() {
       const reviews = this.stay.reviews;
       const rateTotal = reviews.reduce((acc, obj) => {
