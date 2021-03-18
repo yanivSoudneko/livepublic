@@ -16,15 +16,12 @@
 					placeholder="Check In"
 					@emitDate="setDate('in', $event)"
 				/>
-				<date-picker
-					placeholder="Check Out"
-					@emitDate="setDate('out', $event)"
-				/>
 			</div>
 		</div>
 		<div class="guests border">
 			<label>Guests</label>
 			<div>1 Guests</div>
+			<guest-select />
 		</div>
 		<div class="nav-btn border pill-pad">
 			<button @click="setFilters" class="search-btn bn">Search</button>
@@ -103,6 +100,7 @@
 </style>
 
 <script>
+import guestSelect from "./guestsSelect.cmp";
 import datePicker from "./datepicker.cmp";
 export default {
 	name: "Nav-Filter",
@@ -122,19 +120,24 @@ export default {
 			this.$router.push("/explore");
 		},
 		setDate(type, ev) {
-			this.dates[type] = ev;
+			console.log(
+				"🚀 ~ file: navFilter.cmp.vue ~ line 121 ~ setDate ~ ev",
+				ev
+			);
+			this.dates.in = ev[0];
+			this.dates.out = ev[1];
 			console.log(
 				"🚀 ~ file: navFilter.cmp.vue ~ line 91 ~ setDate ~      this.dates",
 				this.dates
 			);
 		},
 	},
-	components: { datePicker },
 	mounted() {
 		window.addEventListener("scroll", this.updateScroll);
 	},
 	destroyed() {
 		window.removeEventListener("scroll", this.updateScroll);
 	},
+	components: { datePicker, guestSelect },
 };
 </script>
