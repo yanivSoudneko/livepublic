@@ -7,12 +7,17 @@ import store from './store';
 //ELEMENT_UI
 import element from 'element-ui';
 import locale from 'element-ui/lib/locale/lang/en';
-
+import * as VueGoogleMaps from "vue2-google-maps";
 import '@/styles/styles.scss';
 
 Vue.use(element, { locale });
 Vue.config.productionTip = false;
-
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: "AIzaSyCNTgneQTZsp4JfzwtF9La_xaM5ztGZ7ck",
+        libraries: "places",
+    },
+});
 // Vue.directive('click-outside', {
 //     bind: function(el, binding, vnode) {
 //         this.event = function(event) {
