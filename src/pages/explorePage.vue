@@ -80,6 +80,8 @@ export default {
 			toggleShow: false,
 		});
 		this.$store.dispatch({ type: "stay/load" });
+		const { params } = this.$route;
+		console.log("🚀 ~ line 84 ~ created ~ params", params);
 	},
 	components: {
 		stayList,

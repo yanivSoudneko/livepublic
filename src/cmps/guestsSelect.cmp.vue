@@ -79,6 +79,8 @@ export default {
 		setCount(field, diff) {
 			if (this[field] <= 0 && diff === -1) return;
 			this[field] += diff;
+			const { adultAmount, kidsAmount } = this;
+			this.$emit("selectedGuests", { adultAmount, kidsAmount });
 		},
 	},
 };

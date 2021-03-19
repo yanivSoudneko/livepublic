@@ -9,22 +9,24 @@
 				v-model="filterTxt"
 			/>
 		</div>
+		<!-- dates -->
 		<div class="date-filter border">
 			<label>Dates</label>
 			<div class="flex">
 				<date-picker
 					placeholder="Check In"
-					@emitDate="setDate('in', $event)"
+					@emitDate="setDates($event)"
 				/>
 			</div>
 		</div>
+		<!-- guests -->
 		<div class="guests border">
 			<label>Guests</label>
-			<div>1 Guests</div>
-			<guest-select />
+			<div>{{ guestCount }} Guests</div>
+			<guest-select @selectedGuests="setGuests" />
 		</div>
-		<div class="nav-btn border pill-pad">
-			<button @click="setFilters" class="search-btn bn">Search</button>
+		<div class="nav-btn border pill-pad" @click="setFilters">
+			<button class="search-btn bn">Search</button>
 			<span class="search-svg-icon flex j-center">
 				<svg
 					viewBox="0 0 32 32"
@@ -109,27 +111,38 @@ export default {
 			scrollPosition: null,
 			filterTxt: "",
 			dates: { in: null, out: null },
+			guestCount: 1,
 		};
 	},
 	methods: {
+		setGuests(ev) {
+			this.guestCount = ev.adultAmount;
+			this.guestCount = ev.kidsAmount;
+		},
 		updateScroll() {
 			this.scrollPosition = window.scrollY;
 		},
 		setFilters() {
-			return;
-			this.$router.push("/explore");
+			const { filterTxt, dates, guestCount } = this;
+
+			const filterBy = {
+				filterTxt,
+				checkIn: dates.in,
+				checkOut: dates.out,
+				guestCount,
+			};
+			this.$router.push({
+				name: "Explore",
+				params: {
+					filterBy,
+				},
+			});
+			// return;
+			// this.$router.push("/explore");
 		},
-		setDate(type, ev) {
-			console.log(
-				"🚀 ~ file: navFilter.cmp.vue ~ line 121 ~ setDate ~ ev",
-				ev
-			);
+		setDates(ev) {
 			this.dates.in = ev[0];
 			this.dates.out = ev[1];
-			console.log(
-				"🚀 ~ file: navFilter.cmp.vue ~ line 91 ~ setDate ~      this.dates",
-				this.dates
-			);
 		},
 	},
 	mounted() {
