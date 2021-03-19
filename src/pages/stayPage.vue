@@ -206,10 +206,20 @@ export default {
   },
   methods: {
     checkout(order) {
-      console.log('order:', order);
       const { id, fullName, img } = this.user;
-      console.log('id,fullName,img:', id, fullName, img);
-      this.$store.dispatch({ type: 'order/saveOrder', order }).then(() => console.log('CheckOut Check'));
+      const newObj = {
+        buyer: { _id: id, fullname: fullName },
+        createdAt: new Date(),
+        endDate: order.checkOut,
+        guests: order.gueset,
+        startDate: order.checkIn,
+        status: 'pending',
+        stay: { _id: this.stay._id, name: this.stay.name, price: this.stay.price },
+        totalPrice: 160,
+        _id: null,
+      };
+      console.log('newObj:', newObj);
+      this.$store.dispatch({ type: 'order/saveOrder', newObj }).then(() => console.log('CheckOut Check'));
     },
   },
   computed: {
