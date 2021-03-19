@@ -1,10 +1,9 @@
 <template>
 	<div class="stay-list">
 		<div class="stay-carousel">
-			<h1 class="stays-header">Popular Stays</h1>
 			<stay-preview
 				@click="$router.push('/stay/' + stay._id)"
-				v-for="stay in stayList"
+				v-for="stay in stayData.stays"
 				:key="stay._id"
 				:stay="stay"
 			></stay-preview>
@@ -41,15 +40,15 @@
 <script>
 import stayPreview from "./stayPreview.cmp";
 export default {
-	name: "Stay-List",
-	computed: {
-		stayList() {
-			return this.$store.getters["stay/getStays"];
+	props: {
+		stayData: {
+			type: Object,
 		},
 	},
+	name: "Stay-List",
 	components: { stayPreview },
 	created() {
-		this.$store.dispatch({ type: "stay/load" });
+		console.log({ DATA: this.stayData });
 	},
 };
 </script>

@@ -149,7 +149,7 @@
         ],
         "price": 80.0,
         "summary": "Newly decorated 2 b\room (2 floor) maisonette with private parking & driveway, patio, very close to the best Paphos municipal \"blue flag\" beach approx. 200 m, a mini market, a pharmacy & restaurants. The nearest bus stop is 300 m away. Only a 15-minute walk to the picturesque Paphos Harbour with shops, cafes, bars& tavernas. Fantastic and very convenient location. Ideal for beautiful walks near the beach. There is a new 2km long walkway",
-        "accommodates":2,
+        "accommodates": 2,
         "amenities": [
             "TV",
             "Wifi",
@@ -425,6 +425,260 @@
                     "_id": "u109",
                     "fullname": "Jeanette Fleming",
                     "imgUrl": "https://randomuser.me/api/portraits/women/13.jpg"
+                }
+            }
+        ]
+    },
+    {
+        "_id": "10108550",
+        "name": "Cozy Private Bedroom w/ Nice Window View Downtown",
+        "imgUrls": [
+            "https://res.cloudinary.com/livepublic/image/upload/v1616176218/v1.9/house_26/1.jpg",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616174335/v1.9/house_26/2.jpg",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616174335/v1.9/house_26/3.jpg",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616174335/v1.9/house_26/4.jpg",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616174335/v1.9/house_26/5.jpg"
+        ],
+        "price": 89,
+        "summary": "This Studio is in the center of Tribeca in a doorman building. The Lobby is decorated for the holidays. Perfect for working from home with beautiful light streaming in as there is no building across the street. It's easy to get to any neighborhood as all trains are a few blocks away and many of the best restaurants are in walking distance.",
+        "accommodates": 3,
+        "amenities": [
+            "Free parking on premises",
+            "Lift",
+            "Wifi",
+            "Kitchen",
+            "Dryer"
+        ],
+        "type": ["Pets Allowed", "Entire Homes"],
+        "host": {
+            "_id": "99245291",
+            "fullname": "Dan Grant",
+            "imgUrl": "https://randomuser.me/api/portraits/men/71.jpg"
+        },
+        "loc": {
+            "country": "United States",
+            "countryCode": "USA",
+            "address": "New York, USA",
+            "lat": 40.7104403,
+            "lng": -73.9072418
+        },
+        "reviews": [
+            {
+                "id": "hg5h4h5",
+                "txt": "Dan was incredibly responsive and very helpful. Super cute condo and everything I needed for a month+ stay. Nice appliances and design throughout and great natural light. Would surely recommend for a short or long stay in lower manhattan.",
+                "rate": 4.2,
+                "by": {
+                    "_id": "u109",
+                    "fullname": "Jeanette Fleming",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/13.jpg"
+                }
+            }
+        ]
+    },
+    {
+        "_id": "10108551",
+        "name": "Queen Studio Urban",
+        "imgUrls": [
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004610/v1.9/house_11/11.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616174335/v1.9/house_11/2.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616174335/v1.9/house_11/3.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616174335/v1.9/house_11/4.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616174335/v1.9/house_11/5.png"
+        ],
+        "price": 109.4,
+        "summary": "With a view of Manhattan’s bustling streets, these queen-bedded rooms combine flexible modern design with tech-friendly features like free fiber WiFi, Bluetooth radio, and bedside USB charging stations.",
+        "accommodates": 2,
+        "amenities": [
+            "Free parking on premises",
+            "Lift",
+            "Wifi",
+            "Kitchen",
+            "Dryer"
+        ],
+        "type": ["Pets Allowed", "Entire Homes"],
+        "host": {
+            "_id": "99245291",
+            "fullname": "Michele Peck",
+            "imgUrl": "https://randomuser.me/api/portraits/women/74.jpg"
+        },
+        "loc": {
+            "country": "United States",
+            "countryCode": "USA",
+            "address": "New York, USA",
+            "lat": 40.7063439,
+            "lng": -73.9215179
+        },
+        "reviews": [
+            {
+                "id": "hg5h1h5",
+                "txt": "Customer service was definitely 5 stars! I arrived at 11 am and my check-in was at 3pm so they were able to check me in ahead of time. Staff attentive and nice. Room was impeccable, although small, but worth it for the price. Location was very convenient! DEFINITELY RECOMMENDED!",
+                "rate": 4.2,
+                "by": {
+                    "_id": "u109",
+                    "fullname": "Harvey Chavez",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/73.jpg"
+                }
+            },
+            {
+                "id": "dg5h1h5",
+                "txt": "Great place!",
+                "rate": 4.7,
+                "by": {
+                    "_id": "u119",
+                    "fullname": "Nora Carroll",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/28.jpg"
+                }
+            }
+        ]
+    },
+    {
+        "_id": "10108552",
+        "name": "Courtyard King",
+        "imgUrls": [
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004790/v1.9/house_12/2.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004790/v1.9/house_12/9.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004790/v1.9/house_12/18.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004790/v1.9/house_12/17.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004790/v1.9/house_12/15.png"
+        ],
+        "price": 115,
+        "summary": "Our Courtyard King rooms feature a wrap-around rich, wood alcove in which the bed and wall-mounted television reside, creating a cozy atmosphere for guests. Sizable windows overlook the hotel’s Courtyard, giving guests a glimpse of green in the concrete jungle.",
+        "accommodates": 2,
+        "amenities": [
+            "Free parking on premises",
+            "Lift",
+            "Wifi",
+            "Kitchen",
+            "Dryer"
+        ],
+        "type": ["Pets Allowed", "Cabins and cottages"],
+        "host": {
+            "_id": "99245281",
+            "fullname": "Brandy Harrison",
+            "imgUrl": "https://randomuser.me/api/portraits/women/45.jpg"
+        },
+        "loc": {
+            "country": "United States",
+            "countryCode": "USA",
+            "address": "New York, USA",
+            "lat": 40.6954796,
+            "lng": -73.9033607
+        },
+        "reviews": [
+            {
+                "id": "hg5h1h5",
+                "txt": "Customer service was definitely 5 stars! I arrived at 11 am and my check-in was at 3pm so they were able to check me in ahead of time. Staff attentive and nice. Room was impeccable, although small, but worth it for the price. Location was very convenient! DEFINITELY RECOMMENDED!",
+                "rate": 4.2,
+                "by": {
+                    "_id": "u109",
+                    "fullname": "Harvey Chavez",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/73.jpg"
+                }
+            },
+            {
+                "id": "dg5h1h5",
+                "txt": "Great place!",
+                "rate": 4.7,
+                "by": {
+                    "_id": "u119",
+                    "fullname": "Nora Carroll",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/28.jpg"
+                }
+            }
+        ]
+    },
+    {
+        "_id": "10108553",
+        "name": "Penthouse in Nolita w/ Roof",
+        "imgUrls": [
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004584/v1.9/house_13/13.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004584/v1.9/house_13/15.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004584/v1.9/house_13/16.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004584/v1.9/house_13/4.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004584/v1.9/house_13/8.png"
+        ],
+        "price": 115,
+        "summary": "Huge common room, 2 desk spaces, private roof deck and public roof deck, nearby Nolita and a thriving nightlife.",
+        "accommodates": 4,
+        "amenities": [
+            "Free parking on premises",
+            "Lift",
+            "Wifi",
+            "Kitchen",
+            "Dryer"
+        ],
+        "type": ["Entire Homes"],
+        "host": {
+            "_id": "99247781",
+            "fullname": "Ashley Wells",
+            "imgUrl": "https://randomuser.me/api/portraits/women/29.jpg"
+        },
+        "loc": {
+            "country": "United States",
+            "countryCode": "USA",
+            "address": "New York, USA",
+            "lat": 40.7032822,
+            "lng": -73.8808194
+        },
+        "reviews": [
+            {
+                "id": "hg5weh5",
+                "txt": "Customer service was definitely 5 stars! I arrived at 11 am and my check-in was at 3pm so they were able to check me in ahead of time. Staff attentive and nice. Room was impeccable, although small, but worth it for the price. Location was very convenient! DEFINITELY RECOMMENDED!",
+                "rate": 3.2,
+                "by": {
+                    "_id": "u109",
+                    "fullname": "Calvin Myers",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/53.jpg"
+                }
+            },
+            {
+                "id": "dglt1h5",
+                "txt": "Great place!",
+                "rate": 2.9,
+                "by": {
+                    "_id": "u119",
+                    "fullname": "Patrick Sanders",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/74.jpg"
+                }
+            }
+        ]
+    },
+    {
+        "_id": "10108553",
+        "name": "Penthouse in Nolita w/ Roof",
+        "imgUrls": [
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004551/v1.9/house_14/7.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004551/v1.9/house_14/17.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004551/v1.9/house_14/12.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004551/v1.9/house_14/11.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004551/v1.9/house_14/9.png"
+        ],
+        "price": 215,
+        "summary": "Located on a safe neighborhood with a great location. Just a few steps from 125th Subway Station (A,C,B,D) and Bus Station (M3, M104, M10).It is a good size bedroom with a closet, and great wifi, finished kitchen, and a special shared space to sit watch a movie.",
+        "accommodates": 9,
+        "amenities": ["Wifi", "Kitchen", "Dryer"],
+        "type": ["Entire Homes", "Unique stays"],
+        "host": {
+            "_id": "99299781",
+            "fullname": "Patsy Gardner",
+            "imgUrl": "https://randomuser.me/api/portraits/women/33.jpg"
+        },
+        "loc": {
+            "country": "United States",
+            "countryCode": "USA",
+            "address": "New York, USA",
+            "lat": 40.7028792,
+            "lng": -73.9151963
+        },
+        "reviews": [
+            {
+                "id": "hg5leh5",
+                "txt": "Is nice!",
+                "rate": 3.2,
+                "by": {
+                    "_id": "u109",
+                    "fullname": "Borat",
+                    "imgUrl": "https://www.indiewire.com/wp-content/uploads/2020/09/borat.png?resize=800,517"
                 }
             }
         ]

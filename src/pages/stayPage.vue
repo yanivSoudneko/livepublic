@@ -298,7 +298,7 @@ export default {
     const { stayId } = this.$route.params;
     console.log("stayId", stayId);
     this.stayId = stayId;
-    this.$store.dispatch({ type: "stay/load" }).then(() => {
+    this.$store.dispatch({ type: "stay/loadStays" }).then(() => {
       this.$store.dispatch({ type: "stay/getById", stayId }).then((stay) => {
         this.stay = stay;
       });
