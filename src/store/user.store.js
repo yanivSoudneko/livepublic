@@ -1,20 +1,20 @@
 import userJson from '../../data/userMockData.json';
 export default {
-    namespaced: true,
-    state: { user: [] },
-    getters: {
-        getusers({ user }) {
-            return user;
-        },
+  namespaced: true,
+  state: { user: { id: 'u101', fullName: 'John Smith', imgUrl: 'https://randomuser.me/api/portraits/men/48.jpg' } },
+  getters: {
+    getUser({ user }) {
+      return user;
     },
-    mutations: {
-        load(state, { user }) {
-            state.user = user;
-        },
+  },
+  mutations: {
+    load(state, { user }) {
+      state.user = user;
     },
-    actions: {
-        loadStays({ commit }) {
-            commit({ type: 'load', user: userJson });
-        },
+  },
+  actions: {
+    login({ commit }) {
+      commit({ type: 'load', user: userJson });
     },
+  },
 };
