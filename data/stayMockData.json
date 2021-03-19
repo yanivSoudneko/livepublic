@@ -29,8 +29,8 @@
             "country": "Spain",
             "countryCode": "SP",
             "address": "Barcelona,Spain",
-            "lat": -8.61308,
-            "lng": 41.1413
+            "lat": 41.3829254,
+            "lng": 2.189768
         },
         "reviews": [
             {
@@ -75,8 +75,8 @@
             "country": "Bulgaria",
             "countryCode": "BG",
             "address": "Bansko, Bulgaria",
-            "lat": -8.61308,
-            "lng": 41.1413
+            "lat": 41.8352615,
+            "lng": 23.4883153
         },
         "reviews": [
             {
@@ -121,8 +121,8 @@
             "country": "France",
             "countryCode": "FR",
             "address": "Paris, France",
-            "lat": -8.61308,
-            "lng": 41.1413
+            "lat": 48.8425157,
+            "lng": 2.3309302
         },
         "reviews": [
             {
@@ -167,8 +167,8 @@
             "country": "France",
             "countryCode": "FR",
             "address": "Toulouse, France",
-            "lat": -8.61308,
-            "lng": 41.1413
+            "lat": 43.6008029,
+            "lng": 1.5028806
         },
         "reviews": [
             {
@@ -213,8 +213,8 @@
             "country": "Portugal",
             "countryCode": "PT",
             "address": "Porto, Portugal",
-            "lat": -8.61308,
-            "lng": 41.1413
+            "lat": 41.1622023,
+            "lng": -8.5869343
         },
         "reviews": [
             {
@@ -258,8 +258,8 @@
             "country": "Netherlands",
             "countryCode": "NL",
             "address": "Noord-Holland,Netherlands",
-            "lat": 52.52917,
-            "lng": 4.718509
+            "lat": 52.3556192,
+            "lng": 4.9266459
         },
         "reviews": [
             {
@@ -303,8 +303,8 @@
             "country": "Netherlands",
             "countryCode": "Ne",
             "address": "Breukelen, Netherlands",
-            "lat": 52.175812,
-            "lng": 4.995493
+            "lat": 52.1640643,
+            "lng": 5.0062408
         },
         "reviews": [
             {
@@ -348,8 +348,8 @@
             "country": "Israel",
             "countryCode": "IL",
             "address": "Tel Aviv-Yafo, Israel",
-            "lat": 32.08021230939065,
-            "lng": 34.771173980276075
+            "lat": 32.0802441,
+            "lng": 34.7733895
         },
         "reviews": [
             {

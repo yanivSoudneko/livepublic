@@ -56,16 +56,19 @@
           </div>
         </div>
       </div>
+      <hr />
       <!-- {{reviews}} -->
       <div class="stay-reviews">
         <h2>Reviews</h2>
-        <div class="review-details " v-for="(review, index) in stay.reviews" :key="index">
+        <div class="review-details" v-for="(review, index) in stay.reviews" :key="index">
           <div class="user-review-avatar">
             <h2>{{ review.by.fullname }}</h2>
             <img :src="review.by.imgUrl" alt="imgUrl" :class="'avatar img' + index" />
           </div>
           <div class="user-review-txt">
-            <p>{{ review.txt }}</p>
+            <!-- <p :class="'para para' + index">{{ review.txt }}</p> -->
+            <p :class="'para para' + index">{{ review.txt }}</p>
+            <button @click="readMore">Read More</button>
           </div>
         </div>
       </div>
@@ -73,7 +76,7 @@
       <!-- GOOGLE MAPS -->
       <div class="google-map">
         <h2>location:</h2>
-        <google-maps />
+        <google-maps :lat="stay.loc.lat" :lng="stay.loc.lng" />
       </div>
       <!-- {{ stay }} -->
     </div>
@@ -177,10 +180,26 @@
     .google-map {
       height: 50vh;
     }
+    .stay-reviews {
+      margin-top: 85px;
+    }
     .host-image {
       img {
         width: 50px;
         border-radius: 50%;
+      }
+    }
+    .user-review-txt {
+      .para {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+      .removeP {
+        -webkit-line-clamp: unset;
+        -webkit-box-orient: unset;
       }
     }
     .user-review-avatar {
@@ -202,6 +221,7 @@ export default {
     return {
       stayId: null,
       stay: null,
+      index: null,
     };
   },
   methods: {
@@ -223,6 +243,11 @@ export default {
     },
   },
   computed: {
+    readMore(index) {
+      const el = `p-${index}`;
+      console.log(el);
+      // el.classList.add('removeP')
+    },
     user() {
       return this.$store.getters['user/getUser'];
     },
