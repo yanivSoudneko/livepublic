@@ -18,6 +18,9 @@ const routes = [
     {
         path: '/explore',
         name: 'Explore',
+        props: (route) => ({
+            ...route.params,
+        }),
         component: explorePage,
     },
     {

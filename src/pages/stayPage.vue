@@ -1,6 +1,6 @@
 <template>
   <div class="stay" v-if="stay">
-    <h1>{{ stay.name }}</h1>
+    <h2>{{ stay.name }}</h2>
     <div class="underTitle">
       <div class="rateing">
         <span class="underTitle-review">
@@ -19,6 +19,16 @@
     <div class="right-side-container">
       <div class="right-side">
         <div class="stay-page-summary">
+          <div class="host-details flex j-between a-center">
+            <div class="about-host">
+              <h2>{{ stay.host.fullname }}</h2>
+              <span>{{ stay.accommodates }}Guests</span>
+            </div>
+            <div class="host-image">
+              <img :src="stay.host.imgUrl" />
+            </div>
+          </div>
+          <hr />
           <h3>summary:</h3>
           <p>{{ stay.summary }}</p>
         </div>
@@ -30,14 +40,10 @@
                 role="presentation"
                 aria-hidden="true"
                 focusable="false"
-                style="
-									height: 24px;
-									width: 24px;
-									fill: currentcolor;
-								"
+                style="height: 24px; width: 24px; fill: currentcolor"
               >
                 <path
-                  d="m23.96 14.81-2.96-7.41v-5.02a1.39 1.39 0 0 0 -1.39-1.38h-15.22c-.77 0-1.39.62-1.39 1.38v5.02l-2.96 7.41-.04.19v5.61c0 .64.43 1.17 1.01 1.33 0 .02-.01.04-.01.06v1.5a.5.5 0 0 0 1 0v-1.5h20v1.5a.5.5 0 0 0 1 0v-1.5c0-.02-.01-.04-.01-.06a1.39 1.39 0 0 0 1.01-1.33v-5.61zm-19.96-12.43c0-.21.17-.38.39-.38h15.22a.39.39 0 0 1 .39.39v4.61h-1v-1.61c0-.77-.62-1.39-1.39-1.39h-3.21c-.78 0-1.4.62-1.4 1.39v1.61h-2v-1.61c0-.77-.62-1.39-1.39-1.39h-3.22c-.77 0-1.39.62-1.39 1.39v1.61h-1zm14 3.01v3.21a.39.39 0 0 1 -.39.39h-3.21a.39.39 0 0 1 -.4-.38v-3.22a.39.39 0 0 1 .39-.39h3.21a.39.39 0 0 1 .39.39zm-8 0v3.21a.39.39 0 0 1 -.39.4h-3.22a.39.39 0 0 1 -.39-.39v-3.22a.39.39 0 0 1 .39-.39h3.21a.39.39 0 0 1 .39.39zm-6.16 2.61h1.16v.61c0 .77.62 1.39 1.39 1.39h3.21c.78 0 1.4-.62 1.4-1.39v-.61h2v .61c0 .78.62 1.39 1.39 1.39h3.21c.78 0 1.4-.62 1.4-1.39v-.61h1.16l2.8 7h-21.92zm19.16 12.61c0 .21-.18.39-.39.39h-21.22a.39.39 0 0 1 -.39-.39v-4.61h22z"
+                  d="m23.96 14.81-2.96-7.41v-5.02a1.39 1.39 0 0 0 -1.39-1.38h-15.22c-.77 0-1.39.62-1.39 1.38v5.02l-2.96 7.41-.04.19v5.61c0 .64.43 1.17 1.01 1.33 0 .02-.01.04-.01.06v1.5a.5.5 0 0 0 1 0v-1.5h20v1.5a.5.5 0 0 0 1 0v-1.5c0-.02-.01-.04-.01-.06a1.39 1.39 0 0 0 1.01-1.33v-5.61zm-19.96-12.43c0-.21.17-.38.39-.38h25.22a.39.39 0 0 1 .39.39v4.61h-1v-1.61c0-.77-.62-1.39-1.39-1.39h-3.21c-.78 0-1.4.62-1.4 1.39v1.61h-2v-1.61c0-.77-.62-1.39-1.39-1.39h-3.22c-.77 0-1.39.62-1.39 1.39v1.61h-1zm14 3.01v3.21a.39.39 0 0 1 -.39.39h-3.21a.39.39 0 0 1 -.4-.38v-3.22a.39.39 0 0 1 .39-.39h3.21a.39.39 0 0 1 .39.39zm-8 0v3.21a.39.39 0 0 1 -.39.4h-3.22a.39.39 0 0 1 -.39-.39v-3.22a.39.39 0 0 1 .39-.39h3.21a.39.39 0 0 1 .39.39zm-6.16 2.61h2.16v.61c0 .77.62 1.39 1.39 1.39h3.21c.78 0 1.4-.62 1.4-1.39v-.61h2v .61c0 .78.62 1.39 1.39 1.39h3.21c.78 0 1.4-.62 1.4-1.39v-.61h2.16l2.8 7h-21.92zm19.16 12.61c0 .21-.18.39-.39.39h-21.22a.39.39 0 0 1 -.39-.39v-4.61h22z"
                   fill-rule="evenodd"
                 ></path></svg
             ></span>
@@ -49,6 +55,25 @@
             <div class="amenitie">{{ amenitie }}</div>
           </div>
         </div>
+      </div>
+      <!-- {{reviews}} -->
+      <div class="stay-reviews">
+        <h2>Reviews</h2>
+        <div class="review-details " v-for="(review, index) in stay.reviews" :key="index">
+          <div class="user-review-avatar">
+            <h2>{{ review.by.fullname }}</h2>
+            <img :src="review.by.imgUrl" alt="imgUrl" :class="'avatar img' + index" />
+          </div>
+          <div class="user-review-txt">
+            <p>{{ review.txt }}</p>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <!-- GOOGLE MAPS -->
+      <div class="google-map">
+        <h2>location:</h2>
+        <google-maps />
       </div>
       <!-- {{ stay }} -->
     </div>
@@ -79,6 +104,10 @@
     grid-template-areas:
       'img0 img0 img1 img2'
       'img0 img0 img3 img4';
+    margin-bottom: 100px;
+    // .stay-page-amenities{
+    //   margin-bottom: 90px;
+    // }
     .stay-page-img-container:nth-child(1) {
       grid-column: 1/3;
       grid-row: 1/3;
@@ -118,9 +147,20 @@
   }
   .right-side-container {
     float: left;
-    .right-side > * {
-      margin: 80px;
-    }
+    // .right-side > * {
+    // }
+    //    .host-details{
+    //   .about-host{
+    //     white-space: pre;
+    //     .host-image{
+    //       img{
+    //         width: 50px;
+    //         height: 50px;
+    //         border-radius: 50%;
+    //       }
+    //     }
+    //   }
+    // }
     .stay-page-accommodates {
       border: 1px rgba(59, 56, 56, 0.795) solid;
       padding: 10px;
@@ -133,11 +173,28 @@
         padding: 15px;
       }
     }
+    .stay-reviews,
+    .google-map {
+      height: 50vh;
+    }
+    .host-image {
+      img {
+        width: 50px;
+        border-radius: 50%;
+      }
+    }
+    .user-review-avatar {
+      img {
+        width: 50px;
+        border-radius: 50%;
+      }
+    }
   }
 }
 </style>
 <script>
 // @ is an alias to /src
+import googleMaps from '../cmps/google.maps.cmp';
 import checkOut from '../cmps/checkOut.vue';
 export default {
   name: 'Stay',
@@ -185,6 +242,7 @@ export default {
   },
   components: {
     checkOut,
+    googleMaps,
   },
   created() {
     const { stayId } = this.$route.params;

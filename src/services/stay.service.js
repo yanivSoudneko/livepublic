@@ -28,7 +28,9 @@ const LOCATION_KEY = 'locations';
 });
 
 function queryStays(filterBy) {
-    return storageService.query(STAY_KEY);
+    return storageService.query(STAY_KEY).then((stays) => {
+        return stays;
+    });
 }
 function queryLocations() {
     return storageService.query(LOCATION_KEY);

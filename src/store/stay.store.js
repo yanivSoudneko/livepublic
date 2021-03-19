@@ -1,7 +1,16 @@
 import { stayService } from '../services/stay.service';
 export default {
     namespaced: true,
-    state: { stays: [], locations: [] },
+    state: {
+        stays: [],
+        locations: [],
+        filterBy: {
+            filterTxt: '',
+            checkIn: new Date(),
+            checkOut: new Date(),
+            guestCount: 1,
+        },
+    },
     getters: {
         getStays(state) {
             return state.stays;
@@ -25,11 +34,14 @@ export default {
             }
             stays = stay;
         },
+        setFilterBy(state, { filterBy }) {
+            state.filterBy = filterBy;
+        },
     },
     actions: {
-        async load({ commit }) {
+        async load({ commit }, { filterBy }) {
             try {
-                const stays = await stayService.queryStays();
+                const stays = await stayService.queryStays(filterBy);
                 const locations = await stayService.queryLocations();
                 commit({ type: 'loadStays', stays });
                 commit({ type: 'loadLocations', locations });
