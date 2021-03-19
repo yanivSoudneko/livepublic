@@ -2,8 +2,8 @@
   <section class="maps">
     <GmapMap
       ref="mapRef"
-      :center="{ lat: 41.8357441, lng: 23.4911892 }"
-      :zoom="10"
+      :center="{ lat, lng }"
+      :zoom="16"
       map-type-id="terrain"
       style="width: 500px; height: 300px"
       :options="{
@@ -31,10 +31,21 @@
 </template>
 <script>
 export default {
+  props: {
+    lat: {
+      type: Number,
+    },
+    lng: {
+      type: Number,
+    },
+  },
   data() {
     return {
-      markers: [{ position: { lat: 41.8357441, lng: 23.4911892 } }],
+      markers: [{ position: { lat: this.lat, lng: this.lng } }],
     };
+  },
+  created() {
+    console.log({ lat: this.lat, lng: this.lng });
   },
 };
 </script>
