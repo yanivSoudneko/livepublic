@@ -57,7 +57,7 @@
         ],
         "price": 80.0,
         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "accommodates": 8,
+        "accommodates": 6,
         "amenities": [
             "TV",
             "Wifi",
@@ -103,7 +103,7 @@
         ],
         "price": 80.0,
         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "accommodates": 8,
+        "accommodates": 4,
         "amenities": [
             "TV",
             "Wifi",
@@ -149,7 +149,7 @@
         ],
         "price": 80.0,
         "summary": "Newly decorated 2 b\room (2 floor) maisonette with private parking & driveway, patio, very close to the best Paphos municipal \"blue flag\" beach approx. 200 m, a mini market, a pharmacy & restaurants. The nearest bus stop is 300 m away. Only a 15-minute walk to the picturesque Paphos Harbour with shops, cafes, bars& tavernas. Fantastic and very convenient location. Ideal for beautiful walks near the beach. There is a new 2km long walkway",
-        "accommodates": 8,
+        "accommodates":2,
         "amenities": [
             "TV",
             "Wifi",
@@ -241,7 +241,7 @@
         ],
         "price": 312.0,
         "summary": "B&nB 't Zaanse Huis gelegen in Uitgeest op een Marina park in Noord-Holland beschikt over een terras aan het water....",
-        "accommodates": 6,
+        "accommodates": 4,
         "amenities": [
             "Free parking on premises",
             "Kitchen",
@@ -286,7 +286,7 @@
         ],
         "price": 312.0,
         "summary": "Our lovely house is in a nature reservation near Prague (35 min.to the centre) and the famous Karlstejn castle (10 min).It has 5 rooms, 2 bathrooms, terrace and a garden.Quiet place, perfect for families and nature lovers.A car is reccomended.",
-        "accommodates": 4,
+        "accommodates": 6,
         "amenities": [
             "Kitchen",
             "Wifi",
@@ -331,7 +331,7 @@
         ],
         "price": 109.4,
         "summary": "within a walking distance from the beautiful beach, over looking the unique Flae Market, in a brand new building, hides this amazing Penthouse Apt. This amazing apartment is located in a quiet street, yet, at the center of all things.",
-        "accommodates": 10,
+        "accommodates": 4,
         "amenities": [
             "Free parking on premises",
             "Lift",
@@ -376,7 +376,7 @@
         ],
         "price": 109.4,
         "summary": "The house is perfect for couples and families (with kids).Maximum guests is exactly as specified .There is space for four people.",
-        "accommodates": 8,
+        "accommodates": 5,
         "amenities": [
             "Free parking on premises",
             "Lift",

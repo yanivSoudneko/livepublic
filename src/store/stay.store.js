@@ -39,8 +39,11 @@ export default {
         },
     },
     actions: {
-        async load({ commit }, { filterBy }) {
+        async load({ commit, state }, { filterBy }) {
             try {
+                if (!filterBy) {
+                    filterBy = state.filterBy;
+                }
                 const stays = await stayService.queryStays(filterBy);
                 const locations = await stayService.queryLocations();
                 commit({ type: 'loadStays', stays });

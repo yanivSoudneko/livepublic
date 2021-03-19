@@ -44,7 +44,6 @@ export default {
 	name: "Stay-List",
 	computed: {
 		stayList() {
-            console.log("🚀 ~ file: stayList.cmp.vue ~ line 49", this.$store.getters["stay/getStays"])
 			return this.$store.getters["stay/getStays"];
 		},
 	},
