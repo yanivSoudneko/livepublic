@@ -55,5 +55,8 @@ export default {
 			return this.selectedDates[1].toLocaleDateString("en-US");
 		},
 	},
+	created() {
+		this.$emit("emitDate", this.selectedDates);
+	},
 };
 </script>

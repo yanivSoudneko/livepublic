@@ -232,8 +232,8 @@
   }
   .right-side-container {
     float: left;
-    .right-side > * {
-    }
+    // .right-side > * {
+    // }
     //    .host-details{
     //   .about-host{
     //     white-space: pre;
@@ -282,57 +282,63 @@
 import googleMaps from "../cmps/google.maps.cmp";
 
 export default {
-  name: "Stay",
-  data() {
-    return {
-      stayId: null,
-      stay: null,
-      mouseX: 0,
-      mouseY: 0,
-    };
-  },
-  methods: {
-    recordPos(ev) {
-      const { layerX, layerY } = ev;
-      this.mouseX = layerX;
-      this.mouseY = layerY;
-    },
-  },
-  computed: {
-    calculatedPos() {
-      return `radial-gradient(at ${this.mouseX}% ${this.mouseY}%, #e61e4d, #9b59b6)`;
-    },
-    rating() {
-      const reviews = this.stay.reviews;
-      const rateTotal = reviews.reduce((acc, obj) => {
-        acc += obj.rate;
-        return acc;
-      }, 0);
-      return rateTotal / reviews.length;
-    },
-    ratingLength() {
-      const reviewsLength = this.stay.reviews.length;
-      const addS = reviewsLength > 1 ? "s" : "";
-      const string = reviewsLength + " Review" + addS;
-      return string;
-    },
-    accommodatesLength() {
-      const accommodatesLength = this.stay.accommodates;
-      const addS = accommodatesLength > 1 ? "s" : "";
-      const string = accommodatesLength + " partner" + addS;
-      return string;
-    },
-  },
-  components: { googleMaps },
-  created() {
-    const { stayId } = this.$route.params;
-    console.log("stayId", stayId);
-    this.stayId = stayId;
-    this.$store.dispatch({ type: "stay/load" }).then(() => {
-      this.$store.dispatch({ type: "stay/getById", stayId }).then((stay) => {
-        this.stay = stay;
-      });
-    });
-  },
+	name: "Stay",
+	data() {
+		return {
+			stayId: null,
+			stay: null,
+			mouseX: 0,
+			mouseY: 0,
+		};
+	},
+	methods: {
+		recordPos(ev) {
+			const { layerX, layerY } = ev;
+			this.mouseX = layerX;
+			this.mouseY = layerY;
+		},
+	},
+	computed: {
+		calculatedPos() {
+			return `radial-gradient(at ${this.mouseX}% ${this.mouseY}%, #e61e4d, #9b59b6)`;
+		},
+		rating() {
+			const reviews = this.stay.reviews;
+			const rateTotal = reviews.reduce((acc, obj) => {
+				acc += obj.rate;
+				return acc;
+			}, 0);
+			return rateTotal / reviews.length;
+		},
+		ratingLength() {
+			const reviewsLength = this.stay.reviews.length;
+			const addS = reviewsLength > 1 ? "s" : "";
+			const string = reviewsLength + " Review" + addS;
+			return string;
+		},
+		accommodatesLength() {
+			const accommodatesLength = this.stay.accommodates;
+			const addS = accommodatesLength > 1 ? "s" : "";
+			const string = accommodatesLength + " partner" + addS;
+			return string;
+		},
+	},
+	components: {googleMaps},
+	created() {
+		const { stayId } = this.$route.params;
+		console.log("stayId", stayId);
+		this.stayId = stayId;
+		this.$store.dispatch({ type: "stay/load" }).then(() => {
+			this.$store
+				.dispatch({ type: "stay/getById", stayId })
+				.then((stay) => {
+					this.stay = stay;
+				});
+		});
+		this.$store.commit({
+			type: "toggleHeroImage",
+			toggleShow: false,
+		});
+	},
 };
 </script>

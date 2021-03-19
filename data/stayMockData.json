@@ -17,9 +17,9 @@
             "Wifi",
             "Kitchen",
             "Smoking allowed",
-            "Pets allowed",
             "Cooking basics"
         ],
+        "type": ["Pets allowed", "Cabins and cottages"],
         "host": {
             "_id": "51399391",
             "fullname": "Samantha James",
@@ -360,6 +360,71 @@
                     "_id": "u109",
                     "fullname": "Ted Gray",
                     "imgUrl": "https://randomuser.me/api/portraits/men/9.jpg"
+                }
+            }
+        ]
+    },
+    {
+        "_id": "10108549",
+        "name": "Entire house hosted by Efti",
+        "imgUrls": [
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004578/v1.9/house_9/1.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004578/v1.9/house_9/2.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004578/v1.9/house_9/3.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004578/v1.9/house_9/5.png",
+            "https://res.cloudinary.com/livepublic/image/upload/v1616004578/v1.9/house_9/6.png"
+        ],
+        "price": 109.4,
+        "summary": "The house is perfect for couples and families (with kids).Maximum guests is exactly as specified .There is space for four people.",
+        "accommodates": 8,
+        "amenities": [
+            "Free parking on premises",
+            "Lift",
+            "Wifi",
+            "Kitchen",
+            "Dryer"
+        ],
+        "host": {
+            "_id": "99245291",
+            "fullname": "Samantha Meyer",
+            "imgUrl": "https://randomuser.me/api/portraits/women/81.jpg"
+        },
+        "loc": {
+            "country": "Ukraine",
+            "countryCode": "UR",
+            "address": "Kiev, Ukraine",
+            "lat": 50.4021702,
+            "lng": 30.3926086
+        },
+        "reviews": [
+            {
+                "id": "hg5h4h5",
+                "txt": "Inexpensive basic accomodation. Not very clean even though we mentioned it to the host. The hot water didn't work. Efti is nice and he even dropped us off in town by car but he needs to fix a few things.",
+                "rate": 4.2,
+                "by": {
+                    "_id": "u109",
+                    "fullname": "Jeanette Fleming",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/13.jpg"
+                }
+            },
+            {
+                "id": "hg5h4h3",
+                "txt": "Inexpensive basic accomodation. Not very clean even though we mentioned it to the host. The hot water didn't work. Efti is nice and he even dropped us off in town by car but he needs to fix a few things.",
+                "rate": 4.2,
+                "by": {
+                    "_id": "u109",
+                    "fullname": "Jeanette Fleming",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/13.jpg"
+                }
+            },
+            {
+                "id": "hg5h4h1",
+                "txt": "Inexpensive basic accomodation. Not very clean even though we mentioned it to the host. The hot water didn't work. Efti is nice and he even dropped us off in town by car but he needs to fix a few things.",
+                "rate": 4.2,
+                "by": {
+                    "_id": "u109",
+                    "fullname": "Jeanette Fleming",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/13.jpg"
                 }
             }
         ]
