@@ -29,7 +29,21 @@ const LOCATION_KEY = 'locations';
 
 function queryStays(filterBy) {
     return storageService.query(STAY_KEY).then((stays) => {
-        return stays;
+        if (!filterBy) return stays;
+        console.log(
+            '🚀 ~ file: stay.service.js ~ line 31 ~ queryStays ~ filterBy',
+            filterBy
+        );
+        const { filterTxt, checkIn, checkOut, guestCount } = filterBy;
+        //TODO:add dates mockdata
+        const filteredStays = stays.filter((stay) => {
+            let searchTxt = filterTxt.toLowerCase();
+            let address = stay.loc.address.toLowerCase();
+            let capacity = stay.accommodates;
+            return address.includes(searchTxt) && capacity >= guestCount;
+        });
+        console.log(filteredStays);
+        return filteredStays;
     });
 }
 function queryLocations() {
