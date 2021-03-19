@@ -79,9 +79,11 @@ export default {
 			type: "toggleHeroImage",
 			toggleShow: false,
 		});
-		this.$store.dispatch({ type: "stay/load" });
-		const { params } = this.$route;
-		console.log("🚀 ~ line 84 ~ created ~ params", params);
+		//TODO:see about deprecating this params call
+		const {
+			params: { filterBy },
+		} = this.$route;
+		this.$store.dispatch({ type: "stay/load", filterBy });
 	},
 	components: {
 		stayList,

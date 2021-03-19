@@ -1,5 +1,6 @@
 <template>
 	<div class="nav-filter">
+		<!-- filterTxt -->
 		<div class="location-search border">
 			<label for="location-input">Location</label>
 			<input
@@ -7,6 +8,7 @@
 				id="location-input"
 				placeholder="Where are you going?"
 				v-model="filterTxt"
+				ref="filterTxtInput"
 			/>
 		</div>
 		<!-- dates -->
@@ -76,6 +78,11 @@
 			height: 100%;
 			border: none;
 		}
+		input {
+			&:focus {
+				box-shadow: 2px 2px 15px -2px #473f3a;
+			}
+		}
 	}
 	.nav-btn {
 		display: flex;
@@ -131,14 +138,19 @@ export default {
 				checkOut: dates.out,
 				guestCount,
 			};
+			if (filterTxt === "") {
+				this.$refs.filterTxtInput.focus();
+				return;
+			}
+
+			this.$store.commit({ type: "stay/setFilterBy", filterBy });
+			if (this.$route.name === "Explore") return;
 			this.$router.push({
 				name: "Explore",
 				params: {
 					filterBy,
 				},
 			});
-			// return;
-			// this.$router.push("/explore");
 		},
 		setDates(ev) {
 			this.dates.in = ev[0];
