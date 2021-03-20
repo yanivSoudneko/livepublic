@@ -94,7 +94,6 @@ export default {
                 );
             }
         },
-
         async updateStay({ commit }, { stay }) {
             try {
                 const updatedStay = await stayService.update(stay);
