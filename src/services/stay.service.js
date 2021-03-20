@@ -28,19 +28,30 @@ const LOCATION_KEY = 'locations';
 });
 
 function queryStays(filterBy) {
+  console.log('🚀 ~ file: stay.service.js ~ line 31 ~ queryStays ~ filterBy', filterBy);
   return storageService.query(STAY_KEY).then(stays => {
     if (!filterBy) return stays;
-    console.log('🚀 ~ file: stay.service.js ~ line 31 ~ queryStays ~ filterBy', filterBy);
-    const { filterTxt, checkIn, checkOut, guestCount } = filterBy;
+
+    const { filterTxt, checkIn, checkOut, guestCount, rating, page, size } = filterBy;
+    var result;
+    if (rating) {
+      result = stays.sort((stay1, stay2) => {
+        const rating1 = _getRating(stay1.reviews);
+        const rating2 = _getRating(stay2.reviews);
+        return rating2 - rating1;
+      });
+    }
     //TODO:add dates mockData
-    const filteredStays = stays.filter(stay => {
+    result = stays.filter(stay => {
       let searchTxt = filterTxt.toLowerCase();
       let address = stay.loc.address.toLowerCase();
       let capacity = stay.accommodates;
       return address.includes(searchTxt) && capacity >= guestCount;
     });
-    console.log(filteredStays);
-    return filteredStays;
+    console.log(result);
+    result = _paginate(result, size, page);
+    console.log(result);
+    return result;
   });
 }
 function queryLocations() {
@@ -48,4 +59,16 @@ function queryLocations() {
 }
 function getStayById(stayId) {
   return storageService.get(STAY_KEY, stayId);
+}
+
+function _getRating(reviews) {
+  const totalReviews = reviews.length;
+  const ratingSum = reviews.reduce((acc, review) => {
+    acc += review.rating;
+  }, 0);
+  return ratingSum / totalReviews;
+}
+
+function _paginate(array, page_size, page_number) {
+  return array.slice((page_number - 1) * page_size, page_number * page_size);
 }

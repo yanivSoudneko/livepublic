@@ -9,6 +9,9 @@ export default {
       checkIn: new Date(),
       checkOut: new Date(),
       guestCount: 1,
+      type: '',
+      page: 1,
+      size: 4,
     },
   },
   getters: {
@@ -35,20 +38,29 @@ export default {
       stays = stay;
     },
     setFilterBy(state, { filterBy }) {
-      Object.assign(state.filterBy, filterBy);
-      // state.filterBy = filterBy;
+      _setFilter(state.filterBy, filterBy);
     },
   },
   actions: {
-    async load({ commit, state }, { filterBy }) {
+    async fetchFiltered({ state }, { filterBy }) {
       try {
-        if (!filterBy) {
-          filterBy = state.filterBy;
-        }
-        const stays = await stayService.queryStays(filterBy);
-        const locations = await stayService.queryLocations();
+        _setFilter(state.filterBy, filterBy);
+
+        const stays = await stayService.queryStays(state.filterBy);
+        const output = {
+          stays,
+          filterBy: JSON.parse(JSON.stringify(state.filterBy)),
+        };
+        return output;
+      } catch (error) {
+        console.log('🚀 ~ STORE ERROR STAY stay.store.js ~ line 53 ~ load ~ error', error);
+      }
+    },
+    async loadStays({ commit, state }, { filterBy }) {
+      try {
+        _setFilter(state.filterBy, filterBy);
+        const stays = await stayService.queryStays(state.filterBy);
         commit({ type: 'loadStays', stays });
-        commit({ type: 'loadLocations', locations });
       } catch (error) {
         console.log('🚀 ~ STORE ERROR STAY stay.store.js ~ line 30 ~ load ~ error', error);
       }
@@ -61,7 +73,7 @@ export default {
         console.log('🚀 ~ STORE ERROR STAY stay.store.js ~ line 30 ~ load ~ error', error);
       }
     },
-    async getById({ commit, state }, { stayId }) {
+    async getById({ commit }, { stayId }) {
       try {
         const stay = await stayService.getStayById(stayId);
         commit({ type: 'setStay', stay });
@@ -72,3 +84,10 @@ export default {
     },
   },
 };
+
+function _setFilter(filter, extraFields) {
+  if (!filter) {
+    filter = {};
+  }
+  Object.assign(filter, extraFields);
+}

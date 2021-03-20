@@ -6,12 +6,12 @@
         class="location-preview"
         v-for="location in exploreList"
         :key="location._id"
-        @click="sendWithFilter(location.name)"
+        @click="exploreByName(location.name)"
       >
         <img class="img-explore-cityes" :src="location.url" :alt="location.name" />
         <div>
           <h5>{{ location.name }}</h5>
-          <h5>{{ hourOrMinutes(location.distanceTime) }} drive</h5>
+          <h5 class="distance">{{ hourOrMinutes(location.distanceTime) }} drive</h5>
         </div>
       </div>
     </div>
@@ -32,28 +32,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 0.4fr 1fr 1fr;
-    gap: 0px 0px;
+    justify-items: start;
     grid-template-areas:
       'header header header header header'
       '. . . . .'
       '. . . . .';
-    // display: grid;
-    // grid-template-columns: repeat(5, 1fr) !important;
-    // grid-auto-flow: row !important;
-    // padding-left: 0px !important;
-    // scroll-padding: 0px !important;
     gap: 16px !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    --exp-pdw-sm-bot: 48px;
-    --exp-pdw-sm-top: 4px;
-    --exp-pdw-md-bot: 8px;
-    --exp-pdw-md-top: 40px;
-    --exp-pdw-lg-bot: 24px;
-    --exp-pdw-lg-top: 56px;
-    // font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
     .location-preview {
       cursor: pointer;
+      margin-left: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -68,10 +55,8 @@
       h5 {
         font-weight: 600;
       }
-      h5:nth-last-child() {
-        font-size: 16px !important;
-        line-height: 20px !important;
-        color: rgb(34, 34, 34) !important;
+      .distance {
+        color: #7a7a7a;
       }
     }
   }
@@ -83,12 +68,14 @@ export default {
   name: 'location-list',
   methods: {
     hourOrMinutes(time) {
-      if (time < 60) return 'minute';
-      return 'hour';
+      if (time < 60) return time + ' minute';
+      return parseInt(Math.ceil(time / 60)) + ' hour';
     },
-    sendWithFilter(filterTxt) {
-      this.$store.commit({ type: 'stay/setFilterBy', filterBy: { filterTxt } });
-      this.$router.push('/explore');
+    exploreByName(filter) {
+      this.$router.push({
+        name: 'Explore',
+        params: { filterBy: { filterTxt: filter } },
+      });
     },
   },
   computed: {

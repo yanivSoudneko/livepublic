@@ -2,7 +2,7 @@
 	<div class="explore flex columns">
 		<!-- filter by location -->
 		<div class="filter-input pill-pad flex j-between a-center">
-			<input type="text" v-model="filterText" />
+			<input type="text" v-model="filterTxt" />
 			<div class="search-svg-icon flex j-center">
 				<svg
 					viewBox="0 0 32 32"
@@ -36,7 +36,7 @@
 			<div class="filter pill-pad">More Filters</div>
 		</div>
 		<!-- locationList -->
-		<stay-list />
+		<stay-list :stayData="stayData"></stay-list>
 	</div>
 </template>
 
@@ -67,7 +67,7 @@ import stayList from "../cmps/stayList.cmp";
 export default {
 	name: "Explore",
 	data() {
-		return { filterText: "" };
+		return { filterTxt: "", stayData: {} };
 	},
 	computed: {
 		stays() {
@@ -83,7 +83,16 @@ export default {
 		const {
 			params: { filterBy },
 		} = this.$route;
-		this.$store.dispatch({ type: "stay/load", filterBy });
+		console.log(
+			"🚀 ~ file: explorePage.vue ~ line 86 ~ created ~ filterBy",
+			filterBy
+		);
+		this.filterTxt = filterBy.filterTxt;
+		this.$store
+			.dispatch({ type: "stay/fetchFiltered", filterBy })
+			.then((res) => {
+				this.stayData = res;
+			});
 	},
 	components: {
 		stayList,
