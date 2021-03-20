@@ -19,7 +19,13 @@
             "Smoking allowed",
             "Cooking basics"
         ],
-        "type": ["Pets allowed", "Cabins and cottages"],
+        "type": [
+            "Pets allowed",
+            "Cabins and cottages"
+        ],
+        "booked_dates": [
+            "01/01/01"
+        ],
         "host": {
             "_id": "51399391",
             "fullname": "Samantha James",
@@ -149,7 +155,7 @@
         ],
         "price": 80.0,
         "summary": "Newly decorated 2 b\room (2 floor) maisonette with private parking & driveway, patio, very close to the best Paphos municipal \"blue flag\" beach approx. 200 m, a mini market, a pharmacy & restaurants. The nearest bus stop is 300 m away. Only a 15-minute walk to the picturesque Paphos Harbour with shops, cafes, bars& tavernas. Fantastic and very convenient location. Ideal for beautiful walks near the beach. There is a new 2km long walkway",
-        "accommodates":2,
+        "accommodates": 2,
         "amenities": [
             "TV",
             "Wifi",

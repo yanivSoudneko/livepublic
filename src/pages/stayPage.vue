@@ -241,13 +241,13 @@ export default {
       console.log('newObj:', newObj);
       this.$store.dispatch({ type: 'order/saveOrder', newObj }).then(() => console.log('CheckOut Check'));
     },
-  },
-  computed: {
     readMore(index) {
       const el = `p-${index}`;
       console.log(el);
       // el.classList.add('removeP')
     },
+  },
+  computed: {
     user() {
       return this.$store.getters['user/getUser'];
     },
