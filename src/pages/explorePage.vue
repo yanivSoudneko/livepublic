@@ -83,10 +83,17 @@ export default {
 		const {
 			params: { filterBy },
 		} = this.$route;
-		console.log(
-			"🚀 ~ file: explorePage.vue ~ line 86 ~ created ~ filterBy",
-			filterBy
-		);
+
+		if (!filterBy) {
+			this.$store
+				.dispatch({ type: "stay/fetchFiltered", filterBy: null })
+				.then((res) => {
+					this.stayData = res;
+				});
+			this.filterTxt = "Explore locations";
+			return;
+		}
+
 		this.filterTxt = filterBy.filterTxt;
 		this.$store
 			.dispatch({ type: "stay/fetchFiltered", filterBy })
