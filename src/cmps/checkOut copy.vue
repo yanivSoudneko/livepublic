@@ -81,10 +81,6 @@ export default {
     };
   },
   methods: {
-    setDates(ev) {
-      this.order.checkIn = ev[0];
-      this.order.checkOut = ev[1];
-    },
     recordPos(ev) {
       const { layerX, layerY } = ev;
       this.mouseX = layerX;

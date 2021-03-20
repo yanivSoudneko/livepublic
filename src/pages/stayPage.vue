@@ -10,11 +10,7 @@
       <span>{{ ratingLength }}</span>
       <span class="underTitle-addres">{{ stay.loc.address }}</span>
       <div class="stay-page-container">
-        <div
-          class="stay-page-img-container"
-          v-for="(url, index) in stay.imgUrls"
-          :key="index"
-        >
+        <div class="stay-page-img-container" v-for="(url, index) in stay.imgUrls" :key="index">
           <img :src="url" alt="imgUrl" :class="'img img' + index" />
         </div>
       </div>
@@ -38,12 +34,7 @@
         </div>
         <div class="stay-page-accommodates">
           <div class="" aria-hidden="true">
-            <span
-              class=""
-              v-for="n in stay.accommodates"
-              :key="n"
-              style="margin: 10px"
-            >
+            <span class="" v-for="n in stay.accommodates" :key="n" style="margin: 10px">
               <svg
                 viewBox="0 0 24 24"
                 role="presentation"
@@ -57,16 +48,10 @@
                 ></path></svg
             ></span>
           </div>
-          <div class="" v-if="accommodatesLength">
-            Accommodates to: {{ accommodatesLength }}
-          </div>
+          <div class="" v-if="accommodatesLength">Accommodates to: {{ accommodatesLength }}</div>
         </div>
         <div class="stye-page-amenities-container">
-          <div
-            class="stye-page-amenities"
-            v-for="(amenitie, index) in stay.amenities"
-            :key="index"
-          >
+          <div class="stye-page-amenities" v-for="(amenitie, index) in stay.amenities" :key="index">
             <div class="amenitie">{{ amenitie }}</div>
           </div>
         </div>
@@ -75,18 +60,10 @@
       <!-- {{reviews}} -->
       <div class="stay-reviews">
         <h2>Reviews</h2>
-        <div
-          class="review-details"
-          v-for="(review, index) in stay.reviews"
-          :key="index"
-        >
+        <div class="review-details" v-for="(review, index) in stay.reviews" :key="index">
           <div class="user-review-avatar">
             <h2>{{ review.by.fullname }}</h2>
-            <img
-              :src="review.by.imgUrl"
-              alt="imgUrl"
-              :class="'avatar img' + index"
-            />
+            <img :src="review.by.imgUrl" alt="imgUrl" :class="'avatar img' + index" />
           </div>
           <div class="user-review-txt">
             <!-- <p :class="'para para' + index">{{ review.txt }}</p> -->
@@ -128,8 +105,8 @@
     grid-template-rows: 1fr 1fr;
     gap: 15px 10px;
     grid-template-areas:
-      "img0 img0 img1 img2"
-      "img0 img0 img3 img4";
+      'img0 img0 img1 img2'
+      'img0 img0 img3 img4';
     margin-bottom: 100px;
     // .stay-page-amenities{
     //   margin-bottom: 90px;
@@ -220,8 +197,8 @@
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
       }
-      .removeP{
-         -webkit-line-clamp: unset;
+      .removeP {
+        -webkit-line-clamp: unset;
         -webkit-box-orient: unset;
       }
     }
@@ -236,35 +213,43 @@
 </style>
 <script>
 // @ is an alias to /src
-import googleMaps from "../cmps/google.maps.cmp";
-import checkOut from "../cmps/checkOut.vue";
+import googleMaps from '../cmps/google.maps.cmp';
+import checkOut from '../cmps/checkOut.vue';
 export default {
-  name: "Stay",
+  name: 'Stay',
   data() {
     return {
       stayId: null,
       stay: null,
-      index:null
+      index: null,
     };
   },
   methods: {
     checkout(order) {
-      console.log("order:", order);
       const { id, fullName, img } = this.user;
-      console.log("id,fullName,img:", id, fullName, img);
-      this.$store
-        .dispatch({ type: "order/saveOrder", order })
-        .then(() => console.log("CheckOut Check"));
+      const newObj = {
+        buyer: { _id: id, fullname: fullName },
+        createdAt: new Date(),
+        endDate: order.checkOut,
+        guests: order.gueset,
+        startDate: order.checkIn,
+        status: 'pending',
+        stay: { _id: this.stay._id, name: this.stay.name, price: this.stay.price },
+        totalPrice: 160,
+        _id: null,
+      };
+      console.log('newObj:', newObj);
+      this.$store.dispatch({ type: 'order/saveOrder', newObj }).then(() => console.log('CheckOut Check'));
     },
-  },
-  computed: {
-    readMore(index){
-      const el =`p-${index}`
+    readMore(index) {
+      const el = `p-${index}`;
       console.log(el);
       // el.classList.add('removeP')
     },
+  },
+  computed: {
     user() {
-      return this.$store.getters["user/getUser"];
+      return this.$store.getters['user/getUser'];
     },
     calculatedPos() {
       return `radial-gradient(at ${this.mouseX}% ${this.mouseY}%, #e61e4d, #9b59b6)`;
@@ -279,14 +264,14 @@ export default {
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;
-      const addS = reviewsLength > 1 ? "s" : "";
-      const string = reviewsLength + " Review" + addS;
+      const addS = reviewsLength > 1 ? 's' : '';
+      const string = reviewsLength + ' Review' + addS;
       return string;
     },
     accommodatesLength() {
       const accommodatesLength = this.stay.accommodates;
-      const addS = accommodatesLength > 1 ? "s" : "";
-      const string = accommodatesLength + " partner" + addS;
+      const addS = accommodatesLength > 1 ? 's' : '';
+      const string = accommodatesLength + ' partner' + addS;
       return string;
     },
   },
@@ -296,15 +281,15 @@ export default {
   },
   created() {
     const { stayId } = this.$route.params;
-    console.log("stayId", stayId);
+    console.log('stayId', stayId);
     this.stayId = stayId;
-    this.$store.dispatch({ type: "stay/loadStays" }).then(() => {
-      this.$store.dispatch({ type: "stay/getById", stayId }).then((stay) => {
+    this.$store.dispatch({ type: 'stay/loadStays' }).then(() => {
+      this.$store.dispatch({ type: 'stay/getById', stayId }).then(stay => {
         this.stay = stay;
       });
     });
     this.$store.commit({
-      type: "toggleHeroImage",
+      type: 'toggleHeroImage',
       toggleShow: false,
     });
   },
