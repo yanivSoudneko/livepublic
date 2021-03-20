@@ -60,7 +60,7 @@
                 fill: none;
                 height: 16px;
                 width: 16px;
-                stroke: currentcolor;
+                stroke: grey;
                 stroke-width: 3;
                 overflow: visible;
               "
@@ -163,7 +163,7 @@
     .svg-avatar {
       display: block;
       height: 20px;
-      fill: currentcolor;
+      fill: grey;
     }
   }
   .land-div {

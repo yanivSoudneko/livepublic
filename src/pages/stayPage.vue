@@ -232,6 +232,7 @@
 		}
 		.stay-reviews {
 			margin-top: 85px;
+			height: 100%;
 		}
 		.host-image {
 			img {

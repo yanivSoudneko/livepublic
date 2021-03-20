@@ -15,9 +15,18 @@
         <input type="date" :min="new Date()" v-model="order.checkOut" /> -->
         <date-picker placeholder="Check In" @emitDate="setDates($event)" />
         <div class="guest-count">
-          <input type="number" placeholder="Guests" :v-show="order.gueset" v-model="order.gueset" />
+          <input
+            type="number"
+            placeholder="Guests"
+            :v-show="order.gueset"
+            v-model="order.gueset"
+          />
         </div>
-        <button class="check" @mousemove="recordPos" :style="{ backgroundImage: calculatedPos }">
+        <button
+          class="check"
+          @mousemove="recordPos"
+          :style="{ backgroundImage: calculatedPos }"
+        >
           Check Availability
         </button>
       </div>
@@ -27,7 +36,8 @@
 
 <style lang="scss">
 .check-out {
-  position: fixed;
+  // position: fixed;
+  float: right;
   right: 250px;
   margin-top: 55px;
   // float: right;
@@ -35,6 +45,9 @@
   border-radius: 12px;
   padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 6px 16px;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
   .check-header {
     display: flex;
     justify-content: space-between;
@@ -50,17 +63,22 @@
     // background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
     // --mouse-x: 85.3438;
     // --mouse-y: 52.9412;
-    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s,
-      transform 0.1s ease 0s !important;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s,
+      -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
     border: none !important;
-    background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
+    background: linear-gradient(
+      to right,
+      rgb(230, 30, 77) 0%,
+      rgb(227, 28, 95) 50%,
+      rgb(215, 4, 102) 100%
+    );
     color: white;
   }
 }
 </style>
 
 <script>
-import datePicker from '../cmps/datepicker.cmp';
+import datePicker from "../cmps/datepicker.cmp";
 export default {
   props: {
     stay: {
@@ -68,7 +86,7 @@ export default {
       Request,
     },
   },
-  name: 'checkOut',
+  name: "checkOut",
   data() {
     return {
       mouseX: 0,
@@ -93,7 +111,7 @@ export default {
     checkout() {
       // this.order.gueset is String !!
       this.order.gueset = +this.order.gueset;
-      this.$emit('checkout', this.order);
+      this.$emit("checkout", this.order);
     },
   },
   computed: {
@@ -110,8 +128,8 @@ export default {
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;
-      const addS = reviewsLength > 1 ? 's' : '';
-      const string = reviewsLength + ' Review' + addS;
+      const addS = reviewsLength > 1 ? "s" : "";
+      const string = reviewsLength + " Review" + addS;
       return string;
     },
   },
