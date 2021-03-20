@@ -6,7 +6,11 @@
 			@click.native="sendToDetails"
 		> -->
 		<el-carousel :autoplay="false">
-			<div class="likes" :class="{ 'is-liked': likedByUser }">
+			<div
+				class="likes"
+				:class="{ 'is-liked': likedByUser }"
+				@click="toggleLike()"
+			>
 				<svg
 					viewBox="0 0 32 32"
 					xmlns="http://www.w3.org/2000/svg"
@@ -140,6 +144,20 @@ export default {
 			const addS = reviewsLength > 1 ? "s" : "";
 			const string = reviewsLength + " Review" + addS;
 			return string;
+		},
+	},
+	methods: {
+		toggleLike() {
+			const userIdx = this.stay.likes.findIndex(
+				(like) => like.userId === this.loggedUser._id
+			);
+			if (userIdx === -1) {
+				this.stay.likes.push({ userId: this.loggedUser._id });
+			} else {
+				this.stay.likes.splice(userIdx, 1);
+			}
+
+			this.$store.dispatch({ type: "stay/updateStay", stay: this.stay });
 		},
 	},
 };
