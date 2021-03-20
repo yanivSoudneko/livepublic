@@ -1,4 +1,4 @@
-import orderJson from '../../data/orderMockData.json';
+import { orderService } from '../services/order.service.js';
 export default {
   namespaced: true,
   state: { orders: [] },
@@ -13,11 +13,22 @@ export default {
     },
   },
   actions: {
-    loadOrders({ commit }, payload) {
-      commit({ type: 'load', orders: orderJson });
+    async loadOrders({ commit }, payload) {
+      try {
+        const orders = await orderService.queryOrders();
+        commit({ type: 'load', orders });
+      } catch (error) {
+        console.error('ERROR FETCHING ORDERS:', orders);
+      }
     },
-    saveOrder({ commit }, { order }) {
-      console.log('order:', order);
+    async saveOrder({ commit }, { newObj }) {
+      console.log('payload:', newObj);
+      try {
+        console.log('order:', newObj);
+        await orderService.save(newObj);
+      } catch (error) {
+        console.error('EROOR SAVE ORDER', error);
+      }
     },
   },
 };
