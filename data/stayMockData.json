@@ -9,7 +9,7 @@
             "https://res.cloudinary.com/livepublic/image/upload/v1616004387/v1.9/house_1/12.png",
             "https://res.cloudinary.com/livepublic/image/upload/v1616004384/v1.9/house_1/19.png"
         ],
-        "price": 240.0,
+        "price": 240,
         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
         "accommodates": 8,
         "amenities": [
@@ -22,9 +22,6 @@
         "type": [
             "Pets allowed",
             "Cabins and cottages"
-        ],
-        "booked_dates": [
-            "01/01/01"
         ],
         "host": {
             "_id": "51399391",
@@ -49,6 +46,14 @@
                     "imgUrl": "https://randomuser.me/api/portraits/women/61.jpg"
                 }
             }
+        ],
+        "likes": [
+            {
+                "userId": "4gf6h5f6"
+            },
+            {
+                "userId": "4gl56h5f6"
+            }
         ]
     },
     {
@@ -61,7 +66,7 @@
             "https://res.cloudinary.com/livepublic/image/upload/v1616004464/v1.9/house_2/4.png",
             "https://res.cloudinary.com/livepublic/image/upload/v1616004464/v1.9/house_2/5.png"
         ],
-        "price": 80.0,
+        "price": 80,
         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
         "accommodates": 6,
         "amenities": [
@@ -95,6 +100,14 @@
                     "imgUrl": "https://randomuser.me/api/portraits/men/1.jpg"
                 }
             }
+        ],
+        "likes": [
+            {
+                "userId": "4gf6h5f6"
+            },
+            {
+                "userId": "4gl56h5f6"
+            }
         ]
     },
     {
@@ -107,7 +120,7 @@
             "https://res.cloudinary.com/livepublic/image/upload/v1616004421/v1.9/house_3/4.png",
             "https://res.cloudinary.com/livepublic/image/upload/v1616004421/v1.9/house_3/5.png"
         ],
-        "price": 80.0,
+        "price": 80,
         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
         "accommodates": 4,
         "amenities": [
@@ -141,6 +154,14 @@
                     "imgUrl": "https://randomuser.me/api/portraits/women/78.jpg"
                 }
             }
+        ],
+        "likes": [
+            {
+                "userId": "4gf6h5f6"
+            },
+            {
+                "userId": "4gl56h5f6"
+            }
         ]
     },
     {
@@ -153,7 +174,7 @@
             "https://res.cloudinary.com/livepublic/image/upload/v1616004400/v1.9/house_4/6.png",
             "https://res.cloudinary.com/livepublic/image/upload/v1616004400/v1.9/house_4/16.png"
         ],
-        "price": 80.0,
+        "price": 80,
         "summary": "Newly decorated 2 b\room (2 floor) maisonette with private parking & driveway, patio, very close to the best Paphos municipal \"blue flag\" beach approx. 200 m, a mini market, a pharmacy & restaurants. The nearest bus stop is 300 m away. Only a 15-minute walk to the picturesque Paphos Harbour with shops, cafes, bars& tavernas. Fantastic and very convenient location. Ideal for beautiful walks near the beach. There is a new 2km long walkway",
         "accommodates": 2,
         "amenities": [
@@ -187,6 +208,14 @@
                     "imgUrl": "https://randomuser.me/api/portraits/men/10.jpg"
                 }
             }
+        ],
+        "likes": [
+            {
+                "userId": "4gf6h5f6"
+            },
+            {
+                "userId": "4gl56h5f6"
+            }
         ]
     },
     {
@@ -199,7 +228,7 @@
             "https://res.cloudinary.com/livepublic/image/upload/v1616004548/v1.9/house_5/5.png",
             "https://res.cloudinary.com/livepublic/image/upload/v1616004548/v1.9/house_5/6.png"
         ],
-        "price": 310.0,
+        "price": 310,
         "summary": "Our cozy house will be a perfect choice for if you are coming to Prague with friends or with your family or you coming by the car and don't want to pay extra money for parking.",
         "accommodates": 3,
         "amenities": [
@@ -233,6 +262,14 @@
                     "imgUrl": "https://randomuser.me/api/portraits/women/17.jpg"
                 }
             }
+        ],
+        "likes": [
+            {
+                "userId": "4gf6h5f6"
+            },
+            {
+                "userId": "4gl56h5f6"
+            }
         ]
     },
     {
@@ -245,7 +282,7 @@
             "https://res.cloudinary.com/livepublic/image/upload/v1616004558/v1.9/house_6/6.png",
             "https://res.cloudinary.com/livepublic/image/upload/v1616004558/v1.9/house_6/8.png"
         ],
-        "price": 312.0,
+        "price": 312,
         "summary": "B&nB 't Zaanse Huis gelegen in Uitgeest op een Marina park in Noord-Holland beschikt over een terras aan het water....",
         "accommodates": 4,
         "amenities": [
@@ -278,6 +315,14 @@
                     "imgUrl": "https://randomuser.me/api/portraits/men/3.jpg"
                 }
             }
+        ],
+        "likes": [
+            {
+                "userId": "4gf6h5f6"
+            },
+            {
+                "userId": "4gl56h5f6"
+            }
         ]
     },
     {
@@ -290,7 +335,7 @@
             "https://res.cloudinary.com/livepublic/image/upload/v1616004475/v1.9/house_7/6.png",
             "https://res.cloudinary.com/livepublic/image/upload/v1616004475/v1.9/house_7/7.png"
         ],
-        "price": 312.0,
+        "price": 312,
         "summary": "Our lovely house is in a nature reservation near Prague (35 min.to the centre) and the famous Karlstejn castle (10 min).It has 5 rooms, 2 bathrooms, terrace and a garden.Quiet place, perfect for families and nature lovers.A car is reccomended.",
         "accommodates": 6,
         "amenities": [
@@ -322,6 +367,14 @@
                     "fullname": "Lillie Lopez",
                     "imgUrl": "https://randomuser.me/api/portraits/women/54.jpg"
                 }
+            }
+        ],
+        "likes": [
+            {
+                "userId": "4gf6h5f6"
+            },
+            {
+                "userId": "4gl56h5f6"
             }
         ]
     },
@@ -367,6 +420,14 @@
                     "fullname": "Ted Gray",
                     "imgUrl": "https://randomuser.me/api/portraits/men/9.jpg"
                 }
+            }
+        ],
+        "likes": [
+            {
+                "userId": "4gf6h5f6"
+            },
+            {
+                "userId": "4gl56h5f6"
             }
         ]
     },
@@ -433,6 +494,14 @@
                     "imgUrl": "https://randomuser.me/api/portraits/women/13.jpg"
                 }
             }
+        ],
+        "likes": [
+            {
+                "userId": "4gf6h5f6"
+            },
+            {
+                "userId": "4gl56h5f6"
+            }
         ]
     },
     {
@@ -455,7 +524,10 @@
             "Kitchen",
             "Dryer"
         ],
-        "type": ["Pets Allowed", "Entire Homes"],
+        "type": [
+            "Pets Allowed",
+            "Entire Homes"
+        ],
         "host": {
             "_id": "99245291",
             "fullname": "Dan Grant",
@@ -479,6 +551,14 @@
                     "imgUrl": "https://randomuser.me/api/portraits/women/13.jpg"
                 }
             }
+        ],
+        "likes": [
+            {
+                "userId": "4gf6h5f6"
+            },
+            {
+                "userId": "4gl56h5f6"
+            }
         ]
     },
     {
@@ -501,7 +581,10 @@
             "Kitchen",
             "Dryer"
         ],
-        "type": ["Pets Allowed", "Entire Homes"],
+        "type": [
+            "Pets Allowed",
+            "Entire Homes"
+        ],
         "host": {
             "_id": "99245291",
             "fullname": "Michele Peck",
@@ -535,6 +618,14 @@
                     "imgUrl": "https://randomuser.me/api/portraits/women/28.jpg"
                 }
             }
+        ],
+        "likes": [
+            {
+                "userId": "4gf6h5f6"
+            },
+            {
+                "userId": "4gl56h5f6"
+            }
         ]
     },
     {
@@ -557,7 +648,10 @@
             "Kitchen",
             "Dryer"
         ],
-        "type": ["Pets Allowed", "Cabins and cottages"],
+        "type": [
+            "Pets Allowed",
+            "Cabins and cottages"
+        ],
         "host": {
             "_id": "99245281",
             "fullname": "Brandy Harrison",
@@ -591,6 +685,14 @@
                     "imgUrl": "https://randomuser.me/api/portraits/women/28.jpg"
                 }
             }
+        ],
+        "likes": [
+            {
+                "userId": "4gf6h5f6"
+            },
+            {
+                "userId": "4gl56h5f6"
+            }
         ]
     },
     {
@@ -613,7 +715,9 @@
             "Kitchen",
             "Dryer"
         ],
-        "type": ["Entire Homes"],
+        "type": [
+            "Entire Homes"
+        ],
         "host": {
             "_id": "99247781",
             "fullname": "Ashley Wells",
@@ -647,6 +751,14 @@
                     "imgUrl": "https://randomuser.me/api/portraits/men/74.jpg"
                 }
             }
+        ],
+        "likes": [
+            {
+                "userId": "4gf6h5f6"
+            },
+            {
+                "userId": "4gl56h5f6"
+            }
         ]
     },
     {
@@ -662,8 +774,15 @@
         "price": 215,
         "summary": "Located on a safe neighborhood with a great location. Just a few steps from 125th Subway Station (A,C,B,D) and Bus Station (M3, M104, M10).It is a good size bedroom with a closet, and great wifi, finished kitchen, and a special shared space to sit watch a movie.",
         "accommodates": 9,
-        "amenities": ["Wifi", "Kitchen", "Dryer"],
-        "type": ["Entire Homes", "Unique stays"],
+        "amenities": [
+            "Wifi",
+            "Kitchen",
+            "Dryer"
+        ],
+        "type": [
+            "Entire Homes",
+            "Unique stays"
+        ],
         "host": {
             "_id": "99299781",
             "fullname": "Patsy Gardner",
@@ -686,6 +805,14 @@
                     "fullname": "Borat",
                     "imgUrl": "https://www.indiewire.com/wp-content/uploads/2020/09/borat.png?resize=800,517"
                 }
+            }
+        ],
+        "likes": [
+            {
+                "userId": "4gf6h5f6"
+            },
+            {
+                "userId": "4gl56h5f6"
             }
         ]
     }
