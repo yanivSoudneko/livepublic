@@ -64,8 +64,8 @@ import datePicker from '../cmps/datepicker.cmp';
 export default {
   props: {
     stay: {
-      // type: Object,
-      // Request,
+      type: Object,
+      Request,
     },
   },
   name: 'checkOut',
@@ -92,9 +92,6 @@ export default {
     },
     checkout() {
       // this.order.gueset is String !!
-      console.log(this.order.checkIn);
-      console.log(this.order.checkOut);
-      console.log(+this.order.gueset);
       this.order.gueset = +this.order.gueset;
       this.$emit('checkout', this.order);
     },

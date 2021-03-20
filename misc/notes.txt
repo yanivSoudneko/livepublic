@@ -3,3 +3,7 @@ https://github.com/SSENSE/vue-carousel
 
 // close outside the element
 https://stackoverflow.com/questions/60144575/how-do-you-handle-click-outside-of-element-properly-in-vuejs   
+
+
+// Rate:
+https://tallent.us/vue-stars/

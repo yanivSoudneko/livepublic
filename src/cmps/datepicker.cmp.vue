@@ -52,6 +52,7 @@ export default {
   },
   methods: {
     emitDate() {
+      // this.checkDate();
       this.selectedDates = this.selectedDates.map(date => this.fixDate(date));
       this.$emit('emitDate', this.selectedDates);
     },
@@ -60,6 +61,15 @@ export default {
       d.setDate(d.getDate());
       return d;
     },
+    // checkDate() {
+    //   console.log('this.selectedDates[0].getTime:', this.selectedDates[0].getTime());
+    //   console.log('this.selectedDates[1].getTime:', this.selectedDates[1].getTime());
+    //   if (this.selectedDates[0].getTime() < this.selectedDates[1].getTime()) {
+    //     console.log('hi');
+    //   } else {
+    //     console.log('Bye');
+    //   }
+    // },
   },
   computed: {
     date1() {
@@ -70,6 +80,7 @@ export default {
     },
   },
   created() {
+    // this.checkDate();
     this.$emit('emitDate', this.selectedDates);
   },
 };
