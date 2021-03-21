@@ -2,7 +2,7 @@
   <div class="explore flex columns">
     <!-- filter by location -->
     <div class="filter-input pill-pad flex j-between a-center">
-      <input type="text" v-model="filterTxt" />
+      <input type="text" v-model="filterTxt" @keyup.enter="setNewFilter" />
       <div class="search-svg-icon flex j-center" @click="setNewFilter">
         <svg
           viewBox="0 0 32 32"

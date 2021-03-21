@@ -9,6 +9,7 @@
         placeholder="Where are you going?"
         v-model="filterTxt"
         ref="filterTxtInput"
+        @keyup.enter="setFilters"
       />
     </div>
     <!-- dates -->
