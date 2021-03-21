@@ -9,7 +9,8 @@
         <span>{{ ratingLength }}</span>
       </div>
     </div>
-    <form @submit.prevent="checkout">
+
+    <form @submit.prevent="setOrderDetails" @click="showSummary = false">
       <div class="checkout-input">
         <!-- dates -->
         <date-picker placeholder="Check In" @emitDate="setDates($event)" />
@@ -20,19 +21,21 @@
             placeholder="Guests"
             :v-show="order.guest"
             v-model="order.guest"
+            min="1"
             :max="stay.accommodates"
           />
         </div>
-        <button
-          class="check"
-          @mousemove="recordPos"
-          :style="{ backgroundImage: calculatedPos }"
-        >
+        <button class="check" v-if="!showSummary" @mousemove="recordPos" :style="{ backgroundImage: calculatedPos }">
           Check Availability
         </button>
-        <div v-if="showSummary === 2">Hi</div>
       </div>
     </form>
+
+    <div v-if="showSummary">
+      <h4>Details</h4>
+      <pre>{{ order }}</pre>
+      <button class="check">Summary</button>
+    </div>
   </div>
 </template>
 
@@ -69,22 +72,18 @@
     // background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
     // --mouse-x: 85.3438;
     // --mouse-y: 52.9412;
-    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s,
-      -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s,
+      transform 0.1s ease 0s !important;
     border: none !important;
-    background: linear-gradient(
-      to right,
-      rgb(230, 30, 77) 0%,
-      rgb(227, 28, 95) 50%,
-      rgb(215, 4, 102) 100%
-    );
+    background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
     color: white;
   }
 }
 </style>
 
 <script>
-import datePicker from "../cmps/datepicker.cmp";
+import moment from 'moment';
+import datePicker from '../cmps/datepicker.cmp';
 export default {
   props: {
     stay: {
@@ -92,7 +91,7 @@ export default {
       Request,
     },
   },
-  name: "checkOut",
+  name: 'checkOut',
   data() {
     return {
       mouseX: 0,
@@ -101,29 +100,39 @@ export default {
         checkIn: null,
         checkOut: null,
         guest: 1,
+        days: 1,
+        totalPrice: 0,
       },
-      showSummary: 0,
+      showSummary: false,
     };
   },
   methods: {
+    calcPricePerDays() {
+      if (this.order.checkIn && this.order.checkOut) {
+        const { checkIn, checkOut } = this.order;
+        var a = moment(checkIn);
+        var b = moment(checkOut);
+        this.order.days = b.diff(a, 'days') || 1;
+        this.order.totalPrice = this.order.days * this.stay.price;
+      }
+    },
     setDates(ev) {
       this.order.checkIn = ev[0];
       this.order.checkOut = ev[1];
-      this.showSummary++;
-      console.log(
-        "🚀 ~ file: checkOut.vue ~ line 114 ~ setDates ~  this.showSummary",
-        this.showSummary
-      );
     },
     recordPos(ev) {
       const { layerX, layerY } = ev;
       this.mouseX = layerX;
       this.mouseY = layerY;
     },
-    checkout() {
+    setOrderDetails() {
       // this.order.guest is String !!
+      this.calcPricePerDays();
+      this.showSummary = true;
+      console.log({ order: this.order });
+      return;
       this.order.guest = +this.order.guest;
-      this.$emit("checkout", this.order);
+      this.$emit('checkout', this.order);
     },
   },
   computed: {
@@ -140,8 +149,8 @@ export default {
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;
-      const addS = reviewsLength > 1 ? "s" : "";
-      const string = reviewsLength + " Review" + addS;
+      const addS = reviewsLength > 1 ? 's' : '';
+      const string = reviewsLength + ' Review' + addS;
       return string;
     },
   },
