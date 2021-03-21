@@ -1,5 +1,5 @@
 <template>
-  <div class="check-out">
+  <div class="check-out" :style="{ top: stickyYPos }" v-if="scrollPosition && scrollPosition > 1000">
     <div class="check-header">
       <div class="price">${{ stay.price }}/night</div>
       <div class="rate">
@@ -25,7 +25,7 @@
             :max="stay.accommodates"
           />
         </div>
-        <button class="check" v-if="!showSummary" @mousemove="recordPos" :style="{ backgroundImage: calculatedPos }">
+        <button class="check" v-if="!showSummary" @mousemove="recordPos" :style="{ backgroundImage: gradient }">
           Check Availability
         </button>
       </div>
@@ -34,15 +34,15 @@
     <div v-if="showSummary">
       <h4>Details</h4>
       <pre>{{ order }}</pre>
-      <button class="check">Summary</button>
+      <button class="check" @mousemove="recordPos" :style="{ backgroundImage: gradient }">Summary</button>
     </div>
   </div>
 </template>
 
 <style lang="scss">
 .check-out {
-  // position: fixed;
-  position: sticky;
+  position: fixed;
+  // position: sticky;
   top: 0;
   //////
   float: right;
@@ -104,6 +104,7 @@ export default {
         totalPrice: 0,
       },
       showSummary: false,
+      scrollPosition: null,
     };
   },
   methods: {
@@ -134,10 +135,17 @@ export default {
       this.order.guest = +this.order.guest;
       this.$emit('checkout', this.order);
     },
+    updateScroll() {
+      this.scrollPosition = window.scrollY;
+      console.log('🚀 ~ file: checkOut.vue ~ line 133 ~ updateScroll ~ 	this.scrollPosition', this.scrollPosition);
+    },
   },
   computed: {
-    calculatedPos() {
-      return `radial-gradient(at ${this.mouseX}% ${this.mouseY}%, #e61e4d, #9b59b6)`;
+    stickyYPos() {
+      return this.scrollPosition;
+    },
+    gradient() {
+      return `radial-gradient(at ${this.mouseX}% 50%, #e61e4d, #9b59b6)`;
     },
     rating() {
       const reviews = this.stay.reviews;
@@ -155,6 +163,11 @@ export default {
     },
   },
   components: { datePicker },
-  created() {},
+  mounted() {
+    window.addEventListener('scroll', this.updateScroll);
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.updateScroll);
+  },
 };
 </script>
