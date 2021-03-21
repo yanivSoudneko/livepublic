@@ -9,7 +9,7 @@
         @click="exploreByName(location.name)"
       >
         <img class="img-explore-cityes" :src="location.url" :alt="location.name" />
-        <div>
+        <div class="explore-details">
           <h5>{{ location.name }}</h5>
           <h5 class="distance">{{ hourOrMinutes(location.distanceTime) }} drive</h5>
         </div>
@@ -57,6 +57,9 @@
       }
       .distance {
         color: #7a7a7a;
+      }
+      .explore-details:hover{
+       text-decoration: underline;
       }
     }
   }

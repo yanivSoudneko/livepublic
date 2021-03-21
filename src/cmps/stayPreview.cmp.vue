@@ -57,7 +57,7 @@
 <style lang="scss">
 .stay-preview {
 	cursor: pointer;
-	box-shadow: -7px 9px 22px -2px rgba(196, 192, 192, 0.4);
+	box-shadow: -7px 9px 22px -2px rgba(236, 233, 233, 0.4);
 	border-radius: 10px;
 	border: 2px solid rgb(221, 216, 216);
 	padding: 10px;
@@ -137,7 +137,7 @@ export default {
 				acc += obj.rate;
 				return acc;
 			}, 0);
-			return rateTotal / reviews.length;
+			return (rateTotal / reviews.length).toFixed(1);
 		},
 		ratingLength() {
 			const reviewsLength = this.stay.reviews.length;

@@ -46,8 +46,8 @@
       <div class="links">
         <router-link to="/explore"> Explore </router-link>
         <router-link to="/host"> Become Host </router-link>
-        <!-- <router-link to="/login"> Login </router-link> -->
-        <div class="login-user flex a-center">
+        <router-link to="/login"> Login </router-link>
+        <!-- <div class="login-user flex a-center">
           <div class="main-nav-menu">
             <svg
               viewBox="0 0 32 32"
@@ -86,7 +86,7 @@
               ></path>
             </svg>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- <div
