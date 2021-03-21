@@ -36,7 +36,10 @@
       <div class="filter pill-pad">More Filters</div>
     </div>
     <!-- locationList -->
-    <stay-list-grid :stayData="stayData" class="stay-grid-container"></stay-list-grid>
+    <stay-list-grid
+      :stayData="stayData"
+      class="stay-grid-container"
+    ></stay-list-grid>
   </div>
 </template>
 
@@ -60,12 +63,12 @@
   .filter:not(:first-child) {
     margin-left: 10px;
   }
-  .stay-grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 0px 0px;
-  }
+  //   .stay-grid-container {
+  //     display: grid;
+  //     grid-template-columns: 1fr 1fr 1fr 1fr;
+  //     grid-template-rows: 1fr 1fr 1fr;
+  //     gap: 0px 0px;
+  //   }
 }
 </style>
 <script>
