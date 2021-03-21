@@ -8,7 +8,7 @@
         :key="stay._id"
         :stay="stay"
       ></stay-preview>
-      <google-maps class="map" v-if="stayData.stays" :stays="stayData.stays" />
+      <google-maps class="map" :isBigMap="isBigMap" v-if="stayData.stays" :stays="stayData.stays" />
     </div>
   </div>
 </template>
@@ -47,8 +47,8 @@
     grid-row: 2;
   }
   .map {
-      grid-column: 3/5;
-      grid-row: 1/3;
+    grid-column: 3/5;
+    grid-row: 1/3;
   }
 }
 </style>
@@ -61,6 +61,7 @@ export default {
     stayData: {
       type: Object,
     },
+    isBigMap: { type: Boolean },
   },
   name: "Stay-List",
   components: { stayPreview },

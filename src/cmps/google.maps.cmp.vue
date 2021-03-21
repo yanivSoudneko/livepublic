@@ -1,6 +1,7 @@
 <template>
   <section class="maps">
     <GmapMap
+      :class="{ 'big-row': isBigMap }"
       ref="mapRef"
       :center="{
         lat: markers[0].position.lat || lat,
@@ -32,9 +33,16 @@
     </GmapMap>
   </section>
 </template>
+<style lang="scss" scoped>
+.big-row {
+  height: 100vh !important;
+  width: 100%;
+}
+</style>
 <script>
 export default {
   props: {
+    isBigMap: { type: Boolean },
     lat: {
       type: Number,
     },

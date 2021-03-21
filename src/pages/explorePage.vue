@@ -38,6 +38,7 @@
     <!-- locationList -->
     <stay-list-grid
       :stayData="stayData"
+	  :isBigMap="true"
       class="stay-grid-container"
     ></stay-list-grid>
   </div>

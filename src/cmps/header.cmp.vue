@@ -3,7 +3,7 @@
     <div class="nav-bar">
       <router-link tag="div" class="logo flex a-center" to="/">
         <img src="@/assets/img/logo.png" />
-        <span>LivePublic.</span>
+        <span class="logo-name"></span>
       </router-link>
 
       <!-- search btn -->
@@ -113,6 +113,9 @@
     align-items: center;
     background-color: white;
     border-radius: 60px;
+    .logo-name {
+      color: #ff385c;
+    }
     .filter-btn {
       width: 245px;
       height: 35px;
@@ -159,7 +162,7 @@
     border-radius: 20px;
     justify-content: space-around;
     width: 60px;
-	cursor: pointer;
+    cursor: pointer;
     .svg-avatar {
       display: block;
       height: 20px;
