@@ -38,7 +38,8 @@
       <nav-filter v-if="hideBtn" v-click-outside="handleShowFilter"></nav-filter>
       <div class="links">
         <router-link to="/explore"> Explore </router-link>
-        <router-link to="/host"> Become Host </router-link>
+        <!-- <router-link to="/host"> Become Host </router-link> -->
+        <!-- <span>Become Host</span> -->
         <!-- <router-link to="/login"> Login </router-link> -->
         <!-- <div class="login-user flex a-center">
           <div class="main-nav-menu">
