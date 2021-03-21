@@ -7,11 +7,7 @@
       </router-link>
 
       <!-- search btn -->
-      <div
-        class="filter-btn flex j-between a-center"
-        v-if="!hideBtn"
-        @click="(hideBtn = true), (firstClick = true)"
-      >
+      <div class="filter-btn flex j-between a-center" v-if="!hideBtn" @click="(hideBtn = true), (firstClick = true)">
         <span>Start your search</span>
         <span class="search-svg-icon flex j-center">
           <svg
@@ -39,15 +35,12 @@
         </span>
       </div>
       <!-- filters -->
-      <nav-filter
-        v-if="hideBtn"
-        v-click-outside="handleShowFilter"
-      ></nav-filter>
+      <nav-filter v-if="hideBtn" v-click-outside="handleShowFilter"></nav-filter>
       <div class="links">
         <router-link to="/explore"> Explore </router-link>
         <router-link to="/host"> Become Host </router-link>
         <!-- <router-link to="/login"> Login </router-link> -->
-        <div class="login-user flex a-center">
+        <!-- <div class="login-user flex a-center">
           <div class="main-nav-menu">
             <svg
               viewBox="0 0 32 32"
@@ -86,7 +79,7 @@
               ></path>
             </svg>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- <div
@@ -159,7 +152,7 @@
     border-radius: 20px;
     justify-content: space-around;
     width: 60px;
-	cursor: pointer;
+    cursor: pointer;
     .svg-avatar {
       display: block;
       height: 20px;
@@ -185,10 +178,10 @@
 </style>
 
 <script>
-import ClickOutside from "vue-click-outside";
-import navFilter from "../cmps/navFilter.cmp";
+import ClickOutside from 'vue-click-outside';
+import navFilter from '../cmps/navFilter.cmp';
 export default {
-  name: "NavBar",
+  name: 'NavBar',
   data() {
     return {
       hideBtn: false,
@@ -198,7 +191,7 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.getters["user/user"];
+      return this.$store.getters['user/user'];
     },
   },
   methods: {
