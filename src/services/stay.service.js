@@ -44,6 +44,7 @@ function queryStays(filterBy) {
             rating,
             page,
             size,
+            type,
         } = filterBy;
         var result;
         if (rating) {
@@ -55,10 +56,16 @@ function queryStays(filterBy) {
         }
         //TODO:add dates mockData
         result = stays.filter((stay) => {
-            let searchTxt = filterTxt.toLowerCase();
-            let address = stay.loc.address.toLowerCase();
-            let capacity = stay.accommodates;
-            return address.includes(searchTxt) && capacity >= guestCount;
+            const searchTxt = filterTxt.toLowerCase();
+            const address = stay.loc.address.toLowerCase();
+            const capacity = stay.accommodates;
+            var types = stay.type && stay.type.length ? stay.type : [];
+            types = types.map((t) => t.toLowerCase());
+            return (
+                (address.includes(searchTxt) ||
+                    types.includes(type.toLowerCase())) &&
+                capacity >= guestCount
+            );
         });
         console.log(result);
         result = _paginate(result, size, page);

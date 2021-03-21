@@ -10,7 +10,7 @@
 				<p>Turn your extra space into your next opportunity.</p>
 			</div>
 			<div>
-				<button class="host-header-btn">Become a host</button>
+				<!-- <button class="host-header-btn">Become a host</button> -->
 			</div>
 		</div>
 		<h1 class="stays-header">Top Rated Stays in New York</h1>

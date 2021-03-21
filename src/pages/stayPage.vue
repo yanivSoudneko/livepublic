@@ -180,15 +180,20 @@
     //   }
     // }
     .stay-page-accommodates {
+      margin: 15px;
       border: 1px rgba(59, 56, 56, 0.795) solid;
       padding: 10px;
       border-radius: 10px;
       display: flex;
       flex-direction: column;
       height: 200px;
+      max-width: 250px;
       text-align: center;
       > * {
-        padding: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
       }
     }
     .stay-reviews,
@@ -245,14 +250,14 @@ export default {
     };
   },
   methods: {
-    checkout(order) {
+    checkout(orderToSave) {
       const { id, fullName, img } = this.user;
-      const newObj = {
+      const order = {
         buyer: { _id: id, fullname: fullName },
         createdAt: new Date(),
-        endDate: order.checkOut,
-        guests: order.gueset,
-        startDate: order.checkIn,
+        endDate: orderToSave.checkOut,
+        guests: orderToSave.gueset,
+        startDate: orderToSave.checkIn,
         status: 'pending',
         stay: {
           _id: this.stay._id,
@@ -262,8 +267,8 @@ export default {
         totalPrice: 160,
         _id: null,
       };
-      console.log('newObj:', newObj);
-      this.$store.dispatch({ type: 'order/saveOrder', newObj }).then(() => console.log('CheckOut Check'));
+      console.log('order:', order);
+      this.$store.dispatch({ type: 'order/saveOrder', order }).then(() => console.log('CheckOut Check'));
     },
     readMore(index) {
       const el = `p-${index}`;

@@ -1,5 +1,5 @@
 <template>
-  <div class="check-out" :style="{ top: stickyYPos }" v-if="scrollPosition && scrollPosition > 1000">
+  <div class="check-out" :style="{ top: stickyYPos }" v-if="scrollPosition && scrollPosition > 936">
     <div class="check-header">
       <div class="price">${{ stay.price }}/night</div>
       <div class="rate">
@@ -31,10 +31,18 @@
       </div>
     </form>
 
-    <div v-if="showSummary">
+    <div v-if="showSummary" class="details-check-availability">
       <h4>Details</h4>
-      <pre>{{ order }}</pre>
-      <button class="check" @mousemove="recordPos" :style="{ backgroundImage: gradient }">Summary</button>
+      <h5>{{ stay.name }}</h5>
+      <h6 v-if="checkInDetails">Check In: {{ checkInDetails }}</h6>
+      <h6 v-if="checkOutDetails">Check Out: {{ checkOutDetails }}</h6>
+      <h6 v-if="orderGuest">{{ orderGuest }}</h6>
+      <h6 v-if="orderDays">{{ orderDays }}</h6>
+      <h6>Total: ${{ order.totalPrice }}</h6>
+      <img v-if="getImg" :src="getImg" alt="HomeImg" />
+      <button class="check" @click="saveOrder" @mousemove="recordPos" :style="{ backgroundImage: gradient }">
+        To Order
+      </button>
     </div>
   </div>
 </template>
@@ -78,6 +86,21 @@
     background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
     color: white;
   }
+  .details-check-availability {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    * {
+      margin: 10px;
+    }
+    img {
+      max-height: 150px;
+      max-width: 150px;
+      align-self: flex-end;
+      position: absolute;
+      bottom: 90px;
+    }
+  }
 }
 </style>
 
@@ -108,6 +131,10 @@ export default {
     };
   },
   methods: {
+    saveOrder() {
+      this.order.guest = +this.order.guest;
+      this.$emit('checkout', this.order);
+    },
     calcPricePerDays() {
       if (this.order.checkIn && this.order.checkOut) {
         const { checkIn, checkOut } = this.order;
@@ -130,17 +157,37 @@ export default {
       // this.order.guest is String !!
       this.calcPricePerDays();
       this.showSummary = true;
-      console.log({ order: this.order });
-      return;
-      this.order.guest = +this.order.guest;
-      this.$emit('checkout', this.order);
     },
     updateScroll() {
       this.scrollPosition = window.scrollY;
-      console.log('🚀 ~ file: checkOut.vue ~ line 133 ~ updateScroll ~ 	this.scrollPosition', this.scrollPosition);
     },
   },
   computed: {
+    orderGuest() {
+      const guestLength = this.order.guest;
+      const addS = guestLength > 1 ? 's' : '';
+      const string = ' Guest' + addS + ':' + guestLength;
+      return string;
+    },
+    orderDays() {
+      const orderDaysLength = this.order.days;
+      const addS = orderDaysLength > 1 ? 's' : '';
+      const string = ' Day' + addS + ':' + orderDaysLength;
+      return string;
+    },
+    getImg() {
+      return this.stay.imgUrls[0];
+    },
+    checkInDetails() {
+      const time = this.order.checkIn.getTime();
+      const format = moment(time).format('dddd, MMMM Do YYYY');
+      return format;
+    },
+    checkOutDetails() {
+      const time = this.order.checkOut.getTime();
+      const format = moment(time).format('dddd, MMMM Do YYYY');
+      return format;
+    },
     stickyYPos() {
       return this.scrollPosition;
     },

@@ -2,8 +2,8 @@
   <div class="explore flex columns">
     <!-- filter by location -->
     <div class="filter-input pill-pad flex j-between a-center">
-      <input type="text" v-model="filterTxt" />
-      <div class="search-svg-icon flex j-center">
+      <input type="text" v-model="filterTxt" @keyup.enter="setNewFilter" />
+      <div class="search-svg-icon flex j-center" @click="setNewFilter">
         <svg
           viewBox="0 0 32 32"
           xmlns="http://www.w3.org/2000/svg"
@@ -27,6 +27,7 @@
           </g>
         </svg>
       </div>
+      <!-- <button @click="setNewFilter">Go</button> -->
     </div>
     <!-- filters by  -->
     <div class="filters flex">
@@ -46,6 +47,8 @@
 
 <style lang="scss" scoped>
 .explore {
+  max-width: 1210px;
+  margin: 0 auto;
   padding: 20px;
   & > * {
     margin-bottom: 20px;
@@ -61,8 +64,13 @@
       border-radius: 50%;
     }
   }
-  .filter:not(:first-child) {
-    margin-left: 10px;
+  .filter {
+    &:not(:first-child) {
+      margin-left: 10px;
+    }
+    &:hover {
+      filter: brightness(85%);
+    }
   }
   //   .stay-grid-container {
   //     display: grid;
@@ -73,20 +81,27 @@
 }
 </style>
 <script>
-import stayListGrid from "../cmps/stayList-grid.cmp";
+import stayListGrid from '../cmps/stayList-grid.cmp';
 export default {
-  name: "Explore",
+  name: 'Explore',
   data() {
-    return { filterTxt: "", stayData: {} };
+    return { filterTxt: '', stayData: {} };
   },
   computed: {
     stays() {
-      return this.$store.getters({ type: "stay/getStays" });
+      return this.$store.getters({ type: 'stay/getStays' });
+    },
+  },
+  methods: {
+    setNewFilter() {
+      this.$store.dispatch({ type: 'stay/fetchFiltered', filterBy: { filterTxt: this.filterTxt } }).then(res => {
+        this.stayData = res;
+      });
     },
   },
   created() {
     this.$store.commit({
-      type: "toggleHeroImage",
+      type: 'toggleHeroImage',
       toggleShow: false,
     });
     //TODO:see about deprecating this params call
@@ -95,21 +110,17 @@ export default {
     } = this.$route;
 
     if (!filterBy) {
-      this.$store
-        .dispatch({ type: "stay/fetchFiltered", filterBy: null })
-        .then((res) => {
-          this.stayData = res;
-        });
-      this.filterTxt = "Explore locations";
+      this.$store.dispatch({ type: 'stay/fetchFiltered', filterBy: null }).then(res => {
+        this.stayData = res;
+      });
+      this.filterTxt = 'Explore locations';
       return;
     }
 
     this.filterTxt = filterBy.filterTxt;
-    this.$store
-      .dispatch({ type: "stay/fetchFiltered", filterBy })
-      .then((res) => {
-        this.stayData = res;
-      });
+    this.$store.dispatch({ type: 'stay/fetchFiltered', filterBy }).then(res => {
+      this.stayData = res;
+    });
   },
   components: {
     stayListGrid,

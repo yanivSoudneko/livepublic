@@ -9,7 +9,7 @@
       <!-- search btn -->
       <div
         class="filter-btn flex j-between a-center"
-        v-if="!hideBtn"
+        v-if="!hideBtn && this.$route.name !== 'Explore'"
         @click="(hideBtn = true), (firstClick = true)"
       >
         <span>Start your search</span>
@@ -40,13 +40,16 @@
       </div>
       <!-- filters -->
       <nav-filter
-        v-if="hideBtn"
+        v-if="hideBtn && this.$route.name !== 'Explore'"
         v-click-outside="handleShowFilter"
+        @closeFilters="hideBtn = false"
       ></nav-filter>
+
       <div class="links">
         <router-link to="/explore"> Explore </router-link>
-        <router-link to="/host"> Become Host </router-link>
-        <router-link to="/login"> Login </router-link>
+        <!-- <router-link to="/host"> Become Host </router-link> -->
+        <!-- <span>Become Host</span> -->
+        <!-- <router-link to="/login"> Login </router-link> -->
         <!-- <div class="login-user flex a-center">
           <div class="main-nav-menu">
             <svg
@@ -188,10 +191,10 @@
 </style>
 
 <script>
-import ClickOutside from "vue-click-outside";
-import navFilter from "../cmps/navFilter.cmp";
+import ClickOutside from 'vue-click-outside';
+import navFilter from '../cmps/navFilter.cmp';
 export default {
-  name: "NavBar",
+  name: 'NavBar',
   data() {
     return {
       hideBtn: false,
@@ -201,7 +204,7 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.getters["user/user"];
+      return this.$store.getters['user/user'];
     },
   },
   methods: {

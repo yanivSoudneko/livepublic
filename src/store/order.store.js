@@ -21,11 +21,11 @@ export default {
         console.error('ERROR FETCHING ORDERS:', orders);
       }
     },
-    async saveOrder({ commit }, { newObj }) {
-      console.log('payload:', newObj);
+    async saveOrder({ commit }, { order }) {
+      console.log('payload:', order);
       try {
-        console.log('order:', newObj);
-        await orderService.save(newObj);
+        console.log('order:', order);
+        await orderService.save(order);
       } catch (error) {
         console.error('EROOR SAVE ORDER', error);
       }
