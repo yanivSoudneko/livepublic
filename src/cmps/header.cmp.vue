@@ -7,7 +7,11 @@
       </router-link>
 
       <!-- search btn -->
-      <div class="filter-btn flex j-between a-center" v-if="!hideBtn" @click="(hideBtn = true), (firstClick = true)">
+      <div
+        class="filter-btn flex j-between a-center"
+        v-if="!hideBtn && this.$route.name !== 'Explore'"
+        @click="(hideBtn = true), (firstClick = true)"
+      >
         <span>Start your search</span>
         <span class="search-svg-icon flex j-center">
           <svg
@@ -35,7 +39,12 @@
         </span>
       </div>
       <!-- filters -->
-      <nav-filter v-if="hideBtn" v-click-outside="handleShowFilter"></nav-filter>
+      <nav-filter
+        v-if="hideBtn && this.$route.name !== 'Explore'"
+        v-click-outside="handleShowFilter"
+        @closeFilters="hideBtn = false"
+      ></nav-filter>
+
       <div class="links">
         <router-link to="/explore"> Explore </router-link>
         <!-- <router-link to="/host"> Become Host </router-link> -->

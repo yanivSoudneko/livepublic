@@ -58,6 +58,7 @@
   display: none;
 }
 .nav-filter {
+  border: 1px solid rgb(46, 46, 46);
   position: fixed;
   display: flex;
   justify-content: center;
@@ -108,14 +109,14 @@
 </style>
 
 <script>
-import guestSelect from "./guestsSelect.cmp";
-import datePicker from "./datepicker.cmp";
+import guestSelect from './guestsSelect.cmp';
+import datePicker from './datepicker.cmp';
 export default {
-  name: "Nav-Filter",
+  name: 'Nav-Filter',
   data() {
     return {
       scrollPosition: null,
-      filterTxt: "",
+      filterTxt: '',
       dates: { in: null, out: null },
       guestCount: 1,
     };
@@ -127,10 +128,7 @@ export default {
     },
     updateScroll() {
       this.scrollPosition = window.scrollY;
-      console.log(
-        "🚀 ~ file: navFilter.cmp.vue ~ line 131 ~ updateScroll ~  this.scrollPosition",
-        this.scrollPosition
-      );
+      console.log('🚀 ~ file: navFilter.cmp.vue ~ line 131 ~ updateScroll ~  this.scrollPosition', this.scrollPosition);
     },
     setFilters() {
       const { filterTxt, dates, guestCount } = this;
@@ -141,15 +139,18 @@ export default {
         checkOut: dates.out,
         guestCount,
       };
-      if (filterTxt === "") {
+      if (filterTxt === '') {
         this.$refs.filterTxtInput.focus();
         return;
       }
 
-      this.$store.commit({ type: "stay/setFilterBy", filterBy });
-      if (this.$route.name === "Explore") return;
+      this.$store.commit({ type: 'stay/setFilterBy', filterBy });
+      this.$emit('closeFilters', true);
+      if (this.$route.name === 'Explore') {
+        return;
+      }
       this.$router.push({
-        name: "Explore",
+        name: 'Explore',
         params: {
           filterBy,
         },
@@ -166,10 +167,10 @@ export default {
     },
   },
   mounted() {
-    window.addEventListener("scroll", this.updateScroll);
+    window.addEventListener('scroll', this.updateScroll);
   },
   destroyed() {
-    window.removeEventListener("scroll", this.updateScroll);
+    window.removeEventListener('scroll', this.updateScroll);
   },
   components: { datePicker, guestSelect },
 };
