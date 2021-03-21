@@ -26,7 +26,7 @@
 					<div class="host-details flex j-between a-center">
 						<div class="about-host">
 							<h2>{{ stay.host.fullname }}</h2>
-							<span>{{ stay.accommodates }}Guests</span>
+							<span>{{ stay.accommodates }} Guests</span>
 						</div>
 						<div class="host-image">
 							<img :src="stay.host.imgUrl" />
@@ -95,9 +95,9 @@
 					<div class="user-review-txt">
 						<!-- <p :class="'para para' + index">{{ review.txt }}</p> -->
 						<p :class="'para para' + index">{{ review.txt }}</p>
-						<button @click="readMore">Read More</button>
+						<button class="pill-pad" @click="readMore">Read More</button>
 					</div>
-					<button
+					<button class="pill-pad"
 						v-if="user._id === review.by._id"
 						@click="removeReview(review._id)"
 					>
@@ -232,6 +232,7 @@
 		}
 		.stay-reviews {
 			margin-top: 85px;
+			height: 100%;
 		}
 		.host-image {
 			img {

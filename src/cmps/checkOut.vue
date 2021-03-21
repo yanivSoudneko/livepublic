@@ -5,21 +5,32 @@
       <div class="rate">
         <span
           ><i class="fas fa-star">{{ rating }}</i></span
-        >
+        >&nbsp;
         <span>{{ ratingLength }}</span>
       </div>
     </div>
     <form @submit.prevent="checkout">
       <div class="checkout-input">
-        <!-- <input type="date" :min="new Date()" v-model="order.checkIn" />
-        <input type="date" :min="new Date()" v-model="order.checkOut" /> -->
+        <!-- dates -->
         <date-picker placeholder="Check In" @emitDate="setDates($event)" />
+        <!-- guest count -->
         <div class="guest-count">
-          <input type="number" placeholder="Guests" :v-show="order.gueset" v-model="order.gueset" />
+          <input
+            type="number"
+            placeholder="Guests"
+            :v-show="order.guest"
+            v-model="order.guest"
+            :max="stay.accommodates"
+          />
         </div>
-        <button class="check" @mousemove="recordPos" :style="{ backgroundImage: calculatedPos }">
+        <button
+          class="check"
+          @mousemove="recordPos"
+          :style="{ backgroundImage: calculatedPos }"
+        >
           Check Availability
         </button>
+        <div v-if="showSummary === 2">Hi</div>
       </div>
     </form>
   </div>
@@ -27,14 +38,22 @@
 
 <style lang="scss">
 .check-out {
-  position: fixed;
+  // position: fixed;
+  position: sticky;
+  top: 0;
+  //////
+  float: right;
   right: 250px;
   margin-top: 55px;
-  // float: right;
+  float: right;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 12px;
   padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 6px 16px;
+  // display: flex;
+  // flex-direction: column;
+  // width: 280px;
+
   .check-header {
     display: flex;
     justify-content: space-between;
@@ -50,17 +69,22 @@
     // background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
     // --mouse-x: 85.3438;
     // --mouse-y: 52.9412;
-    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s,
-      transform 0.1s ease 0s !important;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s,
+      -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
     border: none !important;
-    background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
+    background: linear-gradient(
+      to right,
+      rgb(230, 30, 77) 0%,
+      rgb(227, 28, 95) 50%,
+      rgb(215, 4, 102) 100%
+    );
     color: white;
   }
 }
 </style>
 
 <script>
-import datePicker from '../cmps/datepicker.cmp';
+import datePicker from "../cmps/datepicker.cmp";
 export default {
   props: {
     stay: {
@@ -68,7 +92,7 @@ export default {
       Request,
     },
   },
-  name: 'checkOut',
+  name: "checkOut",
   data() {
     return {
       mouseX: 0,
@@ -76,14 +100,20 @@ export default {
       order: {
         checkIn: null,
         checkOut: null,
-        gueset: 1,
+        guest: 1,
       },
+      showSummary: 0,
     };
   },
   methods: {
     setDates(ev) {
       this.order.checkIn = ev[0];
       this.order.checkOut = ev[1];
+      this.showSummary++;
+      console.log(
+        "🚀 ~ file: checkOut.vue ~ line 114 ~ setDates ~  this.showSummary",
+        this.showSummary
+      );
     },
     recordPos(ev) {
       const { layerX, layerY } = ev;
@@ -91,9 +121,9 @@ export default {
       this.mouseY = layerY;
     },
     checkout() {
-      // this.order.gueset is String !!
-      this.order.gueset = +this.order.gueset;
-      this.$emit('checkout', this.order);
+      // this.order.guest is String !!
+      this.order.guest = +this.order.guest;
+      this.$emit("checkout", this.order);
     },
   },
   computed: {
@@ -106,12 +136,12 @@ export default {
         acc += obj.rate;
         return acc;
       }, 0);
-      return rateTotal / reviews.length;
+      return (rateTotal / reviews.length).toFixed(1);
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;
-      const addS = reviewsLength > 1 ? 's' : '';
-      const string = reviewsLength + ' Review' + addS;
+      const addS = reviewsLength > 1 ? "s" : "";
+      const string = reviewsLength + " Review" + addS;
       return string;
     },
   },
