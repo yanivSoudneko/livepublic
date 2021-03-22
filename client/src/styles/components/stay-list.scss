@@ -1,0 +1,22 @@
+.stay-carousel{
+    display: grid;
+    // grid-template-columns: 1fr;
+    gap: 30px 15px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    // grid-template-rows: repeat(auto-fill, minmax(230px, 1fr));
+  
+    @include for-narrow-layout {
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    }
+  
+    img {
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+      // object-fit: cover;
+      cursor: pointer;
+    }
+  
+    >* {
+      grid-column: span 1;
+    }
+  }

@@ -47,26 +47,35 @@
         <i class="fas fa-star"></i>{{ rating }} ({{ ratingLength }})
       </div>
       <p class="address">{{ stay.loc.address }}</p>
-      <p class="name">{{ stay.name }}</p>
+      <!-- <p class="name">{{ stay.name }}</p> -->
       <p class="summary">{{ stay.summary }}</p>
-      <p class="price">${{ stay.price }}/Night</p>
+      <div>
+		  <span class="price">${{ stay.price }}</span> / Night
+		  </div> 
     </div>
   </div>
 </template>
 <style lang="scss">
 .stay-preview {
+	color:#202020;
   cursor: pointer;
-  // box-shadow: -7px 9px 22px -2px rgba(236, 233, 233, 0.4);
-  border-radius: 10px;
-  // border: 2px solid rgb(221, 216, 216);
-  padding: 10px;
+  height: 100%;
+  width: 100%;
+  .el-carousel__container {
+    height: 165px;
+  }
   .el-carousel {
     .is-liked {
       fill: rgba(224, 14, 14, 0.842);
     }
     img {
+      width: 100%;
+      height: 100%;
       border-radius: 10px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
     }
+
     .svg-like {
       display: block;
       position: absolute;
@@ -76,7 +85,7 @@
       stroke-width: 2;
       overflow: visible;
       z-index: 1000;
-      top: 160px;
+      top: 5px;
       right: 5px;
     }
   }
@@ -87,27 +96,11 @@
     width: 220px;
     line-height: 1.8em;
   }
-}
-.el-carousel-img {
-  width: 100%;
-  overflow: hidden;
-  margin: 0;
-  padding-top: 56.25%;
-  //   position: relative;
-  .el-carousel-img:after {
-    display: block;
-    content: "";
-    /* 16:9 aspect ratio */
-    padding-bottom: 56.25%;
-  }
-  .el-carousel-img img {
-   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  .price{
+	  font-weight: 700;
   }
 }
+
 .el-carousel__indicator {
   button {
     width: 7px;
@@ -158,8 +151,8 @@ export default {
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;
-      const addS = reviewsLength > 1 ? "s" : "";
-      const string = reviewsLength + " Review" + addS;
+    //   const addS = reviewsLength > 1 ? "s" : "";
+      const string = reviewsLength 
       return string;
     },
   },
