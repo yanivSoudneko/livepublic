@@ -2,7 +2,7 @@
   <div class="explore flex columns">
     <!-- filter by location -->
     <div class="filter-input pill-pad flex j-between a-center">
-      <input type="text" v-model="filterTxt" />
+      <input type="text" v-model="filterTxt" @keyup.enter="setNewFilter" />
       <div class="search-svg-icon flex j-center" @click="setNewFilter">
         <svg
           viewBox="0 0 32 32"
@@ -37,7 +37,11 @@
       <div class="filter pill-pad">More Filters</div>
     </div>
     <!-- locationList -->
-    <stay-list-grid :stayData="stayData" class="stay-grid-container"></stay-list-grid>
+    <stay-list-grid
+      :stayData="stayData"
+	  :isBigMap="true"
+      class="stay-grid-container"
+    ></stay-list-grid>
   </div>
 </template>
 
@@ -68,12 +72,12 @@
       filter: brightness(85%);
     }
   }
-  .stay-grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 0px 0px;
-  }
+  //   .stay-grid-container {
+  //     display: grid;
+  //     grid-template-columns: 1fr 1fr 1fr 1fr;
+  //     grid-template-rows: 1fr 1fr 1fr;
+  //     gap: 0px 0px;
+  //   }
 }
 </style>
 <script>
