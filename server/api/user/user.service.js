@@ -13,9 +13,25 @@ module.exports = {
     add,
 };
 
-async function query(filterBy = {}) {
-    return [{ notActive: true }];
-    const criteria = _buildCriteria(filterBy);
+async function query() {
+    try {
+        const collection = await dbService.getCollection(USER_COLLECTION);
+        var users = await collection.find().toArray();
+        users = users.map((user) => {
+            user.createdAt = ObjectId(user._id).getTimestamp();
+            delete user.password;
+            return user;
+        });
+        return users;
+    } catch (err) {
+        logger.error('cannot find users', err);
+        throw err;
+    }
+}
+
+async function queryOld(filterBy = {}) {
+    // return [{ notActive: true }];
+    // const criteria = _buildCriteria(filterBy);
     try {
         const collection = await dbService.getCollection(USER_COLLECTION);
         var users = await collection.find(criteria).toArray();

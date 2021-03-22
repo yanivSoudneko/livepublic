@@ -19,7 +19,6 @@ async function signup(username, password, fullname, imgUrl) {
     if (user) {
         return Promise.reject('Username not available');
     }
-    const saltRounds = 10;
 
     logger.debug(
         `auth.service - signup with username: ${username}, fullname:${fullname}`
@@ -28,6 +27,7 @@ async function signup(username, password, fullname, imgUrl) {
         return Promise.reject('fullname, username and password are required!');
     }
 
+    const saltRounds = 10;
     const hash = await bcrypt.hash(password, saltRounds);
     return userService.add({ username, password: hash, fullname, imgUrl });
 }
