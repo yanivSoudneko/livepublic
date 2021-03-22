@@ -13,7 +13,7 @@
 
 <style lang="scss" scoped>
 .stay-list {
-	height: 60vh;
+	// height: 60vh;
 	max-width: 1210px;
 	margin: 0 auto;
 

@@ -1,8 +1,21 @@
 // COLOR PALETTE
 //airbnb red
-$clr1: #ff385c;
+$clr1:rgb(255, 56, 92);
+$clr2:snow;
+$clr3:rgb(107, 106, 106);
+$clr4:rgba(226, 226, 226, 0.363);
+$clr5: rgb(30, 30, 30);
+$clr6: rgb(231, 231, 231);
+$clr7: #222222;
 
 // LAYOUT BREAKPOINTS
-$break-narrow: 460px;
-$break-normal: 740px;
-$break-wide: 960px;
+
+$break-narrow: 550px;
+$break-normal: 700px;
+$break-normal-wide: 1010px;
+$break-wide: 1080px;
+
+// custom
+
+$headerHeight: 70px;
+$mobilePadding: 12px;
