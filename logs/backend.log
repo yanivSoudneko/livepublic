@@ -1,0 +1,16 @@
+23/03/2021, 15:04:29 - ERROR - Cannot Connect to DB | {"name":"MongoParseError"} 
+23/03/2021, 15:04:29 - ERROR - Failed to get Mongo collection | {"name":"MongoParseError"} 
+23/03/2021, 15:04:29 - ERROR - cannot find stays | {"name":"MongoParseError"} 
+23/03/2021, 15:04:29 - ERROR - Failed to get Stays | {"name":"MongoParseError"} 
+23/03/2021, 15:04:29 - ERROR - Cannot Connect to DB | {"name":"MongoParseError"} 
+23/03/2021, 15:04:29 - ERROR - Failed to get Mongo collection | {"name":"MongoParseError"} 
+23/03/2021, 15:04:29 - ERROR - cannot find stays | {"name":"MongoParseError"} 
+23/03/2021, 15:04:29 - ERROR - Failed to get Stays | {"name":"MongoParseError"} 
+23/03/2021, 15:04:48 - ERROR - Cannot Connect to DB | {"name":"MongoParseError"} 
+23/03/2021, 15:04:48 - ERROR - Failed to get Mongo collection | {"name":"MongoParseError"} 
+23/03/2021, 15:04:48 - ERROR - cannot find stays | {"name":"MongoParseError"} 
+23/03/2021, 15:04:48 - ERROR - Failed to get Stays | {"name":"MongoParseError"} 
+23/03/2021, 15:04:48 - ERROR - Cannot Connect to DB | {"name":"MongoParseError"} 
+23/03/2021, 15:04:48 - ERROR - Failed to get Mongo collection | {"name":"MongoParseError"} 
+23/03/2021, 15:04:48 - ERROR - cannot find stays | {"name":"MongoParseError"} 
+23/03/2021, 15:04:48 - ERROR - Failed to get Stays | {"name":"MongoParseError"} 
