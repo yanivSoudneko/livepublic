@@ -30,16 +30,22 @@
       <!-- <button @click="setNewFilter">Go</button> -->
     </div>
     <!-- filters by  -->
-    <div class="filters flex">
-      <div class="filter pill-pad">Filter Type</div>
-      <div class="filter pill-pad">Filter Price</div>
-      <div class="filter pill-pad">Instant Book</div>
-      <div class="filter pill-pad">More Filters</div>
+    <small class="head-title-visits">300+ stays</small>
+    <h1 class="head-title-txt">Entire homes</h1>
+    <div class="filters flex columns">
+      <div class="sub-filter-container flex">
+        <div class="filter pill-pad">Filter Type</div>
+        <div class="filter pill-pad">Filter Price</div>
+      </div>
+      <div class="sub-filter-btns flex">
+        <button class="filter pill-pad">Instant Book</button>
+        <butto class="filter pill-pad">More Filters</butto>
+      </div>
     </div>
     <!-- locationList -->
     <stay-list-grid
       :stayData="stayData"
-	  :isBigMap="true"
+      :isBigMap="true"
       class="stay-grid-container"
     ></stay-list-grid>
   </div>
@@ -81,27 +87,32 @@
 }
 </style>
 <script>
-import stayListGrid from '../cmps/stayList-grid.cmp';
+import stayListGrid from "../cmps/stayList-grid.cmp";
 export default {
-  name: 'Explore',
+  name: "Explore",
   data() {
-    return { filterTxt: '', stayData: {} };
+    return { filterTxt: "", stayData: {} };
   },
   computed: {
     stays() {
-      return this.$store.getters({ type: 'stay/getStays' });
+      return this.$store.getters({ type: "stay/getStays" });
     },
   },
   methods: {
     setNewFilter() {
-      this.$store.dispatch({ type: 'stay/fetchFiltered', filterBy: { filterTxt: this.filterTxt } }).then(res => {
-        this.stayData = res;
-      });
+      this.$store
+        .dispatch({
+          type: "stay/fetchFiltered",
+          filterBy: { filterTxt: this.filterTxt },
+        })
+        .then((res) => {
+          this.stayData = res;
+        });
     },
   },
   created() {
     this.$store.commit({
-      type: 'toggleHeroImage',
+      type: "toggleHeroImage",
       toggleShow: false,
     });
     //TODO:see about deprecating this params call
@@ -110,17 +121,21 @@ export default {
     } = this.$route;
 
     if (!filterBy) {
-      this.$store.dispatch({ type: 'stay/fetchFiltered', filterBy: null }).then(res => {
-        this.stayData = res;
-      });
-      this.filterTxt = 'Explore locations';
+      this.$store
+        .dispatch({ type: "stay/fetchFiltered", filterBy: null })
+        .then((res) => {
+          this.stayData = res;
+        });
+      this.filterTxt = "Explore locations";
       return;
     }
 
     this.filterTxt = filterBy.filterTxt;
-    this.$store.dispatch({ type: 'stay/fetchFiltered', filterBy }).then(res => {
-      this.stayData = res;
-    });
+    this.$store
+      .dispatch({ type: "stay/fetchFiltered", filterBy })
+      .then((res) => {
+        this.stayData = res;
+      });
   },
   components: {
     stayListGrid,

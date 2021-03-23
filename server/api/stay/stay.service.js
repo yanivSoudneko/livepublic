@@ -12,17 +12,29 @@ module.exports = {
     add,
 };
 
-async function query(filterBy = {}) {
-    // const criteria = _buildCriteria(filterBy);
-    const criteria = filterBy;
-
+async function query(filterBy) {
+    const aggregation = _buildCriteria(filterBy);
     try {
         const collection = await dbService.getCollection(STAY_COLLECTION);
-        var stays = await collection.find(criteria).toArray();
+        var stays = await collection.aggregate(aggregation).toArray();
+
         stays = stays.map((stay) => {
             stay.createdAt = ObjectId(stay._id).getTimestamp();
             return stay;
         });
+
+        if (filterBy.rating) {
+            stays = stays.sort((stay1, stay2) => {
+                const rating1 = _getRating(stay1.reviews);
+                const rating2 = _getRating(stay2.reviews);
+                return rating2 - rating1;
+            });
+        }
+
+        if (filterBy.hasOwnProperty('page') && filterBy.size) {
+            stays = _paginate(stays, filterBy.size, filterBy.page);
+        }
+
         return stays;
     } catch (err) {
         logger.error('cannot find stays', err);
@@ -91,33 +103,71 @@ async function add(stay) {
     }
 }
 
-function _buildCriteria(filterBy) {
-    const criteria = {};
-
+function _buildCriteria(criteria) {
     const {
         filterTxt,
-        checkIn,
-        checkOut,
+        // checkIn,
+        // checkOut,
         guestCount,
-        rating,
-        page,
-        size,
         type,
-    } = filterBy;
+    } = criteria;
 
-    if (filterTxt && filterTxt !== '') {
-        const txtCriteria = { $regex: filterTxt, $options: 'i' };
-        criteria.$or = [
-            {
-                stayname: txtCriteria,
-            },
-            {
-                fullname: txtCriteria,
-            },
-        ];
+    const filterBy = {
+        filterTxt,
+        type,
+        guestCount,
+    };
+    console.log(
+        '🚀 ~ file: stay.service.js ~ line 120 ~ _buildCriteria ~ filterBy',
+        filterBy
+    );
+    const aggregation = [];
+    for (const key in filterBy) {
+        const value = filterBy[key];
+        console.log(key, value);
+        if (key === 'filterTxt' && value) {
+            aggregation.push({
+                $match: {
+                    'loc.address': {
+                        $regex: value,
+                        $options: 'i',
+                    },
+                },
+            });
+        }
+
+        if (key === 'type' && value) {
+            aggregation.push({
+                $match: {
+                    type: {
+                        $regex: value,
+                        $options: 'i',
+                    },
+                },
+            });
+        }
+
+        if (key === 'guestCount' && value) {
+            aggregation.push({
+                $match: {
+                    accommodates: {
+                        $gte: value,
+                    },
+                },
+            });
+        }
     }
-    if (filterBy.minBalance) {
-        criteria.balance = { $gte: filterBy.minBalance };
-    }
-    return criteria;
+    return aggregation;
+}
+
+function _getRating(reviews) {
+    const totalReviews = reviews.length;
+    const ratingSum = reviews.reduce((acc, review) => {
+        acc += review.rating;
+    }, 0);
+    return ratingSum / totalReviews;
+}
+
+function _paginate(array, page_size, page_number) {
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
 }

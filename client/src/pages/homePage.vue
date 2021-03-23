@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		<location-list />
+		<inspirtion-destionation/>
 		<h1 class="stays-header">Popular Stays</h1>
 		<stay-list :stayData="topRated"></stay-list>
 		<category-list />
@@ -55,6 +55,7 @@
 </style>
 <script>
 import locationList from "../cmps/locationList.cmp";
+import inspirtionDestionation from "../cmps/inspiration-destination.cmp";
 import categoryList from "../cmps/categoryList.cmp";
 import stayList from "../cmps/stayList.cmp";
 export default {
@@ -96,6 +97,7 @@ export default {
 		locationList,
 		categoryList,
 		stayList,
+		inspirtionDestionation
 	},
 };
 </script>
