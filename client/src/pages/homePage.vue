@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		<inspirtion-destionation/>
+		<inspirtion-destionation />
 		<h1 class="stays-header">Popular Stays</h1>
 		<stay-list :stayData="topRated"></stay-list>
 		<category-list />
@@ -77,6 +77,10 @@ export default {
 			})
 			.then(({ stays, filterBy }) => {
 				this.topRated = { stays, filterBy };
+				console.log(
+					"🚀 ~ file: homePage.vue ~ line 80 ~ .then ~ this.topRated",
+					this.topRated
+				);
 			});
 		//top rated in NY
 		this.$store
@@ -86,6 +90,10 @@ export default {
 			})
 			.then(({ stays, filterBy }) => {
 				this.topRatedNY = { stays, filterBy };
+				console.log(
+					"🚀 ~ file: homePage.vue ~ line 90 ~ .then ~ 		this.topRatedNY",
+					this.topRatedNY
+				);
 			});
 		// toggle hero image on
 		this.$store.commit({
@@ -97,7 +105,7 @@ export default {
 		locationList,
 		categoryList,
 		stayList,
-		inspirtionDestionation
+		inspirtionDestionation,
 	},
 };
 </script>

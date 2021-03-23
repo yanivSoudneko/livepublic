@@ -30,6 +30,10 @@ export default {
             state.locations = locations;
         },
         setStay({ stays }, { stay }) {
+            console.log(
+                '🚀 ~ file: stay.store.js ~ line 33 ~ setStay ~ stay',
+                stay
+            );
             const idx = stays.findIndex((s) => s._id === stay._id);
             if (idx === -1) {
                 console.error('🚀 ~  STORE ERROR STAY IDX NOT FOUND', idx);
@@ -45,6 +49,10 @@ export default {
         async fetchFiltered({ state }, { filterBy }) {
             try {
                 _setFilter(state.filterBy, filterBy);
+                console.log(
+                    '🚀 ~ file: stay.store.js ~ line 51 ~ fetchFiltered ~ state.filterBy',
+                    state.filterBy
+                );
 
                 const stays = await stayService.queryStays(state.filterBy);
                 const output = {

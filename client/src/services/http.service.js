@@ -1,48 +1,48 @@
-import Axios from 'axios'
-import router from '../router'
+import Axios from 'axios';
+import router from '../router';
 
-const BASE_URL = process.env.NODE_ENV === 'production'
-    ? '/api/'
-    : '//localhost:3030/api/'
-
+const BASE_URL =
+    process.env.NODE_ENV === 'production' ? '/api' : '//localhost:3030/api';
 
 var axios = Axios.create({
-    withCredentials: true
-})
+    withCredentials: true,
+});
 
 export const httpService = {
-    get(endpoint, data) {
-        return ajax(endpoint, 'GET', data)
+    get(endpoint, data, params) {
+        return ajax(endpoint, 'GET', data, params);
     },
     post(endpoint, data) {
-        return ajax(endpoint, 'POST', data)
+        return ajax(endpoint, 'POST', data);
     },
     put(endpoint, data) {
-        return ajax(endpoint, 'PUT', data)
+        return ajax(endpoint, 'PUT', data);
     },
     delete(endpoint, data) {
-        return ajax(endpoint, 'DELETE', data)
-    }
-}
+        return ajax(endpoint, 'DELETE', data);
+    },
+};
 
-async function ajax(endpoint, method = 'GET', data = null) {
+async function ajax(endpoint, method, data = null, params = {}) {
     try {
         const res = await axios({
             url: `${BASE_URL}${endpoint}`,
             method,
             data,
-            params: (method === 'GET') ? data : null
-        })
-        return res.data
+            params: method === 'GET' ? params : null,
+        });
+        return res.data;
     } catch (err) {
-        console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: ${data}`)
-        console.dir(err)
+        console.log(
+            `Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: ${data}`
+        );
+        console.dir(err);
         if (err.response && err.response.status === 401) {
             // Depends on routing startegy - hash or history
             // window.location.assign('/#/login')
             // window.location.assign('/login')
-            router.push('/login')
+            router.push('/login');
         }
-        throw err
+        throw err;
     }
 }

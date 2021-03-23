@@ -71,7 +71,7 @@ export default {
 		exploreType(type) {
 			this.$router.push({
 				name: "Explore",
-				params: { filterBy: { filterTxt: type, type } },
+				params: { filterBy: { type } },
 			});
 		},
 	},

@@ -13,8 +13,17 @@ module.exports = {
 };
 
 async function query(filterBy) {
-    const aggregation = _buildCriteria(filterBy);
     try {
+        var aggregation = _buildCriteria(filterBy);
+
+        if (filterBy.hasOwnProperty('page') && filterBy.size) {
+            var { page, size } = filterBy;
+            page = !isNaN(page) && page > 0 ? page : 1;
+            size = !isNaN(size) && size > 0 ? size : 1;
+            // stays = _paginate(stays, filterBy.size, filterBy.page);
+            aggregation.push({ $skip: page * size });
+            aggregation.push({ $limit: size });
+        }
         const collection = await dbService.getCollection(STAY_COLLECTION);
         var stays = await collection.aggregate(aggregation).toArray();
 
@@ -22,18 +31,6 @@ async function query(filterBy) {
             stay.createdAt = ObjectId(stay._id).getTimestamp();
             return stay;
         });
-
-        if (filterBy.rating) {
-            stays = stays.sort((stay1, stay2) => {
-                const rating1 = _getRating(stay1.reviews);
-                const rating2 = _getRating(stay2.reviews);
-                return rating2 - rating1;
-            });
-        }
-
-        if (filterBy.hasOwnProperty('page') && filterBy.size) {
-            stays = _paginate(stays, filterBy.size, filterBy.page);
-        }
 
         return stays;
     } catch (err) {
@@ -154,6 +151,20 @@ function _buildCriteria(criteria) {
                         $gte: value,
                     },
                 },
+            });
+        }
+
+        if (key === 'rating') {
+            aggregation.push({
+                $match: {
+                    'review_scores.review_scores_rating': {
+                        $exists: true,
+                        $nin: ['', null],
+                    },
+                },
+            });
+            aggregation.push({
+                $sort: { 'review_scores.review_scores_rating': -1 },
             });
         }
     }

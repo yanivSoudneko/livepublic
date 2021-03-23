@@ -1,4 +1,4 @@
-// import { httpService } from './http.service';
+import { httpService } from './http.service';
 import { storageService } from './async-storage.service';
 import stayJson from '../../data/stayMockData.json';
 import locationsJson from '../../data/locationsMockData.json';
@@ -12,6 +12,8 @@ export const stayService = {
 
 const STAY_KEY = 'stays';
 const LOCATION_KEY = 'locations';
+
+const END_POINT = '/stay';
 
 (async () => {
     console.log('hello??');
@@ -28,7 +30,24 @@ const LOCATION_KEY = 'locations';
     console.error('error initialising data!', err);
 });
 
-function queryStays(filterBy) {
+async function queryStays(filterBy = {}) {
+    try {
+        console.log(
+            '🚀 ~ file: stay.service.js ~ line 31 ~ queryStays ~ filterBy',
+            JSON.stringify(filterBy)
+        );
+
+        const res = await httpService.get(END_POINT, null, { filterBy });
+        console.log(
+            '🚀 ~ file: stay.service.js ~ line 43 ~ queryStays ~ res',
+            res
+        );
+        return res;
+    } catch (error) {
+        console.log(error);
+    }
+}
+function queryStaysLocal(filterBy) {
     console.log(
         '🚀 ~ file: stay.service.js ~ line 31 ~ queryStays ~ filterBy',
         filterBy
@@ -73,11 +92,21 @@ function queryStays(filterBy) {
         return result;
     });
 }
+
 function queryLocations() {
     return storageService.query(LOCATION_KEY);
 }
-function getStayById(stayId) {
-    return storageService.get(STAY_KEY, stayId);
+async function getStayById(stayId) {
+    try {
+        const res = await httpService.get(END_POINT + '/' + stayId);
+        console.log(
+            '🚀 ~ file: stay.service.js ~ line 43 ~ queryStays ~ res',
+            res
+        );
+        return res;
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 async function update(targetStay) {
@@ -92,14 +121,14 @@ async function update(targetStay) {
     }
 }
 
-function _getRating(reviews) {
-    const totalReviews = reviews.length;
-    const ratingSum = reviews.reduce((acc, review) => {
-        acc += review.rating;
-    }, 0);
-    return ratingSum / totalReviews;
-}
+// function _getRating(reviews) {
+//     const totalReviews = reviews.length;
+//     const ratingSum = reviews.reduce((acc, review) => {
+//         acc += review.rating;
+//     }, 0);
+//     return ratingSum / totalReviews;
+// }
 
-function _paginate(array, page_size, page_number) {
-    return array.slice((page_number - 1) * page_size, page_number * page_size);
-}
+// function _paginate(array, page_size, page_number) {
+//     return array.slice((page_number - 1) * page_size, page_number * page_size);
+// }

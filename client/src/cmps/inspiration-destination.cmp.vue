@@ -2,37 +2,23 @@
 	<div class="category-list">
 		<h1 class="category-header">Inpiration Destionations</h1>
 		<!-- <div class="categories "> -->
-		<div class="category" @click="exploreType('Tel Aviv')">
-			<img
-				src="@/assets/img/telAviv.jpg"
-				alt="live anywhere"
-			/>
+		<div class="category" @click="exploreCity('Tel Aviv')">
+			<img src="@/assets/img/telAviv.jpg" alt="live anywhere" />
 			<p>Tel Aviv</p>
 		</div>
-		<div class="category" @click="exploreType('Tokyo')">
-			<img
-				src="@/assets/img/tokyo.jpg"
-				alt="Unique stays"
-			/>
+		<div class="category" @click="exploreCity('Tokyo')">
+			<img src="@/assets/img/tokyo.jpg" alt="Unique stays" />
 			<p>Tokyo</p>
 		</div>
-		<div class="category" @click="exploreType('Paris')">
-			<img
-				src="@/assets/img/paris.jpg"
-				alt="Paris"
-			/>
+		<div class="category" @click="exploreCity('Paris')">
+			<img src="@/assets/img/paris.jpg" alt="Paris" />
 			<p>Paris</p>
 		</div>
-		<div class="category" @click="exploreType('New York')">
-			<img
-				src="@/assets/img/newYork.jpg"
-				alt="New York"
-			/>
+		<div class="category" @click="exploreCity('New York')">
+			<img src="@/assets/img/newYork.jpg" alt="New York" />
 			<p>New York</p>
 		</div>
-	
 	</div>
-	
 </template>
 
 <style lang="scss">
@@ -69,10 +55,10 @@
 export default {
 	name: "Category-List",
 	methods: {
-		exploreType(type) {
+		exploreCity(cityName) {
 			this.$router.push({
 				name: "Explore",
-				params: { filterBy: { filterTxt: type, type } },
+				params: { filterBy: { filterTxt: cityName } },
 			});
 		},
 	},

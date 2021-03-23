@@ -13,8 +13,16 @@ async function getStay(req, res) {
 
 async function getStays(req, res) {
     try {
-        const filterBy = req.query.filterBy;
-        const stays = await stayService.query(JSON.parse(filterBy));
+        var { filterBy } = req.query;
+        // console.log(
+        //     '🚀 ~ file: stay.controller.js ~ line 17 ~ getStays ~ filterBy',
+        //     filterBy
+        // );
+        // res.json(JSON.parse(filterBy));
+        // return;
+        // return res.send(filterBy);
+        filterBy = JSON.parse(filterBy);
+        const stays = await stayService.query(filterBy);
         res.send(stays);
     } catch (err) {
         logger.error('Failed to get Stays', err);
