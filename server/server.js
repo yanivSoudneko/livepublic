@@ -8,24 +8,24 @@ const app = express();
 const http = require('http').createServer(app);
 
 const session = expressSession({
-    secret: process.env.HASH_KEY || 'secret',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false },
+  secret: process.env.HASH_KEY || 'secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false },
 });
 // Express App Config
 app.use(express.json());
 app.use(session);
 
 const corsOptions = {
-    origin: ['http://127.0.0.1:8080', 'http://localhost:8080'],
-    credentials: true,
+  origin: ['http://127.0.0.1:8080', 'http://localhost:8080'],
+  credentials: true,
 };
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.resolve(__dirname, 'public')));
+  app.use(express.static(path.resolve(__dirname, 'public')));
 } else {
-    app.use(cors(corsOptions));
+  app.use(cors(corsOptions));
 }
 
 const mainRouter = require('./main.routes');
@@ -37,6 +37,6 @@ connectSockets(http, session, corsOptions.origin);
 
 const port = process.env.PORT || 3030;
 http.listen(port, () => {
-    console.info('Server is running on port: ' + port);
-    console.info(process.env.MONGO_URI);
+  console.info('Server is running on port: ' + port);
+  console.info(process.env.MONGO_URI);
 });
