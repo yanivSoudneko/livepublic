@@ -77,6 +77,7 @@
       <!-- {{reviews}} -->
       <div class="stay-reviews">
         <h2>Reviews</h2>
+        <!-- <ul>
         <div
           class="review-details"
           v-for="(review, index) in stay.reviews"
@@ -91,7 +92,6 @@
             />
           </div>
           <div class="user-review-txt">
-            <!-- <p :class="'para para' + index">{{ review.txt }}</p> -->
             <p :class="'para para' + index">{{ review.txt }}</p>
             <button class="pill-pad" @click="readMore">Read More</button>
           </div>
@@ -103,6 +103,67 @@
             Remove
           </button>
         </div>
+          </ul> -->
+        <h3>
+          <i class="fas fa-star"></i>{{ houseRating }} ({{ reviewsLength }}
+          reviews)
+        </h3>
+        <div class="reviews-rate-list">
+          <p>Cleanliness</p>
+          <el-progress
+            class="progress-bar"
+            :percentage="98"
+            :format="format"
+          ></el-progress>
+          <p>Communication</p>
+          <el-progress
+            class="progress-bar"
+            :percentage="98"
+            :format="format"
+          ></el-progress>
+          <p>Check-in</p>
+          <el-progress
+            class="progress-bar"
+            :percentage="100"
+            :format="format"
+          ></el-progress>
+          <p>Accuracy</p>
+          <el-progress
+            class="progress-bar"
+            :percentage="90"
+            :format="format"
+          ></el-progress>
+          <p>Location</p>
+          <el-progress
+            class="progress-bar"
+            :percentage="90"
+            :format="format"
+          ></el-progress>
+          <p>Value</p>
+          <el-progress
+            class="progress-bar"
+            :percentage="50"
+            :format="format"
+          ></el-progress>
+        </div>
+        <ul class="reviews-grid">
+          <li v-for="(review, index) in stay.reviews" :key="index">
+            <div class="reviewer-container flex a-center">
+              <img
+                :src="review.by.imgUrl"
+                alt="imgUrl"
+                :class="'avatar img' + index"
+              />
+              <div>
+                <div class="reviewer-name">{{ review.by.fullname }}</div>
+                <div class="review-time">
+                  {{ convertTimeStamp(review.createdAt) }}
+                </div>
+              </div>
+            </div>
+            <p>{{ review.txt }}</p>
+          </li>
+        </ul>
         <div class="add-review">
           <h1>Add a Review</h1>
           <div class="stars">
@@ -196,16 +257,16 @@
         border-bottom-right-radius: 15px;
       }
     }
-   
   }
-   .stay-page-amenities-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      row-gap: 27px;
-    }
+  .stay-page-amenities-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 27px;
+    width:60%;
+  }
 }
 .right-side-container {
-  float: left;
+  // float: left;
   // .right-side > * {
   // }
   //    .host-details{
@@ -244,6 +305,12 @@
   .stay-reviews {
     margin-top: 85px;
     height: 100%;
+    .reviews-grid {
+      grid-template-columns: 1fr 1fr;
+      -moz-column-gap: 90px;
+      column-gap: 90px;
+      display: grid;
+    }
   }
   .host-image {
     img {
@@ -270,6 +337,23 @@
       border-radius: 50%;
     }
   }
+  .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    margin-inline-end: 12px;
+  }
+  .el-progress-bar__inner{
+    background-color: #ff385c;
+  }
+  .reviews-rate-list {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-bottom: 20px;
+    -moz-column-gap: 10px;
+    column-gap: 10px;
+  }
 }
 </style>
 <script>
@@ -277,6 +361,7 @@
 import googleMaps from "../cmps/google.maps.cmp";
 import checkOut from "../cmps/checkOut.vue";
 import stars from "../cmps/stars.cmp";
+import moment from "moment";
 export default {
   name: "Stay",
   data() {
@@ -290,6 +375,15 @@ export default {
     };
   },
   methods: {
+    format(percentage) {
+      if (percentage === 98) return "4.9";
+      else if (percentage === 100) return "5.0";
+      else if (percentage === 90) return "4.7";
+      else if (percentage === 50) return "2.5";
+    },
+    convertTimeStamp(time) {
+      return moment(time).fromNow();
+    },
     checkout(orderToSave) {
       const { id, fullName, img } = this.user;
       const order = {
