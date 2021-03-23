@@ -26,6 +26,7 @@
           <div class="host-details flex j-between a-center">
             <div class="about-host">
               <h2>{{ stay.host.fullname }}</h2>
+              <h2>{{ stay._id }}</h2>
               <span>{{ stay.accommodates }} Guests</span>
             </div>
             <div class="host-image">
@@ -61,14 +62,15 @@
             Accommodates to: {{ accommodatesLength }}
           </div>
         </div>
-        <ul class="stye-page-amenities-container">
-          <div
-            class="stye-page-amenities"
+        <ul class="stay-page-amenities-container">
+          <li
+            class="stay-page-amenities"
             v-for="(amenitie, index) in stay.amenities"
             :key="index"
           >
-            <li class="amenitie">{{ amenitie }}</li>
-          </div>
+            {{ amenitie }}
+            <!-- <li class="amenitie">{{ amenitie }}</li> -->
+          </li>
         </ul>
       </div>
       <hr />
@@ -141,7 +143,7 @@
   .rateing {
     display: inline;
   }
-  .underTitle-addres{
+  .underTitle-addres {
     text-decoration: underline;
     color: #0c0c0c;
   }
@@ -152,8 +154,8 @@
     grid-template-rows: 165px 165px;
     gap: 15px 10px;
     grid-template-areas:
-      'img0 img0 img1 img2'
-      'img0 img0 img3 img4';
+      "img0 img0 img1 img2"
+      "img0 img0 img3 img4";
     margin-bottom: 100px;
     height: 330px;
     .stay-page-img-container:nth-child(1) {
@@ -193,77 +195,82 @@
         grid-area: img4;
         border-bottom-right-radius: 15px;
       }
-      }
     }
+   
   }
-  .right-side-container {
-    float: left;
-    // .right-side > * {
-    // }
-    //    .host-details{
-    //   .about-host{
-    //     white-space: pre;
-    //     .host-image{
-    //       img{
-    //         width: 50px;
-    //         height: 50px;
-    //         border-radius: 50%;
-    //       }
-    //     }
-    //   }
-    // }
-    .stay-page-accommodates {
-      margin: 15px;
-      border: 1px rgba(59, 56, 56, 0.795) solid;
-      padding: 10px;
-      border-radius: 10px;
+   .stay-page-amenities-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      row-gap: 27px;
+    }
+}
+.right-side-container {
+  float: left;
+  // .right-side > * {
+  // }
+  //    .host-details{
+  //   .about-host{
+  //     white-space: pre;
+  //     .host-image{
+  //       img{
+  //         width: 50px;
+  //         height: 50px;
+  //         border-radius: 50%;
+  //       }
+  //     }
+  //   }
+  // }
+  .stay-page-accommodates {
+    margin: 15px;
+    border: 1px rgba(59, 56, 56, 0.795) solid;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    // max-width: 250px;
+    text-align: center;
+    > * {
       display: flex;
-      flex-direction: column;
-      height: 200px;
-      max-width: 250px;
-      text-align: center;
-      > * {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: auto;
-      }
-    }
-    .stay-reviews,
-    .google-map {
-      height: 50vh;
-    }
-    .stay-reviews {
-      margin-top: 85px;
-      height: 100%;
-    }
-    .host-image {
-      img {
-        width: 50px;
-        border-radius: 50%;
-      }
-    }
-    .user-review-txt {
-      .para {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-      }
-      .removeP {
-        -webkit-line-clamp: unset;
-        -webkit-box-orient: unset;
-      }
-    }
-    .user-review-avatar {
-      img {
-        width: 50px;
-        border-radius: 50%;
-      }
+      justify-content: center;
+      align-items: center;
+      width: auto;
     }
   }
-
+  .stay-reviews,
+  .google-map {
+    height: 50vh;
+  }
+  .stay-reviews {
+    margin-top: 85px;
+    height: 100%;
+  }
+  .host-image {
+    img {
+      width: 50px;
+      border-radius: 50%;
+    }
+  }
+  .user-review-txt {
+    .para {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+    .removeP {
+      -webkit-line-clamp: unset;
+      -webkit-box-orient: unset;
+    }
+  }
+  .user-review-avatar {
+    img {
+      width: 50px;
+      border-radius: 50%;
+    }
+  }
+}
 </style>
 <script>
 // @ is an alias to /src
@@ -388,7 +395,7 @@ export default {
         acc += obj.rate;
         return acc;
       }, 0);
-      return rateTotal / reviews.length;
+      return (rateTotal / reviews.length).toFixed(1);
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;
