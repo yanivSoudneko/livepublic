@@ -63,39 +63,31 @@ async function remove(stayId) {
   }
 }
 
-async function update(stay) {
+async function update(stay, id) {
   try {
-    return { msg: 'not ready yet' };
-    // // peek only updatable fields!
-    // const _id = ObjectId(stay._id);
-    // const stayToSave = {
-    //     stayname: stay.stayname,
-    //     fullname: stay.fullname,
-    //     password: stay.password,
-    //     imgUrl: stay.imgUrl,
-    // };
-    // const collection = await dbService.getCollection(STAY_COLLECTION);
-    // await collection.updateOne({ _id }, { $set: stayToSave });
-    // return stayToSave;
+    const _id = ObjectId(id);
+    console.log('stay:', stay);
+    delete stay._id;
+    const collection = await dbService.getCollection(STAY_COLLECTION);
+    const updatedStay = await collection.updateOne({ _id }, { $set: stay }, { returnOriginal: false });
+    return updatedStay;
   } catch (err) {
     logger.error(`cannot update stay ${stay._id}`, err);
+    console.error(`cannot update stay ${stay._id}`, err);
     throw err;
   }
 }
 
 async function add(stay) {
   try {
-    return { msg: 'not ready yet' };
-    // // peek only updatable fields!
-    // const stayToAdd = {
-    //     stayname: stay.stayname,
-    //     password: stay.password,
-    //     fullname: stay.fullname,
-    //     imgUrl: stay.imgUrl,
-    // };
-    // const collection = await dbService.getCollection(STAY_COLLECTION);
-    // await collection.insertOne(stayToAdd);
-    // return stayToAdd;
+    // return { msg: 'not ready yet' };
+    // peek only updatable fields!
+    const stayToAdd = {
+      reviews: stay.review,
+    };
+    const collection = await dbService.getCollection(STAY_COLLECTION);
+    await collection.insertOne(stayToAdd);
+    return stayToAdd;
   } catch (err) {
     logger.error('cannot insert stay', err);
     throw err;

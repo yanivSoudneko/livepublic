@@ -10,11 +10,7 @@
       <span>{{ ratingLength }}</span>
       <span class="underTitle-addres">{{ stay.loc.address }}</span>
       <div class="stay-page-container">
-        <div
-          class="stay-page-img-container"
-          v-for="(url, index) in stay.imgUrls"
-          :key="index"
-        >
+        <div class="stay-page-img-container" v-for="(url, index) in stay.imgUrls" :key="index">
           <img :src="url" alt="imgUrl" :class="'img img' + index" />
         </div>
       </div>
@@ -38,12 +34,7 @@
         </div>
         <!-- <div class="stay-page-accommodates">
           <div class="" aria-hidden="true">
-            <span
-              class=""
-              v-for="n in stay.accommodates"
-              :key="n"
-              style="margin: 10px"
-            >
+            <span class="" v-for="n in stay.accommodates" :key="n" style="margin: 10px">
               <svg
                 viewBox="0 0 24 24"
                 role="presentation"
@@ -104,55 +95,27 @@
         </div>
           </ul> -->
         <h3>
-          <i class="fas fa-star"></i>{{ houseRating }} ({{ reviewsLength }}
+          <i class="fas fa-star"></i>{{ stay.review_scores.review_scores_rating }} ({{ stay.reviews.length }}
           reviews)
         </h3>
         <div class="reviews-rate-list">
           <p>Cleanliness</p>
-          <el-progress
-            class="progress-bar"
-            :percentage="98"
-            :format="format"
-          ></el-progress>
+          <el-progress class="progress-bar" :percentage="98" :format="format"></el-progress>
           <p>Communication</p>
-          <el-progress
-            class="progress-bar"
-            :percentage="98"
-            :format="format"
-          ></el-progress>
+          <el-progress class="progress-bar" :percentage="98" :format="format"></el-progress>
           <p>Check-in</p>
-          <el-progress
-            class="progress-bar"
-            :percentage="100"
-            :format="format"
-          ></el-progress>
+          <el-progress class="progress-bar" :percentage="100" :format="format"></el-progress>
           <p>Accuracy</p>
-          <el-progress
-            class="progress-bar"
-            :percentage="90"
-            :format="format"
-          ></el-progress>
+          <el-progress class="progress-bar" :percentage="90" :format="format"></el-progress>
           <p>Location</p>
-          <el-progress
-            class="progress-bar"
-            :percentage="90"
-            :format="format"
-          ></el-progress>
+          <el-progress class="progress-bar" :percentage="90" :format="format"></el-progress>
           <p>Value</p>
-          <el-progress
-            class="progress-bar"
-            :percentage="50"
-            :format="format"
-          ></el-progress>
+          <el-progress class="progress-bar" :percentage="50" :format="format"></el-progress>
         </div>
         <ul class="reviews-grid">
           <li v-for="(review, index) in stay.reviews.slice(0, 8)" :key="index">
             <div class="reviewer-container flex a-center">
-              <img
-                :src="review.by.imgUrl"
-                alt="imgUrl"
-                :class="'avatar img' + index"
-              />
+              <img :src="review.by.imgUrl" alt="imgUrl" :class="'avatar img' + index" />
               <div>
                 <div class="reviewer-name">{{ review.by.fullname }}</div>
                 <div class="review-time">
@@ -168,13 +131,7 @@
           <div class="stars">
             <stars :readOnly="false" @ratingChanged="setReviewRating" />
           </div>
-          <el-input
-            type="textarea"
-            :rows="5"
-            placeholder="Please input"
-            v-model="reviewTxt"
-          >
-          </el-input>
+          <el-input type="textarea" :rows="5" placeholder="Please input" v-model="reviewTxt"> </el-input>
           <button @click="addReview">Add</button>
         </div>
       </div>
@@ -214,8 +171,8 @@
     grid-template-rows: 165px 165px;
     gap: 15px 10px;
     grid-template-areas:
-      "img0 img0 img1 img2"
-      "img0 img0 img3 img4";
+      'img0 img0 img1 img2'
+      'img0 img0 img3 img4';
     margin-bottom: 100px;
     height: 330px;
     .stay-page-img-container:nth-child(1) {
@@ -363,28 +320,28 @@
 </style>
 <script>
 // @ is an alias to /src
-import googleMaps from "../cmps/google.maps.cmp";
-import checkOut from "../cmps/checkOut.vue";
-import stars from "../cmps/stars.cmp";
-import moment from "moment";
+import googleMaps from '../cmps/google.maps.cmp';
+import checkOut from '../cmps/checkOut.vue';
+import stars from '../cmps/stars.cmp';
+import moment from 'moment';
 export default {
-  name: "Stay",
+  name: 'Stay',
   data() {
     return {
       stayId: null,
       stay: null,
       index: null,
       //textarea
-      reviewTxt: "",
+      reviewTxt: '',
       reviewRating: 1,
     };
   },
   methods: {
     format(percentage) {
-      if (percentage === 98) return "4.9";
-      else if (percentage === 100) return "5.0";
-      else if (percentage === 90) return "4.7";
-      else if (percentage === 50) return "2.5";
+      if (percentage === 98) return '4.9';
+      else if (percentage === 100) return '5.0';
+      else if (percentage === 90) return '4.7';
+      else if (percentage === 50) return '2.5';
     },
     convertTimeStamp(time) {
       return moment(time).fromNow();
@@ -397,7 +354,7 @@ export default {
         endDate: orderToSave.checkOut,
         guests: orderToSave.gueset,
         startDate: orderToSave.checkIn,
-        status: "pending",
+        status: 'pending',
         stay: {
           _id: this.stay._id,
           name: this.stay.name,
@@ -406,10 +363,8 @@ export default {
         totalPrice: 160,
         _id: null,
       };
-      console.log("order:", order);
-      this.$store
-        .dispatch({ type: "order/saveOrder", order })
-        .then(() => console.log("CheckOut Check"));
+      console.log('order:', order);
+      this.$store.dispatch({ type: 'order/saveOrder', order }).then(() => console.log('CheckOut Check'));
     },
     readMore(index) {
       const el = `p-${index}`;
@@ -440,7 +395,7 @@ export default {
       // };
       const { _id, fullname, imgUrl } = this.user;
       const newReview = {
-        _id: Date.now + "_" + _id,
+        _id: Date.now() + '_' + _id,
         txt: this.reviewTxt,
         rate: this.reviewRating,
         by: {
@@ -454,30 +409,30 @@ export default {
 
       this.$store
         .dispatch({
-          type: "stay/updateStay",
+          type: 'stay/updateStay',
           stay: this.stay,
         })
-        .then((res) => {
-          this.reviewTxt = "";
+        .then(stay => {
+          console.log('🚀 ~ file: stayPage.vue ~ line 405 ~ addReview ~ stay', stay);
+          this.reviewTxt = '';
           this.reviewRating = 1;
+          // this.stay = stay;
         });
     },
     removeReview(reviewId) {
-      const idx = this.stay.reviews.findIndex(
-        (review) => review._id === reviewId
-      );
+      const idx = this.stay.reviews.findIndex(review => review._id === reviewId);
       if (idx === -1) {
-        console.error("not found", idx);
+        console.error('not found', idx);
         return;
       }
       this.stay.reviews.splice(idx, 1);
       this.$store
         .dispatch({
-          type: "stay/updateStay",
+          type: 'stay/updateStay',
           stay: this.stay,
         })
-        .then((stay) => {
-          console.log("review removed");
+        .then(stay => {
+          console.log('review removed');
         });
     },
   },
@@ -487,7 +442,7 @@ export default {
     //  return reviews;
     // },
     user() {
-      return this.$store.getters["user/getUser"];
+      return this.$store.getters['user/getUser'];
     },
     calculatedPos() {
       return `radial-gradient(at ${this.mouseX}% ${this.mouseY}%, #e61e4d, #9b59b6)`;
@@ -502,28 +457,28 @@ export default {
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;
-      const addS = reviewsLength > 1 ? "s" : "";
-      const string = reviewsLength + " Review" + addS;
+      const addS = reviewsLength > 1 ? 's' : '';
+      const string = reviewsLength + ' Review' + addS;
       return string;
     },
     accommodatesLength() {
       const accommodatesLength = this.stay.accommodates;
-      const addS = accommodatesLength > 1 ? "s" : "";
-      const string = accommodatesLength + " partner" + addS;
+      const addS = accommodatesLength > 1 ? 's' : '';
+      const string = accommodatesLength + ' partner' + addS;
       return string;
     },
   },
   created() {
     const { stayId } = this.$route.params;
-    console.log("stayId", stayId);
+    console.log('stayId', stayId);
     this.stayId = stayId;
-    this.$store.dispatch({ type: "stay/loadStays" }).then(() => {
-      this.$store.dispatch({ type: "stay/getById", stayId }).then((stay) => {
+    this.$store.dispatch({ type: 'stay/loadStays' }).then(() => {
+      this.$store.dispatch({ type: 'stay/getById', stayId }).then(stay => {
         this.stay = stay;
       });
     });
     this.$store.commit({
-      type: "toggleHeroImage",
+      type: 'toggleHeroImage',
       toggleShow: false,
     });
   },
