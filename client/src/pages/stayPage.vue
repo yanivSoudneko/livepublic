@@ -58,13 +58,17 @@
         </div> -->
         <ul class="stay-page-amenities-container">
           <li
-            class="stay-page-amenities"
+            class="stay-page-amenities flex a-center"
             v-for="(amenity, index) in stay.amenities.slice(0, 10)"
             :key="index"
           >
-            {{ amenity }}
-            <span v-if="ammenitiesWithSvg.includes(amenity)" :html="require('@/assets/img/ammenities/'+amenity+'.svg')"></span>
-            <img :src="'@/assets/img/ammenities/'+amenity+'.svg'" alt=""/>
+            <!-- {{ amenity }} -->
+            <img
+              v-if="ammenitiesWithSvg.includes(amenity)"
+              class="amenity-img"
+              :src="require('@/assets/img/ammenities/' + amenity + '.svg')"
+              alt=""
+            /><span class="amenities-desc">{{ amenity }}</span>
             <!-- <li class="amenitie">{{ amenitie }}</li> -->
           </li>
         </ul>
@@ -269,6 +273,9 @@
     width: 60%;
     padding-top: 32px;
     padding-bottom: 32px;
+    .amenities-desc {
+      margin-left: 16px;
+    }
   }
 }
 .right-side {
@@ -279,7 +286,7 @@
   padding-bottom: 32px;
 }
 .right-side-container {
-     max-width: 650px;
+  max-width: 650px;
   // float: left;
   // .right-side > * {
   // }
@@ -335,6 +342,9 @@
       border-radius: 50%;
     }
   }
+  .amenity-img {
+    width: 25px;
+  }
   .user-review-txt {
     .para {
       overflow: hidden;
@@ -376,6 +386,7 @@
 </style>
 <script>
 // @ is an alias to /src
+import { utilService } from "../services/util.service";
 import googleMaps from "../cmps/google.maps.cmp";
 import checkOut from "../cmps/checkOut.vue";
 import stars from "../cmps/stars.cmp";
@@ -390,7 +401,33 @@ export default {
       //textarea
       reviewTxt: "",
       reviewRating: 1,
-      ammenitiesWithSvg:['Air conditioning','Babysitter recommendations','Bathtub']
+      ammenitiesWithSvg: [
+        "Air conditioning",
+        "Babysitter recommendations",
+        "Bathtub",
+        "Breakfast",
+        "Cable TV",
+        "Carbon monoxide alarm",
+        "Dedicated workspace",
+        "Dryer",
+        "Elevator",
+        "Essentials",
+        "First aid kit",
+        "Free parking on premises",
+        "Gym",
+        "Hair dryer",
+        "Hangers",
+        "Heating",
+        "Hot tub",
+        "Indoor fireplace",
+        "Iron",
+        "Kitchen",
+        "Security cameras on property",
+        "Smoke alarm",
+        "TV",
+        "Washer",
+        "Wifi",
+      ],
     };
   },
   methods: {
@@ -501,6 +538,10 @@ export default {
     },
   },
   computed: {
+    // adjustRating() {
+    //   const { rating } = this.stay;
+    //   return rating < 4 ? 4 : rating;
+    // },
     // reviews(){
     //  const reviews = this.stay.reviews.splice(0,8)
     //  return reviews;
@@ -517,7 +558,8 @@ export default {
         acc += obj.rate;
         return acc;
       }, 0);
-      return (rateTotal / reviews.length).toFixed(1);
+      const result = (rateTotal / reviews.length).toFixed(1);
+      return result < 4 ? utilService.genRand(4, 5, 1) : result;
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;

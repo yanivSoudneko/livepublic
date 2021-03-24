@@ -2,7 +2,8 @@
 export const utilService = {
     delay,
     getRandomInt,
-    makeId
+    makeId,
+    genRand
 }
 
 function delay(ms = 1500) {
@@ -24,4 +25,10 @@ function makeId(length = 5) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return txt;
+}
+
+function genRand(min, max, decimalPlaces) {  
+    var rand = Math.random()*(max-min) + min;
+    var power = Math.pow(10, decimalPlaces);
+    return Math.floor(rand*power) / power;
 }
