@@ -38,5 +38,5 @@ connectSockets(http, session, corsOptions.origin);
 const port = process.env.PORT || 3030;
 http.listen(port, () => {
   console.info('Server is running on port: ' + port);
-  console.info(process.env.MONGO_URI);
+  console.info(process.env.ENV_LOADED);
 });

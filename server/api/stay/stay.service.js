@@ -30,7 +30,6 @@ async function query(filterBy) {
         stays = stays.map((stay) => {
             stay.createdAt = ObjectId(stay._id).getTimestamp();
             stay.price = stay.price ? stay.price : 50;
-            console.log('stay:LINE 33', stay);
             return stay;
         });
 
@@ -66,7 +65,6 @@ async function remove(stayId) {
 async function update(stay, id) {
     try {
         const _id = ObjectId(id);
-        console.log('stay:', stay);
         delete stay._id;
         const collection = await dbService.getCollection(STAY_COLLECTION);
         const updatedStay = await collection.updateOne(

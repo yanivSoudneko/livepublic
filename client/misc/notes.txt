@@ -7,3 +7,9 @@ https://stackoverflow.com/questions/60144575/how-do-you-handle-click-outside-of-
 
 // Rate:
 https://tallent.us/vue-stars/
+
+20 of each:
+Tokyo
+Paris
+Tel Aviv
+Hong Kong
