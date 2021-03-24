@@ -1,7 +1,7 @@
 import userJson from '../../data/userMockData.json';
 export default {
   namespaced: true,
-  state: { user: { _id: 'u101', fullName: 'Guest', imgUrl: 'https://randomuser.me/api/portraits/men/48.jpg' } },
+  state: { user: { _id: 'u101', fullname: 'Guest', imgUrl: 'https://randomuser.me/api/portraits/men/48.jpg' } },
   getters: {
     getUser({ user }) {
       return user;

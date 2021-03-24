@@ -384,7 +384,7 @@ export default {
       // };
       const { _id, fullname, imgUrl } = this.user;
       const newReview = {
-        _id: Date.now + '_' + _id,
+        _id: Date.now() + '_' + _id,
         txt: this.reviewTxt,
         rate: this.reviewRating,
         by: {
