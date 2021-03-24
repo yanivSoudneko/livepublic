@@ -26,7 +26,6 @@
           <div class="host-details flex j-between a-center">
             <div class="about-host">
               <h2>{{ stay.host.fullname }}</h2>
-              <h2>{{ stay._id }}</h2>
               <span>{{ stay.accommodates }} Guests</span>
             </div>
             <div class="host-image">
@@ -37,7 +36,7 @@
           <h3>summary:</h3>
           <p>{{ stay.summary }}</p>
         </div>
-        <div class="stay-page-accommodates">
+        <!-- <div class="stay-page-accommodates">
           <div class="" aria-hidden="true">
             <span
               class=""
@@ -61,11 +60,11 @@
           <div class="" v-if="accommodatesLength">
             Accommodates to: {{ accommodatesLength }}
           </div>
-        </div>
+        </div> -->
         <ul class="stay-page-amenities-container">
           <li
             class="stay-page-amenities"
-            v-for="(amenitie, index) in stay.amenities"
+            v-for="(amenitie, index) in stay.amenities.slice(0,10)"
             :key="index"
           >
             {{ amenitie }}
@@ -147,7 +146,7 @@
           ></el-progress>
         </div>
         <ul class="reviews-grid">
-          <li v-for="(review, index) in stay.reviews" :key="index">
+          <li v-for="(review, index) in stay.reviews.slice(0, 8)" :key="index">
             <div class="reviewer-container flex a-center">
               <img
                 :src="review.by.imgUrl"
@@ -161,7 +160,7 @@
                 </div>
               </div>
             </div>
-            <p>{{ review.txt }}</p>
+            <p class="review-text">{{ review.txt }}</p>
           </li>
         </ul>
         <div class="add-review">
@@ -258,11 +257,16 @@
       }
     }
   }
+  .review-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .stay-page-amenities-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 27px;
-    width:60%;
+    width: 60%;
   }
 }
 .right-side-container {
@@ -310,6 +314,7 @@
       -moz-column-gap: 90px;
       column-gap: 90px;
       display: grid;
+      row-gap: 50px;
     }
   }
   .host-image {
@@ -343,7 +348,7 @@
     border-radius: 50%;
     margin-inline-end: 12px;
   }
-  .el-progress-bar__inner{
+  .el-progress-bar__inner {
     background-color: #ff385c;
   }
   .reviews-rate-list {
@@ -477,6 +482,10 @@ export default {
     },
   },
   computed: {
+    // reviews(){
+    //  const reviews = this.stay.reviews.splice(0,8)
+    //  return reviews;
+    // },
     user() {
       return this.$store.getters["user/getUser"];
     },
