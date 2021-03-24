@@ -22,7 +22,6 @@
           <div class="host-details flex j-between a-center">
             <div class="about-host">
               <h2>{{ stay.host.fullname }}</h2>
-              <h2>{{ stay._id }}</h2>
               <span>{{ stay.accommodates }} Guests</span>
             </div>
             <div class="host-image">
@@ -33,7 +32,7 @@
           <h3>summary:</h3>
           <p>{{ stay.summary }}</p>
         </div>
-        <div class="stay-page-accommodates">
+        <!-- <div class="stay-page-accommodates">
           <div class="" aria-hidden="true">
             <span class="" v-for="n in stay.accommodates" :key="n" style="margin: 10px">
               <svg
@@ -49,10 +48,16 @@
                 ></path></svg
             ></span>
           </div>
-          <div class="" v-if="accommodatesLength">Accommodates to: {{ accommodatesLength }}</div>
-        </div>
+          <div class="" v-if="accommodatesLength">
+            Accommodates to: {{ accommodatesLength }}
+          </div>
+        </div> -->
         <ul class="stay-page-amenities-container">
-          <li class="stay-page-amenities" v-for="(amenitie, index) in stay.amenities" :key="index">
+          <li
+            class="stay-page-amenities"
+            v-for="(amenitie, index) in stay.amenities.slice(0,10)"
+            :key="index"
+          >
             {{ amenitie }}
             <!-- <li class="amenitie">{{ amenitie }}</li> -->
           </li>
@@ -108,7 +113,7 @@
           <el-progress class="progress-bar" :percentage="50" :format="format"></el-progress>
         </div>
         <ul class="reviews-grid">
-          <li v-for="(review, index) in stay.reviews" :key="index">
+          <li v-for="(review, index) in stay.reviews.slice(0, 8)" :key="index">
             <div class="reviewer-container flex a-center">
               <img :src="review.by.imgUrl" alt="imgUrl" :class="'avatar img' + index" />
               <div>
@@ -118,7 +123,7 @@
                 </div>
               </div>
             </div>
-            <p>{{ review.txt }}</p>
+            <p class="review-text">{{ review.txt }}</p>
           </li>
         </ul>
         <div class="add-review">
@@ -209,6 +214,11 @@
       }
     }
   }
+  .review-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .stay-page-amenities-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -261,6 +271,7 @@
       -moz-column-gap: 90px;
       column-gap: 90px;
       display: grid;
+      row-gap: 50px;
     }
   }
   .host-image {
@@ -384,7 +395,7 @@ export default {
       // };
       const { _id, fullname, imgUrl } = this.user;
       const newReview = {
-        _id: Date.now + '_' + _id,
+        _id: Date.now() + '_' + _id,
         txt: this.reviewTxt,
         rate: this.reviewRating,
         by: {
@@ -426,6 +437,10 @@ export default {
     },
   },
   computed: {
+    // reviews(){
+    //  const reviews = this.stay.reviews.splice(0,8)
+    //  return reviews;
+    // },
     user() {
       return this.$store.getters['user/getUser'];
     },
