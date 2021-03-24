@@ -10,7 +10,11 @@
       <span>{{ ratingLength }}</span>
       <span class="underTitle-addres">{{ stay.loc.address }}</span>
       <div class="stay-page-container">
-        <div class="stay-page-img-container" v-for="(url, index) in stay.imgUrls" :key="index">
+        <div
+          class="stay-page-img-container"
+          v-for="(url, index) in stay.imgUrls"
+          :key="index"
+        >
           <img :src="url" alt="imgUrl" :class="'img img' + index" />
         </div>
       </div>
@@ -55,10 +59,12 @@
         <ul class="stay-page-amenities-container">
           <li
             class="stay-page-amenities"
-            v-for="(amenitie, index) in stay.amenities.slice(0,10)"
+            v-for="(amenity, index) in stay.amenities.slice(0, 10)"
             :key="index"
           >
-            {{ amenitie }}
+            {{ amenity }}
+            <span v-if="ammenitiesWithSvg.includes(amenity)" :html="require('@/assets/img/ammenities/'+amenity+'.svg')"></span>
+            <img :src="'@/assets/img/ammenities/'+amenity+'.svg'" alt=""/>
             <!-- <li class="amenitie">{{ amenitie }}</li> -->
           </li>
         </ul>
@@ -95,27 +101,58 @@
         </div>
           </ul> -->
         <h3>
-          <i class="fas fa-star"></i>{{ stay.review_scores.review_scores_rating }} ({{ stay.reviews.length }}
+          <i class="fas fa-star"></i
+          >{{ stay.review_scores.review_scores_rating }} ({{
+            stay.reviews.length
+          }}
           reviews)
         </h3>
         <div class="reviews-rate-list">
           <p>Cleanliness</p>
-          <el-progress class="progress-bar" :percentage="98" :format="format"></el-progress>
+          <el-progress
+            class="progress-bar"
+            :percentage="98"
+            :format="format"
+          ></el-progress>
           <p>Communication</p>
-          <el-progress class="progress-bar" :percentage="98" :format="format"></el-progress>
+          <el-progress
+            class="progress-bar"
+            :percentage="98"
+            :format="format"
+          ></el-progress>
           <p>Check-in</p>
-          <el-progress class="progress-bar" :percentage="100" :format="format"></el-progress>
+          <el-progress
+            class="progress-bar"
+            :percentage="100"
+            :format="format"
+          ></el-progress>
           <p>Accuracy</p>
-          <el-progress class="progress-bar" :percentage="90" :format="format"></el-progress>
+          <el-progress
+            class="progress-bar"
+            :percentage="90"
+            :format="format"
+          ></el-progress>
           <p>Location</p>
-          <el-progress class="progress-bar" :percentage="90" :format="format"></el-progress>
+          <el-progress
+            class="progress-bar"
+            :percentage="90"
+            :format="format"
+          ></el-progress>
           <p>Value</p>
-          <el-progress class="progress-bar" :percentage="50" :format="format"></el-progress>
+          <el-progress
+            class="progress-bar"
+            :percentage="50"
+            :format="format"
+          ></el-progress>
         </div>
         <ul class="reviews-grid">
           <li v-for="(review, index) in stay.reviews.slice(0, 8)" :key="index">
             <div class="reviewer-container flex a-center">
-              <img :src="review.by.imgUrl" alt="imgUrl" :class="'avatar img' + index" />
+              <img
+                :src="review.by.imgUrl"
+                alt="imgUrl"
+                :class="'avatar img' + index"
+              />
               <div>
                 <div class="reviewer-name">{{ review.by.fullname }}</div>
                 <div class="review-time">
@@ -131,7 +168,13 @@
           <div class="stars">
             <stars :readOnly="false" @ratingChanged="setReviewRating" />
           </div>
-          <el-input type="textarea" :rows="5" placeholder="Please input" v-model="reviewTxt"> </el-input>
+          <el-input
+            type="textarea"
+            :rows="5"
+            placeholder="Please input"
+            v-model="reviewTxt"
+          >
+          </el-input>
           <button @click="addReview">Add</button>
         </div>
       </div>
@@ -171,8 +214,8 @@
     grid-template-rows: 165px 165px;
     gap: 15px 10px;
     grid-template-areas:
-      'img0 img0 img1 img2'
-      'img0 img0 img3 img4';
+      "img0 img0 img1 img2"
+      "img0 img0 img3 img4";
     margin-bottom: 100px;
     height: 330px;
     .stay-page-img-container:nth-child(1) {
@@ -224,13 +267,23 @@
     grid-template-columns: 1fr 1fr;
     row-gap: 27px;
     width: 60%;
+    padding-top: 32px;
+    padding-bottom: 32px;
   }
 }
+.right-side {
+  max-width: 650px;
+}
+.host-details {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
 .right-side-container {
+     max-width: 650px;
   // float: left;
   // .right-side > * {
   // }
-  //    .host-details{
+  //  .host-details{
   //   .about-host{
   //     white-space: pre;
   //     .host-image{
@@ -250,7 +303,6 @@
     display: flex;
     flex-direction: column;
     height: 200px;
-    // max-width: 250px;
     text-align: center;
     > * {
       display: flex;
@@ -262,13 +314,16 @@
   .stay-reviews,
   .google-map {
     height: 50vh;
+    padding-top: 32px;
+    padding-bottom: 32px;
   }
   .stay-reviews {
     margin-top: 85px;
+    max-width: 650px;
     height: 100%;
     .reviews-grid {
-      grid-template-columns: 1fr 1fr;
-      -moz-column-gap: 90px;
+      // grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       column-gap: 90px;
       display: grid;
       row-gap: 50px;
@@ -289,8 +344,8 @@
       -webkit-box-orient: vertical;
     }
     .removeP {
-      -webkit-line-clamp: unset;
-      -webkit-box-orient: unset;
+      line-clamp: unset;
+      box-orient: unset;
     }
   }
   .user-review-avatar {
@@ -311,37 +366,39 @@
   .reviews-rate-list {
     text-align: left;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    // grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     margin-bottom: 20px;
-    -moz-column-gap: 10px;
+    // -moz-column-gap: 10px;
     column-gap: 10px;
   }
 }
 </style>
 <script>
 // @ is an alias to /src
-import googleMaps from '../cmps/google.maps.cmp';
-import checkOut from '../cmps/checkOut.vue';
-import stars from '../cmps/stars.cmp';
-import moment from 'moment';
+import googleMaps from "../cmps/google.maps.cmp";
+import checkOut from "../cmps/checkOut.vue";
+import stars from "../cmps/stars.cmp";
+import moment from "moment";
 export default {
-  name: 'Stay',
+  name: "Stay",
   data() {
     return {
       stayId: null,
       stay: null,
       index: null,
       //textarea
-      reviewTxt: '',
+      reviewTxt: "",
       reviewRating: 1,
+      ammenitiesWithSvg:['Air conditioning','Babysitter recommendations','Bathtub']
     };
   },
   methods: {
     format(percentage) {
-      if (percentage === 98) return '4.9';
-      else if (percentage === 100) return '5.0';
-      else if (percentage === 90) return '4.7';
-      else if (percentage === 50) return '2.5';
+      if (percentage === 98) return "4.9";
+      else if (percentage === 100) return "5.0";
+      else if (percentage === 90) return "4.7";
+      else if (percentage === 50) return "2.5";
     },
     convertTimeStamp(time) {
       return moment(time).fromNow();
@@ -354,7 +411,7 @@ export default {
         endDate: orderToSave.checkOut,
         guests: orderToSave.gueset,
         startDate: orderToSave.checkIn,
-        status: 'pending',
+        status: "pending",
         stay: {
           _id: this.stay._id,
           name: this.stay.name,
@@ -363,8 +420,10 @@ export default {
         totalPrice: 160,
         _id: null,
       };
-      console.log('order:', order);
-      this.$store.dispatch({ type: 'order/saveOrder', order }).then(() => console.log('CheckOut Check'));
+      console.log("order:", order);
+      this.$store
+        .dispatch({ type: "order/saveOrder", order })
+        .then(() => console.log("CheckOut Check"));
     },
     readMore(index) {
       const el = `p-${index}`;
@@ -395,7 +454,7 @@ export default {
       // };
       const { _id, fullname, imgUrl } = this.user;
       const newReview = {
-        _id: Date.now() + '_' + _id,
+        _id: Date.now() + "_" + _id,
         txt: this.reviewTxt,
         rate: this.reviewRating,
         by: {
@@ -409,30 +468,35 @@ export default {
 
       this.$store
         .dispatch({
-          type: 'stay/updateStay',
+          type: "stay/updateStay",
           stay: this.stay,
         })
-        .then(stay => {
-          console.log('🚀 ~ file: stayPage.vue ~ line 405 ~ addReview ~ stay', stay);
-          this.reviewTxt = '';
+        .then((stay) => {
+          console.log(
+            "🚀 ~ file: stayPage.vue ~ line 405 ~ addReview ~ stay",
+            stay
+          );
+          this.reviewTxt = "";
           this.reviewRating = 1;
           // this.stay = stay;
         });
     },
     removeReview(reviewId) {
-      const idx = this.stay.reviews.findIndex(review => review._id === reviewId);
+      const idx = this.stay.reviews.findIndex(
+        (review) => review._id === reviewId
+      );
       if (idx === -1) {
-        console.error('not found', idx);
+        console.error("not found", idx);
         return;
       }
       this.stay.reviews.splice(idx, 1);
       this.$store
         .dispatch({
-          type: 'stay/updateStay',
+          type: "stay/updateStay",
           stay: this.stay,
         })
-        .then(stay => {
-          console.log('review removed');
+        .then((stay) => {
+          console.log("review removed");
         });
     },
   },
@@ -442,7 +506,7 @@ export default {
     //  return reviews;
     // },
     user() {
-      return this.$store.getters['user/getUser'];
+      return this.$store.getters["user/getUser"];
     },
     calculatedPos() {
       return `radial-gradient(at ${this.mouseX}% ${this.mouseY}%, #e61e4d, #9b59b6)`;
@@ -457,28 +521,28 @@ export default {
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;
-      const addS = reviewsLength > 1 ? 's' : '';
-      const string = reviewsLength + ' Review' + addS;
+      const addS = reviewsLength > 1 ? "s" : "";
+      const string = reviewsLength + " Review" + addS;
       return string;
     },
     accommodatesLength() {
       const accommodatesLength = this.stay.accommodates;
-      const addS = accommodatesLength > 1 ? 's' : '';
-      const string = accommodatesLength + ' partner' + addS;
+      const addS = accommodatesLength > 1 ? "s" : "";
+      const string = accommodatesLength + " partner" + addS;
       return string;
     },
   },
   created() {
     const { stayId } = this.$route.params;
-    console.log('stayId', stayId);
+    console.log("stayId", stayId);
     this.stayId = stayId;
-    this.$store.dispatch({ type: 'stay/loadStays' }).then(() => {
-      this.$store.dispatch({ type: 'stay/getById', stayId }).then(stay => {
+    this.$store.dispatch({ type: "stay/loadStays" }).then(() => {
+      this.$store.dispatch({ type: "stay/getById", stayId }).then((stay) => {
         this.stay = stay;
       });
     });
     this.$store.commit({
-      type: 'toggleHeroImage',
+      type: "toggleHeroImage",
       toggleShow: false,
     });
   },
