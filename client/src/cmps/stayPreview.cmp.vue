@@ -139,7 +139,6 @@ export default {
       return this.$store.getters["user/getUser"];
     },
     likedByUser() {
-      console.log(this.stay.likes);
       return (
         this.loggedUser &&
         this.stay.likes &&
