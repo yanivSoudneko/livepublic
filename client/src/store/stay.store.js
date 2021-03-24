@@ -10,7 +10,7 @@ export default {
             checkOut: new Date(),
             guestCount: 1,
             type: '',
-            page: 1,
+            page: 0,
             size: 4,
         },
     },

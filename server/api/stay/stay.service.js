@@ -18,12 +18,13 @@ async function query(filterBy) {
 
         if (filterBy.hasOwnProperty('page') && filterBy.size) {
             var { page, size } = filterBy;
-            page = !isNaN(page) && page > 0 ? page : 1;
-            size = !isNaN(size) && size > 0 ? size : 1;
+            page = !isNaN(page) && page >= 0 ? page : 1;
+            size = !isNaN(size) && size >= 0 ? size : 1;
             // stays = _paginate(stays, filterBy.size, filterBy.page);
             aggregation.push({ $skip: page * size });
             aggregation.push({ $limit: size });
         }
+        console.log('aggregation---27', JSON.stringify(aggregation));
         const collection = await dbService.getCollection(STAY_COLLECTION);
         var stays = await collection.aggregate(aggregation).toArray();
 
@@ -164,6 +165,10 @@ function _buildCriteria(criteria) {
             });
         }
     }
+    console.log(
+        '🚀 ~ file: stay.service.js ~ line 169 ~ _buildCriteria ~ aggregation',
+        JSON.stringify(aggregation)
+    );
     return aggregation;
 }
 
