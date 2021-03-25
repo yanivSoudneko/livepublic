@@ -165,7 +165,26 @@ export default {
 				return;
 			}
 			this.order.guest = +this.order.guest;
-			this.$emit("checkout", this.order);
+			// this.$emit("checkout", this.order);
+
+			const order = {
+				buyer: this.$store.getters["user/user"],
+				host: this.stay.host,
+				checkIn: this.order.checkIn,
+				checkOut: this.order.checkOut,
+				guests: this.order.guest,
+				status: "pending",
+				stay: {
+					_id: this.stay._id,
+					name: this.stay.name,
+					price: this.stay.price,
+				},
+				totalPrice: 160,
+			};
+			console.log("order:", order);
+			this.$store
+				.dispatch({ type: "order/saveOrder", order })
+				.then((newOrder) => console.log("CheckOut Check", newOrder));
 		},
 		calcPricePerDays() {
 			if (this.order.checkIn && this.order.checkOut) {

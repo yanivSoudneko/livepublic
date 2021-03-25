@@ -14,10 +14,14 @@ module.exports = {
 async function query(filterBy) {
     try {
         var aggregation = _buildCriteria(filterBy);
+        // return aggregation;
 
-        if (filterBy.hasOwnProperty('page') && filterBy.size) {
+        if (
+            filterBy.hasOwnProperty('page') &&
+            filterBy.hasOwnProperty('size')
+        ) {
             var { page, size } = filterBy;
-            page = !isNaN(page) && page >= 0 ? page : 1;
+            page = !isNaN(page) && page >= 0 ? page : 0;
             size = !isNaN(size) && size >= 0 ? size : 1;
             aggregation.push({ $skip: page * size });
             aggregation.push({ $limit: size });
@@ -28,7 +32,6 @@ async function query(filterBy) {
 
         orders = orders.map((order) => {
             order.createdAt = ObjectId(order._id).getTimestamp();
-            order.price = order.price ? order.price : 50;
             return order;
         });
 
@@ -90,7 +93,7 @@ async function add(order) {
 }
 
 function _buildCriteria(criteria) {
-    const { checkIn, checkOut, guestCount, stayId } = criteria;
+    const { checkIn, checkOut, guestCount, stayId, hostId, guestId } = criteria;
 
     var filterBy = {
         checkIn,
@@ -136,13 +139,31 @@ function _buildCriteria(criteria) {
                 },
             });
         }
-
-        const keys = ['guestCount', 'stayId', 'hostId', 'guestId'];
-
-        if (keys.includes(key) && value) {
+        if (key === 'guestCount' && value) {
             aggregation.push({
                 $match: {
-                    [key]: value,
+                    guests: value,
+                },
+            });
+        }
+        if (key === 'stayId' && value) {
+            aggregation.push({
+                $match: {
+                    'stay._id': value,
+                },
+            });
+        }
+        if (key === 'hostId' && value) {
+            aggregation.push({
+                $match: {
+                    'host._id': value,
+                },
+            });
+        }
+        if (key === 'guestId' && value) {
+            aggregation.push({
+                $match: {
+                    'buyer._id': guestId,
                 },
             });
         }
@@ -160,6 +181,13 @@ function _buildCriteria(criteria) {
     return aggregation;
 }
 
-// function isDate(date) {
-//     return (new Date(date) !== "Invalid Date") && !isNaN(new Date(date));
-// }
+var sample_filter = {
+    checkIn: new Date(),
+    checkOut: new Date(),
+    guestCount: 1,
+    stayId: null,
+    hostId: null,
+    guestId: null,
+};
+
+

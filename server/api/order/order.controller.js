@@ -1,74 +1,72 @@
-const stayService = require('./stay.service');
+const orderService = require('./order.service');
 const logger = require('../../services/logger.service');
 
-async function getStay(req, res) {
-  try {
-    const stay = await stayService.getById(req.params.id);
-    res.send(stay);
-  } catch (err) {
-    logger.error('Failed to get Stay', err);
-    res.status(500).send({ err: 'Failed to get Stay' });
-  }
+async function getOrder(req, res) {
+    try {
+        const order = await orderService.getById(req.params.id);
+        res.send(order);
+    } catch (err) {
+        logger.error('Failed to get order', err);
+        res.status(500).send({ err: 'Failed to get order' });
+    }
 }
 
-async function getStays(req, res) {
-  try {
-    var { filterBy } = req.query;
-    // console.log(
-    //     '🚀 ~ file: stay.controller.js ~ line 17 ~ getStays ~ filterBy',
-    //     filterBy
-    // );
-    // res.json(JSON.parse(filterBy));
-    // return;
-    // return res.send(filterBy);
-    filterBy = JSON.parse(filterBy);
-    const stays = await stayService.query(filterBy);
-    res.send(stays);
-  } catch (err) {
-    logger.error('Failed to get Stays', err);
-    console.log('🚀 ~ file: stay.controller.js ~ line 23 ~ getStays ~ err', err);
-    res.status(500).send({ err: 'Failed to get Stays' });
-  }
+async function getOrders(req, res) {
+    try {
+        var { filterBy } = req.query;
+        if (!filterBy) return res.status(400).send({ err: 'filterBy invalid' });
+        
+        filterBy = JSON.parse(filterBy);
+        const orders = await orderService.query(filterBy);
+        res.send(orders);
+    } catch (err) {
+        logger.error('Failed to get orders', err);
+        console.log(
+            '🚀 ~ file: order.controller.js ~ line 23 ~ getorders ~ err',
+            err
+        );
+        res.status(500).send({ err: 'Failed to get orders' });
+    }
 }
 
-async function deleteStay(req, res) {
-  try {
-    await stayService.remove(req.params.id);
-    res.send({ msg: 'Deleted successfully' });
-  } catch (err) {
-    logger.error('Failed to delete Stay', err);
-    res.status(500).send({ err: 'Failed to delete Stay' });
-  }
+async function deleteOrder(req, res) {
+    try {
+        await orderService.remove(req.params.id);
+        res.send({ msg: 'Deleted successfully' });
+    } catch (err) {
+        logger.error('Failed to delete order', err);
+        res.status(500).send({ err: 'Failed to delete order' });
+    }
 }
 
-async function updateStay(req, res) {
-  try {
-    const stay = req.body;
-    const id = stay._id;
-    console.log('id:', id);
-    const savedStay = await stayService.update(stay, id);
-    res.send(savedStay);
-  } catch (err) {
-    logger.error('Failed to update Stay', err);
-    res.status(500).send({ err: 'Failed to update Stay' });
-  }
+async function updateOrder(req, res) {
+    try {
+        const order = req.body;
+        const id = order._id;
+        console.log('id:', id);
+        const savedorder = await orderService.update(order, id);
+        res.send(savedorder);
+    } catch (err) {
+        logger.error('Failed to update order', err);
+        res.status(500).send({ err: 'Failed to update order' });
+    }
 }
 
-async function addStay(req, res) {
-  try {
-    const Stay = req.body;
-    const savedStay = await stayService.add(Stay);
-    res.send(savedStay);
-  } catch (err) {
-    logger.error('Failed to update Stay', err);
-    res.status(500).send({ err: 'Failed to update Stay' });
-  }
+async function addOrder(req, res) {
+    try {
+        const order = req.body;
+        const savedorder = await orderService.add(order);
+        res.send(savedorder);
+    } catch (err) {
+        logger.error('Failed to update order', err);
+        res.status(500).send({ err: 'Failed to update order' });
+    }
 }
 
 module.exports = {
-  getStay,
-  getStays,
-  deleteStay,
-  updateStay,
-  addStay,
+    getOrder,
+    getOrders,
+    deleteOrder,
+    updateOrder,
+    addOrder,
 };
