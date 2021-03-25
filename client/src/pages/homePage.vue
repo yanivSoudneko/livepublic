@@ -76,20 +76,20 @@ export default {
     this.$store
       .dispatch({
         type: "stay/fetchFiltered",
-        filterBy: { rating: "rating" },
+        filterBy: { rating: "rating", size: 4 },
       })
       .then(({ stays, filterBy }) => {
         this.topRated = { stays, filterBy };
         console.log(
-        	"🚀 ~ file: homePage.vue ~ line 80 ~ .then ~ this.topRated",
-        	this.topRated
+          "🚀 ~ file: homePage.vue ~ line 80 ~ .then ~ this.topRated",
+          this.topRated
         );
       });
     //top rated in NY
     this.$store
       .dispatch({
         type: "stay/fetchFiltered",
-        filterBy: { rating: "rating", filterTxt: "New York" },
+        filterBy: { rating: "rating", filterTxt: "New York", size: 4 },
       })
       .then(({ stays, filterBy }) => {
         this.topRatedNY = { stays, filterBy };

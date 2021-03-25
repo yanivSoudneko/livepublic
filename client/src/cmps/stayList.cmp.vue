@@ -22,16 +22,7 @@
 			grid-area: title;
 		}
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr;
-		// grid-template-columns: repeat(auto-fit, minmax(250px, 1fr) );
-		// grid-template-columns: repeat( auto-fill, minmax(250px, 1fr) );
-		grid-template-rows: auto 1fr 1fr;
-		gap: 0px 0px;
-		grid-template-areas:
-			"title title title title"
-			". . . ."
-			". . . .";
-		grid-auto-flow: dense;
+		grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
 		grid-gap: 1rem;
 	}
 }
@@ -47,8 +38,8 @@ export default {
 	},
 	name: "Stay-List",
 	components: { stayPreview },
-	created() {
-		console.log({ DATA: this.stayData });
-	},
+	// created() {
+	// 	console.log({ DATA: this.stayData });
+	// },
 };
 </script>

@@ -95,9 +95,33 @@ import stayListGrid from "../cmps/stayList-grid.cmp";
 export default {
 	name: "Explore",
 	data() {
-		return { filterTxt: "", stayData: {} };
+		return { filterTxt: "", stayData: {},
+		filterByPrice: null };
 	},
 	methods: {
+	// 	setFilters() {
+    //   const { filterTxt, filterByPrice,  } = this;
+
+    //   const filterBy = {
+    //     filterTxt,
+    //     filterByPrice,
+    //   };
+    //   if (filterTxt === '') {
+    //     this.$refs.filterTxtInput.focus();
+    //     return;
+    //   }
+
+    //   this.$store.commit({ type: 'stay/setFilterBy', filterBy });
+    //   this.$emit('closeFilters', true);
+    //   if (this.$route.name === 'Explore') {
+    //     return;
+    //   }
+    //   this.$router.push({
+    //     name: 'Explore',
+    //     params: {
+    //       filterBy,
+    //     },
+    //   });
 		setNewFilter() {
 			this.$store
 				.dispatch({
@@ -111,7 +135,7 @@ export default {
 						this.stayData
 					);
 				});
-		},
+		}
 	},
 	created() {
 		this.$store.commit({

@@ -221,7 +221,7 @@
       "img0 img0 img1 img2"
       "img0 img0 img3 img4";
     margin-bottom: 100px;
-    height: 330px;
+    height: auto;
     .stay-page-img-container:nth-child(1) {
       grid-column: 1/3;
       grid-row: 1/3;

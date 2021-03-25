@@ -175,7 +175,7 @@
   .land-div {
     display: flex;
     justify-content: center;
-    border: 168px solid;
+    background-color: black;
     .land-img {
       max-width: 80vw;
       display: flex;
@@ -191,10 +191,10 @@
 </style>
 
 <script>
-import ClickOutside from 'vue-click-outside';
-import navFilter from '../cmps/navFilter.cmp';
+import ClickOutside from "vue-click-outside";
+import navFilter from "../cmps/navFilter.cmp";
 export default {
-  name: 'NavBar',
+  name: "NavBar",
   data() {
     return {
       hideBtn: false,
@@ -204,7 +204,7 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.getters['user/user'];
+      return this.$store.getters["user/user"];
     },
   },
   methods: {

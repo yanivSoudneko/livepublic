@@ -1,6 +1,7 @@
 <template>
-	<div class="category-list">
+<section class="list-container">
 		<h1 class="category-header">Live anywhere</h1>
+	<div class="category-list">
 		<!-- <div class="categories "> -->
 		<div class="category" @click="exploreType('entire homes')">
 			<img
@@ -31,38 +32,11 @@
 			<p>Pets Allowed</p>
 		</div>
 	</div>
+	</section>
 	<!-- </div> -->
 </template>
 
-<style lang="scss">
-.category-list {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-template-rows: auto auto;
-	gap: 0px 0px;
-	grid-template-areas:
-		"header header header header"
-		". . . .";
-	margin: 0 auto;
-	max-width: 1210px;
-	margin-bottom: 100px;
 
-	.category-header {
-		grid-area: header;
-		// padding-left: 36px;
-	}
-	.category {
-		margin: 0 auto;
-		cursor: pointer;
-
-		img {
-			width: 270px;
-			height: 300px;
-			border-radius: 10px;
-		}
-	}
-}
-</style>
 
 <script>
 export default {
