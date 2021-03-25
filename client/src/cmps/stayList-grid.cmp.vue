@@ -28,9 +28,6 @@ export default {
   },
   name: "Stay-List",
   components: { stayPreview },
-  created() {
-    console.log({ DATA: this.stayData });
-  },
   components: {
     googleMaps,
     stayPreview,

@@ -136,10 +136,9 @@ export default {
   },
   computed: {
     loggedUser() {
-      return this.$store.getters["user/getUser"];
+      return this.$store.getters["user/user"];
     },
     likedByUser() {
-      console.log(this.stay.likes);
       return (
         this.loggedUser &&
         this.stay.likes &&

@@ -15,3 +15,27 @@ db.getCollection('stay').updateMany({ price: { $exists: false } }, [
         },
     },
 ]);
+
+db.getCollection('stay').aggregate([
+    {
+        $project: {
+            name: 1,
+            imgUrls: {
+                $cond: {
+                    if: { $isArray: '$imgUrls' },
+                    then: { $size: '$imgUrls' },
+                    else: 'empty',
+                },
+            },
+        },
+    },
+]);
+
+db.getCollection('stay').find({
+    imgUrls: { $size: 0 },
+});
+
+db.getCollection('stay').aggregate([
+    { $match: { imgUrls: { $size: 0 } } },
+    { $count: 'docs with no imgUrls' },
+]);
