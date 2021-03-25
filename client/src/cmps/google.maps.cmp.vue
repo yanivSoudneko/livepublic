@@ -57,8 +57,6 @@ export default {
     };
   },
   created() {
-    console.log({ lat: this.lat, lng: this.lng, stays: this.stays });
-
     if (this.stays && this.stays.length) {
       this.markers = this.stays.map((stay) => {
         const { loc } = stay;
@@ -66,10 +64,8 @@ export default {
         return latLgn;
       });
     } else if (this.lat && this.lng) {
-      console.log("wtf");
       this.markers = [{ position: { lat: this.lat, lng: this.lng } }];
     }
-    console.log("markers", this.markers);
   },
 };
 </script>

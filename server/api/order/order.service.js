@@ -101,6 +101,11 @@ function _buildCriteria(criteria) {
         guestId,
     };
 
+    console.log(
+        '🚀 ~ file: order.service.js ~ line 120 ~ _buildCriteria ~ filterBy',
+        filterBy
+    );
+
     for (const key in filterBy) {
         if (
             filterBy[key] === undefined ||
@@ -111,10 +116,6 @@ function _buildCriteria(criteria) {
         }
     }
 
-    console.log(
-        '🚀 ~ file: order.service.js ~ line 120 ~ _buildCriteria ~ filterBy',
-        filterBy
-    );
     const aggregation = [];
 
     for (const key in filterBy) {
@@ -136,56 +137,26 @@ function _buildCriteria(criteria) {
             });
         }
 
-        if (key === 'filterTxt' && value) {
-            aggregation.push({
-                $match: {
-                    'loc.address': {
-                        $regex: value,
-                        $options: 'i',
-                    },
-                },
-            });
-        }
+        const keys = ['guestCount', 'stayId', 'hostId', 'guestId'];
 
-        if (key === 'type' && value) {
+        if (keys.includes(key) && value) {
             aggregation.push({
                 $match: {
-                    type: {
-                        $regex: value,
-                        $options: 'i',
-                    },
+                    [key]: value,
                 },
-            });
-        }
-
-        if (key === 'guestCount' && value) {
-            aggregation.push({
-                $match: {
-                    accommodates: {
-                        $gte: value,
-                    },
-                },
-            });
-        }
-
-        if (key === 'rating') {
-            aggregation.push({
-                $match: {
-                    'review_scores.review_scores_rating': {
-                        $exists: true,
-                        $nin: ['', null],
-                    },
-                },
-            });
-            aggregation.push({
-                $sort: { 'review_scores.review_scores_rating': -1 },
             });
         }
     }
+
     console.log(
-        '🚀 ~ file: order.service.js ~ line 169 ~ _buildCriteria ~ aggregation',
-        JSON.stringify(aggregation)
+        'criteria:',
+        JSON.stringify(criteria, null, 2),
+        'filterBy:',
+        JSON.stringify(filterBy, null, 2),
+        'aggregation:',
+        JSON.stringify(aggregation, null, 2)
     );
+
     return aggregation;
 }
 

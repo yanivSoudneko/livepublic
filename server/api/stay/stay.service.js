@@ -20,7 +20,6 @@ async function query(filterBy) {
             var { page, size } = filterBy;
             page = !isNaN(page) && page >= 0 ? page : 1;
             size = !isNaN(size) && size >= 0 ? size : 1;
-            // stays = _paginate(stays, filterBy.size, filterBy.page);
             aggregation.push({ $skip: page * size });
             aggregation.push({ $limit: size });
         }

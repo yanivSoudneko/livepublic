@@ -136,7 +136,7 @@ export default {
   },
   computed: {
     loggedUser() {
-      return this.$store.getters["user/getUser"];
+      return this.$store.getters["user/user"];
     },
     likedByUser() {
       return (
