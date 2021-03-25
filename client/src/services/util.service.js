@@ -3,7 +3,8 @@ export const utilService = {
     delay,
     getRandomInt,
     makeId,
-    genRand
+    genRand,
+    buildFilter
 }
 
 function delay(ms = 1500) {
@@ -31,4 +32,11 @@ function genRand(min, max, decimalPlaces) {
     var rand = Math.random()*(max-min) + min;
     var power = Math.pow(10, decimalPlaces);
     return Math.floor(rand*power) / power;
+}
+
+function buildFilter(filter, extraFields) {
+    if (!filter) {
+        filter = {};
+    }
+    Object.assign(filter, extraFields);
 }
