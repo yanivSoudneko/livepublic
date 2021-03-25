@@ -1,1 +1,5 @@
-{}
+{
+    "scripts": {
+        "cleanup": "find -iname desktop.ini -delete"
+    }
+}
