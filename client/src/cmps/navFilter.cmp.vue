@@ -76,10 +76,6 @@ export default {
     },
     updateScroll() {
       this.scrollPosition = window.scrollY;
-      console.log(
-        "🚀 ~ file: navFilter.cmp.vue ~ line 131 ~ updateScroll ~  this.scrollPosition",
-        this.scrollPosition
-      );
     },
     setFilters() {
       const { filterTxt, dates, guestCount } = this;

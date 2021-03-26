@@ -85,7 +85,7 @@ export default {
         return acc;
       }, 0);
       const result = (rateTotal / reviews.length).toFixed(1);
-      return result < 4 ? utilService.genRand(4, 5, 1) : result;
+      return result < 4.5 ? utilService.genRand(4.5, 5, 1) : result;
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;

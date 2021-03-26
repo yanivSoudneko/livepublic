@@ -23,9 +23,11 @@ async function query(filterBy) {
             aggregation.push({ $skip: page * size });
             aggregation.push({ $limit: size });
         }
-        console.log('aggregation---27', JSON.stringify(aggregation));
+        console.log('aggregation---27', JSON.stringify(aggregation, null, 2));
         const collection = await dbService.getCollection(STAY_COLLECTION);
-        var stays = await collection.aggregate(aggregation).toArray();
+        var stays = await collection
+            .aggregate(aggregation, { allowDiskUse: true })
+            .toArray();
 
         stays = stays.map((stay) => {
             stay.createdAt = ObjectId(stay._id).getTimestamp();
@@ -103,12 +105,16 @@ function _buildCriteria(criteria) {
         // checkOut,
         guestCount,
         type,
+        rating,
+        reviews,
     } = criteria;
 
     const filterBy = {
         filterTxt,
         type,
         guestCount,
+        rating,
+        reviews,
     };
     console.log(
         '🚀 ~ file: stay.service.js ~ line 120 ~ _buildCriteria ~ filterBy',
@@ -150,23 +156,33 @@ function _buildCriteria(criteria) {
             });
         }
 
-        if (key === 'rating') {
+        if (key === 'rating' && value) {
             aggregation.push({
                 $match: {
-                    'review_scores.review_scores_rating': {
-                        $exists: true,
-                        $nin: ['', null],
-                    },
+                    'review_scores.review_scores_rating': { $gte: value },
+                },
+            });
+            // aggregation.push({
+            //     $sort: { 'review_scores.review_scores_rating': -1 },
+            // });
+        }
+
+        if (key === 'reviews' && value) {
+            aggregation.push({
+                $addFields: {
+                    reviews_amount: { $size: '$reviews' },
                 },
             });
             aggregation.push({
-                $sort: { 'review_scores.review_scores_rating': -1 },
+                $match: {
+                    reviews_amount: { $gte: 30 },
+                },
             });
         }
     }
     console.log(
         '🚀 ~ file: stay.service.js ~ line 169 ~ _buildCriteria ~ aggregation',
-        JSON.stringify(aggregation)
+        JSON.stringify(aggregation, null, 2)
     );
     return aggregation;
 }
