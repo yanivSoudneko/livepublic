@@ -61,6 +61,7 @@ export default {
         },
         checkStoredUser({ commit }) {
             const resUser = userService.checkStoredUser();
+            if (!resUser) return;
             commit({ type: 'setUser', user: resUser });
         },
     },
