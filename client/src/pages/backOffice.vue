@@ -5,7 +5,11 @@
 		<div class="top-section flex j-between">
 			<div class="reservations">
 				<h2>Pending/Accepted Reservations</h2>
-				<div class="reservation-list">list</div>
+				<div class="reservation-list">
+					<div class="stay" v-for="order in orders" :key="order._id">
+						{{ order._id }}
+					</div>
+				</div>
 			</div>
 			<div class="host-summary">
 				<h2>Host Summary</h2>
@@ -19,7 +23,11 @@
 				<h2>My Stays(hosting)</h2>
 				<a class="host-new-stay">Host New Stay</a>
 			</div>
-			<div class="hosting-stays">list</div>
+			<div class="hosting-stays">
+				<div class="stay" v-for="stay in stays" :key="stay._id">
+					{{ stay.name }}
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -38,6 +46,9 @@
 <script>
 export default {
 	name: "Back-Office",
+	data() {
+		return { orders: [], stays: [] };
+	},
 	computed: {
 		user() {
 			return this.$store.getters["user/user"];
@@ -48,6 +59,25 @@ export default {
 			type: "toggleHeroImage",
 			toggleShow: false,
 		});
+		this.$store
+			.dispatch({
+				type: "order/fetchFiltered",
+				filterBy: { hostId: this.user._id, guestId: this.user._id },
+			})
+			.then((orders) => (this.orders = orders || []));
+		this.$store
+			.dispatch({
+				type: "stay/fetchFiltered",
+				filterBy: { hostId: this.user._id, size: 5 },
+			})
+			.then((data) => {
+				console.log(
+					"🚀 ~ file: backOffice.vue ~ line 74 ~ .then ~ stays",
+					data.stays
+				);
+
+				this.stays = data.stays || [];
+			});
 	},
 };
 </script>

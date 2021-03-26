@@ -5,8 +5,8 @@ export default {
     state: {
         orders: [],
         filterBy: {
-            checkIn: new Date(),
-            checkOut: new Date(),
+            // checkIn: new Date(),
+            // checkOut: new Date(),
             guestCount: 1,
             page: 0,
             size: 1,
@@ -26,14 +26,14 @@ export default {
         },
     },
     actions: {
-        async fetchFiltered({ commit }, { filterBy }) {
+        async fetchFiltered({ commit, state }, { filterBy }) {
             try {
                 utilService.buildFilter(state.filterBy, filterBy);
                 const orders = await orderService.query(state.filterBy);
                 commit({ type: 'load', orders });
                 return orders;
             } catch (error) {
-                console.error('ERROR FETCHING ORDERS:', orders);
+                console.error('ERROR FETCHING ORDERS:', error);
             }
         },
         async saveOrder({ commit }, { order }) {

@@ -153,20 +153,32 @@ function _buildCriteria(criteria) {
                 },
             });
         }
-        if (key === 'hostId' && value) {
-            aggregation.push({
-                $match: {
-                    'host._id': value,
-                },
-            });
+
+        if (filterBy.hostId !== filterBy.guestId) {
+            if (key === 'hostId' && value) {
+                aggregation.push({
+                    $match: {
+                        'host._id': value,
+                    },
+                });
+            }
+            if (key === 'guestId' && value) {
+                aggregation.push({
+                    $match: {
+                        'buyer._id': guestId,
+                    },
+                });
+            }
         }
-        if (key === 'guestId' && value) {
-            aggregation.push({
-                $match: {
-                    'buyer._id': guestId,
-                },
-            });
-        }
+    }
+
+    if (filterBy.hostId === filterBy.guestId) {
+        const { hostId } = filterBy;
+        aggregation.push({
+            $match: {
+                $or: [{ 'host._id': hostId }, { 'buyer._id': hostId }],
+            },
+        });
     }
 
     console.log(
@@ -189,5 +201,3 @@ var sample_filter = {
     hostId: null,
     guestId: null,
 };
-
-

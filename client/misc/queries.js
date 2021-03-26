@@ -39,3 +39,40 @@ db.getCollection('stay').aggregate([
     { $match: { imgUrls: { $size: 0 } } },
     { $count: 'docs with no imgUrls' },
 ]);
+
+db.getCollection('stay').aggregate([
+    {
+        $project: {
+            reviews_amount: { $size: '$reviews' },
+        },
+    },
+    {
+        $match: {
+            reviews_amount: { $gte: 30 },
+        },
+    },
+]);
+
+db.getCollection('stay').aggregate([
+    {
+        $addFields: {
+            reviews_amount: { $size: '$reviews' },
+        },
+    },
+    {
+        $match: {
+            reviews_amount: { $gte: 30 },
+        },
+    },
+]);
+
+db.getCollection('order').aggregate([
+    {
+        $match: {
+            $or: [
+                { 'host._id': '60587461571d864cdcf8921c' },
+                { 'buyer._id': '60587461571d864cdcf8921c' },
+            ],
+        },
+    },
+]);

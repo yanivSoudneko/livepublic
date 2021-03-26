@@ -45,12 +45,12 @@ async function logout() {
 }
 
 function checkStoredUser() {
-    const user = storageService.load(LS_KEY);
+    const user = _load(LS_KEY);
     if (user && user.createdAt) {
         const timeNow = Date.now();
         if (timeNow - user.createdAt > 1000 * 60 * 30) {
             console.log('30mins passed');
-            storageService.remove(LS_KEY);
+            _remove(LS_KEY);
             return null;
         }
     }
@@ -67,4 +67,13 @@ function _storeUserLocally(user) {
 function _store(key, val) {
     val = JSON.stringify(val);
     localStorage.setItem(key, val);
+}
+
+function _load(key) {
+    var val = localStorage.getItem(key);
+    return val ? JSON.parse(val) : null;
+}
+
+function _remove(key) {
+    localStorage.removeItem(key);
 }
