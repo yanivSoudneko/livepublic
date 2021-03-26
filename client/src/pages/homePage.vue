@@ -1,7 +1,15 @@
 <template>
 	<div class="home">
 		<inspirtion-destionation />
-		<h1 class="stays-header">Popular Stays</h1>
+		<div class="flex j-between a-center">
+			<h1 class="stays-header">Popular Stays</h1>
+			<a
+				style="cursor: pointer"
+				@click="exploreTarget('', 'Popular Stays')"
+				>See All</a
+			>
+		</div>
+
 		<loader v-if="!topRated.stays" />
 		<stay-list v-if="topRated.stays" :stayData="topRated"></stay-list>
 		<category-list />
@@ -17,7 +25,17 @@
 				<!-- <button class="host-header-btn">Become a host</button> -->
 			</div>
 		</div>
-		<h1 class="stays-header">Top Rated Stays in New York</h1>
+
+		<div class="flex j-between a-center">
+			<h1 class="stays-header">Top Rated Stays in New York</h1>
+			<a
+				style="cursor: pointer"
+				@click="
+					exploreTarget('new york', 'Top Rated Stays in New York')
+				"
+				>See All</a
+			>
+		</div>
 		<loader v-if="!topRatedNY.stays" />
 		<stay-list v-if="topRatedNY.stays" :stayData="topRatedNY"></stay-list>
 		<footer-cmp />
@@ -80,6 +98,22 @@ export default {
 			type: "toggleHeroImage",
 			toggleShow: true,
 		});
+	},
+	methods: {
+		exploreTarget(filterTxt, subject) {
+			this.$router.push({
+				name: "Explore",
+				params: {
+					filterBy: {
+						filterTxt,
+						size: 20,
+						reviews: 30,
+						rating: 96,
+					},
+					subject,
+				},
+			});
+		},
 	},
 	components: {
 		locationList,
