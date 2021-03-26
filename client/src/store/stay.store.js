@@ -67,18 +67,6 @@ export default {
                 );
             }
         },
-        async loadStays({ commit, state }, { filterBy }) {
-            try {
-                _setFilter(state.filterBy, filterBy);
-                const stays = await stayService.queryStays(state.filterBy);
-                commit({ type: 'loadStays', stays });
-            } catch (error) {
-                console.log(
-                    '🚀 ~ STORE ERROR STAY stay.store.js ~ line 30 ~ load ~ error',
-                    error
-                );
-            }
-        },
         async loadLocations({ commit }) {
             try {
                 const locations = await stayService.queryLocations();
