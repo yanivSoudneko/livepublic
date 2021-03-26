@@ -34,6 +34,32 @@
   left: 500px;
   top: 180px;
 }
+.inputs{
+  input{
+    height: 56px !important;
+    width: 100% !important;
+    border: none !important;
+    outline: none !important;
+    margin: 0px !important;
+    padding: 26px 12px 10px !important;
+    background-color: transparent !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    font-weight: inherit !important;
+    line-height: 18px !important;
+    appearance: none !important;
+    cursor: pointer !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    color: rgb(113, 113, 113) !important;
+    border: 1px solid grey !important;
+    :nth-child(1){
+      border-top-left-radius: 10px;
+
+    }
+  }
+}
 </style>
 
 <script>

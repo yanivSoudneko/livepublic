@@ -1,14 +1,5 @@
 <template>
-  <div
-    class="check-out"
-    :style="{ top: stickyYPos }"
-    v-if="
-      scrollPosition &&
-      scrollPosition >= 682 &&
-      scrollPosition &&
-      scrollPosition <= 1142
-    "
-  >
+  <div class="check-out" :style="{ top: stickyYPos }">
     <div class="check-header">
       <div class="price">
         <span class="amout">${{ stay.price }}</span>
@@ -29,8 +20,8 @@
         <!-- guest count -->
         <div class="guest-count">
           <input
+            placeholder="GUESTS"
             type="number"
-            placeholder="Guests"
             :v-show="order.guest"
             v-model="order.guest"
             min="1"
@@ -71,15 +62,15 @@
 
 <style lang="scss">
 .check-out {
-  position: fixed;
-  top: 0;
+  margin-top: 48px;
   float: right;
-  right: 117px;
+  position: sticky;
+  display: block;
+  top: 25px;
   border: 1px solid #dddddd;
   border-radius: 12px;
   padding: 24px;
-  box-shadow: rgba(0, 0, 0 ,0.35) 0px 6px 16px;
-
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 6px 16px;
   .check-header {
     display: flex;
     justify-content: space-between;
@@ -92,6 +83,8 @@
     border-radius: 8px !important;
     outline: none !important;
     padding: 14px 24px !important;
+    margin-top: 15px;
+    width:100%;
     // background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
     // --mouse-x: 85.3438;
     // --mouse-y: 52.9412;
@@ -119,6 +112,38 @@
       align-self: flex-end;
       position: absolute;
       bottom: 90px;
+    }
+  }
+  .guest-count {
+    input {
+      height: 56px !important;
+      width: 100% !important;
+      border: none !important;
+      outline: none !important;
+      margin: 0px !important;
+      padding: 26px 36px 10px 12px !important;
+      background-color: transparent !important;
+      color: inherit !important;
+      font-family: inherit !important;
+      font-size: inherit !important;
+      font-weight: inherit !important;
+      line-height: inherit !important;
+      appearance: none !important;
+      cursor: pointer !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+      border: 1px solid grey !important;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius:10px ;
+
+      *,
+      *:before,
+      *:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
     }
   }
 }

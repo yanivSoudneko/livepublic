@@ -3,7 +3,7 @@
     <div class="check-header">
       <div class="price">
         <span class="amout">${{ stay.price }}</span>
-       <span>/night</span>
+        <span>/night</span>
       </div>
       <div class="rate">
         <span
@@ -19,6 +19,7 @@
         <date-picker placeholder="Check In" @emitDate="setDates($event)" />
         <div class="guest-count">
           <input
+            class="guest-input"
             type="number"
             placeholder="Guests"
             :v-show="order.gueset"
@@ -39,15 +40,16 @@
 
 <style lang="scss">
 .check-out {
-  right: 250px;
-  margin-top: 55px;
-  border: 1px solid rgb(221, 221, 221);
+  position: relative;
+  right: -564px;
+  margin-top: 48px;
+  float: right;
+  width: 330px;
+  border: 1px solid #dddddd;
   border-radius: 12px;
   padding: 24px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 6px 16px;
-  display: flex;
-  flex-direction: column;
-  width: 280px;
+  box-shadow: rgb(0 0 0 / 35%) 0px 6px 16px;
+  float: right;
   .check-header {
     display: flex;
     justify-content: space-between;
@@ -72,6 +74,7 @@
     );
     color: white;
   }
+  
 }
 </style>
 

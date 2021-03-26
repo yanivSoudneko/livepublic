@@ -23,6 +23,7 @@
 		<!-- Rigth-Side -->
 		<div class="right-side-container">
 			<div class="right-side">
+			<check-out :stay="stay" @checkout="checkout" />
 				<div class="stay-page-summary">
 					<div class="host-details flex j-between a-center">
 						<div class="about-host">
@@ -44,7 +45,7 @@
 							<img :src="stay.host.imgUrl" />
 						</div>
 					</div>
-					<hr />
+					
 					<h3>summary:</h3>
 					<p>{{ stay.summary }}</p>
 				</div>
@@ -188,7 +189,7 @@
 			</div>
 			<!-- {{ stay }} -->
 		</div>
-		<check-out :stay="stay" @checkout="checkout" />
+		<!-- <check-out :stay="stay" @checkout="checkout" /> -->
 	</div>
 </template>
 <style lang="scss">
@@ -293,12 +294,15 @@
 		}
 	}
 }
-.right-side {
-	max-width: 650px;
-}
+// .right-side {
+// 	max-width: 650px;
+// }
 .host-details {
 	padding-top: 48px;
 	padding-bottom: 24px;
+	max-width: 650px;
+	border-bottom: 1px solid grey;
+	margin-bottom:20px;
 }
 .right-side-container {
 	// max-width: 650px;
