@@ -7,6 +7,7 @@ import stayEdit from '@/pages/stayEdit.vue';
 import stayPage from '@/pages/stayPage.vue';
 import userDetails from '@/pages/userDetails.vue';
 import login from '@/pages/loginPage.vue';
+import backOffice from '@/pages/backOffice.vue';
 
 Vue.use(VueRouter);
 
@@ -20,6 +21,11 @@ const routes = [
         path: '/login',
         name: 'Login',
         component: login,
+    },
+    {
+        path: '/back-office',
+        name: 'Back-Office',
+        component: backOffice,
     },
     {
         path: '/explore',

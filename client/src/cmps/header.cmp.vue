@@ -56,6 +56,7 @@
 				<!-- <router-link to="/host"> Become Host </router-link> -->
 				<!-- <span>Become Host</span> -->
 				<router-link to="/login"> Login </router-link>
+				<router-link to="/back-office"> Dashboard </router-link>
 				<div class="user-data flex a-center">
 					<span class="user-name">Hello {{ user.fullname }}</span>
 					<img

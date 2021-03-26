@@ -10,6 +10,11 @@
         background-color: black;
         border-radius: 60px;
         padding-top: 15px;
+        .links {
+            & > * {
+                margin-right: 5px;
+            }
+        }
         .logo-name {
             color: #ff385c;
         }
