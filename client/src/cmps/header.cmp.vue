@@ -10,7 +10,7 @@
       <div
         class="filter-btn flex j-between a-center"
         v-if="!hideBtn && this.$route.name !== 'Explore'"
-        @click="(hideBtn = true), (firstClick = true)"
+        @click="(hideBtn = true), (firstClick = true)" 
       >
         <span>Start your search</span>
         <span class="search-svg-icon flex j-center">
@@ -39,10 +39,16 @@
         </span>
       </div>
       <!-- filters -->
-      <nav-filter
+      <!-- <nav-filter
         v-if="hideBtn && this.$route.name !== 'Explore'"
         v-click-outside="handleShowFilter"
         @closeFilters="hideBtn = false"
+      ></nav-filter> -->
+      <nav-filter
+        v-if="scrollPosition && scrollPosition >= 0"
+      ></nav-filter>
+      <nav-filter
+        v-if="scrollPosition && scrollPosition < 200"
       ></nav-filter>
 
       <div class="links">
@@ -99,96 +105,10 @@
     <div class="land-div" v-if="showHeroImage">
       <img class="land-img" src="../../public/img/land-img.webp" />
     </div>
+    <h3 class="sub-header">Made possible by Hosts</h3>
   </header>
 </template>
 
-<style lang="scss" scoped>
-.header-main {
-  // margin-bottom: 150px;
-  background-color: white;
-  margin-bottom: 100px;
-  .nav-bar {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1210px;
-    margin: 0 auto;
-    padding: 10px;
-    align-items: center;
-    background-color: white;
-    border-radius: 60px;
-    .logo-name {
-      color: #ff385c;
-    }
-    .filter-btn {
-      width: 245px;
-      height: 35px;
-      border: 1px solid rgba($color: #f1eaea, $alpha: 1);
-      border-radius: 20px;
-      outline: none;
-      text-decoration: none;
-      background: transparent;
-      text-align: inherit;
-      padding: 20px 10px;
-      cursor: pointer;
-      .search-svg-icon {
-        width: 15px;
-        background-color: #ff385c;
-        color: white;
-        padding: 10px 15px;
-        border-radius: 50%;
-      }
-
-      &:hover,
-      &:active {
-        box-shadow: 0px 0px 10px 0px rgba($color: #000000, $alpha: 0.2);
-      }
-    }
-    .logo {
-      cursor: pointer;
-      img {
-        max-width: 50px;
-        mix-blend-mode: multiply;
-      }
-    }
-    a {
-      text-decoration: none;
-      color: grey;
-      .links:not(:last-child) {
-        margin-right: 10px;
-      }
-    }
-  }
-  .login-user {
-    display: flex;
-    border: 1px solid grey;
-    padding: 5px;
-    border-radius: 20px;
-    justify-content: space-around;
-    width: 60px;
-    cursor: pointer;
-    .svg-avatar {
-      display: block;
-      height: 20px;
-      fill: grey;
-    }
-  }
-  .land-div {
-    display: flex;
-    justify-content: center;
-    background-color: black;
-    .land-img {
-      max-width: 80vw;
-      display: flex;
-      margin: 0 auto;
-    }
-
-    &.shrink-on-scroll {
-      height: 0;
-    }
-    transition: height 3s ease-in-out;
-  }
-}
-</style>
 
 <script>
 import ClickOutside from "vue-click-outside";
@@ -199,6 +119,7 @@ export default {
     return {
       hideBtn: false,
       firstClick: true,
+      scrollPosition: null,
       // scrollPosition: null,
     };
   },
@@ -215,11 +136,24 @@ export default {
       }
       this.hideBtn = false;
     },
+    handleScroll () {
+      this.scrollPosition = window.scrollY;
+      console.log(this.scrollPosition);
+    }
   },
   computed: {
+    stickyYPos() {
+			return this.scrollPosition;
+		},
     showHeroImage() {
       return this.$store.getters.showHeroImage;
     },
+  },
+  created () {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll);
   },
   directives: {
     ClickOutside,

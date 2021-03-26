@@ -1,7 +1,10 @@
 <template>
   <div class="check-out">
     <div class="check-header">
-      <div class="price">${{ stay.price }}/night</div>
+      <div class="price">
+        <span class="amout">${{ stay.price }}</span>
+       <span>/night</span>
+      </div>
       <div class="rate">
         <span
           ><i class="fas fa-star">{{ rating }}</i></span
@@ -36,10 +39,8 @@
 
 <style lang="scss">
 .check-out {
-  // position: fixed;
   right: 250px;
   margin-top: 55px;
-  // float: right;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 12px;
   padding: 24px;
@@ -59,9 +60,7 @@
     border-radius: 8px !important;
     outline: none !important;
     padding: 14px 24px !important;
-    // background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
-    // --mouse-x: 85.3438;
-    // --mouse-y: 52.9412;
+
     transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s,
       -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
     border: none !important;

@@ -8,13 +8,11 @@
         :key="stay._id"
         :stay="stay"
       ></stay-preview>
-      <!-- <google-maps class="map" :isBigMap="isBigMap" v-if="stayData.stays" :stays="stayData.stays" /> -->
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped>
-</style>
+
 
 <script>
 import stayPreview from "./stayPreview.cmp";

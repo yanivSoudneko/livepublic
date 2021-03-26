@@ -53,8 +53,8 @@ export default {
   methods: {
     emitDate() {
       // this.checkDate();
-      this.selectedDates = this.selectedDates.map(date => this.fixDate(date));
-      this.$emit('emitDate', this.selectedDates);
+      this.selectedDates = this.selectedDates.map((date) => this.fixDate(date));
+      this.$emit("emitDate", this.selectedDates);
     },
     fixDate(date) {
       var d = new Date(date);
@@ -73,15 +73,15 @@ export default {
   },
   computed: {
     date1() {
-      return this.selectedDates[0].toLocaleDateString('en-US');
+      return this.selectedDates[0].toLocaleDateString("en-US");
     },
     date2() {
-      return this.selectedDates[1].toLocaleDateString('en-US');
+      return this.selectedDates[1].toLocaleDateString("en-US");
     },
   },
   created() {
     // this.checkDate();
-    this.$emit('emitDate', this.selectedDates);
+    this.$emit("emitDate", this.selectedDates);
   },
 };
 </script>

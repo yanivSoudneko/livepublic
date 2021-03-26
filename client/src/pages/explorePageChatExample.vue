@@ -49,7 +49,9 @@
 	& > * {
 		margin-bottom: 20px;
 	}
+	
 	.filter-input {
+		padding: 0;
 		max-width: 300px;
 		cursor: pointer;
 		.search-svg-icon {

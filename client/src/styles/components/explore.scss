@@ -1,0 +1,33 @@
+
+.explore {
+	max-width: 1210px;
+	margin: 0 auto;
+	// padding: 20px;
+	& > * {
+		margin-bottom: 20px;
+	}
+	.filter-input {
+		max-width: 300px;
+		cursor: pointer;
+		.search-svg-icon {
+			width: 15px;
+			background-color: #ff385c;
+			color: white;
+			padding: 10px 15px;
+			border-radius: 50%;
+		}
+	}
+	.filter {
+		&:not(:first-child) {
+			margin-left: 10px;
+		}
+		&:hover {
+			filter: brightness(85%);
+		}
+	}
+
+}
+
+@include for-mobile-layout{
+	.filter-input,.head-title-visits,.head-title-txt,.sub-filter-container,.sub-filter-btns{padding-left: 20px;}
+}

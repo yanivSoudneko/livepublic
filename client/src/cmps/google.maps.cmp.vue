@@ -9,7 +9,7 @@
       }"
       :zoom="markers.length > 1 ? 12 : 16"
       map-type-id="terrain"
-      style="width: 97%; height: 50vh"
+      style="width: 100%; height: 50vh"
       :options="{
         zoomControl: false,
         mapTypeControl: false,

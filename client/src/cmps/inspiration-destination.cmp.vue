@@ -23,32 +23,7 @@
   </section>
 </template>
 
-<style lang="scss">
-.category-list {
-  display: grid;
-  max-width: 1210px;
-  margin-bottom: 100px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  grid-gap: 1rem;
-  .category {
-    margin: 0 auto;
-    cursor: pointer;
-    width: 100%;
-    img {
-      border-radius: 10px;
-      width: 100%;
-      border-radius: 10px;
-      object-fit: cover;
-      max-width: 90%;
-    }
-    p {
-      min-width: 10%;
-    }
-  }
-}
-</style>
-
+ 
 <script>
 export default {
   name: "Category-List",

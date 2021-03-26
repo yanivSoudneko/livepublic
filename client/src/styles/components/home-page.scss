@@ -1,0 +1,55 @@
+
+.home {
+  max-width: 1210px;
+  margin: 0 auto;
+  .host-header-content{
+     position: relative;
+     max-width: 1210px;
+     margin-bottom: 100px;
+     img{
+         width: 100%;
+         border-radius: 20px;
+     }
+      .hero-details{
+          position: absolute;
+          top: 50px;
+          width: 100%;
+          margin: 0 auto;
+          width: 300px;
+          height: 50px;
+          color: white;
+          padding-left: 57px;
+          .host-header-content {
+              width: 25vw;
+            }
+            .host-header-btn {
+                font-size: 16px !important;
+                line-height: 20px !important;
+                letter-spacing: normal !important;
+                color: rgb(72, 72, 72) !important;
+                padding: 14px 24px !important;
+                border-radius: 15px;
+                border: none;
+                text-decoration: none;
+                outline: none;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+@include for-mobile-layout {
+    .host-header-content{
+        position: relative;
+    max-width: 1210px;
+    margin-bottom: 100px;
+    height: 250px;
+    padding-left: 20px;
+    padding-right: 20px;
+    object-fit: contain;
+    img{
+        height: 100%;
+    }
+    }
+  }

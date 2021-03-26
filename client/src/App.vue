@@ -4,6 +4,7 @@
     <div class="view">
       <router-view />
     </div>
+    <!-- <footer-cmp /> -->
   </div>
 </template>
 
@@ -18,10 +19,12 @@
 </style>
 
 <script>
+// import FooterCmp from './cmps/footer.cmp.vue';
 import navBar from "./cmps/header.cmp";
 export default {
   components: {
     navBar,
+    // FooterCmp,
   },
 };
 // import jsonData from '../data/airbnb.json'

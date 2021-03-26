@@ -54,70 +54,17 @@
     </div>
   </div>
 </template>
-<style lang="scss" scoped>
-.hide-el {
-  display: none;
-}
-.nav-filter {
-  border: 1px solid rgb(46, 46, 46);
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  margin-left: 150px;
-  top: 100px;
-  background-color: #fff;
-  height: 85px;
-  align-items: center;
-  justify-items: center;
-  width: 850px;
-  padding: 5px;
-  border-radius: 75px;
-  .location-search {
-    display: flex;
-    flex-direction: column;
-    label {
-      height: 100%;
-      border: none;
-    }
-    input {
-      &:focus {
-        box-shadow: 2px 2px 15px -2px #473f3a;
-      }
-    }
-  }
-  .nav-btn {
-    display: flex;
-    .search-btn {
-      background-color: transparent;
-      border: none;
-    }
-    .search-svg-icon {
-      width: 15px;
-      background-color: #ff385c;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 50%;
-    }
-  }
-  .border {
-    padding: 5px;
-    border-radius: 35px;
-  }
-  .border:hover {
-    background-color: rgb(204, 199, 199);
-  }
-}
-</style>
+
 
 <script>
-import guestSelect from './guestsSelect.cmp';
-import datePicker from './datepicker.cmp';
+import guestSelect from "./guestsSelect.cmp";
+import datePicker from "./datepicker.cmp";
 export default {
-  name: 'Nav-Filter',
+  name: "Nav-Filter",
   data() {
     return {
       scrollPosition: null,
-      filterTxt: '',
+      filterTxt: "",
       dates: { in: null, out: null },
       guestCount: 1,
     };
@@ -129,7 +76,10 @@ export default {
     },
     updateScroll() {
       this.scrollPosition = window.scrollY;
-      console.log('🚀 ~ file: navFilter.cmp.vue ~ line 131 ~ updateScroll ~  this.scrollPosition', this.scrollPosition);
+      console.log(
+        "🚀 ~ file: navFilter.cmp.vue ~ line 131 ~ updateScroll ~  this.scrollPosition",
+        this.scrollPosition
+      );
     },
     setFilters() {
       const { filterTxt, dates, guestCount } = this;
@@ -140,18 +90,18 @@ export default {
         checkOut: dates.out,
         guestCount,
       };
-      if (filterTxt === '') {
+      if (filterTxt === "") {
         this.$refs.filterTxtInput.focus();
         return;
       }
 
-      this.$store.commit({ type: 'stay/setFilterBy', filterBy });
-      this.$emit('closeFilters', true);
-      if (this.$route.name === 'Explore') {
+      this.$store.commit({ type: "stay/setFilterBy", filterBy });
+      this.$emit("closeFilters", true);
+      if (this.$route.name === "Explore") {
         return;
       }
       this.$router.push({
-        name: 'Explore',
+        name: "Explore",
         params: {
           filterBy,
         },
@@ -168,10 +118,10 @@ export default {
     },
   },
   mounted() {
-    window.addEventListener('scroll', this.updateScroll);
+    window.addEventListener("scroll", this.updateScroll);
   },
   destroyed() {
-    window.removeEventListener('scroll', this.updateScroll);
+    window.removeEventListener("scroll", this.updateScroll);
   },
   components: { datePicker, guestSelect },
 };

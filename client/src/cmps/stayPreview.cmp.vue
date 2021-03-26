@@ -43,7 +43,6 @@
         />
       </el-carousel-item>
     </el-carousel>
-    <!-- <button>Hey</button> -->
 
     <!--  -->
     <div class="stay-details" @click="$router.push('stay/' + stay._id)">
@@ -51,7 +50,6 @@
         <i class="fas fa-star"></i>{{ rating }} ({{ ratingLength }})
       </div>
       <p class="address">{{ stay.loc.address }}</p>
-      <!-- <p class="name">{{ stay.name }}</p> -->
       <p class="summary">{{ stay.summary }}</p>
       <div>
         <span class="price">${{ stay.price }}</span> / Night
@@ -59,71 +57,6 @@
     </div>
   </div>
 </template>
-<style lang="scss">
-.stay-preview {
-  color: #202020;
-  cursor: pointer;
-  height: 100%;
-  width: 100%;
-  .el-carousel__container {
-    height: 165px;
-  }
-  .el-carousel {
-    .is-liked {
-      fill: rgba(224, 14, 14, 0.842);
-    }
-    img {
-      width: 100%;
-      height: 100%;
-      border-radius: 10px;
-      margin-bottom: 0.5rem;
-      cursor: pointer;
-    }
-
-    .svg-like {
-      display: block;
-      position: absolute;
-      height: 24px;
-      width: 24px;
-      stroke: rgb(255, 255, 255);
-      stroke-width: 2;
-      overflow: visible;
-      z-index: 1000;
-      top: 5px;
-      right: 5px;
-    }
-  }
-  .summary {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 220px;
-    line-height: 1.8em;
-  }
-  .price {
-    font-weight: 700;
-  }
-}
-
-.el-carousel__indicator {
-  button {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    padding: 0;
-  }
-
-  &:hover {
-    button {
-      transition: 70ms;
-      transform: scale(1.5);
-    }
-  }
-}
-.fa-star {
-  color: rgb(235, 100, 100);
-}
-</style>
 
 <script>
 import { utilService } from "../services/util.service";
