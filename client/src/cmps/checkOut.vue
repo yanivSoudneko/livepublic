@@ -71,6 +71,7 @@
   border-radius: 12px;
   padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 6px 16px;
+  max-width: 350px;
   .check-header {
     display: flex;
     justify-content: space-between;
@@ -84,19 +85,28 @@
     outline: none !important;
     padding: 14px 24px !important;
     margin-top: 15px;
-    width:100%;
+    width: 100%;
     // background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
     // --mouse-x: 85.3438;
     // --mouse-y: 52.9412;
     transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s,
       -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
     border: none !important;
-    background: linear-gradient(
-      to right,
-      rgb(230, 30, 77) 0%,
-      rgb(227, 28, 95) 50%,
-      rgb(215, 4, 102) 100%
-    );
+    // background: linear-gradient(
+    //   to right,
+    //   rgb(230, 30, 77) 0%,
+    //   rgb(227, 28, 95) 50%,
+    //   rgb(215, 4, 102) 100%
+    // );
+    background-image: linear-gradient(
+      circle at center center,
+      rgb(255, 56, 92) 0%,
+      rgb(230, 30, 77) 27.5%,
+      rgb(227, 28, 95) 40%,
+      rgb(215, 4, 102) 57.5%,
+      rgb(189, 30, 89) 75%,
+      rgb(189, 30, 89) 100%
+    ) !important;
     color: white;
   }
   .details-check-availability {
@@ -135,7 +145,7 @@
       white-space: nowrap !important;
       border: 1px solid grey !important;
       border-bottom-left-radius: 10px;
-      border-bottom-right-radius:10px ;
+      border-bottom-right-radius: 10px;
 
       *,
       *:before,
@@ -266,7 +276,8 @@ export default {
       return this.scrollPosition;
     },
     gradient() {
-      return `radial-gradient(at ${this.mouseX}% 50%, #e61e4d, #9b59b6)`;
+      return `radial-gradient(at ${this.mouseX}% 100%, rgb(255, 56, 92) 0%,rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%)`;
+      // radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) !important
     },
     rating() {
       const reviews = this.stay.reviews;

@@ -1,5 +1,5 @@
 .header-main {
-    background-color: black;
+    background-color: transparent;
     margin-bottom: 100px;
     .nav-bar {
         display: flex;
@@ -7,9 +7,10 @@
         max-width: 1210px;
         margin: 0 auto;
         align-items: center;
-        background-color: black;
+        background-color: transparent;
         border-radius: 60px;
         padding-top: 15px;
+        z-index: 1000;
         .links {
             & > * {
                 margin-right: 5px;
@@ -19,7 +20,7 @@
             color: #ff385c;
         }
         .filter-btn {
-            display: none;
+            z-index: 1000;
             width: 245px;
             height: 35px;
             border: 1px solid rgba($color: #f1eaea, $alpha: 1);
@@ -30,6 +31,9 @@
             text-align: inherit;
             padding: 20px 10px;
             cursor: pointer;
+            span{
+                color: grey;
+            }
             .search-svg-icon {
                 width: 15px;
                 background-color: #ff385c;
@@ -72,7 +76,7 @@
         }
         .profile-img {
             border-radius: 50%;
-            max-width: 50px;
+            max-width: 32px;
         }
     }
     .login-user {
@@ -110,9 +114,10 @@
     .sub-header {
         z-index: 1;
         position: relative;
-        color: white;
+        color: snow;
         margin: 0 auto;
         text-align: center;
+        max-width: 350px;
         bottom: 50px;
         font-size: 2rem;
     }

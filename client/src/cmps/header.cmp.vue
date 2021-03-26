@@ -1,6 +1,6 @@
 <template>
 	<header class="header-main">
-		<div class="nav-bar">
+		<div  class="nav-bar">
 			<router-link tag="div" class="logo flex a-center" to="/">
 				<img src="@/assets/img/logo.png" />
 				<span class="logo-name"></span>
@@ -208,6 +208,9 @@ export default {
 		};
 	},
 	methods: {
+		// headerClassToggle(){
+
+		// },
 		handleShowFilter() {
 			if (this.firstClick) {
 				this.firstClick = false;

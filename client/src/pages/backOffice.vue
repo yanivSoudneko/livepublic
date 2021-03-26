@@ -1,4 +1,6 @@
 <template>
+<section class="container-back-office">
+	<nav-filter/>
 	<div class="back-office">
 		<h2>Hello {{ user.fullname }}</h2>
 
@@ -26,24 +28,29 @@
 			<div class="hosting-stays">
 				<div class="stay" v-for="stay in stays" :key="stay._id">
 					{{ stay.name }}
+					{{stay.imgUrl}}
 				</div>
 			</div>
 		</div>
 	</div>
+	</section>
 </template>
 
 <style lang="scss" scoped>
 .back-office {
 	& * {
-		border: 1px solid #3f3e3e;
-		background-color: red;
-		color: white;
+	
+		color: grey;
 		margin: 5px;
+	}
+	.header-main{
+		display: none;
 	}
 }
 </style>
 
 <script>
+import navFilter from '../cmps/navFilter.cmp'
 export default {
 	name: "Back-Office",
 	data() {
@@ -79,5 +86,8 @@ export default {
 				this.stays = data.stays || [];
 			});
 	},
+	components(){
+		navFilter
+	}
 };
 </script>
