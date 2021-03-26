@@ -51,11 +51,19 @@
 				v-if="scrollPosition && scrollPosition < 200"
 			></nav-filter>
 
-			<div class="links">
+			<div class="links flex j-between a-center">
 				<router-link to="/explore"> Explore </router-link>
 				<!-- <router-link to="/host"> Become Host </router-link> -->
 				<!-- <span>Become Host</span> -->
-				<!-- <router-link to="/login"> Login </router-link> -->
+				<router-link to="/login"> Login </router-link>
+				<div class="user-data flex a-center">
+					<span class="user-name">Hello {{ user.fullname }}</span>
+					<img
+						class="user-img"
+						:src="user.imgUrl"
+						:alt="user.fullname"
+					/>
+				</div>
 				<!-- <div class="login-user flex a-center">
           <div class="main-nav-menu">
             <svg
@@ -123,11 +131,6 @@ export default {
 			// scrollPosition: null,
 		};
 	},
-	computed: {
-		user() {
-			return this.$store.getters["user/user"];
-		},
-	},
 	methods: {
 		handleShowFilter() {
 			if (this.firstClick) {
@@ -146,6 +149,10 @@ export default {
 		},
 		showHeroImage() {
 			return this.$store.getters.showHeroImage;
+		},
+
+		user() {
+			return this.$store.getters["user/user"];
 		},
 	},
 	created() {

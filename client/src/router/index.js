@@ -6,6 +6,7 @@ import stayDetails from '@/pages/stayDetails.vue';
 import stayEdit from '@/pages/stayEdit.vue';
 import stayPage from '@/pages/stayPage.vue';
 import userDetails from '@/pages/userDetails.vue';
+import login from '@/pages/loginPage.vue';
 
 Vue.use(VueRouter);
 
@@ -14,6 +15,11 @@ const routes = [
         path: '/',
         name: 'Home',
         component: homePage,
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: login,
     },
     {
         path: '/explore',
