@@ -11,9 +11,20 @@
           <h2>Pending/Accepted Reservations</h2>
           <div class="reservation-list">
             <div class="stay" v-for="order in orders" :key="order._id">
-              {{ order }}
+              <!-- {{ order }} -->
               <hr />
-              <!-- {{ order._id }} -->
+              <table>
+              <tr>
+                <td>{{order.stay.name}}</td>
+                <td>{{order.checkIn}}</td>
+                <td>{{order.checkOut}}</td>
+                <td>{{order.guests}}</td>
+                <td>{{order.status}}</td>
+                <td>{{order.stay.price}}</td>
+                <td><button>Accept</button></td>
+                <td><button>Reject</button></td>
+                </tr>
+                </table>
             </div>
           </div>
         </div>
