@@ -12,7 +12,8 @@
           <div class="reservation-list">
             <div class="stay" v-for="order in orders" :key="order._id">
               {{ order }}
-              {{ order._id }}
+              <hr />
+              <!-- {{ order._id }} -->
             </div>
           </div>
         </div>
@@ -59,7 +60,7 @@ export default {
     this.$store
       .dispatch({
         type: 'order/fetchFiltered',
-        filterBy: { hostId: this.user._id, guestId: this.user._id },
+        filterBy: { hostId: this.user._id, guestId: this.user._id, size: 20 },
       })
       .then(orders => (this.orders = orders || []));
     this.$store
