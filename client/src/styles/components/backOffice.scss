@@ -1,0 +1,30 @@
+.container-back-office {
+  max-width: 1210px;
+
+  .back-office {
+    max-width: 605px;
+
+    & * {
+
+      color: grey;
+      margin: 5px;
+    }
+
+    // .header-main {
+    //   display: none;
+    // }
+
+    .host-details {
+      .title-hello-user {
+        text-align: center;
+      }
+
+      img {
+        border-radius: 50%;
+        width: auto;
+        height: 100px;
+        width: 100px;
+      }
+    }
+  }
+}
