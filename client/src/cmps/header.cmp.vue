@@ -9,7 +9,7 @@
 			<!-- search btn -->
 			<div
 				class="filter-btn flex j-between a-center"
-				v-if="!hideBtn && this.$route.name !== 'Explore'"
+				v-if="!hideBtn && this.$route.name === 'Home'"
 				@click="(hideBtn = true), (firstClick = true)"
 			>
 				<span>Start your search</span>
@@ -43,7 +43,8 @@
 				v-if="
 					scrollPosition &&
 					scrollPosition >= 0 &&
-					scrollPosition < 200
+					scrollPosition < 200 &&
+					showHeroImage
 				"
 			></nav-filter>
 
