@@ -62,9 +62,10 @@ db.getCollection('stay').aggregate([
     {
         $match: {
             reviews_amount: { $gte: 30 },
+            imgUrls:{$size:0}
         },
     },
-]);
+]).limit(50)
 
 db.getCollection('order').aggregate([
     {
@@ -76,3 +77,17 @@ db.getCollection('order').aggregate([
         },
     },
 ]);
+
+db.getCollection('stay').aggregate([
+    {
+        $addFields: {
+            reviews_amount: { $size: '$reviews' },
+        },
+    },
+    {
+        $match: {
+            reviews_amount: { $gte: 30 },
+            imgUrls:{$size:0}
+        },
+    },{$limit:50}
+])
