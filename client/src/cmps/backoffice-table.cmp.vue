@@ -1,44 +1,37 @@
 <template>
-  <div class="dev">
-    <el-table v-if="false" :data="tableData" style="width: 100%">
-      <el-table-column prop="stay.name" label="Stay" width="240">
-      </el-table-column>
-      <el-table-column prop="buyer.fullname" label="Name" width="120">
-      </el-table-column>
-      <el-table-column prop="checkIn" label="check-in" width="120">
-      </el-table-column>
-      <el-table-column prop="checkOut" label="Check-out" width="120">
-      </el-table-column>
-      <el-table-column prop="guests" label="Guests" width="120">
-      </el-table-column>
-      <el-table-column prop="_id" label="IDDEV" width="120"> </el-table-column>
-      <el-table-column prop="status" label="status" width="120">
-      </el-table-column>
-      <el-table-column prop="stay.price" label="price" width="120">
-      </el-table-column>
-      <el-table-column fixed="right" label="Operations" width="120">
-        <template slot-scope="scope">
-          <el-button
-            @click="orderStatus(scope.$index, scope.row, 1)"
-            type="text"
-            size="small"
-            >Accept</el-button
-          >
-          <el-button
-            @click="orderStatus(scope.$index, scope.row, 0)"
-            type="text"
-            size="small"
-            >Reject</el-button
-          >
-        </template>
-      </el-table-column>
-    </el-table>
-
-    <div class="devv" v-for="data in tableData" :key="data._id">
-      {{ data.stay.name }}////
-      {{ data.stay._id }}
-    </div>
-  </div>
+  <el-table :data="tableData" style="width: 100%">
+    <el-table-column prop="stay.name" label="Stay" width="240">
+    </el-table-column>
+    <el-table-column prop="buyer.fullname" label="Name" width="120">
+    </el-table-column>
+    <el-table-column prop="checkIn" label="check-in" width="120">
+    </el-table-column>
+    <el-table-column prop="checkOut" label="Check-out" width="120">
+    </el-table-column>
+    <el-table-column prop="guests" label="Guests" width="120">
+    </el-table-column>
+    <el-table-column prop="_id" label="IDDEV" width="120"> </el-table-column>
+    <el-table-column prop="status" label="status" width="120">
+    </el-table-column>
+    <el-table-column prop="stay.price" label="price" width="120">
+    </el-table-column>
+    <el-table-column fixed="right" label="Operations" width="120">
+      <template slot-scope="scope">
+        <el-button
+          @click="orderStatus(scope.$index, scope.row, 1)"
+          type="text"
+          size="small"
+          >Accept</el-button
+        >
+        <el-button
+          @click="orderStatus(scope.$index, scope.row, 0)"
+          type="text"
+          size="small"
+          >Reject</el-button
+        >
+      </template>
+    </el-table-column>
+  </el-table>
 </template>
 
 <script>
