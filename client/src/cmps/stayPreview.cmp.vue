@@ -1,14 +1,5 @@
 <template>
   <div class="stay-preview">
-    <p style="font-size: 10px; color: red">
-      {{ stay._id }} <br />FOR DEV REMOVE AFTER!!
-    </p>
-
-    <!-- <el-carousel
-			:autoplay="false"
-			trigger="click"
-			@click.native="sendToDetails"
-		> -->
     <el-carousel :autoplay="false">
       <div
         class="likes"
