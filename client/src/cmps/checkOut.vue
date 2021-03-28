@@ -152,7 +152,6 @@
 <script>
 import moment from 'moment';
 import datePicker from '../cmps/datepicker.cmp';
-import { utilService } from '../services/util.service';
 import { socketService } from '../services/socket.service';
 
 export default {

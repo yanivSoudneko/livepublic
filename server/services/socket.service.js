@@ -59,11 +59,23 @@ function connectSockets(http, session, corsOrigin) {
 
         socket.on('join-reservation-chat', (data) => {
             if (!data.order || !data.order._id) {
-                console.log(JSON.stringify(data));
+                console.log('join-reservation-chat error', JSON.stringify(data));
                 return;
             }
             socket.join(data.order._id);
         });
+
+        socket.on('order-approval', (data) => {
+            const order = data
+            if (!order || !order.buyer || !order.buyer._id) {
+                console.log('order-approval error', JSON.stringify(data));
+                return;
+            }
+            socket.emit(order.buyer._id, {
+                orderStatus: order.status,
+                orderId: order._id,
+            });
+        })
     });
 }
 

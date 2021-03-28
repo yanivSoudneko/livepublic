@@ -82,8 +82,8 @@ export default {
 
       const filterBy = {
         filterTxt,
-        checkIn: dates.in,
-        checkOut: dates.out,
+        // checkIn: dates.in,
+        // checkOut: dates.out,
         guestCount,
       };
       if (filterTxt === "") {

@@ -40,9 +40,9 @@ async function updateOrder(req, res) {
   try {
     const order = req.body;
     const id = order._id;
-    console.log('id:', id);
-    await orderService.update(order, id);
-    res.send(savedorder);
+    console.log('id:', id, 'order', order);
+    const savedOrder = await orderService.update(order, id);
+    res.send(savedOrder);
   } catch (err) {
     logger.error('Failed to update order', err);
     res.status(500).send({ err: 'Failed to update order' });
@@ -52,8 +52,8 @@ async function updateOrder(req, res) {
 async function addOrder(req, res) {
   try {
     const order = req.body;
-    const savedorder = await orderService.add(order);
-    res.send(savedorder);
+    const savedOrder = await orderService.add(order);
+    res.send(savedOrder);
   } catch (err) {
     logger.error('Failed to update order', err);
     res.status(500).send({ err: 'Failed to update order' });
