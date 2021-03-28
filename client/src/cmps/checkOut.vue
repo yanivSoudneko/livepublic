@@ -165,7 +165,6 @@
 <script>
 import moment from "moment";
 import datePicker from "../cmps/datepicker.cmp";
-
 import { socketService } from "../services/socket.service";
 
 export default {

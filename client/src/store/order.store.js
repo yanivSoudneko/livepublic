@@ -26,6 +26,13 @@ export default {
         },
     },
     actions: {
+        async updateOrder({ commit }, { scope }) {
+            try {
+              await orderService.updateOrder(scope);
+            } catch (err) {
+              console.error('Cant Update Order', err);
+            }
+          },
         async fetchFiltered({ commit, state }, { filterBy }) {
             try {
                 utilService.buildFilter(state.filterBy, filterBy);

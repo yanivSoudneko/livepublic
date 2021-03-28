@@ -91,3 +91,11 @@ db.getCollection('stay').aggregate([
         },
     },{$limit:50}
 ])
+
+//DO NOT USE!!!
+xxx.deleteMany({
+    imgUrls: { $size: 0 }  
+})
+
+//find
+db.getCollection('stay').find({'loc.address':{$regex:'new york',$options:'i'}})

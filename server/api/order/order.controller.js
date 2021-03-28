@@ -41,17 +41,16 @@ async function deleteOrder(req, res) {
 
 async function updateOrder(req, res) {
     try {
-        const order = req.body;
-        const id = order._id;
-        console.log('id:', id);
-        const savedorder = await orderService.update(order, id);
-        res.send(savedorder);
+      const order = req.body;
+      const id = order._id;
+      console.log('id:', id);
+      await orderService.update(order, id);
+      res.send(savedorder);
     } catch (err) {
-        logger.error('Failed to update order', err);
-        res.status(500).send({ err: 'Failed to update order' });
+      logger.error('Failed to update order', err);
+      res.status(500).send({ err: 'Failed to update order' });
     }
-}
-
+  }
 async function addOrder(req, res) {
     try {
         const order = req.body;

@@ -2,7 +2,7 @@ import { httpService } from './http.service';
 import { storageService } from './async-storage.service';
 import orderJson from '../../data/orderMockData.json';
 
-export const orderService = { save, query };
+export const orderService = { save, query, updateOrder };
 const ORDER_KEY = 'order';
 const END_POINT = '/order';
 
@@ -14,6 +14,7 @@ const END_POINT = '/order';
 })().catch((err) => {
     console.error('error initializing data!', err);
 });
+
 
 async function save(order) {
     try {
@@ -61,4 +62,9 @@ async function query(filterBy) {
     }
 
     return storageService.query(ORDER_KEY);
+}
+
+
+async function updateOrder(order) {
+    await httpService.put(`${END_POINT}/${order._id}`, order);
 }

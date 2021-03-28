@@ -127,7 +127,7 @@ export default {
 
 		if (!filterBy) {
 			this.$store
-				.dispatch({ type: "stay/fetchFiltered", filterBy: null })
+				.dispatch({ type: "stay/fetchFiltered", filterBy: {size:20} })
 				.then((res) => {
 					this.stayData = res;
 				});
