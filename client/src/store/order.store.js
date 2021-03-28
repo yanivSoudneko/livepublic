@@ -43,7 +43,6 @@ export default {
     },
     async saveOrder({ commit }, { order }) {
       try {
-        console.log('order:', order);
         const newOrder = await orderService.save(order);
         return newOrder;
       } catch (error) {

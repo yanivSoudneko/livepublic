@@ -196,12 +196,12 @@ export default {
         checkOut: this.order.checkOut,
         guests: this.order.guest,
         status: 'pending',
+        totalPrice: this.order.totalPrice,
         stay: {
           _id: this.stay._id,
           name: this.stay.name,
           price: this.stay.price,
         },
-        totalPrice: this.calcPricePerDays(),
       };
       console.log('order:', order);
       this.$store.dispatch({ type: 'order/saveOrder', order }).then(newOrder => {

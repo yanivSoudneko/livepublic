@@ -30,6 +30,7 @@ export default {
       state.locations = locations;
     },
     setStay({ stays }, { stay }) {
+      return;
       console.log('🚀 ~ file: stay.store.js ~ line 33 ~ setStay ~ stay', stay);
       const idx = stays.findIndex(s => s._id === stay._id);
       if (idx === -1) {

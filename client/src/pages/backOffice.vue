@@ -18,8 +18,8 @@
             <a class="host-new-stay">Host New Stay</a>
           </div>
           <div class="hosting-stays">
-            <div class="stay-card">
-              <backoffice-card v-for="stay in stays" :key="stay._id" :stay="stay" />
+            <div class="stay-card" v-if="doneFetchingStays">
+              <backoffice-card v-for="(stay, index) in stays" :key="index" :stay="stay" :orders="orders" />
             </div>
           </div>
         </div>
@@ -40,7 +40,7 @@ import orderList from '../cmps/backoffice-table.cmp';
 export default {
   name: 'Back-Office',
   data() {
-    return { orders: [], stays: [] };
+    return { orders: [], stays: [], doneFetchingStays: false };
   },
   computed: {
     user() {
@@ -60,10 +60,39 @@ export default {
             size: 20,
           },
         })
-        .then(orders => {
-          this.orders = orders;
-          this.$forceUpdate();
+        .then(async orders => {
+          try {
+            this.orders = orders;
+            const stayIdArr = orders.map(order => order.stay._id);
+            console.log('🚀 ~ file: backOffice.vue ~ line 67 ~ getOrders ~ stayIdArr', stayIdArr);
+
+            var unique = stayIdArr.filter((value, index, self) => self.indexOf(value) === index);
+            console.log('🚀 ~ file: backOffice.vue ~ line 77 ~ getOrders ~ unique', unique);
+
+            unique.forEach(async stayId => {
+              const stay = await this.$store.dispatch({ type: 'stay/getById', stayId });
+              this.stays.push(stay);
+            });
+            // for (const stayId of stayIdArr) {
+            //   const stay = await this.$store.dispatch({ type: 'stay/getById', stayId });
+            //   console.log('🚀 ~ file: backOffice.vue ~ line 71 ~ getOrders ~ stay', stay._id);
+            //   if (this.stays.find(s => s._id !== stay._id)) {
+            //     this.stays.push(stay);
+            //   }
+            // }
+
+            // console.log('stays line 80', this.stays);
+            // this.$forceUpdate();
+          } catch (error) {
+            console.log('🚀 ~ file: backOffice.vue ~ line 78 ~ getOrders ~ error', error);
+          }
         });
+    },
+  },
+  watch: {
+    stays() {
+      this.doneFetchingStays = false;
+      this.doneFetchingStays = true;
     },
   },
   created() {
@@ -75,15 +104,15 @@ export default {
 
     this.getOrders();
     //get stays
-    this.$store
-      .dispatch({
-        type: 'stay/fetchFiltered',
-        filterBy: { filterTxt: 'new york', hostId: this.user._id, size: 20 },
-      })
-      .then(data => {
-        console.log('data:', data);
-        this.stays = data.stays || [];
-      });
+    // this.$store
+    //   .dispatch({
+    //     type: 'stay/fetchFiltered',
+    //     filterBy: { filterTxt: 'new york', hostId: this.user._id, size: 20 },
+    //   })
+    //   .then(data => {
+    //     console.log('data:', data);
+    //     this.stays = data.stays || [];
+    //   });
 
     socketService.on(this.user._id, data => {
       console.log('host data', data);
