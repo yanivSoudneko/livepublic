@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "start": "node server.js",
+        "start": "cd server && node server.js",
         "cleanup": "find -iname desktop.ini -delete"
     }
 }
