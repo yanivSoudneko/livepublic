@@ -18,9 +18,8 @@
             <a class="host-new-stay">Host New Stay</a>
           </div>
           <div class="hosting-stays">
-            <div class="stay" v-for="stay in stays" :key="stay._id">
-              {{ stay.name }}
-              {{ stay.imgUrl }}
+            <div class="stay-card">
+              <backoffice-card v-for="stay in stays" :key="stay._id" :stay="stay" />
             </div>
           </div>
         </div>
@@ -36,6 +35,7 @@
 <script>
 import { socketService } from '../services/socket.service';
 import navFilter from '../cmps/navFilter.cmp';
+import backofficeCard from '../cmps/backoffice-card.cmp';
 import orderList from '../cmps/backoffice-table.cmp';
 export default {
   name: 'Back-Office',
@@ -78,9 +78,10 @@ export default {
     this.$store
       .dispatch({
         type: 'stay/fetchFiltered',
-        filterBy: { hostId: this.user._id, size: 5 },
+        filterBy: { filterTxt: 'new york', hostId: this.user._id, size: 20 },
       })
       .then(data => {
+        console.log('data:', data);
         this.stays = data.stays || [];
       });
 
@@ -93,6 +94,7 @@ export default {
   components: {
     navFilter,
     orderList,
+    backofficeCard,
   },
 };
 </script>

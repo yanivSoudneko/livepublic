@@ -46,7 +46,7 @@ export default {
     async fetchFiltered({ state }, { filterBy }) {
       try {
         _setFilter(state.filterBy, filterBy);
-        console.log('🚀 ~ file: stay.store.js ~ line 51 ~ fetchFiltered ~ state.filterBy', state.filterBy);
+        console.log('🚀 ~ file: stay.store.js ~ line 49 ~ fetchFiltered ~ state.filterBy', state.filterBy);
 
         const stays = await stayService.queryStays(state.filterBy);
         const output = {
