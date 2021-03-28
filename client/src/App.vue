@@ -11,10 +11,10 @@
 <style lang="scss" scoped>
 #app {
 	.view {
-		height: 100vh;
+		// height: 100vh;
 		max-width: 1210px;
 		margin: 0 auto;
-		padding-bottom: 50px;
+		// padding-bottom: 50px;
 	}
 }
 </style>
