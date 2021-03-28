@@ -186,7 +186,7 @@
 		<div class="land-div" v-if="showHeroImage">
 			<img class="land-img" src="../../public/img/land-img.webp" />
 		</div>
-		<h3 class="sub-header">Made possible by Hosts</h3>
+		<h3 class="sub-header" v-if="showHeroImage" >Made possible by Hosts</h3>
 	</header>
 </template>
 

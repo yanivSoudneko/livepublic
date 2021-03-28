@@ -146,6 +146,17 @@ function _buildCriteria(criteria) {
             });
         }
 
+        if (key === 'prices' && value && value[0] && value[1]) {
+            var max, min;
+            min = value[0] > value[1] ? value[0] : value[1];
+            max = value[0] < value[1] ? value[0] : value[1];
+            aggregation.push({
+                $match: {
+                    price: { $gte: min, $lte: max },
+                },
+            });
+        }
+
         if (key === 'guestCount' && value) {
             aggregation.push({
                 $match: {

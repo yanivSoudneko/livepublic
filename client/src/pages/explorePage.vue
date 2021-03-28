@@ -36,16 +36,57 @@
 		<!-- filters by  -->
 		<small class="head-title-visits">300+ stays</small>
 		<h1 class="head-title-txt">Entire homes</h1>
-		<router-link to="/">Back</router-link>
 		<div class="filters flex columns">
-			<div class="sub-filter-container flex">
-				<div class="filter pill-pad">Filter Type</div>
-				<div class="filter pill-pad">Filter Price</div>
+			<div class="sub-filter-container flex a-center">
+				<!-- <div class="filter pill-pad">Filter Type</div> -->
+
+				<el-dropdown trigger="click">
+					<el-button class="filter pill-pad"> Filter Type </el-button>
+					<el-dropdown-menu slot="dropdown">
+						<el-dropdown-item class="flex columns">
+							<el-radio v-model="type" label="Pets Allowed"
+								>Pets Allowed</el-radio
+							>
+							<el-radio v-model="type" label="Entire Homes"
+								>Entire Homes</el-radio
+							>
+						</el-dropdown-item>
+					</el-dropdown-menu>
+				</el-dropdown>
+
+				<el-dropdown trigger="click">
+					<el-button class="filter pill-pad">
+						Filter Price
+					</el-button>
+					<el-dropdown-menu slot="dropdown" class="price-range">
+						<el-dropdown-item>
+							<el-slider
+								v-model="priceLevels"
+								range
+								show-stops
+								:max="2000"
+							>
+							</el-slider>
+						</el-dropdown-item>
+					</el-dropdown-menu>
+				</el-dropdown>
+				<button
+					class="apply-filters filter pill-pad"
+					@click="fetchByTypeAndFilter"
+				>
+					Apply
+				</button>
+				<router-link
+					class="filter pill-pad"
+					style="margin-left: 15px; text-decoration: none"
+					to="/"
+					>Back</router-link
+				>
 			</div>
-			<div class="sub-filter-btns flex">
+			<!-- <div class="sub-filter-btns flex">
 				<button class="filter pill-pad">Instant Book</button>
 				<button class="filter pill-pad">More Filters</button>
-			</div>
+			</div> -->
 		</div>
 		<!-- locationList -->
 		<loader v-if="!stayData.stays" />
@@ -65,6 +106,13 @@
 .sub-filter-btns {
 	margin-top: 10px;
 }
+/* .el-dropdown-menu {
+
+	min-width: 500px;
+} */
+.price-range {
+	min-width: 300px;
+}
 </style>
 
 
@@ -74,37 +122,50 @@ import loader from "../cmps/loader.cmp";
 export default {
 	name: "Explore",
 	data() {
-		return { filterTxt: "", stayData: {}, filterByPrice: null };
+		return {
+			filterTxt: "",
+			type: "Pets Allowed",
+			priceLevels: [250, 500],
+			price: 0,
+			stayData: {},
+			filterByPrice: null,
+		};
 	},
 	methods: {
-		// 	setFilters() {
-		//   const { filterTxt, filterByPrice,  } = this;
-
-		//   const filterBy = {
-		//     filterTxt,
-		//     filterByPrice,
-		//   };
-		//   if (filterTxt === '') {
-		//     this.$refs.filterTxtInput.focus();
-		//     return;
-		//   }
-
-		//   this.$store.commit({ type: 'stay/setFilterBy', filterBy });
-		//   this.$emit('closeFilters', true);
-		//   if (this.$route.name === 'Explore') {
-		//     return;
-		//   }
-		//   this.$router.push({
-		//     name: 'Explore',
-		//     params: {
-		//       filterBy,
-		//     },
-		//   });
 		setNewFilter() {
 			this.$store
 				.dispatch({
 					type: "stay/fetchFiltered",
 					filterBy: { filterTxt: this.filterTxt },
+				})
+				.then((res) => {
+					this.stayData = res;
+					console.log(
+						"🚀 ~ file: explorePage.vue ~ line 105 ~ .then ~ this.stayData",
+						this.stayData
+					);
+				});
+		},
+		fetchByTypeAndFilter() {
+			const { type, priceLevels } = this;
+			console.log({ type, priceLevels });
+			const invalidLocation = [
+				"Popular Stays",
+				"Explore locations",
+				"Top Rated Stays in New York",
+			];
+			if (invalidLocation.includes(this.filterTxt)) {
+				this.filterTxt = "";
+			}
+			this.$store
+				.dispatch({
+					type: "stay/fetchFiltered",
+					filterBy: {
+						filterTxt: this.filterTxt,
+						type,
+						prices: priceLevels,
+						size: 20,
+					},
 				})
 				.then((res) => {
 					this.stayData = res;
