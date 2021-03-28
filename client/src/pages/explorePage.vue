@@ -36,6 +36,7 @@
 		<!-- filters by  -->
 		<small class="head-title-visits">300+ stays</small>
 		<h1 class="head-title-txt">Entire homes</h1>
+		<router-link to="/">Back</router-link>
 		<div class="filters flex columns">
 			<div class="sub-filter-container flex">
 				<div class="filter pill-pad">Filter Type</div>
@@ -60,6 +61,9 @@
 <style lng="scss">
 .head-title-visits {
 	padding-left: 2px;
+}
+.sub-filter-btns {
+	margin-top: 10px;
 }
 </style>
 
