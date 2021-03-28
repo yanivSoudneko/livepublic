@@ -15,7 +15,7 @@ async function getOrders(req, res) {
     try {
         var { filterBy } = req.query;
         if (!filterBy) return res.status(400).send({ err: 'filterBy invalid' });
-        
+
         filterBy = JSON.parse(filterBy);
         const orders = await orderService.query(filterBy);
         res.send(orders);
@@ -41,16 +41,16 @@ async function deleteOrder(req, res) {
 
 async function updateOrder(req, res) {
     try {
-      const order = req.body;
-      const id = order._id;
-      console.log('id:', id);
-      await orderService.update(order, id);
-      res.send(savedorder);
+        const order = req.body;
+        const id = order._id;
+        console.log('id:', id, 'order', order);
+        const savedorder = await orderService.update(order, id);
+        res.send(savedorder);
     } catch (err) {
-      logger.error('Failed to update order', err);
-      res.status(500).send({ err: 'Failed to update order' });
+        logger.error('Failed to update order', err);
+        res.status(500).send({ err: 'Failed to update order' });
     }
-  }
+}
 async function addOrder(req, res) {
     try {
         const order = req.body;

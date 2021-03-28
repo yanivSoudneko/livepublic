@@ -1,20 +1,9 @@
 import { httpService } from './http.service';
 import { storageService } from './async-storage.service';
-import orderJson from '../../data/orderMockData.json';
 
 export const orderService = { save, query, updateOrder };
 const ORDER_KEY = 'order';
 const END_POINT = '/order';
-
-(async () => {
-    const orders = await storageService.query(ORDER_KEY);
-    if (!orders.length) {
-        localStorage.setItem(ORDER_KEY, JSON.stringify(orderJson));
-    }
-})().catch((err) => {
-    console.error('error initializing data!', err);
-});
-
 
 async function save(order) {
     try {
@@ -31,26 +20,10 @@ async function save(order) {
         );
     }
 }
-function saveLocal(order) {
-    console.log('order:', order);
-    return storageService.post(ORDER_KEY, order);
-}
 
 async function query(filterBy) {
-    // const { startDate, endDate } = filterBy;
-
-    // var filters = {
-    //     checkIn: startDate,
-    //     checkOut: endDate,
-    //     guestCount: 1,
-    //     page: 0,
-    //     size: 1,
-    //     stayId: null,
-    //     hostId: null,
-    //     guestId: null,
-    // };
-
     try {
+        console.log("🚀 ~ file: order.service.js ~ line 25 ~ query ~ filterBy", JSON.stringify(filterBy))
         const res = await httpService.get(END_POINT, null, { filterBy });
         console.log('orders', res, filterBy);
         return res;
@@ -64,7 +37,12 @@ async function query(filterBy) {
     return storageService.query(ORDER_KEY);
 }
 
-
 async function updateOrder(order) {
-    await httpService.put(`${END_POINT}/${order._id}`, order);
+    try {
+        const res = await httpService.put(`${END_POINT}/${order._id}`, order);
+        return res
+    } catch (error) {
+        console.log("🚀 ~ file: order.service.js ~ line 73 ~ updateOrder ~ error", error)
+
+    }
 }

@@ -5,9 +5,7 @@ export default {
     state: {
         orders: [],
         filterBy: {
-            // checkIn: new Date(),
-            // checkOut: new Date(),
-            guestCount: 1,
+            // guestCount: 1,
             page: 0,
             size: 1,
             stayId: null,
@@ -26,13 +24,14 @@ export default {
         },
     },
     actions: {
-        async updateOrder({ commit }, { scope }) {
+        async updateOrder({ commit }, { order }) {
             try {
-              await orderService.updateOrder(scope);
+                const res = await orderService.updateOrder(order);
+                return res;
             } catch (err) {
-              console.error('Cant Update Order', err);
+                console.error('Cant Update Order', err);
             }
-          },
+        },
         async fetchFiltered({ commit, state }, { filterBy }) {
             try {
                 utilService.buildFilter(state.filterBy, filterBy);

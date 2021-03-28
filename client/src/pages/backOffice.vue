@@ -5,13 +5,13 @@
       <div class="host-details flex j-around a-center">
         <h2 class="title-hello-user">Greetings Mr/Mrs {{ user.fullname }}</h2>
       </div>
-        <img :src="user.imgUrl" :alt="user.fullname" />
+      <img :src="user.imgUrl" :alt="user.fullname" />
       <div class="top-section">
         <div class="reservations">
           <h2>Pending/Accepted Reservations</h2>
-      <order-list v-if="this.orders.length" :orders="orders" />
+          <order-list v-if="orders.length" :orders="orders" />
         </div>
-       
+
         <div class="stays-container">
           <div class="header">
             <h2>My Stays(hosting)</h2>
@@ -23,14 +23,12 @@
               {{ stay.imgUrl }}
             </div>
           </div>
-          
         </div>
 
         <div class="host-summary">
           <h2>Host Summary</h2>
         </div>
       </div>
-      
     </div>
   </section>
 </template>
@@ -51,6 +49,7 @@ export default {
   },
   methods: {
     getOrders() {
+      // debugger;
       //get orders
       this.$store
         .dispatch({
@@ -61,7 +60,10 @@ export default {
             size: 20,
           },
         })
-        .then((orders) => (this.orders = orders));
+        .then((orders) => {
+          this.orders = orders;
+          this.$forceUpdate()
+        });
     },
   },
   created() {

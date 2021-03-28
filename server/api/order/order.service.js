@@ -65,16 +65,17 @@ async function remove(orderId) {
 
 async function update(order, id) {
     try {
-      const _id = ObjectId(id);
-      delete order._id;
-      const collection = await dbService.getCollection(ORDER_COLLECTION);
-      await collection.updateOne({ _id }, { $set: order }, { returnOriginal: false });
+        const _id = ObjectId(id);
+        delete order._id;
+        const collection = await dbService.getCollection(ORDER_COLLECTION);
+        const updatedOrder = await collection.updateOne({ _id }, { $set: order }, { returnOriginal: false });
+        return updatedOrder
     } catch (err) {
-      logger.error(`cannot update order ${order._id}`, err);
-      console.error(`cannot update order ${order._id}`, err);
-      throw err;
+        logger.error(`cannot update order ${order._id}`, err);
+        console.error(`cannot update order ${order._id}`, err);
+        throw err;
     }
-  }
+}
 
 async function add(order) {
     try {
