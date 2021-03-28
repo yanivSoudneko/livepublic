@@ -1,5 +1,6 @@
 {
     "scripts": {
+        "start": "node server.js",
         "cleanup": "find -iname desktop.ini -delete"
     }
 }
