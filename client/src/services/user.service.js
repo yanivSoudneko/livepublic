@@ -38,7 +38,7 @@ async function logout() {
     try {
         const res = await httpService.post(AUTH_URL + 'logout');
         console.log('🚀 ~ file: user.service.js ~ line 47 ~ logout ~ res', res);
-        storageService.remove(LS_KEY);
+        _remove(LS_KEY);
     } catch (error) {
         throw { error };
     }

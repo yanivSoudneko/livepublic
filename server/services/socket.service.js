@@ -10,9 +10,7 @@ function connectSockets(http, session, corsOrigin) {
             methods: ['GET', 'POST'],
         },
     });
-
     const sharedSession = require('express-socket.io-session');
-
     gIo.use(
         sharedSession(session, {
             autoSave: true,
@@ -20,10 +18,7 @@ function connectSockets(http, session, corsOrigin) {
     );
     gIo.on('connection', (socket) => {
         console.log('contected');
-        // console.log('socket.handshake', socket.handshake)
         gSocketBySessionIdMap[socket.handshake.sessionID] = socket;
-        // TODO: emitToUser feature - need to tested for CaJan21
-        // if (socket.handshake?.session?.user) socket.join(socket.handshake.session.user._id)
         socket.on('disconnect', (socket) => {
             console.log('Someone disconnected');
             if (socket.handshake) {
@@ -36,15 +31,38 @@ function connectSockets(http, session, corsOrigin) {
                 socket.leave(socket.myTopic);
             }
             socket.join(topic);
-            // logger.debug('Session ID is', socket.handshake.sessionID)
             socket.myTopic = topic;
         });
         socket.on('chat newMsg', (msg) => {
-            // emits to all sockets:
-            // gIo.emit('chat addMsg', msg)
-            // emits only to sockets in the same room
-            // console.log("🚀 ~ file: socket.service.js ~ line 43 ~ connectSockets ~ socket.myTopic", socket.myTopic)
             gIo.to(socket.myTopic).emit('chat addMsg', msg);
+        });
+
+        socket.on('login', (user) => {
+            console.log(
+                '🚀 ~ file: socket.service.js ~ line 41 ~ socket.on ~ user',
+                user
+            );
+            socket.join(user._id);
+        });
+        socket.on('logout', (user) => {
+            console.log(
+                '🚀 ~ file: socket.service.js ~ line 41 ~ socket.on ~ user',
+                user
+            );
+            socket.broadcast.emit('user-left', user);
+        });
+
+        socket.on('reservation-created', (data) => {
+            socket.join(data.order._id);
+            emit({ type: data.host._id, data });
+        });
+
+        socket.on('join-reservation-chat', (data) => {
+            if (!data.order || !data.order._id) {
+                console.log(JSON.stringify(data));
+                return;
+            }
+            socket.join(data.order._id);
         });
     });
 }

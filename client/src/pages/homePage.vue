@@ -38,7 +38,7 @@
 		</div>
 		<loader v-if="!topRatedNY.stays" />
 		<stay-list v-if="topRatedNY.stays" :stayData="topRatedNY"></stay-list>
-		<footer-cmp />
+		<!-- <footer-cmp /> -->
 	</div>
 </template>
 
@@ -49,7 +49,7 @@ import inspirtionDestionation from "../cmps/inspiration-destination.cmp";
 import categoryList from "../cmps/categoryList.cmp";
 import stayList from "../cmps/stayList.cmp";
 import loader from "../cmps/loader.cmp";
-import FooterCmp from "../cmps/footer.cmp.vue";
+// import FooterCmp from "../cmps/footer.cmp.vue";
 
 export default {
 	name: "Home",
@@ -121,7 +121,7 @@ export default {
 		stayList,
 		inspirtionDestionation,
 		loader,
-		FooterCmp,
+		// FooterCmp,
 	},
 };
 </script>

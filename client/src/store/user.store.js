@@ -1,4 +1,5 @@
 import { userService } from '../services/user.service';
+import { socketService } from '../services/socket.service';
 // import Vue from 'vue';
 export default {
     namespaced: true,
@@ -36,9 +37,14 @@ export default {
         },
     },
     actions: {
-        async login({ commit }, { user }) {
+        async login({ commit, state }, { user }) {
             try {
                 const resUser = await userService.login(user);
+                socketService.setup();
+                //join room
+                socketService.emit('login', {
+                    user: state.user,
+                });
                 commit({ type: 'setUser', user: resUser });
                 return resUser;
             } catch (error) {
@@ -54,9 +60,11 @@ export default {
                 commit({ type: 'setError', error });
             }
         },
-        logout({ commit }, payload) {
+        logout({ commit, state }, payload) {
             console.log('logging out');
             userService.logout();
+            socketService.emit('logout', { user: state.user });
+            // socketService.terminate();
             commit({ type: 'logout' });
         },
         checkStoredUser({ commit }) {

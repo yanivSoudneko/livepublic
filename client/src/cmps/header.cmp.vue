@@ -1,6 +1,6 @@
 <template>
 	<header class="header-main">
-		<div  class="nav-bar">
+		<div class="nav-bar">
 			<router-link tag="div" class="logo flex a-center" to="/">
 				<img src="@/assets/img/logo.png" />
 				<span class="logo-name"></span>
@@ -39,15 +39,14 @@
 				</span>
 			</div>
 			<!-- filters -->
-			<!-- <nav-filter
-        v-if="hideBtn && this.$route.name !== 'Explore'"
-        v-click-outside="handleShowFilter"
-        @closeFilters="hideBtn = false"
-      ></nav-filter> -->
 			<nav-filter
-				v-if="scrollPosition && scrollPosition >= 0 && scrollPosition < 200"
+				v-if="
+					scrollPosition &&
+					scrollPosition >= 0 &&
+					scrollPosition < 200
+				"
 			></nav-filter>
-	
+
 			<div class="links flex j-between a-center">
 				<router-link to="/explore"> Explore </router-link>
 				<!-- <router-link to="/host"> Become Host </router-link> -->
@@ -208,9 +207,10 @@ export default {
 		};
 	},
 	methods: {
-		// headerClassToggle(){
-
-		// },
+		logout() {
+			this.$store.dispatch({ type: "user/logout" });
+			this.$router.push("/");
+		},
 		handleShowFilter() {
 			if (this.firstClick) {
 				this.firstClick = false;
@@ -223,10 +223,10 @@ export default {
 		},
 		// test methods
 		handleCommand(command) {
-			if (command === "loginModal") this.loginModal();
-			else if (command === "signUpModal") this.signUpModal();
+			if (command === "loginModal") this.$router.push("/login");
+			else if (command === "signUpModal") this.$router.push("/login");
 			else if (command === "logout") this.logout();
-			else if (command === "toProfile") this.toProfile();
+			else if (command === "toProfile") this.$router.push("/dashboard");
 		},
 		onDropdown() {
 			this.isDropdown = !this.isDropdown;
@@ -246,7 +246,6 @@ export default {
 		user() {
 			return this.$store.getters["user/user"];
 		},
-
 	},
 	created() {
 		window.addEventListener("scroll", this.handleScroll);

@@ -23,7 +23,7 @@ async function query(filterBy) {
             aggregation.push({ $skip: page * size });
             aggregation.push({ $limit: size });
         }
-        console.log('aggregation---27', JSON.stringify(aggregation, null, 2));
+        // console.log('aggregation---27', JSON.stringify(aggregation, null, 2));
         const collection = await dbService.getCollection(STAY_COLLECTION);
         var stays = await collection
             .aggregate(aggregation, { allowDiskUse: true })
@@ -116,14 +116,14 @@ function _buildCriteria(criteria) {
         rating,
         reviews,
     };
-    console.log(
-        '🚀 ~ file: stay.service.js ~ line 120 ~ _buildCriteria ~ filterBy',
-        filterBy
-    );
+    // console.log(
+    //     '🚀 ~ file: stay.service.js ~ line 120 ~ _buildCriteria ~ filterBy',
+    //     filterBy
+    // );
     const aggregation = [];
     for (const key in filterBy) {
         const value = filterBy[key];
-        console.log(key, value);
+        // console.log(key, value);
         if (key === 'filterTxt' && value) {
             aggregation.push({
                 $match: {
@@ -180,10 +180,10 @@ function _buildCriteria(criteria) {
             });
         }
     }
-    console.log(
-        '🚀 ~ file: stay.service.js ~ line 169 ~ _buildCriteria ~ aggregation',
-        JSON.stringify(aggregation, null, 2)
-    );
+    // console.log(
+    //     '🚀 ~ file: stay.service.js ~ line 169 ~ _buildCriteria ~ aggregation',
+    //     JSON.stringify(aggregation, null, 2)
+    // );
     return aggregation;
 }
 

@@ -4,7 +4,7 @@
 		<div class="view">
 			<router-view />
 		</div>
-		<!-- <footer-cmp /> -->
+		<footer-cmp />
 	</div>
 </template>
 
@@ -14,27 +14,35 @@
 		height: 100vh;
 		max-width: 1210px;
 		margin: 0 auto;
+		padding-bottom: 50px;
 	}
 }
 </style>
 
 <script>
-// import FooterCmp from './cmps/footer.cmp.vue';
+import { socketService } from "./services/socket.service";
 import navBar from "./cmps/header.cmp";
+import footerCmp from "./cmps/footer.cmp";
 export default {
 	components: {
 		navBar,
-		// FooterCmp,
+		footerCmp,
+	},
+	methods: {
+		notifyOnUserLeft(data) {
+			console.log(
+				"🚀 ~ file: App.vue ~ line 31 ~ notifyOnUserLeft ~ data",
+				data
+			);
+		},
 	},
 	created() {
 		console.log("checking for stored user");
 		this.$store.dispatch({ type: "user/checkStoredUser" });
+		socketService.on("user-left", this.notifyOnUserLeft);
+	},
+	destroyed() {
+		socketService.off("user-left", this.notifyOnUserLeft);
 	},
 };
-// import jsonData from '../data/airbnb.json'
-// export default {
-//   created() {
-//     // console.log(jsonData);
-//   },
-// }
 </script>
