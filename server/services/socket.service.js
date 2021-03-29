@@ -44,10 +44,6 @@ function connectSockets(http, session, corsOrigin) {
             socket.broadcast.emit('user-left', user);
         });
 
-        socket.on('reservation-created', (data) => {
-            socket.join(data.order._id);
-            emit({ type: data.host._id, data });
-        });
 
         socket.on('join-reservation-chat', (data) => {
             if (!data.order || !data.order._id) {
@@ -59,6 +55,12 @@ function connectSockets(http, session, corsOrigin) {
             }
             socket.join(data.order._id);
         });
+
+        socket.on('reservation-created', (data) => {
+            socket.join(data.order._id);
+            emit({ type: data.host._id, data });
+        });
+
 
         socket.on('order-approval', (data) => {
             const order = data;

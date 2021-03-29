@@ -72,9 +72,9 @@ export default {
 			const {
 				checkIn,
 				checkOut,
-				stay: { price },
+				totalPrice
 			} = order;
-			order.formattedPrice = "$" + price;
+			order.formattedPrice = "$" + totalPrice;
 			order.checkInFormatted = moment(checkIn).format("MMM Do YY");
 			order.checkOutFormatted = moment(checkOut).format("MMM Do YY");
 			return order;

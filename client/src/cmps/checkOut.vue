@@ -186,6 +186,7 @@ export default {
     return {
       mouseX: 0,
       mouseY: 0,
+      // modalShowen:false,
       order: {
         checkIn: null,
         checkOut: null,
@@ -238,6 +239,7 @@ export default {
             order: newOrder,
           });
         });
+        this.showSummary = !this.showSummary
     },
     calcPricePerDays() {
       if (this.order.checkIn && this.order.checkOut) {
