@@ -42,11 +42,11 @@
       <nav-filter v-if="scrollPosition && scrollPosition >= 0 && scrollPosition < 200 && showHeroImage"></nav-filter>
 
       <div class="links flex j-between a-center">
-        <router-link to="/explore"> Explore </router-link>
+        <router-link to="/explore" class="links-to"> Explore </router-link>
         <!-- <router-link to="/host"> Become Host </router-link> -->
         <!-- <span>Become Host</span> -->
-        <router-link to="/login"> Login </router-link>
-        <router-link to="/back-office"> Dashboard </router-link>
+        <router-link to="/login" class="links-to"> Login </router-link>
+        <router-link to="/back-office" class="links-to"> Dashboard </router-link>
         <!-- <div class="user-data flex a-center">
 					<span class="user-name">Hello {{ user.fullname }}</span>
 					<img
