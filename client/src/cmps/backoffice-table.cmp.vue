@@ -4,7 +4,7 @@
     <el-table-column prop="buyer.fullname" label="Name" width="120"> </el-table-column>
     <el-table-column prop="checkIn" label="check-in" width="120"> </el-table-column>
     <el-table-column prop="checkOut" label="Check-out" width="120"> </el-table-column>
-    <el-table-column prop="guests" label="Guests" width="120"> </el-table-column>
+    <el-table-column prop="guests" label="Guests" width="100"> </el-table-column>
     <el-table-column prop="_id" label="IDDEV" width="120"> </el-table-column>
     <el-table-column prop="status" label="status" width="120"> </el-table-column>
     <el-table-column prop="stay.price" label="price" width="120"> </el-table-column>

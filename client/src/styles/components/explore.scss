@@ -30,4 +30,18 @@
 
 @include for-mobile-layout{
 	.filter-input,.head-title-visits,.head-title-txt,.sub-filter-container,.sub-filter-btns{padding-left: 20px;}
+	.filter-input{
+		margin-left: 15px;
+
+	}
+	.nav-bar{
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	footer{
+        padding-left: 20px;
+		padding-right: 20px;
+		display: flex;
+		flex-direction: column;
+	}
 }
