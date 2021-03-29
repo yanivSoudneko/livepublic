@@ -14,10 +14,10 @@ async function getStay(req, res) {
 async function getStays(req, res) {
   try {
     var { filterBy } = req.query;
-    // console.log(
-    //     '🚀 ~ file: stay.controller.js ~ line 17 ~ getStays ~ filterBy',
-    //     filterBy
-    // );
+    console.log(
+        '🚀 ~ file: stay.controller.js ~ line 17 ~ getStays ~ filterBy',
+        filterBy
+    );
     // res.json(JSON.parse(filterBy));
     // return;
     // return res.send(filterBy);

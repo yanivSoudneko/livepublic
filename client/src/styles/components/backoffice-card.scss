@@ -1,7 +1,8 @@
 .stay-card {
   display: grid;
   // gap: 30px 15px;
-  grid-template-columns: repeat(auto-fit, minmax(33%, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
 
   .backoffice-card {
     width: 100%;

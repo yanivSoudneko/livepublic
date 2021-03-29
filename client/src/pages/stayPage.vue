@@ -1,7 +1,7 @@
 <template>
   <div class="stay" v-if="stay">
     <h2>{{ stay.name }}</h2>
-    <div class="sub-header">
+    <div class="stay-page-sub-header">
       <div class="rating">
         <span class="sub-review">
           <i class="fas fa-star"></i><span class="rate">{{ rating }}</span>

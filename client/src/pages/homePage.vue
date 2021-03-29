@@ -3,7 +3,7 @@
 		<inspirtion-destionation />
 		<div class="flex j-between a-center">
 			<h1 class="stays-header">Popular Stays</h1>
-			<a
+			<a class="see-all"
 				style="cursor: pointer"
 				@click="exploreTarget('', 'Popular Stays')"
 				>See All</a

@@ -1,18 +1,18 @@
 <template>
-	<section class="container-back-office">
-		<!-- <nav-filter /> -->
-		<div class="back-office">
-			<div class="host-details flex j-around a-center">
-				<h2 class="title-hello-user">
-					Greetings Mr/Mrs {{ user.fullname }}
-				</h2>
-			</div>
-			<img :src="user.imgUrl" :alt="user.fullname" />
-			<div class="top-section">
-				<div class="reservations">
-					<h2>Pending/Accepted Reservations</h2>
-					<order-list v-if="orders.length" :orders="orders" />
-				</div>
+  <section class="container-back-office">
+    <!-- <nav-filter /> -->
+    <div class="back-office">
+      <div class="host-details flex j-around a-center">
+        <h2 class="title-hello-user">Greetings Mr/Mrs {{ user.fullname }}</h2>
+      </div>
+      <div class="host-image flex j-center">
+      <img :src="user.imgUrl" :alt="user.fullname" />
+      </div>
+      <div class="top-section">
+        <div class="reservations">
+          <h2>Pending/Accepted Reservations</h2>
+          <order-list v-if="orders.length" :orders="orders" />
+        </div>
 
 				<div class="stays-container">
 					<div class="header">

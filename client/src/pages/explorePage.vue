@@ -104,6 +104,9 @@
 .price-range {
   min-width: 300px;
 }
+.apply-filters{
+  outline: none;
+}
 </style>
 
 

@@ -142,8 +142,24 @@
     }
 }
 
-@include for-mobile-layout {
-    .links-to {
-        display: none;
+@include for-mobile-layout{
+    .land-div{
+    background-color: unset!important;
+    .land-img{
+        margin-bottom: unset!important;
+        width: 100%;
+        height: 50vh;
+    object-fit: cover;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: unset!important;
     }
+}
+.sub-header{
+    display: none;
+}
+.links-to {
+    display: none;
+}
 }

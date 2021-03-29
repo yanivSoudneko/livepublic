@@ -9,7 +9,7 @@
             <ul
               v-for="order in orders"
               :key="order._id"
-              style="border:1px solid #a1a1a1;border-radius:20px;text-align:start"
+              style="border-bottom:1px solid #a1a1a1;;text-align:start;padding:0"
             >
               <li>checkIn: {{ order.checkIn }} checkOut: {{ order.checkOut }}</li>
               <li>price: ${{ order.totalPrice }}</li>

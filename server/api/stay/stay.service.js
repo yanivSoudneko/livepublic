@@ -15,6 +15,7 @@ module.exports = {
 async function query(filterBy) {
     try {
         var aggregation = _buildCriteria(filterBy);
+        console.log("🚀 ~ file: stay.service.js ~ line 18 ~ query ~ aggregation", aggregation)
 
         if (filterBy.hasOwnProperty('page') && filterBy.size) {
             var { page, size } = filterBy;
