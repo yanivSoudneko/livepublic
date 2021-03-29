@@ -14,7 +14,7 @@
 		</el-table-column>
 		<el-table-column prop="status" label="status" width="120">
 		</el-table-column>
-		<el-table-column prop="stay.price" label="price" width="120">
+		<el-table-column prop="formattedPrice" label="price" width="120">
 		</el-table-column>
 		<el-table-column fixed="right" label="Operations" width="120">
 			<template slot-scope="scope">
@@ -66,6 +66,21 @@ export default {
 					);
 				});
 		},
+		formatOrder(order) {
+			console.log(
+				"🚀 ~ file: backoffice-table.cmp.vue ~ line 70 ~ formatOrder ~ order",
+				order
+			);
+			const {
+				checkIn,
+				checkOut,
+				stay: { price },
+			} = order;
+			order.formattedPrice = "$" + price;
+			order.checkInFormatted = moment(checkIn).format("MMM Do YY");
+			order.checkOutFormatted = moment(checkOut).format("MMM Do YY");
+			return order;
+		},
 
 		getOrders() {
 			// debugger;
@@ -80,17 +95,7 @@ export default {
 					},
 				})
 				.then((orders) => {
-					this.tableData = orders.map((order) => {
-						const { checkIn, checkOut } = order;
-						order.checkInFormatted = moment(checkIn).format(
-							"MMM Do YY"
-						);
-						order.checkOutFormatted = moment(checkOut).format(
-							"MMM Do YY"
-						);
-						return order;
-					});
-					this.$forceUpdate();
+					this.tableData = orders.map(this.formatOrder);
 				});
 		},
 	},
@@ -110,7 +115,12 @@ export default {
 	watch: {
 		orders(newValue) {
 			this.tableData = newValue.map((order) => {
-				const { checkIn, checkOut } = order;
+				const {
+					checkIn,
+					checkOut,
+					stay: { price },
+				} = order;
+				order.formattedPrice = "$" + price;
 				order.checkInFormatted = moment(checkIn).format("MMM Do YY");
 				order.checkOutFormatted = moment(checkOut).format("MMM Do YY");
 				return order;
@@ -119,12 +129,7 @@ export default {
 	},
 	created() {
 		if (this.orders.length) {
-			this.tableData = this.orders.map((order) => {
-				const { checkIn, checkOut } = order;
-				order.checkInFormatted = moment(checkIn).format("MMM Do YY");
-				order.checkOutFormatted = moment(checkOut).format("MMM Do YY");
-				return order;
-			});
+			this.tableData = this.orders.map(this.formatOrder);
 			console.log("order", this.orders[0]);
 		}
 	},
