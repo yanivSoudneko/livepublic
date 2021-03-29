@@ -54,8 +54,12 @@
     white-space: nowrap !important;
     color: rgb(113, 113, 113) !important;
     border: 1px solid grey !important;
-    :nth-child(1){
-      border-top-left-radius: 10px;
+    &:nth-child(1){
+     border-top-left-radius: 10px;
+
+    }
+    &:nth-child(2){
+     border-top-right-radius: 10px;
 
     }
   }

@@ -5,7 +5,9 @@
       <div class="host-details flex j-around a-center">
         <h2 class="title-hello-user">Greetings Mr/Mrs {{ user.fullname }}</h2>
       </div>
+      <div class="host-image flex j-center">
       <img :src="user.imgUrl" :alt="user.fullname" />
+      </div>
       <div class="top-section">
         <div class="reservations">
           <h2>Pending/Accepted Reservations</h2>

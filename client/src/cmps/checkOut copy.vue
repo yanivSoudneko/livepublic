@@ -2,7 +2,7 @@
   <div class="check-out">
     <div class="check-header">
       <div class="price">
-        <span class="amout">${{ stay.price }}</span>
+        <span class="amount">${{ stay.price }}</span>
         <span>/night</span>
       </div>
       <div class="rate">
@@ -73,6 +73,9 @@
       rgb(215, 4, 102) 100%
     );
     color: white;
+  }
+  .amount{
+    font-weight: 700;
   }
   
 }

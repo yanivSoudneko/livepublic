@@ -4,11 +4,13 @@
   .back-office {
     // max-width: 605px;
     max-width: 1210px;
+    padding-right: 20px;
+    padding-left: 20px;
 
     & * {
 
       color: grey;
-      margin: 5px;
+      // margin: 5px;
     }
 
     // .header-main {
@@ -28,4 +30,11 @@
       }
     }
   }
+}
+
+@include for-mobile-layout{
+  .back-office {
+    padding-right: 20px;
+    padding-left: 20px;
+}
 }

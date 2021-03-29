@@ -102,30 +102,23 @@
 // .right-side {
 // 	max-width: 650px;
 // }
-.host-details {
-  padding-top: 48px;
-  padding-bottom: 24px;
-  max-width: 650px;
-  border-bottom: 1px solid grey;
-  margin-bottom: 20px;
-}
+
+
+  .host-details {
+    padding-top: 48px;
+    padding-bottom: 24px;
+    margin-bottom: 20px;
+    max-width: 650px;
+    .host-image{
+      img {
+        border-radius: 50%;
+      }
+      
+    }
+  }
+
 .right-side-container {
-  // max-width: 650px;
-  // float: left;
-  // .right-side > * {
-  // }
-  //  .host-details{
-  //   .about-host{
-  //     white-space: pre;
-  //     .host-image{
-  //       img{
-  //         width: 50px;
-  //         height: 50px;
-  //         border-radius: 50%;
-  //       }
-  //     }
-  //   }
-  // }
+ 
   .about-host {
     h2 {
       font-weight: 700;
@@ -224,22 +217,24 @@
     column-gap: 10px;
   }
 }
-// @include for-mobile-layout{
-//     .stay{
-//         padding-left: 20px;
-//         padding-right: 20px;
-//   .stay-page-container{
-//       display: block;
-//     margin: 0 auto;
-//     grid-template-columns: 1fr 1fr 1fr 1fr;
-//     grid-template-rows: 200px 200px;
-//     gap: 15px 10px;
-//     grid-template-areas:
-//       'img0 img0 img1 img2'
-//       'img0 img0 img3 img4';
-//     height: auto;
-//     padding: 0;
-//     padding-top: 24px;
-//   }
-// }
-// }
+@include for-mobile-layout{
+    .stay{
+        padding-left: 20px;
+        padding-right: 20px;
+  .stay-page-container{
+      display: block;
+      .stay-page-img-container{
+          img{
+              border-radius: 10px!important;
+            }
+      }
+   
+  }
+  .stay-page-amenities-container{
+      column-gap: 65px;
+    }
+}
+.underTitle-addres{
+    display: flex;
+}
+}
