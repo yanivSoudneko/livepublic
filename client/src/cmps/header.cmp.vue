@@ -113,14 +113,14 @@
                 </div>
                 <el-dropdown-menu class="hamburger-dropdown" slot="dropdown">
                   <el-dropdown-item class="houses-nav-mobile">
-                    <router-link to="/house" exact>
+                    <router-link to="/explore" exact>
                       Places to stay
                     </router-link>
                   </el-dropdown-item>
                   <el-dropdown-item class="host-nav-mobile">
-                    <router-link to="/profile" exact>
+                    <!-- <router-link to="/profile" exact>
                       Become a host
-                    </router-link>
+                    </router-link> -->
                   </el-dropdown-item>
                   <el-dropdown-item v-if="!user" command="loginModal">Login</el-dropdown-item>
                   <el-dropdown-item v-if="!user" command="signUpModal">Sign up</el-dropdown-item>
@@ -181,7 +181,7 @@ export default {
       if (command === 'loginModal') this.$router.push('/login');
       else if (command === 'signUpModal') this.$router.push('/login');
       else if (command === 'logout') this.logout();
-      else if (command === 'toProfile') this.$router.push('/dashboard');
+      else if (command === 'toProfile') this.$router.push('/back-office');
     },
     onDropdown() {
       this.isDropdown = !this.isDropdown;
