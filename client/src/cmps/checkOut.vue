@@ -20,14 +20,14 @@
         <!-- guest count -->
         <div class="guest-count">
           <input
-            placeholder="GUESTS"
+            placeholder="Guests"
             type="number"
             :v-show="order.guest"
-            v-model="order.guest"
-            min="1"
+            v-model="order.guest"         
             :max="stay.accommodates"
           />
         </div>
+      </div>
         <button
           class="check"
           v-if="!showSummary"
@@ -36,7 +36,6 @@
         >
           Check Availability
         </button>
-      </div>
     </form>
 
     <div v-if="showSummary" class="details-check-availability">
@@ -152,10 +151,10 @@
       overflow: hidden !important;
       text-overflow: ellipsis !important;
       white-space: nowrap !important;
-      border: 1px solid grey !important;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
-      border-top: unset !important;
+      // border: 1px solid grey !important;
+      // border-bottom-left-radius: 10px;
+      // border-bottom-right-radius: 10px;
+      border-top: 1px solid grey !important;
 
       *,
       *:before,
@@ -165,6 +164,10 @@
         box-sizing: border-box;
       }
     }
+  }
+  .checkout-input{
+    border: 1px solid grey;
+    border-radius: 10px;
   }
 }
 </style>

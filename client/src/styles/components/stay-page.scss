@@ -10,10 +10,15 @@
       .fas {
         padding-right: 10px;
       }
-      .rate {
-        font-weight: 600;
-      }
     }
+  }
+  .rating-length{
+    color: grey;
+  }
+  .rate {
+    font-weight: 600;
+    padding-left: 5px;
+    padding-right: 3px;
   }
   .sub-header > * {
     padding: 10px;

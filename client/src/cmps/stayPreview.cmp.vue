@@ -38,7 +38,7 @@
     <!--  -->
     <div class="stay-details" @click="$router.push('stay/' + stay._id)">
       <div class="ratings-data">
-        <i class="fas fa-star"></i>{{ rating }} ({{ ratingLength }})
+        <i class="fas fa-star"></i><span class="preview-rate">{{ rating }}</span> <span class="preview-rate-length">({{ ratingLength }})</span>
       </div>
       <p class="address">{{ stay.loc.address }}</p>
       <p class="summary">{{ stay.summary }}</p>

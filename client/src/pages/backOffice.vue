@@ -108,7 +108,7 @@ export default {
 
 		socketService.on(this.user._id, (data) => {
 			console.log("host data", data);
-			socketService.emit("join-reservation-chat", data.order._id);
+			// socketService.emit("join-reservation-chat", data.order._id);
 			this.getOrders();
 			const { order } = data;
 			console.log(
@@ -127,4 +127,5 @@ export default {
 		backofficeCard,
 	},
 };
+
 </script>

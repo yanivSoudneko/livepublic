@@ -34,8 +34,11 @@
   left: 500px;
   top: 180px;
 }
-.inputs{
-  input{
+.inputs {
+  &:nth-child(1) {
+    }
+  input {
+    text-align: center !important;
     height: 56px !important;
     width: 100% !important;
     border: none !important;
@@ -53,15 +56,7 @@
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
     color: rgb(113, 113, 113) !important;
-    border: 1px solid grey !important;
-    &:nth-child(1){
-     border-top-left-radius: 10px;
-
-    }
-    &:nth-child(2){
-     border-top-right-radius: 10px;
-
-    }
+    border-left: 1px solid grey !important;
   }
 }
 </style>

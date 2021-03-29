@@ -6,7 +6,7 @@
         <span class="sub-review">
           <i class="fas fa-star"></i><span class="rate">{{ rating }}</span>
         </span>
-        <small>({{ ratingLength }})</small>&nbsp;<span>·</span>&nbsp;
+        <small class="rating-length">({{ ratingLength }})</small>&nbsp;<span>·</span>&nbsp;
         <span class="underTitle-addres">{{ stay.loc.address }}</span>
       </div>
       <div class="stay-page-container">
