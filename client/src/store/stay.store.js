@@ -6,10 +6,10 @@ export default {
     locations: [],
     filterBy: {
       filterTxt: '',
-      checkIn: new Date(),
-      checkOut: new Date(),
+      // checkIn: new Date(),
+      // checkOut: new Date(),
       guestCount: 1,
-      type: '',
+      // type: '',
       page: 0,
       size: 4,
     },
@@ -50,6 +50,7 @@ export default {
         console.log('🚀 ~ file: stay.store.js ~ line 49 ~ fetchFiltered ~ state.filterBy', state.filterBy);
 
         const stays = await stayService.queryStays(state.filterBy);
+        // const stays = await stayService.queryStays(filterBy);
         const output = {
           stays,
           filterBy: JSON.parse(JSON.stringify(state.filterBy)),

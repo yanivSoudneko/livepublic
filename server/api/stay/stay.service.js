@@ -108,6 +108,7 @@ function _buildCriteria(criteria) {
         type,
         rating,
         reviews,
+        prices,
     } = criteria;
 
     const filterBy = {
@@ -116,6 +117,7 @@ function _buildCriteria(criteria) {
         guestCount,
         rating,
         reviews,
+        prices,
     };
     // console.log(
     //     '🚀 ~ file: stay.service.js ~ line 120 ~ _buildCriteria ~ filterBy',
@@ -146,14 +148,14 @@ function _buildCriteria(criteria) {
                 },
             });
         }
-
-        if (key === 'prices' && value && value[0] && value[1]) {
-            var max, min;
-            min = value[0] > value[1] ? value[0] : value[1];
-            max = value[0] < value[1] ? value[0] : value[1];
+        console.log(key, value);
+        if (key === 'prices' && value /*&& value[0] && value[1] */) {
+            // var max, min;
+            // min = value[0] > value[1] ? value[0] : value[1];
+            // max = value[0] < value[1] ? value[0] : value[1];
             aggregation.push({
                 $match: {
-                    price: { $gte: min, $lte: max },
+                    price: { $gte: value[0], $lte: value[1] },
                 },
             });
         }
