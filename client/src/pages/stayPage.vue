@@ -236,7 +236,7 @@ export default {
         },
       };
 
-      this.stay.reviews.push(newReview);
+      this.stay.reviews.unshift(newReview);
 
       this.$store
         .dispatch({
