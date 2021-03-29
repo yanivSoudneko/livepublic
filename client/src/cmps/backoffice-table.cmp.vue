@@ -4,11 +4,11 @@
 		</el-table-column>
 		<el-table-column prop="buyer.fullname" label="Name" width="120">
 		</el-table-column>
-		<el-table-column prop="checkInFormatted" label="check-in" width="120">
+		<el-table-column prop="checkIn" label="check-in" width="120">
 		</el-table-column>
-		<el-table-column prop="checkOutFormatted" label="Check-out" width="120">
+		<el-table-column prop="checkOut" label="Check-out" width="120">
 		</el-table-column>
-		<el-table-column prop="guests" label="Guests" width="120">
+		<el-table-column prop="guests" label="Guests" width="100">
 		</el-table-column>
 		<el-table-column prop="_id" label="IDDEV" width="120">
 		</el-table-column>
@@ -81,10 +81,11 @@ export default {
 				})
 				.then((orders) => {
 					this.tableData = orders.map((order) => {
-						order.checkIn = moment(order.checkIn).format(
+						const { checkIn, checkOut } = order;
+						order.checkInFormatted = moment(checkIn).format(
 							"MMM Do YY"
 						);
-						order.checkOut = moment(order.checkOut).format(
+						order.checkOutFormatted = moment(checkOut).format(
 							"MMM Do YY"
 						);
 						return order;
