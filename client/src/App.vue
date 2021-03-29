@@ -29,11 +29,36 @@ export default {
 		footerCmp,
 	},
 	methods: {
-		notifyOnUserLeft(data) {
+		notifyOnUserLeft(user) {
 			console.log(
 				"🚀 ~ file: App.vue ~ line 31 ~ notifyOnUserLeft ~ data",
-				data
+				user
 			);
+		},
+	},
+	computed: {
+		user() {
+			return this.$store.getters["user/user"];
+		},
+	},
+	watch: {
+		user(newVal, oldVal) {
+			if (oldVal._id) {
+				socketService.removeAllListeners(oldVal._id);
+			}
+			if (newVal._id && newVal.fullname) {
+				socketService.on(this.user._id, (data) => {
+					const order = data;
+					const status =
+						order.status === "active" ? "accepted" : "declined";
+					if (data.orderStatus && data.orderId) {
+						this.$message({
+							dangerouslyUseHTMLString: true,
+							message: `<strong>${order.host.fullname} has ${status} your reservaation for ${order.stay.fullname}</strong>`,
+						});
+					}
+				});
+			}
 		},
 	},
 	created() {

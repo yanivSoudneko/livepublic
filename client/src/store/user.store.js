@@ -10,6 +10,7 @@ export default {
             imgUrl: 'https://randomuser.me/api/portraits/men/48.jpg',
         },
         error: '',
+        currentUserSocket: '',
     },
     getters: {
         user({ user }) {
@@ -22,6 +23,7 @@ export default {
     mutations: {
         setUser(state, { user }) {
             state.user = user;
+            state.currentUserSocket = user._id;
         },
         setError(state, { error }) {
             state.error = error.error || error;
@@ -32,6 +34,7 @@ export default {
             //     });
             // }
         },
+        listenToSocket(state) {},
         logout(state, payload) {
             state.user = null;
         },
