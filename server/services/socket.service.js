@@ -44,7 +44,6 @@ function connectSockets(http, session, corsOrigin) {
             socket.broadcast.emit('user-left', user);
         });
 
-
         socket.on('join-reservation-chat', (data) => {
             if (!data.order || !data.order._id) {
                 console.error(
@@ -60,7 +59,6 @@ function connectSockets(http, session, corsOrigin) {
             socket.join(data.order._id);
             emit({ type: data.host._id, data });
         });
-
 
         socket.on('order-approval', (data) => {
             const order = data;
