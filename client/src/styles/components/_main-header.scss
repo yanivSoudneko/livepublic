@@ -122,3 +122,17 @@
         font-size: 2rem;
     }
 }
+
+@include for-mobile-layout{
+    .land-div{
+    background-color: unset!important;
+    .land-img{
+        margin-bottom: unset!important;
+        width: 100%;
+        height: 50vh;
+    }
+}
+.sub-header{
+    display: none;
+}
+}
