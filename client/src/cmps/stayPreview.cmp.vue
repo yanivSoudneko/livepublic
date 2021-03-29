@@ -70,13 +70,14 @@ export default {
       );
     },
     rating() {
-      const reviews = this.stay.reviews;
-      const rateTotal = reviews.reduce((acc, obj) => {
-        acc += obj.rate;
-        return acc;
-      }, 0);
-      const result = (rateTotal / reviews.length).toFixed(1);
-      return result < 4.5 ? utilService.genRand(4.5, 5, 1) : result;
+      // const reviews = this.stay.reviews;
+      // const rateTotal = reviews.reduce((acc, obj) => {
+      //   acc += obj.rate;
+      //   return acc;
+      // }, 0);
+      // const result = (rateTotal / reviews.length).toFixed(1);
+      // return result < 4.5 ? utilService.genRand(4.5, 5, 1) : result;
+      return (this.stay.review_scores.review_scores_rating / 20).toFixed(1);
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;

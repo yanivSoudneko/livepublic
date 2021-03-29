@@ -268,6 +268,14 @@ export default {
     confirmReservation(data) {
       console.log(data);
     },
+    showOrderStatus(data) {
+      const order = data;
+      status = order.status === "active" ? "approved" : "declined";
+      this.$message({
+        dangerouslyUseHTMLString: true,
+        message: `<strong>${order.host.fullname} has ${status} your reservation for ${order.stay.name}</strong>`,
+      });
+    },
   },
   computed: {
     orderGuest() {
@@ -318,16 +326,21 @@ export default {
       const string = reviewsLength + " Review" + addS;
       return string;
     },
+    user() {
+      return this.$store.getters["user/user"];
+    },
   },
   components: { datePicker },
   created() {
     socketService.on("reservation-created", this.confirmReservation);
   },
   mounted() {
+    socketService.on(this.user._id, this.showOrderStatus);
     window.addEventListener("scroll", this.updateScroll);
   },
   destroyed() {
     socketService.on("reservation-created", this.confirmReservation);
+    socketService.off(this.user._id, this.showOrderStatus);
     window.removeEventListener("scroll", this.updateScroll);
   },
 };

@@ -25,6 +25,9 @@ function createSocketService() {
             await socketService.setup();
             socket.emit(eventName, data);
         },
+        removeAllListeners(eventName) {
+            socket.removeAllListeners(eventName);
+        },
         terminate() {
             socket = null;
         },
