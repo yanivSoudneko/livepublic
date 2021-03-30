@@ -78,7 +78,7 @@
       <!-- {{reviews}} -->
       <div class="stay-reviews">
         <h3>
-          <i class="fas fa-star"></i>{{ stay.review_scores.review_scores_rating/20 }} ({{ stay.reviews.length }}
+          <i class="fas fa-star"></i>{{ stay.review_scores.review_scores_rating / 20 }} ({{ stay.reviews.length }}
           reviews)
         </h3>
         <div class="reviews-rate-list">
@@ -117,7 +117,7 @@
             <stars :readOnly="false" @ratingChanged="setReviewRating" />
           </div>
           <el-input type="textarea" :rows="5" placeholder="Please input" v-model="reviewTxt"> </el-input>
-          <button class="pill-pad" style="cursor:pointer;" @click="addReview">Add</button>
+          <button class="pill-pad" style="cursor:pointer;margin-top: 10px;" @click="addReview">Add</button>
         </div>
       </div>
       <hr />
