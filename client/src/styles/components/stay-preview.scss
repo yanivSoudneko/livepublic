@@ -5,7 +5,7 @@
   height: 100%;
   width: 100%;
   .el-carousel__container {
-    height: 165px;
+    height: 166px;
     margin-bottom: 10px;
   }
   .el-carousel {
@@ -31,6 +31,7 @@
       z-index: 1000;
       top: 5px;
       right: 5px;
+      fill: rgba(0, 0, 0, 0.5);
     }
   }
   .summary {
@@ -40,11 +41,23 @@
     width: 220px;
     line-height: 1.8em;
   }
+  .preview-rate{
+    font-weight: 600;
+  }
+  .preview-rate-length{
+    color: grey;
+  }
   .price {
     font-weight: 700;
   }
 }
-
+.ratings-data{
+  line-height: 30px;
+    padding-bottom: 8px;
+}
+.address{
+  line-height: 6px;
+}
 .el-carousel__indicator {
   button {
     width: 7px;
@@ -62,5 +75,14 @@
 }
 .fa-star {
   color: rgb(235, 100, 100);
+  padding-right: 5px;
+}
+.address{
+  line-height: 6px;
 }
 
+@include for-mobile-layout{
+  .el-carousel__container {
+  height: 244px!important;
+  }
+}

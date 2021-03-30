@@ -2,8 +2,8 @@
   <div class="check-out" :style="{ top: stickyYPos }">
     <div class="check-header">
       <div class="price">
-        <span class="amout">${{ stay.price }}</span>
-        <span>/night</span>
+        <span class="amount">${{ stay.price }}</span>
+        <span class="nights-count">/night</span>
       </div>
       <div class="rate">
         <span
@@ -20,18 +20,17 @@
         <!-- guest count -->
         <div class="guest-count">
           <input
-            placeholder="GUESTS"
+            placeholder="Guests"
             type="number"
             :v-show="order.guest"
             v-model="order.guest"
-            min="1"
             :max="stay.accommodates"
           />
         </div>
-        <button class="check" v-if="!showSummary" @mousemove="recordPos" :style="{ backgroundImage: gradient }">
-          Check Availability
-        </button>
       </div>
+      <button class="check" v-if="!showSummary" @mousemove="recordPos" :style="{ backgroundImage: gradient }">
+        Check Availability
+      </button>
     </form>
 
     <div v-if="showSummary" class="details-check-availability">
@@ -65,6 +64,15 @@
   .check-header {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 7px;
+    .price {
+      .amount {
+        font-weight: 700;
+      }
+      .nights-count {
+        padding-left: 5px;
+      }
+    }
   }
   .check {
     cursor: pointer;
@@ -133,9 +141,10 @@
       overflow: hidden !important;
       text-overflow: ellipsis !important;
       white-space: nowrap !important;
-      border: 1px solid grey !important;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
+      // border: 1px solid grey !important;
+      // border-bottom-left-radius: 10px;
+      // border-bottom-right-radius: 10px;
+      border-top: 1px solid grey !important;
 
       *,
       *:before,
@@ -145,6 +154,10 @@
         box-sizing: border-box;
       }
     }
+  }
+  .checkout-input {
+    border: 1px solid grey;
+    border-radius: 10px;
   }
 }
 </style>
@@ -166,6 +179,7 @@ export default {
     return {
       mouseX: 0,
       mouseY: 0,
+      // modalShowen:false,
       order: {
         checkIn: null,
         checkOut: null,
@@ -213,6 +227,7 @@ export default {
           order: newOrder,
         });
       });
+      this.showSummary = !this.showSummary;
     },
     calcPricePerDays() {
       if (this.order.checkIn && this.order.checkOut) {

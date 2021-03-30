@@ -10,8 +10,6 @@
 		</el-table-column>
 		<el-table-column prop="guests" label="Guests" width="100">
 		</el-table-column>
-		<el-table-column prop="_id" label="IDDEV" width="120">
-		</el-table-column>
 		<el-table-column prop="status" label="status" width="120">
 		</el-table-column>
 		<el-table-column prop="formattedPrice" label="price" width="120">
@@ -74,9 +72,9 @@ export default {
 			const {
 				checkIn,
 				checkOut,
-				stay: { price },
+				totalPrice
 			} = order;
-			order.formattedPrice = "$" + price;
+			order.formattedPrice = "$" + totalPrice;
 			order.checkInFormatted = moment(checkIn).format("MMM Do YY");
 			order.checkOutFormatted = moment(checkOut).format("MMM Do YY");
 			return order;

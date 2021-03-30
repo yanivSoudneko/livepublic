@@ -5,7 +5,9 @@
       <div class="host-details flex j-around a-center">
         <h2 class="title-hello-user">Greetings Mr/Mrs {{ user.fullname }}</h2>
       </div>
-      <img :src="user.imgUrl" :alt="user.fullname" />
+      <div class="host-image flex j-center">
+        <img :src="user.imgUrl" :alt="user.fullname" />
+      </div>
       <div class="top-section">
         <div class="reservations">
           <h2>Pending/Accepted Reservations</h2>
@@ -93,10 +95,11 @@ export default {
     //Create a Table Orders
     this.getOrders();
 
+    this.getOrders();
+
     socketService.on(this.user._id, data => {
       console.log('host data', data);
-      socketService.emit('join-reservation-chat', data.order._id);
-      // Get new Orders
+      // socketService.emit("join-reservation-chat", data.order._id);
       this.getOrders();
       const { order } = data;
       console.log('🚀 ~ file: backOffice.vue ~ line 124 ~ socketService.on ~ order', order);
