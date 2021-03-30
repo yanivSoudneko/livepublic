@@ -99,3 +99,4 @@ xxx.deleteMany({
 //find
 db.getCollection('stay').find({ 'loc.address': { $regex: 'new york', $options: 'i' } });
 db.getCollection('order').find({ 'host._id': { $regex: '605882438a46640774775bf6', $options: 'i' } });
+db.getCollection('stay').find({ amenities: { $regex: 'wifi', $regex: 'tv', $options: 'i' } });

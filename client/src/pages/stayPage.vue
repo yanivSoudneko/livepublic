@@ -133,7 +133,6 @@
   </div>
 </template>
 
-
 <script>
 // @ is an alias to /src
 import { utilService } from '../services/util.service';
@@ -287,13 +286,14 @@ export default {
       return `radial-gradient(at ${this.mouseX}% ${this.mouseY}%, #e61e4d, #9b59b6)`;
     },
     rating() {
-      const reviews = this.stay.reviews;
-      const rateTotal = reviews.reduce((acc, obj) => {
-        acc += obj.rate;
-        return acc;
-      }, 0);
-      const result = (rateTotal / reviews.length).toFixed(1);
-      return result < 4.5 ? utilService.genRand(4.5, 5, 1) : result;
+      // const reviews = this.stay.reviews;
+      // const rateTotal = reviews.reduce((acc, obj) => {
+      //   acc += obj.rate;
+      //   return acc;
+      // }, 0);
+      // const result = (rateTotal / reviews.length).toFixed(1);
+      // return result < 4.5 ? utilService.genRand(4.5, 5, 1) : result;
+      return (this.stay.review_scores.review_scores_rating / 20).toFixed(1);
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;

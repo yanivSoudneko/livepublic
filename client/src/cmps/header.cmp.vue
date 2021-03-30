@@ -10,7 +10,7 @@
       <div
         class="filter-btn flex j-between a-center"
         v-if="!hideBtn && this.$route.name === 'Home'"
-        @click="(hideBtn = true), (firstClick = true)"
+        @click="isFilter = !isFilter"
       >
         <span>Start your search</span>
         <span class="search-svg-icon flex j-center">
@@ -39,8 +39,8 @@
         </span>
       </div>
       <!-- filters -->
-      <nav-filter v-if="scrollPosition && scrollPosition >= 0 && scrollPosition < 200 && showHeroImage"></nav-filter>
-
+      <nav-filter :isFilter="isFilter" :viewPort="viewPort" :breakPoint="550"></nav-filter>
+      <!-- v-if="scrollPosition && scrollPosition >= 0 && scrollPosition < 200 && showHeroImage" -->
       <div class="links flex j-between a-center">
         <router-link to="/explore" class="links-to"> Explore </router-link>
         <!-- <router-link to="/host"> Become Host </router-link> -->
@@ -141,7 +141,9 @@
     <div class="land-div" v-if="showHeroImage">
       <img class="land-img" src="../../public/img/land-img.webp" />
     </div>
-    <h3 class="sub-header" v-if="showHeroImage">Made possible by Hosts</h3>
+    <h3 class="sub-header" v-if="(showHeroImage && viewPort > 550) || (showHeroImage && viewPort < 550 && !isFilter)">
+      Made possible by Hosts
+    </h3>
   </header>
 </template>
 
@@ -152,9 +154,11 @@ export default {
   name: 'NavBar',
   data() {
     return {
+      viewPort: null,
       hideBtn: false,
       firstClick: true,
-      scrollPosition: null,
+      isFilter: false,
+      // scrollPosition: null,
       // scrollPosition: null,
       // test data
       unreadBookings: 5,
@@ -173,9 +177,9 @@ export default {
       }
       this.hideBtn = false;
     },
-    handleScroll() {
-      this.scrollPosition = window.scrollY;
-    },
+    // handleScroll() {
+    //   this.scrollPosition = window.scrollY;
+    // },
     // test methods
     handleCommand(command) {
       if (command === 'loginModal') this.$router.push('/login');
@@ -191,9 +195,9 @@ export default {
     },
   },
   computed: {
-    stickyYPos() {
-      return this.scrollPosition;
-    },
+    // stickyYPos() {
+    //   return this.scrollPosition;
+    // },
     showHeroImage() {
       return this.$store.getters.showHeroImage;
     },
@@ -204,6 +208,8 @@ export default {
   },
   created() {
     window.addEventListener('scroll', this.handleScroll);
+    const viewPort = window.innerWidth;
+    this.viewPort = viewPort;
   },
   destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
