@@ -27,7 +27,7 @@
             :max="stay.accommodates"
             min="1"
             defaultValue="Reset"
-            required
+            required    
           />
           <!-- <guest-select
             class="guest-select"
