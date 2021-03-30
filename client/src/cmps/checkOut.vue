@@ -279,7 +279,6 @@ export default {
       console.log('order:', order);
       this.$store.dispatch({ type: 'order/saveOrder', order }).then(newOrder => {
         console.log('CheckOut Check', newOrder);
-
         socketService.emit('reservation-created', {
           host: this.stay.host,
           guest: this.user,

@@ -21,16 +21,13 @@
           <input
             class="guest-input"
             type="number"
+            :min="1"
             placeholder="Guests"
             :v-show="order.gueset"
             v-model="order.gueset"
           />
         </div>
-        <button
-          class="check"
-          @mousemove="recordPos"
-          :style="{ backgroundImage: calculatedPos }"
-        >
+        <button class="check" @mousemove="recordPos" :style="{ backgroundImage: calculatedPos }">
           Check Availability
         </button>
       </div>
@@ -63,26 +60,20 @@
     outline: none !important;
     padding: 14px 24px !important;
 
-    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s,
-      -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s,
+      transform 0.1s ease 0s !important;
     border: none !important;
-    background: linear-gradient(
-      to right,
-      rgb(230, 30, 77) 0%,
-      rgb(227, 28, 95) 50%,
-      rgb(215, 4, 102) 100%
-    );
+    background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
     color: white;
   }
-  .amount{
+  .amount {
     font-weight: 700;
   }
-  
 }
 </style>
 
 <script>
-import datePicker from "../cmps/datepicker.cmp";
+import datePicker from '../cmps/datepicker.cmp';
 export default {
   props: {
     stay: {
@@ -90,7 +81,7 @@ export default {
       // Request,
     },
   },
-  name: "checkOut",
+  name: 'checkOut',
   data() {
     return {
       mouseX: 0,
@@ -114,7 +105,7 @@ export default {
       console.log(this.order.checkOut);
       console.log(+this.order.gueset);
       this.order.gueset = +this.order.gueset;
-      this.$emit("checkout", this.order);
+      this.$emit('checkout', this.order);
     },
   },
   computed: {
@@ -131,8 +122,8 @@ export default {
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;
-      const addS = reviewsLength > 1 ? "s" : "";
-      const string = reviewsLength + " Review" + addS;
+      const addS = reviewsLength > 1 ? 's' : '';
+      const string = reviewsLength + ' Review' + addS;
       return string;
     },
   },
