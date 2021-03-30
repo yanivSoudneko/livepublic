@@ -25,7 +25,19 @@
             :v-show="order.guest"
             v-model="order.guest"
             :max="stay.accommodates"
+            min="1"
+            defaultValue="Reset"
+            required
           />
+          <!-- <guest-select
+            class="guest-select"
+            placeholder="Guests"
+            type="number"
+            :v-show="order.guest"
+            v-model="order.guest"
+            :max="stay.accommodates"
+            min="1"
+          /> -->
         </div>
       </div>
       <button class="check" v-if="!showSummary" @mousemove="recordPos" :style="{ backgroundImage: gradient }">
@@ -223,6 +235,7 @@
 import moment from 'moment';
 import datePicker from '../cmps/datepicker.cmp';
 import { socketService } from '../services/socket.service';
+import guestSelect from './guestsSelect.cmp';
 
 export default {
   props: {
@@ -241,7 +254,7 @@ export default {
       order: {
         checkIn: null,
         checkOut: null,
-        guest: 1,
+        guest: null,
         days: 1,
         totalPrice: 0,
         by: {},
@@ -374,7 +387,7 @@ export default {
       return this.$store.getters['user/user'];
     },
   },
-  components: { datePicker },
+  components: { datePicker, guestSelect },
   created() {
     socketService.on('reservation-created', this.confirmReservation);
   },

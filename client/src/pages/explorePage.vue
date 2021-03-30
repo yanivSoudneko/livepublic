@@ -31,7 +31,7 @@
     </div>
     <!-- filters by  -->
     <small class="head-title-visits">300+ stays</small>
-    <h1 class="head-title-txt">Entire homes</h1>
+    <h1 class="head-title-txt">Stays in {{ filterTxt }}</h1>
     <div class="filters flex columns">
       <div class="sub-filter-container flex a-center">
         <!-- <div class="filter pill-pad">Filter Type</div> -->
@@ -59,7 +59,9 @@
         <button class="apply-filters filter pill-pad" @click="fetchByTypeAndFilter">
           Apply
         </button>
-        <router-link class="filter pill-pad" style="margin-left: 15px; text-decoration: none" to="/">Back</router-link>
+        <router-link class="filter pill-pad" style="margin-left: 15px; text-decoration: none;color:grey;" to="/"
+          >Back</router-link
+        >
       </div>
       <!-- <div class="sub-filter-btns flex">
 				<button class="filter pill-pad">Instant Book</button>
@@ -100,6 +102,12 @@
 .el-slider__button {
   background-color: #ff385c;
   border: 2px solid rgb(82, 78, 78);
+}
+.filter:hover {
+  color: unset;
+}
+.filter:active {
+  color: unset;
 }
 </style>
 

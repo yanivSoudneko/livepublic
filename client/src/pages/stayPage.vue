@@ -117,14 +117,14 @@
             <stars :readOnly="false" @ratingChanged="setReviewRating" />
           </div>
           <el-input type="textarea" :rows="5" placeholder="Please input" v-model="reviewTxt"> </el-input>
-          <button @click="addReview">Add</button>
+          <button class="pill-pad" style="cursor:pointer;" @click="addReview">Add</button>
         </div>
       </div>
       <hr />
       <!-- GOOGLE MAPS -->
       <div class="google-map">
         <h2>location:</h2>
-        <!-- <google-maps :lat="stay.loc.lat" :lng="stay.loc.lng" /> -->
+        <google-maps :lat="stay.loc.lat" :lng="stay.loc.lng" />
       </div>
       <!-- {{ stay }} -->
     </div>

@@ -18,14 +18,14 @@
     </div>
     <!-- dates -->
     <div class="date-filter border">
-      <label>Dates</label>
+      <!-- <label>Dates</label> -->
       <div class="flex">
         <date-picker placeholder="Check In" @emitDate="setDates($event)" />
       </div>
     </div>
     <!-- guests -->
     <div class="guests border">
-      <label>Guests</label>
+      <!-- <label>Guests</label> -->
       <div>{{ guestCount }} Guests</div>
       <guest-select @selectedGuests="setGuests" />
     </div>

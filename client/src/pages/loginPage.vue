@@ -36,7 +36,7 @@
 <style lang="scss" scoped>
 .login {
 	max-width: 1210px;
-	height: 60vh;
+	height: 82vh;
 	top: 0;
 	form {
 		padding: 100px;
