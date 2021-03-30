@@ -23,11 +23,14 @@ export const httpService = {
 };
 
 async function ajax(endpoint, method, data = null, params = {}) {
+  console.log('data', data);
   try {
     const res = await axios({
       url: `${BASE_URL}${endpoint}`,
       method,
       data,
+      'maxContentLength': Infinity,
+      'maxBodyLength': Infinity,
       params: method === 'GET' ? params : null,
     });
     return res.data;

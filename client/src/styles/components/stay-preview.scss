@@ -9,9 +9,6 @@
     margin-bottom: 10px;
   }
   .el-carousel {
-    .is-liked {
-      fill: rgba(224, 14, 14, 0.842);
-    }
     img {
       width: 100%;
       height: 100%;
@@ -79,6 +76,9 @@
 }
 .address{
   line-height: 6px;
+}
+.is-liked {
+  fill: rgba(224, 14, 14, 0.842)!important;
 }
 
 @include for-mobile-layout{

@@ -124,7 +124,7 @@
       <!-- GOOGLE MAPS -->
       <div class="google-map">
         <h2>location:</h2>
-        <google-maps :lat="stay.loc.lat" :lng="stay.loc.lng" />
+        <!-- <google-maps :lat="stay.loc.lat" :lng="stay.loc.lng" /> -->
       </div>
       <!-- {{ stay }} -->
     </div>
