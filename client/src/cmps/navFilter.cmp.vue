@@ -1,5 +1,9 @@
 <template>
-  <div class="nav-filter" v-if="scrollPosition < 250">
+  <div
+    class="nav-filter"
+    v-if="(viewPort <= breakPoint && isFilter) || (isFilter && viewPort > breakPoint && !(scrollPosition > 250))"
+    @click="toggleFilter"
+  >
     <!-- filterTxt -->
     <div class="location-search border">
       <label for="location-input">Location</label>
@@ -55,24 +59,38 @@
   </div>
 </template>
 
-
 <script>
-import guestSelect from "./guestsSelect.cmp";
-import datePicker from "./datepicker.cmp";
+import guestSelect from './guestsSelect.cmp';
+import datePicker from './datepicker.cmp';
 export default {
-  name: "Nav-Filter",
+  name: 'Nav-Filter',
+  props: {
+    isFilter: {
+      type: Boolean,
+    },
+    viewPort: {
+      type: Number,
+    },
+    breakPoint: {
+      type: Number,
+    },
+  },
   data() {
     return {
       scrollPosition: null,
-      filterTxt: "",
+      filterTxt: '',
       dates: { in: null, out: null },
       guestCount: 1,
+      // isFilter: false,
     };
   },
   methods: {
     setGuests(ev) {
       this.guestCount = ev.adultAmount;
       this.guestCount = ev.kidsAmount;
+    },
+    toggleFilter() {
+      this.isFilter = !this.isFilter;
     },
     updateScroll() {
       this.scrollPosition = window.scrollY;
@@ -86,18 +104,18 @@ export default {
         // checkOut: dates.out,
         guestCount,
       };
-      if (filterTxt === "") {
+      if (filterTxt === '') {
         this.$refs.filterTxtInput.focus();
         return;
       }
 
-      this.$store.commit({ type: "stay/setFilterBy", filterBy });
-      this.$emit("closeFilters", true);
-      if (this.$route.name === "Explore") {
+      this.$store.commit({ type: 'stay/setFilterBy', filterBy });
+      this.$emit('closeFilters', true);
+      if (this.$route.name === 'Explore') {
         return;
       }
       this.$router.push({
-        name: "Explore",
+        name: 'Explore',
         params: {
           filterBy,
         },
@@ -113,11 +131,12 @@ export default {
       return this.scrollPosition > 250;
     },
   },
+  created() {},
   mounted() {
-    window.addEventListener("scroll", this.updateScroll);
+    window.addEventListener('scroll', this.updateScroll);
   },
   destroyed() {
-    window.removeEventListener("scroll", this.updateScroll);
+    window.removeEventListener('scroll', this.updateScroll);
   },
   components: { datePicker, guestSelect },
 };

@@ -1,10 +1,7 @@
 <template>
   <div class="stay-preview">
     <el-carousel :autoplay="false">
-      <div
-        class="likes"
-        @click="toggleLike"
-      >
+      <div class="likes" @click="toggleLike">
         <svg
           viewBox="0 0 32 32"
           xmlns="http://www.w3.org/2000/svg"
@@ -27,18 +24,15 @@
         trigger="click"
         @click.native="$router.push('stay/' + stay._id)"
       >
-        <img
-          :src="img"
-          style="width: 100%; height: 100%; z-index: -1100"
-          class="slider-image"
-        />
+        <img :src="img" style="width: 100%; height: 100%; z-index: -1100" class="slider-image" />
       </el-carousel-item>
     </el-carousel>
 
     <!--  -->
     <div class="stay-details" @click="$router.push('stay/' + stay._id)">
       <div class="ratings-data">
-        <i class="fas fa-star"></i><span class="preview-rate">{{ rating }}</span> <span class="preview-rate-length">({{ ratingLength }})</span>
+        <i class="fas fa-star"></i><span class="preview-rate">{{ rating }}</span>
+        <span class="preview-rate-length">({{ ratingLength }})</span>
       </div>
       <p class="address">{{ stay.loc.address }}</p>
       <p class="summary">{{ stay.summary }}</p>
@@ -50,9 +44,9 @@
 </template>
 
 <script>
-import { utilService } from "../services/util.service";
+import { utilService } from '../services/util.service';
 export default {
-  name: "stay-preview",
+  name: 'stay-preview',
   props: {
     stay: {
       type: Object,
@@ -60,14 +54,10 @@ export default {
   },
   computed: {
     loggedUser() {
-      return this.$store.getters["user/user"];
+      return this.$store.getters['user/user'];
     },
     likedByUser() {
-      return (
-        this.loggedUser &&
-        this.stay.likes &&
-        this.stay.likes.find((like) => like.userId === this.loggedUser._id)
-      );
+      return this.loggedUser && this.stay.likes && this.stay.likes.find(like => like.userId === this.loggedUser._id);
     },
     rating() {
       // const reviews = this.stay.reviews;
@@ -88,19 +78,15 @@ export default {
   },
   methods: {
     toggleLike() {
-      const userIdx = this.stay.likes.findIndex(
-        (like) => like.userId === this.loggedUser._id
-      );
+      const userIdx = this.stay.likes.findIndex(like => like.userId === this.loggedUser._id);
       if (userIdx === -1) {
         this.stay.likes.push({ userId: this.loggedUser._id });
       } else {
         this.stay.likes.splice(userIdx, 1);
       }
 
-      this.$store.dispatch({ type: "stay/updateStay", stay: this.stay });
+      this.$store.dispatch({ type: 'stay/updateStay', stay: this.stay });
     },
   },
 };
 </script>
-
-

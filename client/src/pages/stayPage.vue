@@ -78,7 +78,7 @@
       <!-- {{reviews}} -->
       <div class="stay-reviews">
         <h3>
-          <i class="fas fa-star"></i>{{ stay.review_scores.review_scores_rating/20 }} ({{ stay.reviews.length }}
+          <i class="fas fa-star"></i>{{ stay.review_scores.review_scores_rating / 20 }} ({{ stay.reviews.length }}
           reviews)
         </h3>
         <div class="reviews-rate-list">
@@ -117,7 +117,7 @@
             <stars :readOnly="false" @ratingChanged="setReviewRating" />
           </div>
           <el-input type="textarea" :rows="5" placeholder="Please input" v-model="reviewTxt"> </el-input>
-          <button class="pill-pad" style="cursor:pointer;" @click="addReview">Add</button>
+          <button class="pill-pad" style="cursor:pointer;margin-top: 10px;" @click="addReview">Add</button>
         </div>
       </div>
       <hr />
@@ -131,7 +131,6 @@
     <!-- <check-out :stay="stay" @checkout="checkout" /> -->
   </div>
 </template>
-
 
 <script>
 // @ is an alias to /src
@@ -286,13 +285,14 @@ export default {
       return `radial-gradient(at ${this.mouseX}% ${this.mouseY}%, #e61e4d, #9b59b6)`;
     },
     rating() {
-      const reviews = this.stay.reviews;
-      const rateTotal = reviews.reduce((acc, obj) => {
-        acc += obj.rate;
-        return acc;
-      }, 0);
-      const result = (rateTotal / reviews.length).toFixed(1);
-      return result < 4.5 ? utilService.genRand(4.5, 5, 1) : result;
+      // const reviews = this.stay.reviews;
+      // const rateTotal = reviews.reduce((acc, obj) => {
+      //   acc += obj.rate;
+      //   return acc;
+      // }, 0);
+      // const result = (rateTotal / reviews.length).toFixed(1);
+      // return result < 4.5 ? utilService.genRand(4.5, 5, 1) : result;
+      return (this.stay.review_scores.review_scores_rating / 20).toFixed(1);
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;

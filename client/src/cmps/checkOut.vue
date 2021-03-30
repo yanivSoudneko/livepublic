@@ -40,23 +40,13 @@
           /> -->
         </div>
       </div>
-      <button
-        class="check"
-        v-if="!showSummary"
-        @mousemove="recordPos"
-        :style="{ backgroundImage: gradient }"
-      >
+      <button class="check" v-if="!showSummary" @mousemove="recordPos" :style="{ backgroundImage: gradient }">
         Check Availability
       </button>
     </form>
 
     <div v-if="showSummary" class="details-check-availability">
-      <button
-        class="check"
-        @click="saveOrder"
-        @mousemove="recordPos"
-        :style="{ backgroundImage: gradient }"
-      >
+      <button class="check" @click="saveOrder" @mousemove="recordPos" :style="{ backgroundImage: gradient }">
         Reserve
       </button>
       <div class="not-charged">
@@ -128,8 +118,8 @@
     // background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
     // --mouse-x: 85.3438;
     // --mouse-y: 52.9412;
-    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s,
-      -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s,
+      transform 0.1s ease 0s !important;
     border: none !important;
     // background: linear-gradient(
     //   to right,
@@ -242,10 +232,10 @@
 </style>
 
 <script>
-import moment from "moment";
-import datePicker from "../cmps/datepicker.cmp";
-import { socketService } from "../services/socket.service";
-import guestSelect from "./guestsSelect.cmp";
+import moment from 'moment';
+import datePicker from '../cmps/datepicker.cmp';
+import { socketService } from '../services/socket.service';
+import guestSelect from './guestsSelect.cmp';
 
 export default {
   props: {
@@ -254,7 +244,7 @@ export default {
       Request,
     },
   },
-  name: "checkOut",
+  name: 'checkOut',
   data() {
     return {
       mouseX: 0,
@@ -276,25 +266,22 @@ export default {
   },
   methods: {
     saveOrder() {
-      this.order.by = this.$store.getters["user/user"];
-      console.log(
-        "🚀 ~ file: checkOut.vue ~ line 159 ~ saveOrder ~ this.order.by",
-        this.order.by
-      );
+      this.order.by = this.$store.getters['user/user'];
+      console.log('🚀 ~ file: checkOut.vue ~ line 159 ~ saveOrder ~ this.order.by', this.order.by);
       if (!this.order.by._id) {
-        console.error("cannot get user data");
+        console.error('cannot get user data');
         return;
       }
       this.order.guest = +this.order.guest;
       // this.$emit("checkout", this.order);
 
       const order = {
-        buyer: this.$store.getters["user/user"],
+        buyer: this.$store.getters['user/user'],
         host: this.stay.host,
         checkIn: this.order.checkIn,
         checkOut: this.order.checkOut,
         guests: this.order.guest,
-        status: "pending",
+        status: 'pending',
         totalPrice: this.sum,
         stay: {
           _id: this.stay._id,
@@ -302,26 +289,23 @@ export default {
           price: this.stay.price,
         },
       };
-      console.log("order:", order);
-      this.$store
-        .dispatch({ type: "order/saveOrder", order })
-        .then((newOrder) => {
-          console.log("CheckOut Check", newOrder);
-
-          socketService.emit("reservation-created", {
-            host: this.stay.host,
-            guest: this.user,
-            order: newOrder,
-          });
+      console.log('order:', order);
+      this.$store.dispatch({ type: 'order/saveOrder', order }).then(newOrder => {
+        console.log('CheckOut Check', newOrder);
+        socketService.emit('reservation-created', {
+          host: this.stay.host,
+          guest: this.user,
+          order: newOrder,
         });
-      this.showSummary = !this.showSummary;
+        this.showSummary = !this.showSummary;
+      });
     },
     calcPricePerDays() {
       if (this.order.checkIn && this.order.checkOut) {
         const { checkIn, checkOut } = this.order;
         var a = moment(checkIn);
         var b = moment(checkOut);
-        this.order.days = b.diff(a, "days") || 1;
+        this.order.days = b.diff(a, 'days') || 1;
         this.order.totalPrice = this.order.days * this.stay.price;
         this.sum = this.order.totalPrice + this.cleaningFee;
         console.log(this.sum);
@@ -349,7 +333,7 @@ export default {
     },
     showOrderStatus(data) {
       const order = data;
-      status = order.status === "active" ? "approved" : "declined";
+      status = order.status === 'active' ? 'approved' : 'declined';
       this.$message({
         dangerouslyUseHTMLString: true,
         message: `<strong>${order.host.fullname} has ${status} your reservation for ${order.stay.name}</strong>`,
@@ -359,15 +343,15 @@ export default {
   computed: {
     orderGuest() {
       const guestLength = this.order.guest;
-      const addS = guestLength > 1 ? "s" : "";
-      const string = " Guest" + addS + ":" + guestLength;
+      const addS = guestLength > 1 ? 's' : '';
+      const string = ' Guest' + addS + ':' + guestLength;
       return string;
     },
     orderDays() {
       const orderDaysLength = this.order.days;
       console.log(orderDaysLength);
-      const addS = orderDaysLength > 1 ? "s" : "";
-      const string = orderDaysLength + " night" + addS;
+      const addS = orderDaysLength > 1 ? 's' : '';
+      const string = orderDaysLength + ' night' + addS;
       return string;
     },
     getImg() {
@@ -375,12 +359,12 @@ export default {
     },
     checkInDetails() {
       const time = this.order.checkIn.getTime();
-      const format = moment(time).format("dddd, MMMM Do YYYY");
+      const format = moment(time).format('dddd, MMMM Do YYYY');
       return format;
     },
     checkOutDetails() {
       const time = this.order.checkOut.getTime();
-      const format = moment(time).format("dddd, MMMM Do YYYY");
+      const format = moment(time).format('dddd, MMMM Do YYYY');
       return format;
     },
     stickyYPos() {
@@ -391,37 +375,30 @@ export default {
       // radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) !important
     },
     rating() {
-      // const reviews = this.stay.reviews;
-      // const rateTotal = reviews.reduce((acc, obj) => {
-      //   acc += obj.rate;
-      //   return acc;
-      // }, 0);
-      // const result = (rateTotal / reviews.length).toFixed(1);
-      // return result < 4.5 ? utilService.genRand(4.5, 5, 1) : result;
       return (this.stay.review_scores.review_scores_rating / 20).toFixed(1);
     },
     ratingLength() {
       const reviewsLength = this.stay.reviews.length;
-      const addS = reviewsLength > 1 ? "s" : "";
-      const string = reviewsLength + " Review" + addS;
+      const addS = reviewsLength > 1 ? 's' : '';
+      const string = reviewsLength + ' Review' + addS;
       return reviewsLength;
     },
     user() {
-      return this.$store.getters["user/user"];
+      return this.$store.getters['user/user'];
     },
   },
   components: { datePicker, guestSelect },
   created() {
-    socketService.on("reservation-created", this.confirmReservation);
+    socketService.on('reservation-created', this.confirmReservation);
   },
   mounted() {
     socketService.on(this.user._id, this.showOrderStatus);
-    window.addEventListener("scroll", this.updateScroll);
+    window.addEventListener('scroll', this.updateScroll);
   },
   destroyed() {
-    socketService.on("reservation-created", this.confirmReservation);
+    socketService.on('reservation-created', this.confirmReservation);
     socketService.off(this.user._id, this.showOrderStatus);
-    window.removeEventListener("scroll", this.updateScroll);
+    window.removeEventListener('scroll', this.updateScroll);
   },
 };
 </script>
