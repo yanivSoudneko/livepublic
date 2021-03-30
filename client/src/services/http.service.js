@@ -29,8 +29,8 @@ async function ajax(endpoint, method, data = null, params = {}) {
       url: `${BASE_URL}${endpoint}`,
       method,
       data,
-      'maxContentLength': Infinity,
-      'maxBodyLength': Infinity,
+      maxContentLength: Infinity,
+      maxBodyLength: Infinity,
       params: method === 'GET' ? params : null,
     });
     return res.data;
