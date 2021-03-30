@@ -31,7 +31,7 @@
     </div>
     <!-- filters by  -->
     <small class="head-title-visits">300+ stays</small>
-    <h1 class="head-title-txt">Entire homes</h1>
+    <h1 class="head-title-txt">Stays in {{filterTxt}}</h1>
     <div class="filters flex columns">
       <div class="sub-filter-container flex a-center">
         <!-- <div class="filter pill-pad">Filter Type</div> -->
@@ -55,7 +55,7 @@
           <el-dropdown-menu slot="dropdown" class="price-range">
             <el-dropdown-item>
               span
-              <el-slider v-model="priceLevels" range show-stops :max="2000">
+              <el-slider v-model="priceLevels" range show-stops :max="2000" color="green">
               </el-slider>
               max
             </el-dropdown-item>
@@ -69,7 +69,7 @@
         </button>
         <router-link
           class="filter pill-pad"
-          style="margin-left: 15px; text-decoration: none"
+          style="margin-left: 15px; text-decoration: none;color:grey;"
           to="/"
           >Back</router-link
         >
@@ -106,6 +106,12 @@
 }
 .apply-filters{
   outline: none;
+}
+.filter:hover{
+  color: unset;
+}
+.filter:active{
+  color: unset;
 }
 </style>
 

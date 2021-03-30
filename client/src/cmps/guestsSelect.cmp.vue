@@ -50,9 +50,9 @@
 .guest-select {
   .el-dropdown-link {
     cursor: pointer;
-    color: #409eff;
+    color: #717171;
     .el-icon-arrow-down {
-      font-size: 12px;
+      font-size: 16px;
     }
   }
 }

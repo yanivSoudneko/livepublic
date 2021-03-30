@@ -14,7 +14,7 @@ Vue.use(element, { locale });
 Vue.config.productionTip = false;
 Vue.use(VueGoogleMaps, {
     load: {
-        key: "AIzaSyCD6HvbcCtct6bnfsM9Hhmgw5p3_yA_K7Q",
+        key: "AIzaSyC-OEkTrXEyUU98tgZfsvuTBhWgS-SLX8c",
         libraries: "places",
     },
 });

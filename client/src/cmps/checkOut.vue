@@ -25,7 +25,19 @@
             :v-show="order.guest"
             v-model="order.guest"
             :max="stay.accommodates"
+            min="1"
+            defaultValue="Reset"
+            required
           />
+          <!-- <guest-select
+            class="guest-select"
+            placeholder="Guests"
+            type="number"
+            :v-show="order.guest"
+            v-model="order.guest"
+            :max="stay.accommodates"
+            min="1"
+          /> -->
         </div>
       </div>
       <button
@@ -56,7 +68,7 @@
       </div>
       <div class="cleaning-fee flex j-between">
         <p class="cleaning-fee-txt">Cleaning fee</p>
-        <p>${{cleaningFee}}</p>
+        <p>${{ cleaningFee }}</p>
       </div>
       <div class="service-fee flex j-between">
         <p class="service-fee-txt">Service fee</p>
@@ -64,7 +76,7 @@
       </div>
       <div class="last-price flex j-between">
         <p>Total</p>
-        <p>${{sum}}</p>
+        <p>${{ sum }}</p>
       </div>
       <!-- <h5>{{ stay.name }}</h5>
       <h6 v-if="checkInDetails">Check In: {{ checkInDetails }}</h6>
@@ -86,7 +98,7 @@
   border: 1px solid #dddddd;
   border-radius: 12px;
   padding: 24px;
-  box-shadow: rgba(0 ,0 ,0 , 0.12) 0px 6px 16px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   max-width: 350px;
   .check-header {
     display: flex;
@@ -197,15 +209,17 @@
     color: rgb(34, 34, 34);
     text-align: left;
   }
-  .cleaning-fee-txt,.service-fee-txt,.order-price-total  {
+  .cleaning-fee-txt,
+  .service-fee-txt,
+  .order-price-total {
     padding-bottom: 12px;
     text-decoration: underline;
   }
-  
+
   .order-price {
     margin-top: 24px;
   }
- 
+
   .last-price {
     border-top: 1px solid rgb(221, 221, 221);
     list-style-type: none;
@@ -231,6 +245,7 @@
 import moment from "moment";
 import datePicker from "../cmps/datepicker.cmp";
 import { socketService } from "../services/socket.service";
+import guestSelect from "./guestsSelect.cmp";
 
 export default {
   props: {
@@ -244,17 +259,17 @@ export default {
     return {
       mouseX: 0,
       mouseY: 0,
-      sum:null,
+      sum: null,
       // modalShowen:false,
       order: {
         checkIn: null,
         checkOut: null,
-        guest: 1,
+        guest: null,
         days: 1,
         totalPrice: 0,
         by: {},
       },
-      cleaningFee:25,
+      cleaningFee: 25,
       showSummary: false,
       scrollPosition: null,
     };
@@ -307,7 +322,7 @@ export default {
         var a = moment(checkIn);
         var b = moment(checkOut);
         this.order.days = b.diff(a, "days") || 1;
-        this.order.totalPrice =this.order.days * this.stay.price;
+        this.order.totalPrice = this.order.days * this.stay.price;
         this.sum = this.order.totalPrice + this.cleaningFee;
         console.log(this.sum);
       }
@@ -352,7 +367,7 @@ export default {
       const orderDaysLength = this.order.days;
       console.log(orderDaysLength);
       const addS = orderDaysLength > 1 ? "s" : "";
-      const string =  orderDaysLength + " night" + addS;
+      const string = orderDaysLength + " night" + addS;
       return string;
     },
     getImg() {
@@ -395,7 +410,7 @@ export default {
       return this.$store.getters["user/user"];
     },
   },
-  components: { datePicker },
+  components: { datePicker, guestSelect },
   created() {
     socketService.on("reservation-created", this.confirmReservation);
   },
