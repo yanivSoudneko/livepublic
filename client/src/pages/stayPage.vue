@@ -23,10 +23,9 @@
           <div class="host-details flex j-between a-center">
             <div class="about-host">
               <h2>{{ stay.host.fullname }}</h2>
-              <span> · </span>
               <span>{{ stay.accommodates }} Guests</span><span> · </span> <span>{{ stay.bedrooms }} bedrooms</span
               ><span> · </span> <span>{{ stay.beds }} beds</span><span> · </span>
-              <span>{{ bathRoomText }} </span>
+              <span> &nbsp;{{ bathRoomText }} </span>
             </div>
             <div class="host-image">
               <img :src="stay.host.imgUrl" />
@@ -79,7 +78,7 @@
       <!-- {{reviews}} -->
       <div class="stay-reviews">
         <h3>
-          <i class="fas fa-star"></i>{{ stay.review_scores.review_scores_rating }} ({{ stay.reviews.length }}
+          <i class="fas fa-star"></i>{{ stay.review_scores.review_scores_rating/20 }} ({{ stay.reviews.length }}
           reviews)
         </h3>
         <div class="reviews-rate-list">
@@ -270,7 +269,7 @@ export default {
   computed: {
     bathRoomText() {
       const bathNums = this.stay.bathrooms.numberDecimal;
-      return bathNums === '1' ? '1 Bathroom' : bathNums + 'Bathrooms';
+      return bathNums === '1' ? '1 Bathroom' : bathNums + ' Bathrooms';
     },
     // adjustRating() {
     //   const { rating } = this.stay;
