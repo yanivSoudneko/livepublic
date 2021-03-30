@@ -3,8 +3,8 @@
     <!-- <button @click="$refs.picker.focus()">Open</button> -->
     <!-- <button @click="$refs.picker.focus()">Open</button> -->
     <div class="inputs flex" @click="$refs.picker.focus()">
-      <input type="text" v-model="date1" disabled />
-      <input type="text" v-model="date2" disabled />
+      <input class="input-left" type="text" v-model="date1" disabled />
+      <input class="input-right" type="text" v-model="date2" disabled />
     </div>
     <div class="picker-wrapper">
       <el-date-picker
@@ -35,8 +35,6 @@
   top: 180px;
 }
 .inputs {
-  &:nth-child(1) {
-    }
   input {
     text-align: center !important;
     height: 56px !important;
@@ -56,8 +54,11 @@
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
     color: rgb(113, 113, 113) !important;
-    border-left: 1px solid grey !important;
+    
   }
+  .input-left {
+    border-right: 1px solid grey !important;
+    }
 }
 </style>
 

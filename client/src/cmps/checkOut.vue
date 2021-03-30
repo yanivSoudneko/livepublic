@@ -3,13 +3,13 @@
     <div class="check-header">
       <div class="price">
         <span class="amount">${{ stay.price }}</span>
-        <span class="nights-count">/night</span>
+        <span>/</span>
+        <span class="nights-count">night</span>
       </div>
       <div class="rate">
-        <span
-          ><i class="fas fa-star">{{ rating }}</i></span
-        >&nbsp;
-        <span>{{ ratingLength }}</span>
+        <i class="fas fa-star"></i><span>{{ rating }}</span>
+        &nbsp;
+        <small class="review-length">({{ ratingLength }})</small>
       </div>
     </div>
 
@@ -34,17 +34,34 @@
     </form>
 
     <div v-if="showSummary" class="details-check-availability">
-      <h4>Details</h4>
-      <h5>{{ stay.name }}</h5>
+      <button class="check" @click="saveOrder" @mousemove="recordPos" :style="{ backgroundImage: gradient }">
+        Reserve
+      </button>
+      <div class="not-charged">
+        <small>You won't be charged yet</small>
+      </div>
+      <div class="order-price flex j-between">
+        <p class="order-price-total">${{ stay.price }} x {{ orderDays }}</p>
+        <p>${{ order.totalPrice }}</p>
+      </div>
+      <div class="cleaning-fee flex j-between">
+        <p class="cleaning-fee-txt">Cleaning fee</p>
+        <p>${{ cleaningFee }}</p>
+      </div>
+      <div class="service-fee flex j-between">
+        <p class="service-fee-txt">Service fee</p>
+        <p>$0</p>
+      </div>
+      <div class="last-price flex j-between">
+        <p>Total</p>
+        <p>${{ sum }}</p>
+      </div>
+      <!-- <h5>{{ stay.name }}</h5>
       <h6 v-if="checkInDetails">Check In: {{ checkInDetails }}</h6>
       <h6 v-if="checkOutDetails">Check Out: {{ checkOutDetails }}</h6>
       <h6 v-if="orderGuest">{{ orderGuest }}</h6>
       <h6 v-if="orderDays">{{ orderDays }}</h6>
-      <h6>Total: ${{ order.totalPrice }}</h6>
-      <img v-if="getImg" :src="getImg" alt="HomeImg" />
-      <button class="check" @click="saveOrder" @mousemove="recordPos" :style="{ backgroundImage: gradient }">
-        Reserve
-      </button>
+      <img v-if="getImg" :src="getImg" alt="HomeImg" /> -->
     </div>
   </div>
 </template>
@@ -59,7 +76,7 @@
   border: 1px solid #dddddd;
   border-radius: 12px;
   padding: 24px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 6px 16px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   max-width: 350px;
   .check-header {
     display: flex;
@@ -68,9 +85,11 @@
     .price {
       .amount {
         font-weight: 700;
+        padding-right: 5px;
       }
       .nights-count {
-        padding-left: 5px;
+        padding-left: 3px;
+        color: grey;
       }
     }
   }
@@ -110,10 +129,9 @@
   .details-check-availability {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    * {
-      margin: 10px;
-    }
+    // align-items: flex-start;
+    width: 100%;
+
     img {
       max-height: 150px;
       max-width: 150px;
@@ -121,6 +139,9 @@
       position: absolute;
       bottom: 90px;
     }
+  }
+  .total-price {
+    width: 100%;
   }
   .guest-count {
     input {
@@ -159,6 +180,42 @@
     border: 1px solid grey;
     border-radius: 10px;
   }
+  .cleaning-fee,
+  .service-fee,
+  .last-price {
+    font-weight: 400;
+    color: rgb(34, 34, 34);
+    text-align: left;
+  }
+  .cleaning-fee-txt,
+  .service-fee-txt,
+  .order-price-total {
+    padding-bottom: 12px;
+    text-decoration: underline;
+  }
+
+  .order-price {
+    margin-top: 24px;
+  }
+
+  .last-price {
+    border-top: 1px solid rgb(221, 221, 221);
+    list-style-type: none;
+    margin: 16px 0px 0px;
+    padding: 24px 0px 12px;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .not-charged {
+    padding-bottom: 5px;
+    padding-top: 8px;
+    margin: 0 auto;
+    color: rgb(34, 34, 34);
+  }
+  .review-length {
+    font-weight: 100;
+    color: grey;
+  }
 }
 </style>
 
@@ -179,6 +236,7 @@ export default {
     return {
       mouseX: 0,
       mouseY: 0,
+      sum: null,
       // modalShowen:false,
       order: {
         checkIn: null,
@@ -188,6 +246,7 @@ export default {
         totalPrice: 0,
         by: {},
       },
+      cleaningFee: 25,
       showSummary: false,
       scrollPosition: null,
     };
@@ -210,7 +269,7 @@ export default {
         checkOut: this.order.checkOut,
         guests: this.order.guest,
         status: 'pending',
-        totalPrice: this.order.totalPrice,
+        totalPrice: this.sum,
         stay: {
           _id: this.stay._id,
           name: this.stay.name,
@@ -226,8 +285,8 @@ export default {
           guest: this.user,
           order: newOrder,
         });
+        this.showSummary = !this.showSummary;
       });
-      this.showSummary = !this.showSummary;
     },
     calcPricePerDays() {
       if (this.order.checkIn && this.order.checkOut) {
@@ -236,6 +295,8 @@ export default {
         var b = moment(checkOut);
         this.order.days = b.diff(a, 'days') || 1;
         this.order.totalPrice = this.order.days * this.stay.price;
+        this.sum = this.order.totalPrice + this.cleaningFee;
+        console.log(this.sum);
       }
     },
     setDates(ev) {
@@ -276,8 +337,9 @@ export default {
     },
     orderDays() {
       const orderDaysLength = this.order.days;
+      console.log(orderDaysLength);
       const addS = orderDaysLength > 1 ? 's' : '';
-      const string = ' Day' + addS + ':' + orderDaysLength;
+      const string = orderDaysLength + ' night' + addS;
       return string;
     },
     getImg() {
@@ -307,7 +369,7 @@ export default {
       const reviewsLength = this.stay.reviews.length;
       const addS = reviewsLength > 1 ? 's' : '';
       const string = reviewsLength + ' Review' + addS;
-      return string;
+      return reviewsLength;
     },
     user() {
       return this.$store.getters['user/user'];
